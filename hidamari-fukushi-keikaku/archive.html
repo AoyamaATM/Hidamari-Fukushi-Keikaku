@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>お知らせ一覧 | ひだまり福祉計画</title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body data-root="./" data-type="archive">
+    <header data-site-header></header>
+    <main class="page-shell" id="main">
+      <nav class="breadcrumb breadcrumb--plain" aria-label="パンくず">
+        <a href="./index.html">TOP</a>
+        <span>&gt;</span>
+        <span>“お知らせ一覧”</span>
+      </nav>
+
+      <section class="content-width archive-shell">
+        <h1 class="section-heading center-heading">お知らせ一覧</h1>
+        <form class="filter-bar" data-archive-filter>
+          <label class="select-field">
+            <span>カテゴリ：</span>
+            <select name="category">
+              <option value="all">すべて（10）</option>
+              <option value="news">ニュース</option>
+              <option value="blog">ブログ</option>
+            </select>
+          </label>
+          <label class="select-field">
+            <span>月別：</span>
+            <select name="month">
+              <option value="all">全期間（10）</option>
+              <option value="2026-06">2026年6月</option>
+              <option value="2026-05">2026年5月</option>
+            </select>
+          </label>
+        </form>
+        <p class="archive-result" data-archive-result aria-live="polite"></p>
+
+        <ul class="list-archive">
+          <li class="archive-item" data-archive-item data-category="news" data-month="2026-06">
+            <time datetime="2026-06-15">2026/06/15</time>
+            <span class="tag">ニュース</span>
+            <a href="./single.html"><strong>タイトルタイトルタイトルタイトルタイトル</strong></a>
+          </li>
+          <li class="archive-item" data-archive-item data-category="blog" data-month="2026-06">
+            <time datetime="2026-06-15">2026/06/15</time>
+            <span class="tag tag-blog">ブログ</span>
+            <a href="./single.html"><strong>タイトルの文字数２０文字台前半にしてもらうのがいい</strong></a>
+          </li>
+          <li class="archive-item" data-archive-item data-category="blog" data-month="2026-06">
+            <time datetime="2026-06-15">2026/06/15</time>
+            <span class="tag tag-blog">ブログ</span>
+            <a href="./single.html"><strong>上のやつで25文字程度だからそれくらい上限かなぁ</strong></a>
+          </li>
+          <li class="archive-item" data-archive-item data-category="news" data-month="2026-06">
+            <time datetime="2026-06-15">2026/06/15</time>
+            <span class="tag">ニュース</span>
+            <a href="./single.html"><strong>25字以上になったら「…」で省略するようにするか</strong></a>
+          </li>
+          <li class="archive-item" data-archive-item data-category="news" data-month="2026-06">
+            <time datetime="2026-06-15">2026/06/15</time>
+            <span class="tag">ニュース</span>
+            <a href="./single.html"><strong>タイトルタイトルタイトルタイトルタイトル</strong></a>
+          </li>
+          <li class="archive-item" data-archive-item data-category="news" data-month="2026-06">
+            <time datetime="2026-06-15">2026/06/15</time>
+            <span class="tag">ニュース</span>
+            <a href="./single.html"><strong>1ページに10件載せてそれ以降は</strong></a>
+          </li>
+          <li class="archive-item" data-archive-item data-category="news" data-month="2026-06">
+            <time datetime="2026-06-15">2026/06/15</time>
+            <span class="tag">ニュース</span>
+            <a href="./single.html"><strong>ページネーション入れる（いつものヤツ）</strong></a>
+          </li>
+          <li class="archive-item" data-archive-item data-category="news" data-month="2026-06">
+            <time datetime="2026-06-15">2026/06/15</time>
+            <span class="tag">ニュース</span>
+            <a href="./single.html"><strong>月別フィルター か カテゴリフィルター を入れたい</strong></a>
+          </li>
+          <li class="archive-item" data-archive-item data-category="news" data-month="2026-06">
+            <time datetime="2026-06-15">2026/06/15</time>
+            <span class="tag">ニュース</span>
+            <a href="./single.html"><strong>上の部分にそれの選択部分を入れる？どうする？</strong></a>
+          </li>
+          <li class="archive-item" data-archive-item data-category="news" data-month="2026-06">
+            <time datetime="2026-06-15">2026/06/15</time>
+            <span class="tag">ニュース</span>
+            <a href="./single.html"><strong>タイトルタイトルタイトルタイトルタイトル</strong></a>
+          </li>
+        </ul>
+
+        <nav class="pagination" aria-label="ページネーション">
+          <a href="#" aria-current="page">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">&gt;</a>
+        </nav>
+      </section>
+    </main>
+    <footer data-site-footer></footer>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

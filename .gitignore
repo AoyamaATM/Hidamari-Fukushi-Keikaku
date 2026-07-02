@@ -1,0 +1,18 @@
+# Windows
+Thumbs.db
+desktop.ini
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+
+# Archives
+*.zip
+
+# Local browser/check artifacts
+.chrome-profile*/
+.chrome-check*/
+*-check*.png
+headless-*.png
