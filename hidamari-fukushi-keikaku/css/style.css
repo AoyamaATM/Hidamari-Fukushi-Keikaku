@@ -510,7 +510,8 @@ body[data-type=home] .asset-link:is(:hover, :focus-visible), body[data-type=pric
 }
 #reasons .grid-reason {
   align-items: center;
-  column-gap: clamp(36px, 100% - 1500px, 100px);
+  -moz-column-gap: clamp(36px, 100% - 1500px, 100px);
+       column-gap: clamp(36px, 100% - 1500px, 100px);
   grid-template-columns: repeat(2, minmax(0, 750px));
   justify-content: center;
   margin-top: clamp(74px, 8vw, 108px);

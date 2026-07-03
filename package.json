@@ -6,12 +6,15 @@
   "description": "Build tooling for the Hidamari Fukushi Keikaku static site.",
   "scripts": {
     "build:css": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/build-css.ps1",
-    "build:css:main": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/run-sass.ps1 --style=expanded --no-source-map hidamari-fukushi-keikaku/scss/style.scss hidamari-fukushi-keikaku/css/style.css",
-    "build:css:scss": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/run-sass.ps1 --style=expanded --source-map hidamari-fukushi-keikaku/scss/style.scss hidamari-fukushi-keikaku/scss/style.css",
-    "build:css:min": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/run-sass.ps1 --style=compressed --source-map hidamari-fukushi-keikaku/scss/style.scss hidamari-fukushi-keikaku/scss/style.min.css",
-    "watch:css": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/run-sass.ps1 --watch --style=expanded --no-source-map hidamari-fukushi-keikaku/scss/style.scss:hidamari-fukushi-keikaku/css/style.css"
+    "build:css:main": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/build-css.ps1 main",
+    "build:css:scss": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/build-css.ps1 scss",
+    "build:css:min": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/build-css.ps1 min",
+    "watch:css": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/watch-css.ps1"
   },
   "devDependencies": {
+    "autoprefixer": "^10.5.2",
+    "postcss": "^8.5.16",
+    "postcss-cli": "^11.0.1",
     "sass": "^1.101.0"
   }
 }

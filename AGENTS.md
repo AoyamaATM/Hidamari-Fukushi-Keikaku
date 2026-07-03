@@ -34,7 +34,8 @@
 - CSSを変更する場合は、原則として `hidamari-fukushi-keikaku/scss/style.scss` を編集する。
 - HTMLが読み込む表示用CSSは `hidamari-fukushi-keikaku/css/style.css` とする。
 - `hidamari-fukushi-keikaku/css/style.css`、`hidamari-fukushi-keikaku/scss/style.css`、`hidamari-fukushi-keikaku/scss/style.min.css` は生成物として扱う。
-- SCSS変更後は `pnpm run build:css` を実行して生成CSSを同期する。
+- SCSS変更後は `pnpm run build:css` を実行して、SassコンパイルとAutoprefixer適用後の生成CSSを同期する。
+- Autoprefixerの対象ブラウザは `.browserslistrc` で管理する。
 - CSS作業中の監視には `pnpm run watch:css` を使用できる。
 - 緊急時を除き、生成CSSだけを直接編集しない。直接編集した場合も、最終的にはSCSSへ反映してビルド結果と同期する。
 

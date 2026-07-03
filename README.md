@@ -16,11 +16,13 @@ hidamari-fukushi-keikaku/scss/style.scss
 pnpm install
 ```
 
-生成CSSをまとめて更新します。
+SassコンパイルとAutoprefixer適用をまとめて実行し、生成CSSを更新します。
 
 ```powershell
 pnpm run build:css
 ```
+
+Autoprefixerの対象ブラウザは `.browserslistrc` で管理します。
 
 CSS作業中に表示用CSSだけを監視ビルドする場合は、次のコマンドを使います。
 
