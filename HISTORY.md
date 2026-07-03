@@ -150,3 +150,25 @@
 - `.phone-card`の余白をTOPページのものとほぼ統一させる。
 - `.contact-faq-copy`を左右方向 中央に配置する。
 - `.form-panel`をTOPページのものとほぼ統一させる。
+
+---
+
+## 次回以降の残り作業（2026-07-03追記）
+
+ビルド環境まわりは、`package.json`、Sassビルド、Autoprefixer、pnpmストア固定、改行コード設定まで対応済み。
+残りは別タイミングで、次の順に確認・実施する。
+
+### 1. 既存ページの見た目調整
+- 上記の「修正する部分」に沿って、TOP / About_Us / Price / FAQ / Contact のSCSS調整を進める。
+- 特に FAQ の開閉アイコン、セクション余白、フォーム/電話カードの共通化を優先する。
+
+### 2. 表示確認フローの整備
+- `pnpm run build:css` 後に、主要ページをChrome headless等で確認する手順またはコマンドを整理する。
+- PC/SPそれぞれでスクリーンショット確認する対象ページを決める。
+
+### 3. 品質チェックの追加検討
+- StylelintなどのCSSチェック導入を検討する。
+- GitHub Actions等で `pnpm install --frozen-lockfile` と `pnpm run build:css` を自動確認するか検討する。
+
+### 4. ドキュメント更新
+- 表示確認フローや追加コマンドを採用した場合は、README.md と AGENTS.md に反映する。
