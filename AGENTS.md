@@ -30,6 +30,14 @@
 - 確認できたことと、確認できなかったことを報告する。
 - 前提や注意点、残るリスクがあれば明確に伝える。
 
+## SCSS/CSS運用
+- CSSを変更する場合は、原則として `hidamari-fukushi-keikaku/scss/style.scss` を編集する。
+- HTMLが読み込む表示用CSSは `hidamari-fukushi-keikaku/css/style.css` とする。
+- `hidamari-fukushi-keikaku/css/style.css`、`hidamari-fukushi-keikaku/scss/style.css`、`hidamari-fukushi-keikaku/scss/style.min.css` は生成物として扱う。
+- SCSS変更後は `pnpm run build:css` を実行して生成CSSを同期する。
+- CSS作業中の監視には `pnpm run watch:css` を使用できる。
+- 緊急時を除き、生成CSSだけを直接編集しない。直接編集した場合も、最終的にはSCSSへ反映してビルド結果と同期する。
+
 ## 共同作業
 - 破壊的な操作や広範囲な変更を行う前には確認を取る。
 - 複数の進め方がある場合は、重要な判断理由を説明する。
