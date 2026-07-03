@@ -49,10 +49,6 @@ body {
   letter-spacing: 0.1em;
   line-height: 1.8;
 
-  .nav-open {
-    overflow: hidden;
-  }
-
   &[data-type="home"],
   &[data-type="aboutus"],
   &[data-type="facilities"],
@@ -162,68 +158,6 @@ img {
     height: 90px;
     width: auto;
   }
-
-  &-mark {
-    border: 3px solid currentColor;
-    border-radius: 48% 52% 50% 50%;
-    display: grid;
-    height: 56px;
-    place-items: center;
-    position: relative;
-    width: 56px;
-
-    &::before,
-    &::after {
-      background: currentColor;
-      border-radius: 999px;
-      content: "";
-      height: 14px;
-      position: absolute;
-      width: 14px;
-    }
-
-    &::before {
-      left: 8px;
-      top: 11px;
-    }
-
-    &::after {
-      bottom: 11px;
-      right: 8px;
-    }
-
-    span {
-      border: 2px solid currentColor;
-      border-radius: 999px;
-      height: 24px;
-      width: 24px;
-    }
-  }
-
-  &-copy {
-    display: grid;
-    gap: 2px;
-
-    small {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-    }
-
-    strong {
-      font-family: var(--font-serif);
-      font-size: clamp(1.42rem, 2.2vw, 2.1rem);
-    }
-
-    em {
-      color: var(--palette-green-03);
-      font-size: 0.9rem;
-      font-style: normal;
-      font-weight: 800;
-      letter-spacing: 0.45em;
-      text-align: center;
-    }
-  }
 }
 
 .nav-toggle {
@@ -319,13 +253,6 @@ img {
   width: var(--content);
 }
 
-.eyebrow {
-  color: var(--palette-green-04);
-  font-family: var(--font-serif);
-  letter-spacing: 0.42em;
-  margin: 0 0 8px;
-  text-indent: 0.42em;
-}
 
 /* ============================================
 セクション見出し
@@ -361,7 +288,6 @@ img {
       font-weight: 900;
       letter-spacing: 0.02em;
       line-height: 1.6;
-      margin: 0;
     }
 }
 
@@ -396,7 +322,6 @@ MVとパンくず
   }
 
   body[data-type="home"] & {
-    background: var(--palette-green-02);
     grid-template-columns: 54% 46%;
     margin-inline: auto;
     max-width: none;
@@ -428,13 +353,6 @@ MVとパンくず
   body[data-type="home"] & {
     min-height: 0;
   }
-}
-
-
-.page-hero-copy {
-  align-content: center;
-  display: grid;
-  padding: clamp(34px, 5vw, 82px);
 }
 
 .home-hero-copy {
@@ -495,7 +413,6 @@ MVとパンくず
   &--plain {
     background: transparent;
     color: var(--palette-black);
-    font-size: 16px;
     margin: 14px auto 0;
     padding: 0;
     width: var(--content);
@@ -533,20 +450,12 @@ MVとパンくず
     background: var(--palette-orange-01);
     transform: translateY(-1px);
   }
-  &-green {
-    background: var(--palette-green-02);
-    border-color: var(--palette-green-03);
-    color: var(--palette-green-04);
-  }
-  &-ghost {
-    background: var(--palette-white);
-  }
 
   &--cta {
     background: var(--palette-orange-01);
     border: 1px solid var(--palette-orange-04);
     border-radius: 6px;
-    color: var(--pallette-black);
+    color: var(--palette-black);
     font-size: 24px;
     font-weight: 900;
     height: 100px;
@@ -569,11 +478,11 @@ MVとパンくず
 .section {
   padding-block: clamp(64px, 8vw, 112px);
 
-  &-soft {
-    background: linear-gradient(180deg, rgba(220, 246, 210, 0.7), rgba(255, 255, 255, 0.92));
+  body[data-type="home"] & {
+    padding-block: 0;
   }
 
-  body[data-type="home"] & {
+  body[data-type="price"] & {
     padding-block: 0;
   }
 }
@@ -591,7 +500,7 @@ MVとパンくず
   padding-top: clamp(40px, 5vw, 72px);
 }
 
-.anchor-section { // なんだこれ
+.anchor-section { // FAQ ページと Priceページ
   padding-top: clamp(24px, 3vw, 44px);
 
   body[data-type="faq"] & {
@@ -605,11 +514,6 @@ MVとパンくず
   }
 }
 
-.section {
-  body[data-type="price"] & {
-    padding-block: 0;
-  }
-}
 
 /* 共通で使うグリッド */
 .grid {
@@ -768,10 +672,6 @@ MVとパンくず
   }
 
   .service{
-    &-overview {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
     &-showcase {
       display: grid;
       gap: clamp(64px, 7vw, 90px);
@@ -834,41 +734,22 @@ MVとパンくず
   }
 }
 
-.service-showcase {
-  body[data-type="aboutus"] & {
-    gap: 110px;
-    margin-top: 64px;
-  }
+%about__text-default {
+  color: var(--palette-black);
+  font-size: 24px;
+  line-height: 2;
 }
 
 .service-feature {
   body[data-type="aboutus"] & {
     p {
-      color: var(--palette-black);
-      font-size: 24px;
-      font-weight: 500;
-      line-height: 2;
+      @extend %about__text-default;
       margin-top: 26px;
       max-width: 980px;
     }
   }
 }
 
-.service-banner {
-  body[data-type="aboutus"] & {
-    aspect-ratio: 5 / 1;
-
-    img {
-      object-fit: cover;
-    }
-
-    figcaption {
-      font-size: 32px;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-    }
-  }
-}
 
 .section-photo {
   aspect-ratio: 16 / 10;
@@ -877,10 +758,6 @@ MVとパンくず
   height: 100%;
   object-fit: cover;
   width: 100%;
-}
-
-.section-photo {
-  aspect-ratio: 640 / 427;
 }
 
 .portrait-photo { // about_us 写真サイズが合わないため力業で合わせてるっぽい
@@ -1089,10 +966,8 @@ body[data-type="home"] #news {
     max-width: 1200px;
 
     body[data-type="faq"] & {
-      display: grid;
       gap: 88px;
       margin: 42px auto 0;
-      max-width: 1200px;
 
       > div {
         border-radius: 8px;
@@ -1120,6 +995,8 @@ body[data-type="home"] #news {
     &::before { // 質問前の「Q.」
       content: "Q.";
       flex: 0 0 auto;
+      font-size: 32px;
+      line-height: 1;
     }
 
     &::after { // 質問文のあとの「▼」
@@ -1131,51 +1008,14 @@ body[data-type="home"] #news {
 
     &[aria-expanded="true"]::after { // 質問を開いたあとの「▲」
       content: "▲";
-      transform: rotate(90deg);
+      transform: rotate(180deg);
     }
 
     body[data-type="faq"] & {
-      background: var(--palette-orange-02);
-      border: 0;
-      border-radius: 8px 8px 0 0;
-      color: var(--palette-black);
-      font-size: 32px;
-      font-weight: 700;
-      justify-content: flex-start;
       line-height: 1.55;
-      min-height: 68px;
-      padding: 16px 32px;
-      text-align: left;
-
-      &::before {
-        content: "Q.";
-        font-size: 32px;
-        line-height: 1;
-      }
 
       &-text {
         min-width: 0;
-      }
-
-      &::after {
-        color: var(--palette-orange-04);
-        content: "▲";
-        font-size: 14px;
-        line-height: 1;
-        margin-left: auto;
-        transform: none;
-      }
-
-      &[aria-expanded="true"]::after {
-        transform: none;
-      }
-
-      &[aria-expanded="false"] {
-        border-radius: 8px;
-
-        &::after {
-          content: "▼";
-        }
       }
     }
   }
@@ -1204,31 +1044,10 @@ body[data-type="home"] #news {
     }
 
     body[data-type="faq"] & {
-      background: var(--palette-white);
-      border: 2px solid var(--palette-orange-04);
-      border-radius: 0 0 8px 8px;
-      border-top: 0;
-      color: var(--palette-black);
       font-size: 24px;
       font-weight: 500;
       line-height: 2;
-      margin: 0;
-      padding: 26px 72px 34px 84px;
       position: relative;
-
-      &::before {
-        content: "A.";
-        font-size: 32px;
-        font-weight: 700;
-        left: 30px;
-        line-height: 1.4;
-        position: absolute;
-        top: 26px;
-      }
-
-      &[hidden] {
-        display: none;
-      }
     }
   }
 
@@ -1239,85 +1058,53 @@ body[data-type="home"] #news {
 
   &-category-card { // FAQページのアンカーリンク
     background: var(--palette-white);
-    border: 4px solid var(--palette-green-03);
-    display: grid;
-    flex: 1 1 220px;
+    border: 0;
+    display: block;
     min-height: 170px;
     overflow: hidden;
 
-    body[data-type="faq"] & {
-      background: transparent;
-      border: 0;
-      display: block;
-      min-height: 0;
-    }
-
-    strong {
-      padding: 10px 14px;
-    }
-
     img {
       height: auto;
-      width: 100%;
-
-      body[data-type="faq"] & {
-        height: auto;
-        width: 350px;
-      }
+      width: 350px;
     }
 
     &__notes {
-      margin: 12px 0 0;
-      padding-left: 1.4em;
+      color: var(--palette-black);
+      font-size: 16px;
+      line-height: 1.65;
+      margin: 14px 0 0;
+      padding-left: 1em;
 
-      body[data-type="faq"] & {
-        color: var(--palette-black);
-        font-size: 16px;
-        line-height: 1.65;
-        list-style: none;
-        margin: 14px 0 0;
-        padding-left: 1em;
+      li {
+        position: relative;
 
-        li {
-          position: relative;
-
-          &::before {
-            content: "・";
-            left: -1em;
-            position: absolute;
-            top: 0;
-          }
+        &::before {
+          content: "・";
+          left: -1em;
+          position: absolute;
+          top: 0;
         }
       }
     }
   }
 
   &-group { // FAQページのセクション名
-    margin-top: 58px;
-
-    body[data-type="faq"] & {
-      margin-top: 184px;
-    }
+    margin-top: 200px;
 
     h2 {
+      color: var(--palette-black);
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.55;
+      margin: 0;
       text-align: center;
-
-      body[data-type="faq"] & {
-        color: var(--palette-black);
-        font-size: 40px;
-        font-weight: 700;
-        line-height: 1.55;
-        margin: 0;
-        text-align: center;
-      }
     }
   }
-
 }
 
 /* TOPページ */
 .home-faq { 
-  padding-bottom: 122px;
+  padding-bottom: 200px;
 }
 
 
@@ -1326,6 +1113,16 @@ body[data-type="home"] #news {
   お問い合わせ　セクション　TOP / Contact
 =================================================== */
 /* 共通様式 */
+%contact_default { // Contactページ - intro, note, faq-copy 用 共通様式
+  color: var(--palette-black);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 2;
+  margin-inline: auto;
+  text-align: center;
+  max-width: 1220px;
+}
+
 .contact {
   &-band {
     text-align: center;
@@ -1344,6 +1141,24 @@ body[data-type="home"] #news {
       }
     }
   }
+
+  &-intro { // Contact ページ - 最初の案内文
+    @extend %contact_default;
+    margin-block: 0;
+  }
+
+  &-note { // Contact ページ - プライバシーポリシーの案内
+    @extend %contact_default;
+    margin-top: 42px;
+    a {
+      color: var(--palette-orange-03);
+    }
+  }
+
+  &-faq-copy { // Contact ページ - FAQへの誘導
+    margin-top: 54px;
+    max-width: 720px;
+  }
 }
 
 .home-contact {
@@ -1356,124 +1171,38 @@ body[data-type="home"] #news {
   }
 }
 
-.contact-intro,
-.contact-note,
-.contact-faq-copy {
-  body[data-type="contact"] & {
-    color: var(--palette-black);
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 2;
-    margin-inline: auto;
-    text-align: center;
-  }
-}
-
-.contact-intro {
-  body[data-type="contact"] & {
-    margin-block: 0;
-    max-width: 1220px;
-  }
-}
-
-.contact-note {
-  body[data-type="contact"] & {
-    margin-top: 42px;
-    max-width: 1260px;
-
-    a {
-      color: var(--palette-orange-03);
-    }
-  }
-}
-
-.contact-faq-copy {
-  body[data-type="contact"] & {
-    margin-top: 54px;
-    max-width: 720px;
-  }
-}
-
-
 .phone-card { // 電話での... の部分
   background: var(--palette-green-02);
   border-radius: 28px;
   display: grid;
   gap: 10px;
   margin: 32px auto;
+  color: var(--palette-black);
+  font-size: 24px;
   max-width: 750px;
   padding: clamp(26px, 4vw, 48px);
   text-align: center;
+
+  &__label,
+  &__note {
+    font-weight: 700;
+  }
 
   &__label {
     font-size: 32px;
   }
 
   &__number {
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    letter-spacing: 0.14em;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    line-height: 1.45;
+    font-size: 32px;
   }
 
-  body[data-type="home"] & {
-    &__label,
-    &__note {
-      color: var(--palette-black);
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    &__label {
-      font-size: 32px;
-    }
-
-    &__number {
-      color: var(--palette-black);
-      font-size: 32px;
-      letter-spacing: 0.1em;
-    }
-  }
-
-  body[data-type="contact"] & {
-    background: var(--palette-green-02);
-    border-radius: 18px;
-    box-shadow: none;
-    gap: 8px;
-    margin: 30px auto 28px;
-    max-width: 750px;
-    padding: 28px 42px;
-    width: min(750px, 100%);
-
-    &__title {
-      color: var(--palette-black);
-      font-size: 32px;
-      font-weight: 900;
-      line-height: 1.55;
-      margin: 0 0 18px;
-    }
-
-    &__text {
-      color: var(--palette-black);
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1.8;
-      margin: 0;
-    }
-
-    &__label,
-    &__note {
-      color: var(--palette-black);
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    &__number {
-      color: var(--palette-black);
-      font-size: 32px;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      line-height: 1.45;
-      margin: 8px 0 6px;
-    }
+  &__text { // Contact ページ - 「お急ぎの方、直接お話したい方...」
+    font-weight: 700;
+    line-height: 1.8;
+    margin: 0;
   }
 }
 
@@ -1515,6 +1244,7 @@ body[data-type="home"] #news {
   border-radius: 24px;
   margin: 40px auto 0;
   max-width: 760px;
+  width: min(1000px, calc(100% - 64px));
   padding: clamp(24px, 4vw, 54px);
   text-align: left;
 
@@ -1524,33 +1254,16 @@ body[data-type="home"] #news {
   }
 
   body[data-type="home"] & {
-    background: var(--palette-orange-05);
-    border: 3px solid var(--palette-orange-04);
-    border-radius: 30px;
-    margin-top: 42px;
-    max-width: 1000px;
-    padding: 28px clamp(28px, 4vw, 64px) 34px;
-    width: min(1000px, calc(100% - 64px));
-
     h2 {
       font-size: 32px;
       margin: 0 auto 18px;
       max-width: 590px;
-      text-align: center;
     }
   }
 }
 
 .contact-form {
   body[data-type="contact"] & {
-    background: var(--palette-orange-05);
-    border: 3px solid var(--palette-orange-04);
-    border-radius: 30px;
-    margin-top: 42px;
-    max-width: 1000px;
-    padding: 28px clamp(28px, 4vw, 64px) 34px;
-    width: min(1000px, calc(100% - 64px));
-
     a[href*="privacy"] {
       color: var(--palette-orange-03);
     }
@@ -1697,11 +1410,7 @@ body[data-type="home"] #news {
   margin: 0;
   min-height: 1.8em;
   text-align: center;
-
-  body[data-type="home"] &,
-  body[data-type="contact"] & {
-    font-size: 24px;
-  }
+  font-size: 24px;
 }
 
 /* 法人情報・投稿・料金表の共通部品 */
@@ -1755,10 +1464,8 @@ body[data-type="home"] #news {
     gap: 16px;
     grid-template-columns: 7em minmax(0, 1fr);
 
-    body[data-type="aboutus"] &,
     body[data-type="facilities"] & {
       gap: 18px;
-      grid-template-columns: 7em minmax(0, 1fr);
     }
   }
 
@@ -1769,12 +1476,6 @@ body[data-type="home"] #news {
 
   dd {
     margin: 0;
-  }
-
-  body[data-type="aboutus"] & {
-    gap: 14px;
-    font-size: 24px;
-    line-height: 1.8;
   }
 
   body[data-type="facilities"] & {
@@ -1834,55 +1535,16 @@ body[data-type="home"] #news {
   }
 }
 
-.schedule {
-  display: grid;
-  gap: 12px;
-  list-style: none;
-  margin: 28px 0 0;
-  padding: 0;
-
-  li {
-    align-items: center;
-    background: var(--palette-green-02);
-    border: 2px solid var(--palette-green-03);
-    display: grid;
-    gap: 18px;
-    grid-template-columns: 82px minmax(0, 1fr);
-    padding: 14px 18px;
-    transform: skew(-2deg);
-  }
-  
-  time,
-  span {
-    transform: skew(2deg);
-  }
-
-  time {
-    color: var(--palette-green-04);
-    font-weight: 900;
-  }
-}
-
 .table {
   &-stack {
     display: grid;
     gap: 44px;
-    max-width: 1080px;
-
-    body[data-type="price"] & {
-      display: grid;
-      gap: 76px;
-      margin-inline: auto;
-      max-width: 1200px;
-    }
+    max-width: 1200px;
+    margin: 100px auto;
   }
 
   &-wrap {
     overflow-x: auto;
-
-    body[data-type="price"] .section-heading & {
-      overflow-x: visible;
-    }
   }
 
   &-price {
@@ -1914,7 +1576,7 @@ body[data-type="home"] #news {
   }
 }
 
-.price-table {
+.table-price {
   body[data-type="price"] & {
     border-collapse: separate;
     border-spacing: 0;
@@ -2001,7 +1663,7 @@ body[data-type="home"] #news {
 .price-col {
   body[data-type="price"] & {
     &-category {
-      width: calc(27%);
+      width: 27%;
     }
 
     &-unit {
@@ -2023,7 +1685,7 @@ body[data-type="home"] #news {
 
 #day-service {
   body[data-type="price"] & {
-    padding-bottom: 178px;
+    padding-bottom: 100px;
 
     .table-stack > div:first-child {
       margin-bottom: -6px;
@@ -2059,28 +1721,20 @@ body[data-type="home"] #news {
   body[data-type="price"] & {
     flex-wrap: nowrap;
     gap: 200px;
-    justify-content: center;
     margin-inline: auto;
     max-width: 1400px;
   }
 }
 
 .price{
-  &-tab {
-    border: 5px solid var(--palette-green-03);
-    min-width: min(340px, 100%);
-  }
-
   &-link-card {
     flex: 1 1 360px;
     max-width: 600px;
 
     body[data-type="price"] & {
       flex: 0 0 600px;
-      max-width: 600px;
 
       img {
-        height: auto;
         width: 600px;
       }
     }
@@ -2218,17 +1872,13 @@ body[data-type="home"] #news {
   }
 }
 
-.compact-list a {
+.list-compact a {
   background: var(--palette-orange-02);
   border: 1px solid rgba(248, 153, 48, 0.42);
   border-radius: var(--radius);
   display: grid;
   gap: 8px;
   padding: 14px;
-}
-
-.service-detail {
-  padding-bottom: 0;
 }
 
 .about-service-feature {
@@ -2249,10 +1899,8 @@ body[data-type="home"] #news {
   margin: clamp(20px, 2.6vw, 34px) auto clamp(28px, 4vw, 48px);
 
   body[data-type="aboutus"] & {
-    color: var(--palette-black);
-    font-size: 24px;
+    @extend %about__text-default;
     font-weight: 500;
-    line-height: 2;
     margin-top: 26px;
     max-width: 980px;
   }
@@ -2283,9 +1931,7 @@ body[data-type="home"] #news {
 
     p,
     li {
-      color: var(--palette-black);
-      font-size: 24px;
-      line-height: 2;
+      @extend %about__text-default;
     }
 
     .service-list-title {
@@ -2310,15 +1956,6 @@ body[data-type="home"] #news {
       }
     }
   }
-}
-
-.service-detail h4 {
-  background: var(--palette-green-03);
-  color: var(--palette-white);
-  font-size: 1.18rem;
-  margin: 0 0 18px;
-  padding: 8px 14px;
-  text-align: center;
 }
 
 /* プライバシーポリシー */
