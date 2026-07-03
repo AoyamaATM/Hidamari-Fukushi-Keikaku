@@ -302,8 +302,7 @@ body[data-type=home] .page-hero {
 }
 .hero-media img {
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
 }
 body[data-type=home] .hero-media {
@@ -511,8 +510,7 @@ body[data-type=home] .asset-link:is(:hover, :focus-visible), body[data-type=pric
 }
 #reasons .grid-reason {
   align-items: center;
-  -moz-column-gap: clamp(36px, 100% - 1500px, 100px);
-       column-gap: clamp(36px, 100% - 1500px, 100px);
+  column-gap: clamp(36px, 100% - 1500px, 100px);
   grid-template-columns: repeat(2, minmax(0, 750px));
   justify-content: center;
   margin-top: clamp(74px, 8vw, 108px);
@@ -596,8 +594,7 @@ body[data-type=home] #reasons .grid-reason .reason-index {
   max-width: 920px;
 }
 #services .service-feature:first-child .service-banner img {
-  -o-object-position: center 28%;
-     object-position: center 28%;
+  object-position: center 28%;
 }
 #services .service-banner {
   aspect-ratio: 5/1;
@@ -607,8 +604,7 @@ body[data-type=home] #reasons .grid-reason .reason-index {
 }
 #services .service-banner img {
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
 }
 #services .service-banner figcaption {
@@ -648,15 +644,13 @@ body[data-type=aboutus] .service-feature p {
   background: var(--palette-green-02);
   display: block;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
 }
 
 .portrait-photo {
   max-height: 640px;
-  -o-object-position: center;
-     object-position: center;
+  object-position: center;
 }
 
 /* =======================================================
@@ -1308,8 +1302,7 @@ body[data-type=aboutus] .stack-gallery .section-photo {
 }
 body[data-type=aboutus] .stack-gallery .portrait-photo {
   max-height: none;
-  -o-object-position: center 45%;
-     object-position: center 45%;
+  object-position: center 45%;
 }
 
 .table-stack {
@@ -1605,8 +1598,7 @@ body[data-type=aboutus] .about-service-feature {
   margin-top: 64px;
 }
 body[data-type=aboutus] .about-service-feature .service-banner img {
-  -o-object-position: center 28%;
-     object-position: center 28%;
+  object-position: center 28%;
 }
 
 .service-lead {
@@ -1744,4 +1736,6 @@ body[data-type=privacy] .policy .section-heading__title {
   font-size: 16px;
   margin: 34px 0 0;
   text-align: center;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
