@@ -37,3 +37,17 @@ pnpm run watch:css
 - `hidamari-fukushi-keikaku/scss/style.min.css`: 圧縮CSS
 
 生成CSSだけを直接編集するのは避け、`scss/style.scss` を更新してから `pnpm run build:css` を実行してください。
+
+## 表示確認対象
+
+CSSやレイアウトを変更した後は、`pnpm run build:css` を実行してから次の主要ページをPC/SP幅で確認します。
+
+確認対象ページの一覧は `tools/visual-check-pages.json` で管理します。
+
+| ID | ページ | ファイル |
+|---|---|---|
+| `index` | TOP | `hidamari-fukushi-keikaku/index.html` |
+| `about` | About_Us | `hidamari-fukushi-keikaku/about_us.html` |
+| `price` | Price | `hidamari-fukushi-keikaku/price.html` |
+| `faq` | FAQ | `hidamari-fukushi-keikaku/faq.html` |
+| `contact` | Contact | `hidamari-fukushi-keikaku/contact.html` |

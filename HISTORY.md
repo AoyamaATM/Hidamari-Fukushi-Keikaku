@@ -32,3 +32,7 @@
 - `#services` と `.about-services` でサービス画像表示スタイルを共有し、About_Us側の提供サービス画像もTOPページと同じ横長バナー表示になるようにした。
 - `pnpm run build:css` を実行し、表示用CSSとSCSS配下の生成CSS・mapを同期した。
 - headless Chromeで `about_us.html` のPC幅スクリーンショットを生成し、提供サービス画像が横長バナー表示になっていることを目視確認した。
+- 表示確認フロー整備の1段階目として、CSS・レイアウト変更後に確認する主要ページを `index` / `about` / `price` / `faq` / `contact` の5ページに固定した。
+- `tools/visual-check-pages.json` を追加し、確認対象ページのID・表示名・HTMLパスを管理する形にした。
+- `README.md` に表示確認対象ページの一覧を追記し、`pnpm run build:css` 後にPC/SP幅で確認する方針を明記した。
+- `tools/visual-check-pages.json` をJSONとして読み込み、記載したHTMLファイルが存在することを確認した。

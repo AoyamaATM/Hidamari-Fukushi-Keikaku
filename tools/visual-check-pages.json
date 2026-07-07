@@ -1,0 +1,27 @@
+[
+  {
+    "id": "index",
+    "label": "TOP",
+    "path": "hidamari-fukushi-keikaku/index.html"
+  },
+  {
+    "id": "about",
+    "label": "About_Us",
+    "path": "hidamari-fukushi-keikaku/about_us.html"
+  },
+  {
+    "id": "price",
+    "label": "Price",
+    "path": "hidamari-fukushi-keikaku/price.html"
+  },
+  {
+    "id": "faq",
+    "label": "FAQ",
+    "path": "hidamari-fukushi-keikaku/faq.html"
+  },
+  {
+    "id": "contact",
+    "label": "Contact",
+    "path": "hidamari-fukushi-keikaku/contact.html"
+  }
+]
