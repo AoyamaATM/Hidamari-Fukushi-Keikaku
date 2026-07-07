@@ -40,7 +40,7 @@ pnpm run watch:css
 
 ## 表示確認対象
 
-CSSやレイアウトを変更した後は、`pnpm run build:css` を実行してから次の主要ページをPC/SP幅で確認します。
+CSSやレイアウトを変更した後は、`pnpm run build:css` を実行してから次の主要ページを確認します。標準ではPC幅を確認し、SP幅は指示がある場合のみ生成します。
 
 確認対象ページの一覧は `tools/visual-check-pages.json` で管理します。
 
@@ -51,3 +51,27 @@ CSSやレイアウトを変更した後は、`pnpm run build:css` を実行し�
 | `price` | Price | `hidamari-fukushi-keikaku/price.html` |
 | `faq` | FAQ | `hidamari-fukushi-keikaku/faq.html` |
 | `contact` | Contact | `hidamari-fukushi-keikaku/contact.html` |
+
+主要ページのPC幅スクリーンショットは次のコマンドでまとめて生成できます。画像は `visual-check/` に保存されます。
+
+```powershell
+pnpm run check:visual
+```
+
+PC幅だけを明示する場合は次のコマンドを使います。SP幅は指示がある場合のみ生成してください。
+
+```powershell
+pnpm run check:visual:pc
+```
+
+SP幅を確認する場合は次のコマンドを使います。
+
+```powershell
+pnpm run check:visual:sp
+```
+
+一部ページだけ確認する場合は、ページIDを指定します。
+
+```powershell
+pnpm run check:visual -- -PageId index,faq
+```

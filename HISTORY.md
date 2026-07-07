@@ -36,3 +36,7 @@
 - `tools/visual-check-pages.json` を追加し、確認対象ページのID・表示名・HTMLパスを管理する形にした。
 - `README.md` に表示確認対象ページの一覧を追記し、`pnpm run build:css` 後にPC/SP幅で確認する方針を明記した。
 - `tools/visual-check-pages.json` をJSONとして読み込み、記載したHTMLファイルが存在することを確認した。
+- 表示確認フロー整備の2段階目として、`tools/check-pages.ps1` を追加し、確認対象ページのPC幅スクリーンショットを `visual-check/` に生成できるようにした。
+- `package.json` に `check:visual` / `check:visual:pc` / `check:visual:sp` を追加し、標準の `check:visual` はPC幅のみを生成するようにした。
+- SP幅スクリーンショットはユーザー指示がある場合のみ生成する方針に変更し、READMEにもその旨を追記した。確認中に生成した `visual-check/index-sp.png` は削除した。
+- `powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/check-pages.ps1 -PageId index` でPC幅の `visual-check/index-pc.png` が生成できること、`git diff --check` で空白エラーがないことを確認した。
