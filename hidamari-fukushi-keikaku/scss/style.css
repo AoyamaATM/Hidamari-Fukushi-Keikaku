@@ -18,9 +18,7 @@
   --radius: 8px;
   --content: min(1600px, calc(100vw - 80px));
   /* Fonts */
-  --font-base: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   --font-comp: "Zen Kaku Gothic New", "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-  --font-serif: "Yu Mincho", "Hiragino Mincho ProN", serif;
   --font-number: "Outfit", sans-serif;
   /* Shared components */
   --comp-content: min(1600px, calc(100% - 64px));
@@ -228,9 +226,17 @@ img {
   margin: 0 0 22px;
 }
 #reasons .section-heading {
-  margin-bottom: 0;
+  margin-bottom: 80px;
 }
-body[data-type=home] .section-heading, body[data-type=aboutus] .section-heading {
+body[data-type=home] .section-heading {
+  color: var(--palette-black);
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+  margin-bottom: 80px;
+}
+body[data-type=aboutus] .section-heading {
   color: var(--palette-black);
   font-size: 40px;
   font-weight: 700;
@@ -419,10 +425,13 @@ body[data-type=contact] .button--cta {
 }
 
 .section {
-  padding-block: clamp(64px, 8vw, 112px);
+  padding-block: clamp(80px, 10vw, 120px);
 }
 body[data-type=home] .section {
   padding-block: 0;
+}
+body[data-type=home] .section:not(.home-links) {
+  padding-block: 100px;
 }
 body[data-type=price] .section {
   padding-block: 0;
@@ -432,6 +441,7 @@ body[data-type=price] .section {
   padding-block: clamp(52px, 6vw, 84px);
 }
 body[data-type=home] .home-links {
+  background: linear-gradient(180deg, var(--palette-green-01), rgba(209, 224, 180, 0.54) 45%, var(--palette-white));
   padding: 32px 0 118px;
 }
 
@@ -502,9 +512,6 @@ body[data-type=home] .asset-link:is(:hover, :focus-visible), body[data-type=pric
 /* ==============================================
 選ばれる理由　セクション - TOP
 ============================================== */
-#reasons {
-  padding-bottom: 132px;
-}
 #reasons .content-width {
   max-width: 1600px;
 }
@@ -555,13 +562,13 @@ body[data-type=home] #reasons .grid-reason .reason-copy p:not(.reason-index) {
 }
 #reasons .grid-reason .reason-index {
   color: rgba(255, 203, 143, 0.72);
-  font-family: var(--font-number);
   font-size: clamp(5.8rem, 9vw, 8.4rem);
   font-weight: 900;
   line-height: 1;
   margin: 0;
 }
 body[data-type=home] #reasons .grid-reason .reason-index {
+  font-family: var(--font-number);
   position: absolute;
   right: 0;
   top: 0;
@@ -571,9 +578,6 @@ body[data-type=home] #reasons .grid-reason .reason-index {
 /* =========================================
 サービスの概要　セクション 
 ========================================= */
-#services {
-  padding-bottom: 132px;
-}
 #services .content-width {
   max-width: 1600px;
 }
@@ -657,9 +661,6 @@ body[data-type=aboutus] .service-feature p {
 /* =======================================================
 ご利用の流れ セクション - TOP / about
 ======================================================= */
-#flow {
-  padding-bottom: 120px;
-}
 #flow .flow-assets {
   display: grid;
   gap: clamp(16px, 2vw, 26px);
@@ -722,9 +723,6 @@ body[data-type=aboutus] .about-day-grid {
 /* =======================================================
 料金の目安　セクション - TOP
 ======================================================= */
-#price-guide {
-  padding-bottom: 116px;
-}
 #price-guide .price-box {
   background: transparent;
   border-radius: var(--radius);
@@ -803,11 +801,6 @@ body[data-type=home] #price-guide .price-box {
 .tag-blog {
   background: var(--palette-green-02);
   border-color: var(--palette-green-03);
-}
-
-/* TOPページの表示様式 */
-body[data-type=home] #news {
-  padding-bottom: 120px;
 }
 
 /* ===================================================
@@ -1270,7 +1263,6 @@ body[data-type=facilities] .data-list {
 }
 .philosophy strong {
   display: block;
-  font-family: var(--font-serif);
   font-size: clamp(1.3rem, 2vw, 2rem);
   font-weight: 500;
   margin: 28px 0;

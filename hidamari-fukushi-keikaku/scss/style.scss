@@ -19,9 +19,7 @@
   --content: min(1600px, calc(100vw - 80px));
 
   /* Fonts */
-  --font-base: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   --font-comp: "Zen Kaku Gothic New", "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-  --font-serif: "Yu Mincho", "Hiragino Mincho ProN", serif;
   --font-number: "Outfit", sans-serif;
 
   /* Shared components */
@@ -263,10 +261,18 @@ img {
   margin: 0 0 22px;
 
   #reasons & {
-   margin-bottom: 0;
+    margin-bottom: 80px;
   }
 
-  body[data-type="home"] &,
+  body[data-type="home"] & {
+    color: var(--palette-black);
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    line-height: 1.6;
+    margin-bottom: 80px;
+  }
+
   body[data-type="aboutus"] & {
     color: var(--palette-black);
     font-size: 40px;
@@ -476,10 +482,14 @@ MVとパンくず
 }
 
 .section {
-  padding-block: clamp(64px, 8vw, 112px);
+  padding-block: clamp(80px, 10vw, 120px);
 
   body[data-type="home"] & {
     padding-block: 0;
+
+    &:not(.home-links) {
+      padding-block: 100px;
+    }
   }
 
   body[data-type="price"] & {
@@ -490,7 +500,8 @@ MVとパンくず
 .home-links {
   padding-block: clamp(52px, 6vw, 84px);
 
-  body[data-type="home"] &{
+  body[data-type="home"] & {
+    background: linear-gradient(180deg, var(--palette-green-01), rgba(209, 224, 180, 0.54) 45%, var(--palette-white));
     padding: 32px 0 118px;
   }
 }
@@ -586,8 +597,6 @@ MVとパンくず
 選ばれる理由　セクション - TOP
 ============================================== */
 #reasons {
-  padding-bottom: 132px;
-
   .content-width {
     max-width: 1600px;
   }
@@ -645,13 +654,13 @@ MVとパンくず
 
     .reason-index {
       color: rgba(255, 203, 143, 0.72);
-      font-family: var(--font-number);
       font-size: clamp(5.8rem, 9vw, 8.4rem);
       font-weight: 900;
       line-height: 1;
       margin: 0;
 
-      body[data-type="home"] &{
+      body[data-type="home"] & {
+        font-family: var(--font-number);
         position: absolute;
         right: 0;
         top: 0;
@@ -665,8 +674,6 @@ MVとパンくず
 サービスの概要　セクション 
 ========================================= */
 #services {
-  padding-bottom: 132px;
-
   .content-width {
     max-width: 1600px;
   }
@@ -769,9 +776,7 @@ MVとパンくず
 ご利用の流れ セクション - TOP / about
 ======================================================= */
 #flow {
-  padding-bottom: 120px;
-
-  .flow-assets{
+  .flow-assets {
     display: grid;
     gap: clamp(16px, 2vw, 26px);
     margin: 34px auto 0;
@@ -856,8 +861,6 @@ MVとパンくず
 料金の目安　セクション - TOP
 ======================================================= */
 #price-guide {
-  padding-bottom: 116px;
-
   .price-box {
     background: transparent;
     border-radius: var(--radius);
@@ -946,11 +949,6 @@ MVとパンくず
     background: var(--palette-green-02);
     border-color: var(--palette-green-03);
   }
-}
-
-/* TOPページの表示様式 */
-body[data-type="home"] #news {
-  padding-bottom: 120px;
 }
 
 
@@ -1493,7 +1491,6 @@ body[data-type="home"] #news {
 
   strong {
     display: block;
-    font-family: var(--font-serif);
     font-size: clamp(1.3rem, 2vw, 2rem);
     font-weight: 500;
     margin: 28px 0;
