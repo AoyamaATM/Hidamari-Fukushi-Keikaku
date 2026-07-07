@@ -807,8 +807,8 @@ MVとパンくず
 .flow-assets {
   &--about {
     body[data-type="aboutus"] & {
-      gap: 28px;
-      margin-top: 62px;
+      gap: 60px;
+      margin: 62px auto 0;
       max-width: 1200px;
     }
   }
@@ -828,7 +828,7 @@ MVとパンくず
       max-width: calc(100% - 48px);
       position: absolute;
       right: clamp(28px, 5vw, 72px);
-      top: calc(45.25% + 8px);
+      top: calc(45.25% + 3.5px);
       z-index: 2;
     }
   }

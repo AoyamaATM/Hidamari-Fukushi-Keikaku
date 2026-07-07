@@ -683,8 +683,8 @@ body[data-type=aboutus] .about-flow {
 }
 
 body[data-type=aboutus] .flow-assets--about {
-  gap: 28px;
-  margin-top: 62px;
+  gap: 60px;
+  margin: 62px auto 0;
   max-width: 1200px;
 }
 body[data-type=aboutus] .flow-assets__item {
@@ -697,7 +697,7 @@ body[data-type=aboutus] .flow-assets__cta {
   max-width: calc(100% - 48px);
   position: absolute;
   right: clamp(28px, 5vw, 72px);
-  top: calc(45.25% + 8px);
+  top: calc(45.25% + 3.5px);
   z-index: 2;
 }
 

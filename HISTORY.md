@@ -20,3 +20,11 @@
 - `pnpm run build:css` を実行し、表示用の `hidamari-fukushi-keikaku/css/style.css` とSCSS配下の生成CSS・mapを同期した。
 - コンパイル後のCSSで `body[data-type=home] .section:not(.home-links)` が出力されていること、`git diff --check` で空白エラーがないことを確認した。
 - フォント指定は、`Outfit` のCSS参照がTOPページの理由番号のみであり、`index.html` だけが `Outfit` を読み込む形になっていることを確認した。
+
+### 19時進捗
+
+- About_Usページの「ご利用開始までの流れ」セクションについて、画像群が中央に配置されるよう `flow-assets--about` の余白指定を `margin: 62px auto 0` に調整した。
+- 同セクションの各画像間隔を `60px` に変更し、CTAボタンの `top` を `calc(45.25% + 3.5px)` に調整した。
+- `pnpm run build:css` を実行し、表示用CSSとSCSS配下の生成CSS・mapを同期した。
+- 生成CSSで `gap: 60px`、`margin: 62px auto 0`、`top: calc(45.25% + 3.5px)` が出力されていること、`git diff --check` で空白エラーがないことを確認した。
+- headless Chromeで `about_us.html` のPC幅スクリーンショットを生成し、対象セクションが中央に収まっていることを目視確認した。
