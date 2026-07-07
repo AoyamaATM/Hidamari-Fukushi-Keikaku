@@ -11,6 +11,12 @@ CSSやレイアウトを変更する場合は、次の順で作業します。
 3. `pnpm run check:visual` を実行してPC幅のスクリーンショットを生成する。
 4. `visual-check/*.png` を確認する。
 
+ビルドしてからPC幅スクリーンショットを撮る場合は、次のコマンドを使えます。
+
+```powershell
+pnpm run check:visual:build
+```
+
 ```powershell
 hidamari-fukushi-keikaku/scss/style.scss
 ```
@@ -78,7 +84,14 @@ pnpm run check:visual:sp
 一部ページだけ確認する場合は、ページIDを指定します。
 
 ```powershell
-pnpm run check:visual -- -PageId index,faq
+pnpm run check:visual -PageId index,faq
+pnpm run check:visual:build -PageId price
 ```
 
 スクリーンショットは `visual-check/` に保存されます。`visual-check/` と `.chrome-check/` はローカル確認用の生成物で、Git管理には含めません。
+
+古いスクリーンショットを削除する場合は、次のコマンドを使います。
+
+```powershell
+pnpm run clean:visual
+```

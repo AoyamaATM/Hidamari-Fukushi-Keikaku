@@ -42,3 +42,7 @@
 - `powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/check-pages.ps1 -PageId index` でPC幅の `visual-check/index-pc.png` が生成できること、`git diff --check` で空白エラーがないことを確認した。
 - `README.md` のCSSビルド・表示確認まわりを、SCSS編集、`pnpm run build:css`、`pnpm run check:visual`、`visual-check/*.png` 確認の順に読める手順書形式へ整理した。
 - README上で、標準確認はPC幅のみ、SP幅は指示がある場合のみ生成すること、`visual-check/` と `.chrome-check/` はローカル確認用生成物でGit管理しないことを明記した。
+- 表示確認フロー整備として、`tools/check-visual-build.ps1` を追加し、`pnpm run check:visual:build` でCSSビルド後にPC幅スクリーンショットを生成できるようにした。
+- `tools/clean-visual.ps1` と `pnpm run clean:visual` を追加し、`visual-check/` 内の古い確認画像を掃除できるようにした。
+- `pnpm run check:visual:build -PageId index` でビルド後にPC幅の `visual-check/index-pc.png` が生成できること、`pnpm run clean:visual` で削除できることを確認した。SP幅の画像は生成していない。
+- READMEに `check:visual:build` と `clean:visual` の使い方を追記し、一部ページ指定の例をWindows PowerShellで通る形式に修正した。
