@@ -28,3 +28,7 @@
 - `pnpm run build:css` を実行し、表示用CSSとSCSS配下の生成CSS・mapを同期した。
 - 生成CSSで `gap: 60px`、`margin: 62px auto 0`、`top: calc(45.25% + 3.5px)` が出力されていること、`git diff --check` で空白エラーがないことを確認した。
 - headless Chromeで `about_us.html` のPC幅スクリーンショットを生成し、対象セクションが中央に収まっていることを目視確認した。
+- About_Usページの「提供サービス」セクションについて、TOPページと同じ `service-showcase` / `service-feature` / `service-banner` 構造に変更し、`about-service-feature` 専用クラスを削除した。
+- `#services` と `.about-services` でサービス画像表示スタイルを共有し、About_Us側の提供サービス画像もTOPページと同じ横長バナー表示になるようにした。
+- `pnpm run build:css` を実行し、表示用CSSとSCSS配下の生成CSS・mapを同期した。
+- headless Chromeで `about_us.html` のPC幅スクリーンショットを生成し、提供サービス画像が横長バナー表示になっていることを目視確認した。

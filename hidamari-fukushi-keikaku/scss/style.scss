@@ -673,7 +673,8 @@ MVとパンくず
 /* =========================================
 サービスの概要　セクション 
 ========================================= */
-#services {
+#services,
+.about-services {
   .content-width {
     max-width: 1600px;
   }
@@ -1876,18 +1877,6 @@ MVとパンくず
   display: grid;
   gap: 8px;
   padding: 14px;
-}
-
-.about-service-feature {
-  margin-bottom: clamp(32px, 4vw, 52px);
-
-  body[data-type="aboutus"] & {
-    margin-top: 64px;
-
-    .service-banner img {
-      object-position: center 28%;
-    }
-  }
 }
 
 .service-lead {

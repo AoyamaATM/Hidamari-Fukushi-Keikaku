@@ -578,18 +578,22 @@ body[data-type=home] #reasons .grid-reason .reason-index {
 /* =========================================
 サービスの概要　セクション 
 ========================================= */
-#services .content-width {
+#services .content-width,
+.about-services .content-width {
   max-width: 1600px;
 }
-#services .service-showcase {
+#services .service-showcase,
+.about-services .service-showcase {
   display: grid;
   gap: clamp(64px, 7vw, 90px);
   margin-top: 64px;
 }
-#services .service-feature {
+#services .service-feature,
+.about-services .service-feature {
   text-align: center;
 }
-#services .service-feature p {
+#services .service-feature p,
+.about-services .service-feature p {
   color: var(--palette-black);
   font-size: 24px;
   font-weight: 500;
@@ -598,21 +602,25 @@ body[data-type=home] #reasons .grid-reason .reason-index {
   margin-top: clamp(18px, 2vw, 26px);
   max-width: 920px;
 }
-#services .service-feature:first-child .service-banner img {
+#services .service-feature:first-child .service-banner img,
+.about-services .service-feature:first-child .service-banner img {
   object-position: center 28%;
 }
-#services .service-banner {
+#services .service-banner,
+.about-services .service-banner {
   aspect-ratio: 5/1;
   margin: 0;
   overflow: hidden;
   position: relative;
 }
-#services .service-banner img {
+#services .service-banner img,
+.about-services .service-banner img {
   height: 100%;
   object-fit: cover;
   width: 100%;
 }
-#services .service-banner figcaption {
+#services .service-banner figcaption,
+.about-services .service-banner figcaption {
   color: var(--palette-white);
   font-size: 32px;
   font-weight: 500;
@@ -1582,16 +1590,6 @@ body[data-type=faq] .category-cards > div {
   display: grid;
   gap: 8px;
   padding: 14px;
-}
-
-.about-service-feature {
-  margin-bottom: clamp(32px, 4vw, 52px);
-}
-body[data-type=aboutus] .about-service-feature {
-  margin-top: 64px;
-}
-body[data-type=aboutus] .about-service-feature .service-banner img {
-  object-position: center 28%;
 }
 
 .service-lead {
