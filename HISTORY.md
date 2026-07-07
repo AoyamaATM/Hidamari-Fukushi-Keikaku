@@ -46,3 +46,24 @@
 - `tools/clean-visual.ps1` と `pnpm run clean:visual` を追加し、`visual-check/` 内の古い確認画像を掃除できるようにした。
 - `pnpm run check:visual:build -PageId index` でビルド後にPC幅の `visual-check/index-pc.png` が生成できること、`pnpm run clean:visual` で削除できることを確認した。SP幅の画像は生成していない。
 - READMEに `check:visual:build` と `clean:visual` の使い方を追記し、一部ページ指定の例をWindows PowerShellで通る形式に修正した。
+
+
+### 次やりたいこと
+
+- AboutUsページ
+  * 「ご利用開始までの流れ」セクション。各画像の間隔を60pxにする。
+
+- Price ページ
+  * アンカーリンクのグラデーションの高さを200pxにする。
+  * セクションタイトルを40pxにする。
+  * セクション間の余白は`section`につける。上下100px。（アンカーリンク除く）
+
+- FAQ ページ
+  * `li::marker`を削除する。
+  * 質問の配置方法をTOPページのものに統一させる。
+    タグ・クラスを同一のものにして、相違ないようにする。
+
+- Contact ページ
+  * `.phone-card`の余白をTOPページのものとほぼ統一させる。
+  * `.contact-faq-copy`を左右方向 中央に配置する。
+  * `.form-panel`をTOPページのものとほぼ統一させる。
