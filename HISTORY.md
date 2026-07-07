@@ -40,3 +40,5 @@
 - `package.json` に `check:visual` / `check:visual:pc` / `check:visual:sp` を追加し、標準の `check:visual` はPC幅のみを生成するようにした。
 - SP幅スクリーンショットはユーザー指示がある場合のみ生成する方針に変更し、READMEにもその旨を追記した。確認中に生成した `visual-check/index-sp.png` は削除した。
 - `powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/check-pages.ps1 -PageId index` でPC幅の `visual-check/index-pc.png` が生成できること、`git diff --check` で空白エラーがないことを確認した。
+- `README.md` のCSSビルド・表示確認まわりを、SCSS編集、`pnpm run build:css`、`pnpm run check:visual`、`visual-check/*.png` 確認の順に読める手順書形式へ整理した。
+- README上で、標準確認はPC幅のみ、SP幅は指示がある場合のみ生成すること、`visual-check/` と `.chrome-check/` はローカル確認用生成物でGit管理しないことを明記した。

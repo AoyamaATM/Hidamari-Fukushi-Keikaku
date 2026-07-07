@@ -4,7 +4,12 @@
 
 ## CSSビルド
 
-CSSを変更する場合は、元ファイルのSCSSを編集します。
+CSSやレイアウトを変更する場合は、次の順で作業します。
+
+1. 元ファイルのSCSSを編集する。
+2. `pnpm run build:css` を実行して生成CSSを更新する。
+3. `pnpm run check:visual` を実行してPC幅のスクリーンショットを生成する。
+4. `visual-check/*.png` を確認する。
 
 ```powershell
 hidamari-fukushi-keikaku/scss/style.scss
@@ -38,9 +43,9 @@ pnpm run watch:css
 
 生成CSSだけを直接編集するのは避け、`scss/style.scss` を更新してから `pnpm run build:css` を実行してください。
 
-## 表示確認対象
+## 表示確認
 
-CSSやレイアウトを変更した後は、`pnpm run build:css` を実行してから次の主要ページを確認します。標準ではPC幅を確認し、SP幅は指示がある場合のみ生成します。
+CSSやレイアウトを変更した後は、`pnpm run build:css` を実行してから主要ページを確認します。標準ではPC幅を確認し、SP幅は指示がある場合のみ生成します。
 
 確認対象ページの一覧は `tools/visual-check-pages.json` で管理します。
 
@@ -52,19 +57,19 @@ CSSやレイアウトを変更した後は、`pnpm run build:css` を実行し�
 | `faq` | FAQ | `hidamari-fukushi-keikaku/faq.html` |
 | `contact` | Contact | `hidamari-fukushi-keikaku/contact.html` |
 
-主要ページのPC幅スクリーンショットは次のコマンドでまとめて生成できます。画像は `visual-check/` に保存されます。
+主要ページのPC幅スクリーンショットは次のコマンドでまとめて生成できます。
 
 ```powershell
 pnpm run check:visual
 ```
 
-PC幅だけを明示する場合は次のコマンドを使います。SP幅は指示がある場合のみ生成してください。
+PC幅だけを明示する場合は次のコマンドを使います。
 
 ```powershell
 pnpm run check:visual:pc
 ```
 
-SP幅を確認する場合は次のコマンドを使います。
+SP幅は指示がある場合のみ、次のコマンドで生成します。
 
 ```powershell
 pnpm run check:visual:sp
@@ -75,3 +80,5 @@ pnpm run check:visual:sp
 ```powershell
 pnpm run check:visual -- -PageId index,faq
 ```
+
+スクリーンショットは `visual-check/` に保存されます。`visual-check/` と `.chrome-check/` はローカル確認用の生成物で、Git管理には含めません。
