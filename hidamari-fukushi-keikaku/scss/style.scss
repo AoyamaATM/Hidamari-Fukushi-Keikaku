@@ -1119,6 +1119,24 @@ MVとパンくず
   max-width: 1220px;
 }
 
+@mixin home-contact-form-context {
+  body[data-type="home"] &,
+  body[data-type="contact"] & {
+    @content;
+  }
+}
+
+@mixin form-control($border-width: 2px, $radius: 4px, $min-height: 42px, $padding: 8px 12px, $with-background: true) {
+  @if $with-background {
+    background: var(--palette-white);
+  }
+
+  border: $border-width solid var(--palette-black);
+  border-radius: $radius;
+  min-height: $min-height;
+  padding: $padding;
+}
+
 .contact {
   &-band {
     text-align: center;
@@ -1289,8 +1307,7 @@ MVとパンくず
   gap: 14px;
   margin-top: 22px;
 
-  body[data-type="home"] &,
-  body[data-type="contact"] & {
+  @include home-contact-form-context {
     gap: 9px;
     margin: 0 auto;
     max-width: 590px;
@@ -1304,11 +1321,7 @@ MVとパンくず
 
   input,
   textarea {
-    background: var(--palette-white);
-    border: 2px solid var(--palette-black);
-    border-radius: 4px;
-    min-height: 42px;
-    padding: 8px 12px;
+    @include form-control;
   }
 
   textarea {
@@ -1316,18 +1329,14 @@ MVとパンくず
     resize: vertical;
   }
 
-  body[data-type="home"] &,
-  body[data-type="contact"] & {
+  @include home-contact-form-context {
     color: var(--palette-black);
     font-size: 24px;
     gap: 3px;
 
     input,
     textarea {
-      border: 1px solid var(--palette-black);
-      border-radius: 0;
-      min-height: 26px;
-      padding: 3px 8px;
+      @include form-control(1px, 0, 26px, 3px 8px, false);
     }
 
     textarea {
@@ -1337,11 +1346,7 @@ MVとパンくず
 }
 
 .select-field select {
-  background: var(--palette-white);
-  border: 2px solid var(--palette-black);
-  border-radius: 4px;
-  min-height: 42px;
-  padding: 8px 12px;
+  @include form-control;
 }
 
 .checkbox-line {
@@ -1355,8 +1360,7 @@ MVとパンくず
     width: 22px;
   }
 
-  body[data-type="home"] &,
-  body[data-type="contact"] & {
+  @include home-contact-form-context {
     color: var(--palette-black);
     font-size: 24px;
     justify-content: flex-start;
@@ -1376,8 +1380,7 @@ MVとパンくず
   justify-content: center;
   margin-top: 18px;
 
-  body[data-type="home"] &,
-  body[data-type="contact"] & {
+  @include home-contact-form-context {
     justify-content: start;
     margin: 12px auto 0;
     max-width: 590px;
