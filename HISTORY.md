@@ -26,3 +26,7 @@
 - FAQ回答の `A.` 表記がTOPページ・FAQページ共通で表示されるよう、回答ボックス側に共通の `position: relative` と左余白を設定した。
 - `pnpm run build:css` を実行し、表示用CSSとSCSS配下の生成CSS・mapを同期した。
 - `pnpm run check:visual:build -PageId price`、`-PageId faq`、`-PageId about`、`-PageId index` を個別実行し、PC幅スクリーンショットでPriceアンカー、FAQ閉じ状態、Aboutの流れ、TOPのFAQ配置を確認した。まとめ実行時はChromeの一時プロファイル競合で失敗したが、個別実行では成功した。
+- Aboutページの「ご利用開始までの流れ」セクションで、`gap: 60px` が効かない原因を確認した。`display: grid` が `#flow .flow-assets` 限定だったため、Aboutページの `#flow__about .flow-assets--about` では `display: block` のままになっていた。
+- `.flow-assets` 共通側へ `display: grid`、基本gap、基本margin、画像幅指定を移し、Aboutページ側の `gap: 60px` が効くように修正した。
+- `pnpm run build:css` を実行し、表示用CSSとSCSS配下の生成CSS・mapを同期した。
+- `pnpm run check:visual:build -PageId about` と `-PageId index` でPC幅スクリーンショットを生成し、Aboutページの流れ画像間隔とTOPページ側に大きな崩れがないことを確認した。

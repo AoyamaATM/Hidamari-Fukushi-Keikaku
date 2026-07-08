@@ -778,10 +778,6 @@ MVとパンくず
 ======================================================= */
 #flow {
   .flow-assets {
-    display: grid;
-    gap: clamp(16px, 2vw, 26px);
-    margin: 34px auto 0;
-
     &--home,
     &--about {
       max-width: 1000px;
@@ -790,11 +786,6 @@ MVとパンくず
     &--home {
       gap: clamp(36px, 4.5vw, 60px);
       margin-top: 52px;
-    }
-
-    img {
-      height: auto;
-      width: 100%;
     }
   }
 }
@@ -806,6 +797,15 @@ MVとパンくず
 }
 
 .flow-assets {
+  display: grid;
+  gap: clamp(16px, 2vw, 26px);
+  margin: 34px auto 0;
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+
   &--about {
     body[data-type="aboutus"] & {
       gap: 60px;

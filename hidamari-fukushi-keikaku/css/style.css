@@ -669,11 +669,6 @@ body[data-type=aboutus] .service-feature p {
 /* =======================================================
 ご利用の流れ セクション - TOP / about
 ======================================================= */
-#flow .flow-assets {
-  display: grid;
-  gap: clamp(16px, 2vw, 26px);
-  margin: 34px auto 0;
-}
 #flow .flow-assets--home, #flow .flow-assets--about {
   max-width: 1000px;
 }
@@ -681,15 +676,20 @@ body[data-type=aboutus] .service-feature p {
   gap: clamp(36px, 4.5vw, 60px);
   margin-top: 52px;
 }
-#flow .flow-assets img {
-  height: auto;
-  width: 100%;
-}
 
 body[data-type=aboutus] .about-flow {
   padding: 0 0 150px;
 }
 
+.flow-assets {
+  display: grid;
+  gap: clamp(16px, 2vw, 26px);
+  margin: 34px auto 0;
+}
+.flow-assets img {
+  height: auto;
+  width: 100%;
+}
 body[data-type=aboutus] .flow-assets--about {
   gap: 60px;
   margin: 62px auto 0;
