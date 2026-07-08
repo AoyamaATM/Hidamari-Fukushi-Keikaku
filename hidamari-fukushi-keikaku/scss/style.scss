@@ -290,7 +290,7 @@ img {
   body[data-type="price"] & {
     margin-bottom: 48px;
       color: var(--palette-black);
-      font-size: 32px;
+      font-size: 40px;
       font-weight: 900;
       letter-spacing: 0.02em;
       line-height: 1.6;
@@ -493,7 +493,7 @@ MVとパンくず
   }
 
   body[data-type="price"] & {
-    padding-block: 0;
+    padding-block: 100px;
   }
 }
 
@@ -520,7 +520,7 @@ MVとパンくず
   }
 
   body[data-type="price"] & {
-    background: linear-gradient(180deg, var(--palette-green-01) 0, var(--palette-green-01) 290px, var(--palette-green-02) 386px, var(--palette-white) 480px, var(--palette-white) 100%);
+    background: linear-gradient(180deg, var(--palette-green-01) 0, var(--palette-green-01) 100px, var(--palette-green-02) 150px, var(--palette-white) 200px, var(--palette-white) 100%);
     padding: 120px 0 200px;
   }
 }
@@ -963,16 +963,6 @@ MVとパンくず
     gap: 30px;
     margin: 26px auto 0;
     max-width: 1200px;
-
-    body[data-type="faq"] & {
-      gap: 88px;
-      margin: 42px auto 0;
-
-      > div {
-        border-radius: 8px;
-        overflow: hidden;
-      }
-    }
   }
 
   &-question { //質問文
@@ -1010,13 +1000,10 @@ MVとパンくず
       transform: rotate(180deg);
     }
 
-    body[data-type="faq"] & {
-      line-height: 1.55;
+  }
 
-      &-text {
-        min-width: 0;
-      }
-    }
+  &-question-text {
+    min-width: 0;
   }
 
   &-answer { // 回答文
@@ -1071,6 +1058,7 @@ MVとパンくず
       color: var(--palette-black);
       font-size: 16px;
       line-height: 1.65;
+      list-style: none;
       margin: 14px 0 0;
       padding-left: 1em;
 
@@ -1155,8 +1143,9 @@ MVとパンくず
   }
 
   &-faq-copy { // Contact ページ - FAQへの誘導
-    margin-top: 54px;
+    margin: 54px auto 0;
     max-width: 720px;
+    text-align: center;
   }
 }
 
@@ -1272,7 +1261,7 @@ MVとパンくず
       font-size: 32px;
       font-weight: 900;
       line-height: 1.55;
-      margin: 0 auto 22px;
+      margin: 0 auto 18px;
     }
 
     .form-intro {
@@ -1539,6 +1528,10 @@ MVとパンくず
     gap: 44px;
     max-width: 1200px;
     margin: 100px auto;
+
+    body[data-type="price"] & {
+      margin: 0 auto;
+    }
   }
 
   &-wrap {
@@ -1683,8 +1676,6 @@ MVとパンくず
 
 #day-service {
   body[data-type="price"] & {
-    padding-bottom: 100px;
-
     .table-stack > div:first-child {
       margin-bottom: -6px;
     }
@@ -1701,7 +1692,7 @@ MVとパンくず
 
 #visit-service {
   body[data-type="price"] & {
-    padding-bottom: 154px;
+    padding-bottom: 100px;
   }
 }
 

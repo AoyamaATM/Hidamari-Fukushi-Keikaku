@@ -251,7 +251,7 @@ body[data-type=aboutus] .about-profile .section-heading {
 body[data-type=price] .section-heading {
   margin-bottom: 48px;
   color: var(--palette-black);
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 900;
   letter-spacing: 0.02em;
   line-height: 1.6;
@@ -434,7 +434,7 @@ body[data-type=home] .section:not(.home-links) {
   padding-block: 100px;
 }
 body[data-type=price] .section {
-  padding-block: 0;
+  padding-block: 100px;
 }
 
 .home-links {
@@ -458,7 +458,7 @@ body[data-type=faq] .anchor-section {
   padding: 36px 0 154px;
 }
 body[data-type=price] .anchor-section {
-  background: linear-gradient(180deg, var(--palette-green-01) 0, var(--palette-green-01) 290px, var(--palette-green-02) 386px, var(--palette-white) 480px, var(--palette-white) 100%);
+  background: linear-gradient(180deg, var(--palette-green-01) 0, var(--palette-green-01) 100px, var(--palette-green-02) 150px, var(--palette-white) 200px, var(--palette-white) 100%);
   padding: 120px 0 200px;
 }
 
@@ -821,14 +821,6 @@ body[data-type=home] #price-guide .price-box {
   margin: 26px auto 0;
   max-width: 1200px;
 }
-body[data-type=faq] .faq-stack {
-  gap: 88px;
-  margin: 42px auto 0;
-}
-body[data-type=faq] .faq-stack > div {
-  border-radius: 8px;
-  overflow: hidden;
-}
 .faq-question {
   align-items: center;
   background: var(--palette-orange-02);
@@ -861,10 +853,7 @@ body[data-type=faq] .faq-stack > div {
   content: "▲";
   transform: rotate(180deg);
 }
-body[data-type=faq] .faq-question {
-  line-height: 1.55;
-}
-body[data-type=faq] .faq-question-text {
+.faq-question-text {
   min-width: 0;
 }
 .faq-answer {
@@ -913,6 +902,7 @@ body[data-type=faq] .faq-answer {
   color: var(--palette-black);
   font-size: 16px;
   line-height: 1.65;
+  list-style: none;
   margin: 14px 0 0;
   padding-left: 1em;
 }
@@ -981,8 +971,9 @@ body[data-type=contact] .contact-page-band .content-width {
   color: var(--palette-orange-03);
 }
 .contact-faq-copy {
-  margin-top: 54px;
+  margin: 54px auto 0;
   max-width: 720px;
+  text-align: center;
 }
 
 body[data-type=home] .home-contact {
@@ -1080,7 +1071,7 @@ body[data-type=contact] .contact-form h2 {
   font-size: 32px;
   font-weight: 900;
   line-height: 1.55;
-  margin: 0 auto 22px;
+  margin: 0 auto 18px;
 }
 body[data-type=contact] .contact-form .form-intro {
   color: var(--palette-black);
@@ -1312,6 +1303,9 @@ body[data-type=aboutus] .stack-gallery .portrait-photo {
   max-width: 1200px;
   margin: 100px auto;
 }
+body[data-type=price] .table-stack {
+  margin: 0 auto;
+}
 .table-wrap {
   overflow-x: auto;
 }
@@ -1419,9 +1413,6 @@ body[data-type=price] .price-caption-note {
   font-weight: 400;
 }
 
-body[data-type=price] #day-service {
-  padding-bottom: 100px;
-}
 body[data-type=price] #day-service .table-stack > div:first-child {
   margin-bottom: -6px;
 }
@@ -1434,7 +1425,7 @@ body[data-type=price] #day-service p {
 }
 
 body[data-type=price] #visit-service {
-  padding-bottom: 154px;
+  padding-bottom: 100px;
 }
 
 .price-links,
