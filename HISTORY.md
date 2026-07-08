@@ -35,3 +35,5 @@
 - 入力欄とセレクトの共通枠線・余白指定を `@mixin form-control` に集約し、既存の表示CSSと同じ出力になるよう調整した。
 - `pnpm run build:css` を実行し、生成CSSを同期した。表示用CSS本体に差分が出ず、SCSSと生成mapのみの差分であることを確認した。
 - `git diff --check` で空白エラーがないことを確認した。
+- ヘッダーの `.skip-link` について、表示に出ないよう `display: none` を追加した。
+- `pnpm run build:css` を実行し、表示用CSSとSCSS配下の生成CSS・mapを同期した。`git diff --check` で空白エラーがないことを確認した。
