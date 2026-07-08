@@ -30,6 +30,9 @@
 - `.flow-assets` 共通側へ `display: grid`、基本gap、基本margin、画像幅指定を移し、Aboutページ側の `gap: 60px` が効くように修正した。
 - `pnpm run build:css` を実行し、表示用CSSとSCSS配下の生成CSS・mapを同期した。
 - `pnpm run check:visual:build -PageId about` と `-PageId index` でPC幅スクリーンショットを生成し、Aboutページの流れ画像間隔とTOPページ側に大きな崩れがないことを確認した。
+
+### 12時進捗
+
 - リファクタリング作業として、`hidamari-fukushi-keikaku/scss/style.scss` のContact/TOPフォーム周辺を確認した。
 - `home` / `contact` 共通のフォーム文脈セレクタを `@mixin home-contact-form-context` に集約し、`field-grid`、`field`、`checkbox-line`、`form-actions` の重複を整理した。
 - 入力欄とセレクトの共通枠線・余白指定を `@mixin form-control` に集約し、既存の表示CSSと同じ出力になるよう調整した。
