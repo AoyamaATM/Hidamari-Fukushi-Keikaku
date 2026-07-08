@@ -105,16 +105,22 @@ img {
 
 .skip-link {
   background: var(--palette-orange-02);
-  color: var(--palette-orange-02);
-  display: none;
-  left: 16px;
-  padding: 10px 14px;
+  color: transparent;
+  display: block;
+  height: 1px;
+  left: 0;
+  overflow: hidden;
+  padding: 0;
   position: fixed;
-  top: -48px;
+  top: 0;
+  width: 5px;
   z-index: 20;
 }
 .skip-link:focus {
-  top: 16px;
+  color: var(--palette-black);
+  height: auto;
+  padding: 10px 14px;
+  width: auto;
 }
 
 .header-inner {
@@ -414,7 +420,6 @@ body[data-type=home] .home-hero-copy .lead {
   letter-spacing: 0.4em;
   line-height: 1.45;
   max-width: 100%;
-  min-height: 100px;
   min-width: 0;
   padding: 10px 24px;
   text-align: center;
@@ -428,20 +433,11 @@ body[data-type=contact] .button--cta {
 .section {
   padding-block: clamp(80px, 10vw, 120px);
 }
-body[data-type=home] .section {
-  padding-block: 0;
-}
-body[data-type=home] .section:not(.home-links) {
-  padding-block: 100px;
-}
-body[data-type=price] .section {
+body[data-type=home] .section:not(.home-links), body[data-type=price] .section {
   padding-block: 100px;
 }
 
 .home-links {
-  padding-block: clamp(52px, 6vw, 84px);
-}
-body[data-type=home] .home-links {
   background: linear-gradient(180deg, var(--palette-green-01), rgba(209, 224, 180, 0.54) 45%, var(--palette-white));
   padding: 32px 0 118px;
 }
@@ -451,9 +447,6 @@ body[data-type=home] .home-links {
   padding-top: clamp(40px, 5vw, 72px);
 }
 
-.anchor-section {
-  padding-top: clamp(24px, 3vw, 44px);
-}
 body[data-type=faq] .anchor-section {
   background: linear-gradient(180deg, var(--palette-green-01) 0, var(--palette-green-01) 180px, var(--palette-green-02) 320px, var(--palette-white) 420px, var(--palette-white) 100%);
   padding: 36px 0 154px;
@@ -503,11 +496,8 @@ body[data-type=home] .grid-route {
   width: 100%;
 }
 .asset-link:is(:hover, :focus-visible) {
-  box-shadow: var(--shadow);
-  transform: translateY(-2px);
-}
-body[data-type=home] .asset-link:is(:hover, :focus-visible), body[data-type=price] .asset-link:is(:hover, :focus-visible) {
   box-shadow: 0 14px 28px rgba(75, 108, 8, 0.16);
+  transform: translateY(-2px);
 }
 
 /* ==============================================
@@ -670,10 +660,8 @@ body[data-type=aboutus] .service-feature p {
 /* =======================================================
 ご利用の流れ セクション - TOP / about
 ======================================================= */
-#flow .flow-assets--home, #flow .flow-assets--about {
-  max-width: 1000px;
-}
 #flow .flow-assets--home {
+  max-width: 1000px;
   gap: clamp(36px, 4.5vw, 60px);
   margin-top: 52px;
 }
@@ -698,9 +686,6 @@ body[data-type=aboutus] .flow-assets--about {
 }
 body[data-type=aboutus] .flow-assets__item {
   position: relative;
-}
-body[data-type=aboutus] .flow-assets__item img {
-  display: block;
 }
 body[data-type=aboutus] .flow-assets__cta {
   max-width: calc(100% - 48px);
@@ -959,14 +944,10 @@ body[data-type=faq] .faq-answer {
   text-align: center;
 }
 .contact-page-band {
-  background: linear-gradient(180deg, rgba(220, 246, 210, 0.72), rgba(255, 255, 255, 0.94) 30%, var(--palette-white) 64%);
-  padding-top: clamp(52px, 5vw, 76px);
-}
-body[data-type=contact] .contact-page-band {
   background: linear-gradient(180deg, var(--palette-green-01) 0, var(--palette-green-01) 90px, var(--palette-green-02) 245px, var(--palette-white) 420px, var(--palette-white) 100%);
   padding: 132px 0 102px;
 }
-body[data-type=contact] .contact-page-band .content-width {
+.contact-page-band .content-width {
   max-width: 1600px;
   width: var(--content);
 }
@@ -1186,7 +1167,6 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
   height: 50px;
   letter-spacing: 0.4em;
   line-height: 1.45;
-  min-height: 50px;
   min-width: 0;
   padding: 4px 18px;
   text-align: center;
@@ -1318,31 +1298,8 @@ body[data-type=price] .table-stack {
 .table-wrap {
   overflow-x: auto;
 }
-.table-price {
-  border-collapse: collapse;
-  min-width: 620px;
-  width: 100%;
-}
-.table-price caption {
-  font-size: 1.22rem;
-  font-weight: 900;
-  padding-bottom: 12px;
-  text-align: left;
-}
-.table-price th,
-.table-price td {
-  border: 1px solid var(--palette-black);
-  padding: 10px 14px;
-  text-align: center;
-}
-.table-price th {
-  background: var(--palette-green-01);
-}
-.table-price td {
-  background: var(--palette-orange-02);
-}
 
-body[data-type=price] .table-price {
+.table-price {
   border-collapse: separate;
   border-spacing: 0;
   border-radius: 10px;
@@ -1354,7 +1311,7 @@ body[data-type=price] .table-price {
   table-layout: fixed;
   width: 100%;
 }
-body[data-type=price] .table-price caption {
+.table-price caption {
   color: var(--palette-black);
   font-size: 32px;
   font-weight: 900;
@@ -1362,8 +1319,8 @@ body[data-type=price] .table-price caption {
   padding: 0 0 14px;
   text-align: left;
 }
-body[data-type=price] .table-price th,
-body[data-type=price] .table-price td {
+.table-price th,
+.table-price td {
   border: 0;
   border-bottom: 1px solid var(--palette-orange-06);
   border-right: 1px solid var(--palette-orange-06);
@@ -1371,39 +1328,39 @@ body[data-type=price] .table-price td {
   text-align: center;
   vertical-align: middle;
 }
-body[data-type=price] .table-price th:first-child,
-body[data-type=price] .table-price td:first-child {
+.table-price th:first-child,
+.table-price td:first-child {
   border-left: 1px solid var(--palette-orange-06);
   border-right: 3px solid var(--palette-black);
 }
-body[data-type=price] .table-price th {
+.table-price th {
   background: var(--palette-green-01);
   border-bottom: 3px solid var(--palette-black);
   border-top: 1px solid var(--palette-orange-06);
   font-weight: 900;
 }
-body[data-type=price] .table-price thead th:first-child {
+.table-price thead th:first-child {
   border-top-left-radius: 10px;
 }
-body[data-type=price] .table-price thead th:last-child {
+.table-price thead th:last-child {
   border-top-right-radius: 10px;
 }
-body[data-type=price] .table-price tbody tr:last-child td:first-child {
+.table-price tbody tr:last-child td:first-child {
   border-bottom-left-radius: 10px;
 }
-body[data-type=price] .table-price tbody tr:last-child td:last-child {
+.table-price tbody tr:last-child td:last-child {
   border-bottom-right-radius: 10px;
 }
-body[data-type=price] .table-price tbody tr:nth-child(odd) td {
+.table-price tbody tr:nth-child(odd) td {
   background: var(--palette-orange-05);
 }
-body[data-type=price] .table-price tbody tr:nth-child(even) td {
+.table-price tbody tr:nth-child(even) td {
   background: var(--palette-orange-06);
 }
-body[data-type=price] .table-price td:not(:first-child) {
+.table-price td:not(:first-child) {
   text-align: right;
 }
-body[data-type=price] .table-price--content td[colspan="2"] {
+.table-price--content td[colspan="2"] {
   text-align: left;
 }
 

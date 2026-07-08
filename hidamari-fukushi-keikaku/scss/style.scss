@@ -122,15 +122,22 @@ img {
 
 .skip-link {
   background: var(--palette-orange-02);
-  color: var(--palette-orange-02);
-  display: none;
-  left: 16px;
-  padding: 10px 14px;
+  color: transparent;
+  display: block;
+  height: 1px;
+  left: 0;
+  overflow: hidden;
+  padding: 0;
   position: fixed;
-  top: -48px;
+  top: 0;
+  width: 5px;
   z-index: 20;
+
   &:focus {
-    top: 16px;
+    color: var(--palette-black);
+    height: auto;
+    padding: 10px 14px;
+    width: auto;
   }
 }
 
@@ -469,7 +476,6 @@ MVとパンくず
     letter-spacing: 0.4em;
     line-height: 1.45;
     max-width: 100%;
-    min-height: 100px;
     min-width: 0;
     padding: 10px 24px;
     text-align: center;
@@ -485,26 +491,15 @@ MVとパンくず
 .section {
   padding-block: clamp(80px, 10vw, 120px);
 
-  body[data-type="home"] & {
-    padding-block: 0;
-
-    &:not(.home-links) {
-      padding-block: 100px;
-    }
-  }
-
+  body[data-type="home"] &:not(.home-links),
   body[data-type="price"] & {
     padding-block: 100px;
   }
 }
 
 .home-links {
-  padding-block: clamp(52px, 6vw, 84px);
-
-  body[data-type="home"] & {
-    background: linear-gradient(180deg, var(--palette-green-01), rgba(209, 224, 180, 0.54) 45%, var(--palette-white));
-    padding: 32px 0 118px;
-  }
+  background: linear-gradient(180deg, var(--palette-green-01), rgba(209, 224, 180, 0.54) 45%, var(--palette-white));
+  padding: 32px 0 118px;
 }
 
 .intro-surface {
@@ -513,8 +508,6 @@ MVとパンくず
 }
 
 .anchor-section { // FAQ ページと Priceページ
-  padding-top: clamp(24px, 3vw, 44px);
-
   body[data-type="faq"] & {
     background: linear-gradient(180deg, var(--palette-green-01) 0, var(--palette-green-01) 180px, var(--palette-green-02) 320px, var(--palette-white) 420px, var(--palette-white) 100%);
     padding: 36px 0 154px;
@@ -582,13 +575,8 @@ MVとパンくず
   }
 
   &:is(:hover, :focus-visible) {
-    box-shadow: var(--shadow);
+    box-shadow: 0 14px 28px rgba(75, 108, 8, 0.16);
     transform: translateY(-2px);
-
-    body[data-type="home"] &,
-    body[data-type="price"] & {
-      box-shadow: 0 14px 28px rgba(75, 108, 8, 0.16);
-    }
   }
 }
 
@@ -779,12 +767,8 @@ MVとパンくず
 ======================================================= */
 #flow {
   .flow-assets {
-    &--home,
-    &--about {
-      max-width: 1000px;
-    }
-
     &--home {
+      max-width: 1000px;
       gap: clamp(36px, 4.5vw, 60px);
       margin-top: 52px;
     }
@@ -818,10 +802,6 @@ MVとパンくず
   &__item {
     body[data-type="aboutus"] & {
       position: relative;
-
-      img {
-        display: block;
-      }
     }
   }
 
@@ -1143,17 +1123,12 @@ MVとパンくず
     text-align: center;
   }
   &-page-band {
-    background: linear-gradient(180deg, rgba(220, 246, 210, 0.72), rgba(255, 255, 255, 0.94) 30%, var(--palette-white) 64%);
-    padding-top: clamp(52px, 5vw, 76px);
+    background: linear-gradient(180deg, var(--palette-green-01) 0, var(--palette-green-01) 90px, var(--palette-green-02) 245px, var(--palette-white) 420px, var(--palette-white) 100%);
+    padding: 132px 0 102px;
 
-    body[data-type="contact"] & {
-      background: linear-gradient(180deg, var(--palette-green-01) 0, var(--palette-green-01) 90px, var(--palette-green-02) 245px, var(--palette-white) 420px, var(--palette-white) 100%);
-      padding: 132px 0 102px;
-
-      .content-width {
-        max-width: 1600px;
-        width: var(--content);
-      }
+    .content-width {
+      max-width: 1600px;
+      width: var(--content);
     }
   }
 
@@ -1395,7 +1370,6 @@ MVとパンくず
       height: 50px;
       letter-spacing: 0.4em;
       line-height: 1.45;
-      min-height: 50px;
       min-width: 0;
       padding: 4px 18px;
       text-align: center;
@@ -1550,117 +1524,87 @@ MVとパンくず
   &-wrap {
     overflow-x: auto;
   }
-
-  &-price {
-    border-collapse: collapse;
-    min-width: 620px;
-    width: 100%;
-
-    caption {
-      font-size: 1.22rem;
-      font-weight: 900;
-      padding-bottom: 12px;
-      text-align: left;
-    }
-
-    th,
-    td {
-      border: 1px solid var(--palette-black);
-      padding: 10px 14px;
-      text-align: center;
-    }
-
-    th {
-      background: var(--palette-green-01);
-    }
-
-    td {
-      background: var(--palette-orange-02);
-    }
-  }
 }
 
 .table-price {
-  body[data-type="price"] & {
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 10px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  color: var(--palette-black);
+  font-size: 24px;
+  line-height: 1.6;
+  min-width: 0;
+  overflow: hidden;
+  table-layout: fixed;
+  width: 100%;
+
+  caption {
     color: var(--palette-black);
-    font-size: 24px;
-    line-height: 1.6;
-    min-width: 0;
-    overflow: hidden;
-    table-layout: fixed;
-    width: 100%;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.55;
+    padding: 0 0 14px;
+    text-align: left;
+  }
 
-    caption {
-      color: var(--palette-black);
-      font-size: 32px;
-      font-weight: 900;
-      line-height: 1.55;
-      padding: 0 0 14px;
-      text-align: left;
+  th,
+  td {
+    border: 0;
+    border-bottom: 1px solid var(--palette-orange-06);
+    border-right: 1px solid var(--palette-orange-06);
+    padding: 9px 20px;
+    text-align: center;
+    vertical-align: middle;
+
+    &:first-child {
+      border-left: 1px solid var(--palette-orange-06);
+      border-right: 3px solid var(--palette-black);
+    }
+  }
+
+  th {
+    background: var(--palette-green-01);
+    border-bottom: 3px solid var(--palette-black);
+    border-top: 1px solid var(--palette-orange-06);
+    font-weight: 900;
+  }
+
+  thead {
+    th:first-child {
+      border-top-left-radius: 10px;
     }
 
-    th,
-    td {
-      border: 0;
-      border-bottom: 1px solid var(--palette-orange-06);
-      border-right: 1px solid var(--palette-orange-06);
-      padding: 9px 20px;
-      text-align: center;
-      vertical-align: middle;
+    th:last-child {
+      border-top-right-radius: 10px;
+    }
+  }
 
-      &:first-child {
-        border-left: 1px solid var(--palette-orange-06);
-        border-right: 3px solid var(--palette-black);
+  tbody {
+    tr:last-child {
+      td:first-child {
+        border-bottom-left-radius: 10px;
+      }
+
+      td:last-child {
+        border-bottom-right-radius: 10px;
       }
     }
 
-    th {
-      background: var(--palette-green-01);
-      border-bottom: 3px solid var(--palette-black);
-      border-top: 1px solid var(--palette-orange-06);
-      font-weight: 900;
+    tr:nth-child(odd) td {
+      background: var(--palette-orange-05);
     }
 
-    thead {
-      th:first-child {
-        border-top-left-radius: 10px;
-      }
-
-      th:last-child {
-        border-top-right-radius: 10px;
-      }
+    tr:nth-child(even) td {
+      background: var(--palette-orange-06);
     }
+  }
 
-    tbody {
-      tr:last-child {
-        td:first-child {
-          border-bottom-left-radius: 10px;
-        }
+  td:not(:first-child) {
+    text-align: right;
+  }
 
-        td:last-child {
-          border-bottom-right-radius: 10px;
-        }
-      }
-
-      tr:nth-child(odd) td {
-        background: var(--palette-orange-05);
-      }
-
-      tr:nth-child(even) td {
-        background: var(--palette-orange-06);
-      }
-    }
-
-    td:not(:first-child) {
-      text-align: right;
-    }
-
-    &--content td[colspan="2"] {
-      text-align: left;
-    }
+  &--content td[colspan="2"] {
+    text-align: left;
   }
 }
 

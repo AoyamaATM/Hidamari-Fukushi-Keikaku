@@ -40,3 +40,15 @@
 - `git diff --check` で空白エラーがないことを確認した。
 - ヘッダーの `.skip-link` について、表示に出ないよう `display: none` を追加した。
 - `pnpm run build:css` を実行し、表示用CSSとSCSS配下の生成CSS・mapを同期した。`git diff --check` で空白エラーがないことを確認した。
+
+### 14時進捗
+
+- SCSSシェイプアップ作業として、`hidamari-fukushi-keikaku/scss/style.scss` のヘッダー、共通セクション、TOP/FAQ/Contact/Price専用ブロック、流れ画像、CTAボタン周辺を確認した。
+- `.skip-link` は `display: none` をやめ、左上に5px×1pxで配置し、フォーカス時だけ読める表示へ戻した。
+- `.section` はTOPページで効いていなかった中間上書きを削り、`home:not(.home-links)` とPriceページの100px指定を維持する形へ整理した。
+- `.home-links`、`.contact-page-band`、`.table-price` は現HTMLで1ページ専用であることを確認し、ページ専用の直指定へ寄せて `body[data-type]` 依存を減らした。
+- `.anchor-section` の未使用ベースpadding、`#flow .flow-assets--about` の未一致セレクタ、`.flow-assets__item img` の重複display指定を削除した。
+- `.asset-link:hover` は現使用箇所の影色が同一だったためベース指定へ集約し、`.button--cta` とフォーム送信ボタンの重複 `min-height` を削除した。
+- `pnpm run build:css` を実行し、表示用CSSとSCSS配下の生成CSS・mapを同期した。
+- `pnpm run check:visual:build -PageId index`、`about`、`price`、`faq`、`contact` を個別実行し、PC幅スクリーンショットでTOPアンカー、Aboutの流れ、Price表、FAQアンカー、Contact上部とフォームに大きな崩れがないことを確認した。
+- `git diff --check` で空白エラーがないことを確認した。
