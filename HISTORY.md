@@ -56,3 +56,5 @@
 - CSS/JSで使っている `about-service-block`、`flow-assets__item`、`table-price`、`table-price--content`、`tag-blog` などは残し、見た目と動作に影響しない範囲に絞った。
 - `pnpm run check:visual:build -PageId index`、`about`、`price`、`faq` を個別実行し、PC幅スクリーンショット生成が成功することを確認した。Archiveページは表示確認設定に含まれないため、`tag-blog` が残って同じCSSに当たることを差分で確認した。
 - `git diff --check` で空白エラーがないことを確認した。
+- PC側の未使用SCSSセレクタ棚卸として、展開済みCSSのクラス・ID・`body[data-type]` と全HTML/JS参照を照合し、現時点で削除対象と断定できる未使用セレクタは見つからないことを確認した。
+- Archive / Single / Facilities / Privacy など、PC表示確認設定には含まれないがHTML上で使われているページ専用セレクタを確認し、未使用ではないため削除対象外とした。`.select-field` はArchiveの絞り込みselectに実際に当たるが、今後の命名整理候補として扱う。
