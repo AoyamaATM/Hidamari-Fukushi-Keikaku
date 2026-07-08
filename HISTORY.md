@@ -58,3 +58,5 @@
 - `git diff --check` で空白エラーがないことを確認した。
 - PC側の未使用SCSSセレクタ棚卸として、展開済みCSSのクラス・ID・`body[data-type]` と全HTML/JS参照を照合し、現時点で削除対象と断定できる未使用セレクタは見つからないことを確認した。
 - Archive / Single / Facilities / Privacy など、PC表示確認設定には含まれないがHTML上で使われているページ専用セレクタを確認し、未使用ではないため削除対象外とした。`.select-field` はArchiveの絞り込みselectに実際に当たるが、今後の命名整理候補として扱う。
+- PC幅の全範囲確認として、`tools/visual-check-pages.json` に `facilities`、`archive`、`single`、`privacy` を追加し、既存5ページと合わせて全9HTMLページを一括確認できるようにした。
+- `pnpm run check:visual:build` を実行し、`index`、`about`、`facilities`、`price`、`faq`、`contact`、`archive`、`single`、`privacy` のPC幅スクリーンショット生成が成功することを確認した。生成画像を目視し、大きな崩れがないことを確認した。
