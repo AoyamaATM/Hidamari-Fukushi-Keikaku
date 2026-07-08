@@ -19,3 +19,10 @@
 - `pnpm run build:css` を実行し、表示用CSSとSCSS配下の生成CSS・mapを同期した。
 - `pnpm run check:visual:build -PageId price`、`-PageId faq`、`-PageId contact` でPC幅スクリーンショットを生成し、対象ページの表示を目視確認した。
 - `git diff --check` で空白エラーがないことを確認した。
+- Priceページについて、アンカーリンク部分の意図を再確認し、600x160pxの画像に上下20pxの余白を足して、パディング込みの高さが200pxになるよう修正した。
+- Priceページの `.price-caption-note` に左余白20pxを追加した。
+- About_Usページの「ご利用開始までの流れ」セクションについて、`flow-assets--about` の画像間隔60px指定が反映されていることを確認した。
+- TOPページ・FAQページの「よくある質問」について、開閉アイコンを `▼` のままクリック後に180deg回転する指定へ修正し、回答の白枠が質問のオレンジ枠の後ろに入るよう重なり順を調整した。
+- FAQ回答の `A.` 表記がTOPページ・FAQページ共通で表示されるよう、回答ボックス側に共通の `position: relative` と左余白を設定した。
+- `pnpm run build:css` を実行し、表示用CSSとSCSS配下の生成CSS・mapを同期した。
+- `pnpm run check:visual:build -PageId price`、`-PageId faq`、`-PageId about`、`-PageId index` を個別実行し、PC幅スクリーンショットでPriceアンカー、FAQ閉じ状態、Aboutの流れ、TOPのFAQ配置を確認した。まとめ実行時はChromeの一時プロファイル競合で失敗したが、個別実行では成功した。

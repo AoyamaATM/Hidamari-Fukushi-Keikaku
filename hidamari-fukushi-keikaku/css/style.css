@@ -459,7 +459,7 @@ body[data-type=faq] .anchor-section {
 }
 body[data-type=price] .anchor-section {
   background: linear-gradient(180deg, var(--palette-green-01) 0, var(--palette-green-01) 100px, var(--palette-green-02) 150px, var(--palette-white) 200px, var(--palette-white) 100%);
-  padding: 120px 0 200px;
+  padding: 20px 0;
 }
 
 /* 共通で使うグリッド */
@@ -821,6 +821,9 @@ body[data-type=home] #price-guide .price-box {
   margin: 26px auto 0;
   max-width: 1200px;
 }
+.faq-stack > div {
+  position: relative;
+}
 .faq-question {
   align-items: center;
   background: var(--palette-orange-02);
@@ -834,8 +837,10 @@ body[data-type=home] #price-guide .price-box {
   justify-content: flex-start;
   min-height: 68px;
   padding: 16px 28px;
+  position: relative;
   text-align: left;
   width: 100%;
+  z-index: 2;
 }
 .faq-question::before {
   content: "Q.";
@@ -846,11 +851,13 @@ body[data-type=home] #price-guide .price-box {
 .faq-question::after {
   color: var(--palette-orange-04);
   content: "▼";
+  display: inline-block;
   font-weight: 900;
   margin-left: auto;
+  transform-origin: center;
+  transition: transform 180ms ease;
 }
 .faq-question[aria-expanded=true]::after {
-  content: "▲";
   transform: rotate(180deg);
 }
 .faq-question-text {
@@ -863,7 +870,9 @@ body[data-type=home] #price-guide .price-box {
   border-top: 0;
   color: var(--palette-black);
   margin: -18px 0 0;
-  padding: 16px 18px 20px;
+  padding: 28px 28px 24px 86px;
+  position: relative;
+  z-index: 1;
 }
 .faq-answer[hidden] {
   display: none;
@@ -875,13 +884,12 @@ body[data-type=home] #price-guide .price-box {
   left: 30px;
   line-height: 1.4;
   position: absolute;
-  top: 26px;
+  top: 28px;
 }
 body[data-type=faq] .faq-answer {
   font-size: 24px;
   font-weight: 500;
   line-height: 2;
-  position: relative;
 }
 .faq-more {
   margin: clamp(32px, 4vw, 52px) 0 0;
@@ -1411,6 +1419,7 @@ body[data-type=price] .price-col-share {
 body[data-type=price] .price-caption-note {
   font-size: 24px;
   font-weight: 400;
+  margin-left: 20px;
 }
 
 body[data-type=price] #day-service .table-stack > div:first-child {
