@@ -411,7 +411,6 @@ body[data-type=home] .home-hero-copy .lead {
 }
 .button--cta {
   background: var(--palette-orange-01);
-  border: 1px solid var(--palette-orange-04);
   border-radius: 6px;
   color: var(--palette-black);
   font-size: 24px;
@@ -437,13 +436,16 @@ body[data-type=home] .section:not(.home-links), body[data-type=price] .section {
   padding-block: 100px;
 }
 
-.home-links {
+.home-links,
+.intro-surface {
   background: linear-gradient(180deg, var(--palette-green-01), rgba(209, 224, 180, 0.54) 45%, var(--palette-white));
+}
+
+.home-links {
   padding: 32px 0 118px;
 }
 
 .intro-surface {
-  background: linear-gradient(180deg, var(--palette-green-01), rgba(209, 224, 180, 0.54) 45%, var(--palette-white));
   padding-top: clamp(40px, 5vw, 72px);
 }
 
@@ -513,9 +515,6 @@ body[data-type=home] .grid-route {
   grid-template-columns: repeat(2, minmax(0, 750px));
   justify-content: center;
   margin-top: clamp(74px, 8vw, 108px);
-}
-#reasons .grid-reason--reverse {
-  grid-template-columns: repeat(2, minmax(0, 750px));
 }
 #reasons .grid-reason--reverse .reason-index {
   left: 0 !important;
@@ -624,21 +623,18 @@ body[data-type=home] #reasons .grid-reason .reason-index {
   white-space: nowrap;
 }
 
-body[data-type=aboutus] .about-services {
+.about-services {
   padding: 0 0 150px;
 }
-body[data-type=aboutus] .about-services > .content-width {
-  max-width: 1600px;
-}
 
-body[data-type=aboutus] .about-service-block p,
-body[data-type=aboutus] .about-service-block li, body[data-type=aboutus] .service-lead, body[data-type=aboutus] .service-feature p {
+.about-service-block p,
+.about-service-block li, .service-lead, .about-services .service-feature p {
   color: var(--palette-black);
   font-size: 24px;
   line-height: 2;
 }
 
-body[data-type=aboutus] .service-feature p {
+.about-services .service-feature p {
   margin-top: 26px;
   max-width: 980px;
 }
@@ -666,7 +662,7 @@ body[data-type=aboutus] .service-feature p {
   margin-top: 52px;
 }
 
-body[data-type=aboutus] .about-flow {
+.about-flow {
   padding: 0 0 150px;
 }
 
@@ -679,15 +675,15 @@ body[data-type=aboutus] .about-flow {
   height: auto;
   width: 100%;
 }
-body[data-type=aboutus] .flow-assets--about {
+.flow-assets--about {
   gap: 60px;
   margin: 62px auto 0;
   max-width: 1200px;
 }
-body[data-type=aboutus] .flow-assets__item {
+.flow-assets__item {
   position: relative;
 }
-body[data-type=aboutus] .flow-assets__cta {
+.flow-assets__cta {
   max-width: calc(100% - 48px);
   position: absolute;
   right: clamp(28px, 5vw, 72px);
@@ -698,14 +694,11 @@ body[data-type=aboutus] .flow-assets__cta {
 .time-schedule {
   height: auto;
   margin-top: 0;
-  max-width: 824px;
+  max-width: 680px;
   width: 100%;
 }
-body[data-type=aboutus] .time-schedule {
-  max-width: 680px;
-}
 
-body[data-type=aboutus] .about-day-grid {
+.about-day-grid {
   gap: clamp(56px, 6vw, 96px);
   grid-template-columns: minmax(0, 680px) minmax(0, 680px);
   justify-content: center;
@@ -776,6 +769,9 @@ body[data-type=home] #price-guide .price-box {
 .archive-item a {
   font-size: 24px;
   min-width: 0;
+}
+.archive-item[hidden] {
+  display: none;
 }
 
 .tag-blog, .tag-news {
@@ -1184,29 +1180,29 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
 }
 
 /* 法人情報・投稿・料金表の共通部品 */
-body[data-type=aboutus] .about-profile {
+.about-profile {
   background: linear-gradient(180deg, var(--palette-green-01) 0%, rgba(209, 224, 180, 0.72) 46%, var(--palette-white) 100%);
   padding: 72px 0 150px;
 }
-body[data-type=aboutus] .about-profile .profile-grid {
+.about-profile .profile-grid {
   gap: clamp(72px, 8vw, 130px);
   grid-template-columns: minmax(420px, 640px) minmax(420px, 620px);
   justify-content: center;
   max-width: 1440px;
 }
-body[data-type=aboutus] .about-profile .section-photo {
+.about-profile .section-photo {
   aspect-ratio: 640/427;
   height: auto;
 }
 
-body[data-type=aboutus] .facility-info {
+.facility-info {
   color: var(--palette-black);
   display: grid;
   font-size: 24px;
   gap: 14px;
   line-height: 1.8;
 }
-body[data-type=aboutus] .facility-info p {
+.facility-info p {
   margin: 0;
 }
 
@@ -1218,17 +1214,17 @@ body[data-type=aboutus] .facility-info p {
 }
 
 .data-list {
+  color: var(--palette-black);
   display: grid;
-  gap: 10px;
+  font-size: 24px;
+  gap: 14px;
+  line-height: 1.8;
   margin: 0;
 }
 .data-list div {
   display: grid;
-  gap: 16px;
-  grid-template-columns: 7em minmax(0, 1fr);
-}
-body[data-type=facilities] .data-list div {
   gap: 18px;
+  grid-template-columns: 7em minmax(0, 1fr);
 }
 .data-list dt {
   color: var(--palette-black);
@@ -1237,16 +1233,10 @@ body[data-type=facilities] .data-list div {
 .data-list dd {
   margin: 0;
 }
-body[data-type=facilities] .data-list {
-  color: var(--palette-black);
-  gap: 14px;
-  font-size: 24px;
-  line-height: 1.8;
-}
 
 .philosophy {
   margin: 0 auto;
-  max-width: 720px;
+  max-width: 1000px;
   text-align: center;
 }
 .philosophy strong {
@@ -1255,10 +1245,7 @@ body[data-type=facilities] .data-list {
   font-weight: 500;
   margin: 28px 0;
 }
-body[data-type=facilities] .philosophy {
-  max-width: 1000px;
-}
-body[data-type=facilities] .philosophy p {
+.philosophy p {
   color: var(--palette-black);
   font-size: 24px;
   font-weight: 500;
@@ -1272,16 +1259,13 @@ body[data-type=facilities] .philosophy p {
 
 .stack-gallery {
   display: grid;
-  gap: 14px;
-}
-body[data-type=aboutus] .stack-gallery {
   gap: 18px;
 }
-body[data-type=aboutus] .stack-gallery .section-photo {
+.stack-gallery .section-photo {
   aspect-ratio: 640/360;
   height: auto;
 }
-body[data-type=aboutus] .stack-gallery .portrait-photo {
+.stack-gallery .portrait-photo {
   max-height: none;
   object-position: center 45%;
 }
@@ -1290,9 +1274,6 @@ body[data-type=aboutus] .stack-gallery .portrait-photo {
   display: grid;
   gap: 44px;
   max-width: 1200px;
-  margin: 100px auto;
-}
-body[data-type=price] .table-stack {
   margin: 0 auto;
 }
 .table-wrap {
@@ -1364,26 +1345,26 @@ body[data-type=price] .table-stack {
   text-align: left;
 }
 
-body[data-type=price] .price-col-category {
+.price-col-category {
   width: 27%;
 }
-body[data-type=price] .price-col-unit {
+.price-col-unit {
   width: 24%;
 }
-body[data-type=price] .price-col-share {
+.price-col-share {
   width: calc(22% + 15px);
 }
 
-body[data-type=price] .price-caption-note {
+.price-caption-note {
   font-size: 24px;
   font-weight: 400;
   margin-left: 20px;
 }
 
-body[data-type=price] #day-service .table-stack > div:first-child {
+#day-service .table-stack > div:first-child {
   margin-bottom: -6px;
 }
-body[data-type=price] #day-service p {
+#day-service p {
   color: var(--palette-black);
   font-size: 20px;
   font-weight: 500;
@@ -1391,7 +1372,7 @@ body[data-type=price] #day-service p {
   margin: 0;
 }
 
-body[data-type=price] #visit-service {
+#visit-service {
   padding-bottom: 100px;
 }
 
@@ -1404,40 +1385,31 @@ body[data-type=price] #visit-service {
 
 .price-links {
   justify-content: center;
-  margin-top: 0;
-}
-body[data-type=price] .price-links {
   flex-wrap: nowrap;
   gap: 200px;
-  margin-inline: auto;
+  margin: 0 auto;
   max-width: 1400px;
 }
 
 .price-link-card {
-  flex: 1 1 360px;
+  flex: 0 0 600px;
   max-width: 600px;
 }
-body[data-type=price] .price-link-card {
-  flex: 0 0 600px;
-}
-body[data-type=price] .price-link-card img {
+.price-link-card img {
   width: 600px;
 }
 
-body[data-type=faq] .category-cards {
+.category-cards {
   flex-wrap: nowrap;
   gap: 60px;
   justify-content: center;
   margin-inline: auto;
   max-width: 1580px;
 }
-body[data-type=faq] .category-cards + .faq-group {
+.category-cards + .faq-group {
   margin-top: 168px;
 }
 .category-cards > div {
-  flex: 1 1 220px;
-}
-body[data-type=faq] .category-cards > div {
   flex: 0 0 350px;
   max-width: 350px;
 }
@@ -1470,10 +1442,6 @@ body[data-type=faq] .category-cards > div {
   margin: 0 0 18px;
 }
 
-.archive-item[hidden] {
-  display: none;
-}
-
 .pagination {
   display: flex;
   flex-wrap: wrap;
@@ -1481,7 +1449,6 @@ body[data-type=faq] .category-cards > div {
   justify-content: center;
   margin-top: 24px;
 }
-
 .pagination a {
   min-height: 40px;
   min-width: 40px;
@@ -1551,27 +1518,22 @@ body[data-type=faq] .category-cards > div {
 }
 
 .service-lead {
-  font-size: clamp(1rem, 1.4vw, 1.35rem);
-  line-height: 1.9;
-  margin: clamp(20px, 2.6vw, 34px) auto clamp(28px, 4vw, 48px);
-}
-body[data-type=aboutus] .service-lead {
   font-weight: 500;
-  margin-top: 26px;
+  margin: 26px auto clamp(28px, 4vw, 48px);
   max-width: 980px;
 }
 
-body[data-type=aboutus] .about-service-block {
+.about-service-block {
   padding: 0 0 126px;
 }
-body[data-type=aboutus] .about-service-block .grid-split {
+.about-service-block .grid-split {
   gap: clamp(56px, 6vw, 96px);
   grid-template-columns: repeat(2, minmax(0, 680px));
   justify-content: center;
   margin: 54px auto 0;
   max-width: 1440px;
 }
-body[data-type=aboutus] .about-service-block h4 {
+.about-service-block h4 {
   background: var(--palette-green-03);
   color: var(--palette-white);
   font-size: 32px;
@@ -1581,19 +1543,19 @@ body[data-type=aboutus] .about-service-block h4 {
   padding: 12px 18px;
   text-align: center;
 }
-body[data-type=aboutus] .about-service-block .service-list-title {
+.about-service-block .service-list-title {
   font-weight: 700;
   text-align: center;
 }
-body[data-type=aboutus] .about-service-block ul {
+.about-service-block ul {
   list-style: none;
   padding-left: 0;
 }
-body[data-type=aboutus] .about-service-block li {
+.about-service-block li {
   padding-left: 1.15em;
   position: relative;
 }
-body[data-type=aboutus] .about-service-block li::before {
+.about-service-block li::before {
   content: "・";
   left: 0;
   position: absolute;
@@ -1602,7 +1564,10 @@ body[data-type=aboutus] .about-service-block li::before {
 
 /* プライバシーポリシー */
 .policy {
-  padding-block: clamp(72px, 9vw, 130px);
+  color: var(--palette-black);
+  font-family: var(--font-comp);
+  font-size: 24px;
+  padding: 60px 50px 120px;
 }
 .policy h1 {
   font-size: clamp(1.8rem, 3vw, 2.8rem);
@@ -1615,38 +1580,29 @@ body[data-type=aboutus] .about-service-block li::before {
 .policy ul {
   padding-left: 1.4em;
 }
-body[data-type=privacy] .policy {
-  color: var(--palette-black);
-  font-family: var(--font-comp);
-  font-size: 24px;
-  padding-bottom: 120px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 60px;
-}
-body[data-type=privacy] .policy p {
+.policy p {
   line-height: 1.8;
   margin-bottom: 40px;
 }
-body[data-type=privacy] .policy ul {
+.policy ul {
   line-height: 1.8;
   list-style-type: disc;
   margin-bottom: 40px;
   padding-left: 1.5em;
 }
-body[data-type=privacy] .policy li {
+.policy li {
   margin-bottom: 12px;
 }
-body[data-type=privacy] .policy li ul {
+.policy li ul {
   list-style-type: circle;
   margin-bottom: 0;
   margin-top: 8px;
 }
-body[data-type=privacy] .policy .section-heading {
+.policy .section-heading {
   margin-bottom: 24px;
   margin-top: 60px;
 }
-body[data-type=privacy] .policy .section-heading__title {
+.policy .section-heading__title {
   font-size: 40px;
   font-weight: 700;
   margin-bottom: 60px;

@@ -297,12 +297,12 @@ img {
 
   body[data-type="price"] & {
     margin-bottom: 48px;
-      color: var(--palette-black);
-      font-size: 40px;
-      font-weight: 900;
-      letter-spacing: 0.02em;
-      line-height: 1.6;
-    }
+    color: var(--palette-black);
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+  }
 }
 
 .center-heading {
@@ -467,7 +467,6 @@ MVとパンくず
 
   &--cta {
     background: var(--palette-orange-01);
-    border: 1px solid var(--palette-orange-04);
     border-radius: 6px;
     color: var(--palette-black);
     font-size: 24px;
@@ -497,13 +496,16 @@ MVとパンくず
   }
 }
 
-.home-links {
+.home-links,
+.intro-surface {
   background: linear-gradient(180deg, var(--palette-green-01), rgba(209, 224, 180, 0.54) 45%, var(--palette-white));
+}
+
+.home-links {
   padding: 32px 0 118px;
 }
 
 .intro-surface {
-  background: linear-gradient(180deg, var(--palette-green-01), rgba(209, 224, 180, 0.54) 45%, var(--palette-white));
   padding-top: clamp(40px, 5vw, 72px);
 }
 
@@ -598,8 +600,6 @@ MVとパンくず
     margin-top: clamp(74px, 8vw, 108px);
 
     &--reverse {
-      grid-template-columns: repeat(2, minmax(0, 750px));
-
       .reason-index {
         left: 0 !important;
         right: auto !important;
@@ -722,13 +722,7 @@ MVとパンくず
 }
 
 .about-services {
-  body[data-type="aboutus"] & {
-    padding: 0 0 150px;
-
-    > .content-width {
-      max-width: 1600px;
-    }
-  }
+  padding: 0 0 150px;
 }
 
 %about__text-default {
@@ -737,13 +731,11 @@ MVとパンくず
   line-height: 2;
 }
 
-.service-feature {
-  body[data-type="aboutus"] & {
-    p {
-      @extend %about__text-default;
-      margin-top: 26px;
-      max-width: 980px;
-    }
+.about-services .service-feature {
+  p {
+    @extend %about__text-default;
+    margin-top: 26px;
+    max-width: 980px;
   }
 }
 
@@ -776,9 +768,7 @@ MVとパンくず
 }
 
 .about-flow {
-  body[data-type="aboutus"] & {
-    padding: 0 0 150px;
-  }
+  padding: 0 0 150px;
 }
 
 .flow-assets {
@@ -792,50 +782,38 @@ MVとパンくず
   }
 
   &--about {
-    body[data-type="aboutus"] & {
-      gap: 60px;
-      margin: 62px auto 0;
-      max-width: 1200px;
-    }
+    gap: 60px;
+    margin: 62px auto 0;
+    max-width: 1200px;
   }
 
   &__item {
-    body[data-type="aboutus"] & {
-      position: relative;
-    }
+    position: relative;
   }
 
   &__cta {
-    body[data-type="aboutus"] & {
-      max-width: calc(100% - 48px);
-      position: absolute;
-      right: clamp(28px, 5vw, 72px);
-      top: calc(45.25% + 3.5px);
-      z-index: 2;
-    }
+    max-width: calc(100% - 48px);
+    position: absolute;
+    right: clamp(28px, 5vw, 72px);
+    top: calc(45.25% + 3.5px);
+    z-index: 2;
   }
 }
 
 .time-schedule { // aboutus - about-services > about-day-grid
   height: auto;
   margin-top: 0;
-  max-width: 824px;
+  max-width: 680px;
   width: 100%;
-
-  body[data-type="aboutus"] & {
-    max-width: 680px;
-  }
 }
 
 .about-day-grid {
-  body[data-type="aboutus"] & {
-    gap: clamp(56px, 6vw, 96px);
-    grid-template-columns: minmax(0, 680px) minmax(0, 680px);
-    justify-content: center;
-    margin-inline: auto;
-    max-width: 1440px;
-    padding: 88px 0 130px;
-  }
+  gap: clamp(56px, 6vw, 96px);
+  grid-template-columns: minmax(0, 680px) minmax(0, 680px);
+  justify-content: center;
+  margin-inline: auto;
+  max-width: 1440px;
+  padding: 88px 0 130px;
 }
 
 
@@ -907,6 +885,10 @@ MVとパンくず
   a {
     font-size: 24px;
     min-width: 0;
+  }
+
+  &[hidden] {
+    display: none;
   }
 }
 
@@ -1390,35 +1372,31 @@ MVとパンくず
 
 /* 法人情報・投稿・料金表の共通部品 */
 .about-profile {
-  body[data-type="aboutus"] & {
-    background: linear-gradient(180deg, var(--palette-green-01) 0%, rgba(209, 224, 180, 0.72) 46%, var(--palette-white) 100%);
-    padding: 72px 0 150px;
+  background: linear-gradient(180deg, var(--palette-green-01) 0%, rgba(209, 224, 180, 0.72) 46%, var(--palette-white) 100%);
+  padding: 72px 0 150px;
 
-    .profile-grid {
-      gap: clamp(72px, 8vw, 130px);
-      grid-template-columns: minmax(420px, 640px) minmax(420px, 620px);
-      justify-content: center;
-      max-width: 1440px;
-    }
+  .profile-grid {
+    gap: clamp(72px, 8vw, 130px);
+    grid-template-columns: minmax(420px, 640px) minmax(420px, 620px);
+    justify-content: center;
+    max-width: 1440px;
+  }
 
-    .section-photo {
-      aspect-ratio: 640 / 427;
-      height: auto;
-    }
+  .section-photo {
+    aspect-ratio: 640 / 427;
+    height: auto;
   }
 }
 
 .facility-info {
-  body[data-type="aboutus"] & {
-    color: var(--palette-black);
-    display: grid;
-    font-size: 24px;
-    gap: 14px;
-    line-height: 1.8;
+  color: var(--palette-black);
+  display: grid;
+  font-size: 24px;
+  gap: 14px;
+  line-height: 1.8;
 
-    p {
-      margin: 0;
-    }
+  p {
+    margin: 0;
   }
 }
 
@@ -1430,18 +1408,17 @@ MVとパンくず
 }
 
 .data-list {
+  color: var(--palette-black);
   display: grid;
-  gap: 10px;
+  font-size: 24px;
+  gap: 14px;
+  line-height: 1.8;
   margin: 0;
 
   div {
     display: grid;
-    gap: 16px;
+    gap: 18px;
     grid-template-columns: 7em minmax(0, 1fr);
-
-    body[data-type="facilities"] & {
-      gap: 18px;
-    }
   }
 
   dt {
@@ -1452,18 +1429,11 @@ MVとパンくず
   dd {
     margin: 0;
   }
-
-  body[data-type="facilities"] & {
-    color: var(--palette-black);
-    gap: 14px;
-    font-size: 24px;
-    line-height: 1.8;
-  }
 }
 
 .philosophy {
   margin: 0 auto;
-  max-width: 720px;
+  max-width: 1000px;
   text-align: center;
 
   strong {
@@ -1473,15 +1443,11 @@ MVとパンくず
     margin: 28px 0;
   }
 
-  body[data-type="facilities"] & {
-    max-width: 1000px;
-
-    p {
-      color: var(--palette-black);
-      font-size: 24px;
-      font-weight: 500;
-      line-height: 2;
-    }
+  p {
+    color: var(--palette-black);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 2;
   }
 }
 
@@ -1492,20 +1458,16 @@ MVとパンくず
 
 .stack-gallery {
   display: grid;
-  gap: 14px;
+  gap: 18px;
 
-  body[data-type="aboutus"] & {
-    gap: 18px;
+  .section-photo {
+    aspect-ratio: 640 / 360;
+    height: auto;
+  }
 
-    .section-photo {
-      aspect-ratio: 640 / 360;
-      height: auto;
-    }
-
-    .portrait-photo {
-      max-height: none;
-      object-position: center 45%;
-    }
+  .portrait-photo {
+    max-height: none;
+    object-position: center 45%;
   }
 }
 
@@ -1514,11 +1476,7 @@ MVとパンくず
     display: grid;
     gap: 44px;
     max-width: 1200px;
-    margin: 100px auto;
-
-    body[data-type="price"] & {
-      margin: 0 auto;
-    }
+    margin: 0 auto;
   }
 
   &-wrap {
@@ -1609,49 +1567,41 @@ MVとパンくず
 }
 
 .price-col {
-  body[data-type="price"] & {
-    &-category {
-      width: 27%;
-    }
+  &-category {
+    width: 27%;
+  }
 
-    &-unit {
-      width: 24%;
-    }
+  &-unit {
+    width: 24%;
+  }
 
-    &-share {
-      width: calc(22% + 15px);
-    }
+  &-share {
+    width: calc(22% + 15px);
   }
 }
 
 .price-caption-note {
-  body[data-type="price"] & {
-    font-size: 24px;
-    font-weight: 400;
-    margin-left: 20px;
-  }
+  font-size: 24px;
+  font-weight: 400;
+  margin-left: 20px;
 }
 
 #day-service {
-  body[data-type="price"] & {
-    .table-stack > div:first-child {
-      margin-bottom: -6px;
-    }
+  .table-stack > div:first-child {
+    margin-bottom: -6px;
+  }
 
-    p {
-      color: var(--palette-black);
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 1.9;
-      margin: 0;
-    }
+  p {
+    color: var(--palette-black);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.9;
+    margin: 0;
   }
 }
 
 #visit-service {
-  body[data-type="price"] & {
-    padding-bottom: 100px;
-  }
+  padding-bottom: 100px;
 }
 
 .price-links,
@@ -1663,51 +1613,37 @@ MVとパンくず
 
 .price-links {
   justify-content: center;
-  margin-top: 0;
-
-  body[data-type="price"] & {
-    flex-wrap: nowrap;
-    gap: 200px;
-    margin-inline: auto;
-    max-width: 1400px;
-  }
+  flex-wrap: nowrap;
+  gap: 200px;
+  margin: 0 auto;
+  max-width: 1400px;
 }
 
 .price{
   &-link-card {
-    flex: 1 1 360px;
+    flex: 0 0 600px;
     max-width: 600px;
 
-    body[data-type="price"] & {
-      flex: 0 0 600px;
-
-      img {
-        width: 600px;
-      }
+    img {
+      width: 600px;
     }
   }
 }
 
 .category-cards {
-  body[data-type="faq"] & {
-    flex-wrap: nowrap;
-    gap: 60px;
-    justify-content: center;
-    margin-inline: auto;
-    max-width: 1580px;
+  flex-wrap: nowrap;
+  gap: 60px;
+  justify-content: center;
+  margin-inline: auto;
+  max-width: 1580px;
 
-    + .faq-group {
-      margin-top: 168px;
-    }
+  + .faq-group {
+    margin-top: 168px;
   }
 
   > div {
-    flex: 1 1 220px;
-
-    body[data-type="faq"] & {
-      flex: 0 0 350px;
-      max-width: 350px;
-    }
+    flex: 0 0 350px;
+    max-width: 350px;
   }
 }
 
@@ -1739,23 +1675,19 @@ MVとパンくず
   margin: 0 0 18px;
 }
 
-.archive-item[hidden] {
-  display: none;
-}
-
 .pagination {
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
   justify-content: center;
   margin-top: 24px;
-}
 
-.pagination a {
-  min-height: 40px;
-  min-width: 40px;
-  padding: 4px 10px;
-  text-align: center;
+  a {
+    min-height: 40px;
+    min-width: 40px;
+    padding: 4px 10px;
+    text-align: center;
+  }
 }
 
 .post-grid {
@@ -1829,73 +1761,68 @@ MVとパンくず
 }
 
 .service-lead {
-  font-size: clamp(1rem, 1.4vw, 1.35rem);
-  line-height: 1.9;
-  margin: clamp(20px, 2.6vw, 34px) auto clamp(28px, 4vw, 48px);
-
-  body[data-type="aboutus"] & {
-    @extend %about__text-default;
-    font-weight: 500;
-    margin-top: 26px;
-    max-width: 980px;
-  }
+  @extend %about__text-default;
+  font-weight: 500;
+  margin: 26px auto clamp(28px, 4vw, 48px);
+  max-width: 980px;
 }
 
 .about-service-block {
-  body[data-type="aboutus"] & {
-    padding: 0 0 126px;
+  padding: 0 0 126px;
 
-    .grid-split {
-      gap: clamp(56px, 6vw, 96px);
-      grid-template-columns: repeat(2, minmax(0, 680px));
-      justify-content: center;
-      margin: 54px auto 0;
-      max-width: 1440px;
-    }
+  .grid-split {
+    gap: clamp(56px, 6vw, 96px);
+    grid-template-columns: repeat(2, minmax(0, 680px));
+    justify-content: center;
+    margin: 54px auto 0;
+    max-width: 1440px;
+  }
 
-    h4 {
-      background: var(--palette-green-03);
-      color: var(--palette-white);
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 1.45;
-      margin: 0 0 22px;
-      padding: 12px 18px;
-      text-align: center;
-    }
+  h4 {
+    background: var(--palette-green-03);
+    color: var(--palette-white);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.45;
+    margin: 0 0 22px;
+    padding: 12px 18px;
+    text-align: center;
+  }
 
-    p,
-    li {
-      @extend %about__text-default;
-    }
+  p,
+  li {
+    @extend %about__text-default;
+  }
 
-    .service-list-title {
-      font-weight: 700;
-      text-align: center;
-    }
+  .service-list-title {
+    font-weight: 700;
+    text-align: center;
+  }
 
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
 
-    li {
-      padding-left: 1.15em;
-      position: relative;
+  li {
+    padding-left: 1.15em;
+    position: relative;
 
-      &::before {
-        content: "・";
-        left: 0;
-        position: absolute;
-        top: 0;
-      }
+    &::before {
+      content: "・";
+      left: 0;
+      position: absolute;
+      top: 0;
     }
   }
 }
 
 /* プライバシーポリシー */
 .policy {
-  padding-block: clamp(72px, 9vw, 130px);
+  color: var(--palette-black);
+  font-family: var(--font-comp);
+  font-size: 24px;
+  padding: 60px 50px 120px;
 
   h1 {
     font-size: clamp(1.8rem, 3vw, 2.8rem);
@@ -1911,46 +1838,36 @@ MVとパンくず
     padding-left: 1.4em;
   }
 
-  body[data-type="privacy"] & {
-    color: var(--palette-black);
-    font-family: var(--font-comp);
-    font-size: 24px;
-    padding-bottom: 120px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 60px;
+  p {
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
 
-    p {
-      line-height: 1.8;
-      margin-bottom: 40px;
-    }
+  ul {
+    line-height: 1.8;
+    list-style-type: disc;
+    margin-bottom: 40px;
+    padding-left: 1.5em;
+  }
+
+  li {
+    margin-bottom: 12px;
 
     ul {
-      line-height: 1.8;
-      list-style-type: disc;
-      margin-bottom: 40px;
-      padding-left: 1.5em;
+      list-style-type: circle;
+      margin-bottom: 0;
+      margin-top: 8px;
     }
+  }
 
-    li {
-      margin-bottom: 12px;
+  .section-heading {
+    margin-bottom: 24px;
+    margin-top: 60px;
 
-      ul {
-        list-style-type: circle;
-        margin-bottom: 0;
-        margin-top: 8px;
-      }
-    }
-
-    .section-heading {
-      margin-bottom: 24px;
-      margin-top: 60px;
-
-      &__title {
-        font-size: 40px;
-        font-weight: 700;
-        margin-bottom: 60px;
-      }
+    &__title {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 60px;
     }
   }
 }
