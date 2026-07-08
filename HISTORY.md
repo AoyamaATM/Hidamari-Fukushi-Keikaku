@@ -62,3 +62,26 @@
 - `pnpm run check:visual:build` を実行し、`index`、`about`、`facilities`、`price`、`faq`、`contact`、`archive`、`single`、`privacy` のPC幅スクリーンショット生成が成功することを確認した。生成画像を目視し、大きな崩れがないことを確認した。
 - PC側全範囲のSCSSリファクタリングとして、About / Facilities / Price / FAQ / Privacy の1ページ専用クラスに残っていた `body[data-type]` ラップを直接指定へ寄せ、重複していた背景・余白・幅指定を整理した。
 - Archive / Single 周辺は `.archive-item[hidden]` と `.pagination a` を関連ブロック内へ近接化し、SCSSの見通しを整えた。`pnpm run build:css` と `pnpm run check:visual:build` を実行し、全9HTMLページのPC幅スクリーンショット生成が成功することを確認した。
+
+### 15時進捗
+
+- `.skip-link` の遷移先を `#main` から `#main-content` へ変更し、実行後の移動先がパンくずリストまたはアンカーリンク群の直後になるよう全9HTMLページへ `.skip-target` を追加した。
+- TOPページはアンカーリンク群の後、FAQページはカテゴリカード群の後、下層ページはパンくずリストの後に `#main-content` を置き、移動先で主要コンテンツに入りやすい位置へ調整した。
+- `.skip-target` は高さ0のフォーカス用ターゲットとして追加し、固定ヘッダーに隠れないよう `scroll-margin-top` を設定した。
+- FAQページでは `.category-cards + .faq-group` の隣接指定が `.skip-target` 追加で外れないよう、`.category-cards + .skip-target + .faq-group` も同じ余白指定に含めた。
+- Archiveページの絞り込みselectについて、WordPress移行時にfunctionsへ寄せても意味が追いやすいよう `.select-field` を `.archive-select-field` へリネームした。
+- Contactフォームは将来的にContact Form 7へ置き換える予定のため、今回は追加調整せず保留とした。
+- ヘッダーの現在ページ表示は追加・削除せず、既存挙動のまま維持した。
+- `pnpm run check:visual:build` を実行し、PC幅の全9ページ（TOP / About / Facilities / Price / FAQ / Contact / Archive / Single / Privacy）のスクリーンショット生成が成功することを確認した。FAQページは `.skip-target` 追加後に余白差分を検出し、隣接指定を補正したうえで再確認した。
+- `git diff --check` で空白エラーがないこと、旧 `class="select-field"` と `.select-field` セレクタが残っていないことを確認した。
+
+### 今日の作業全体概要
+
+- 前日分の `HISTORY.md` を `History-archive/HISTORY-260707.md` へアーカイブし、2026-07-08分の作業履歴を開始した。
+- Price / FAQ / Contact / About / TOP のPC表示について、余白、FAQ開閉表示、回答の重なり順、流れ画像の間隔、料金表周辺を調整し、対象ページごとにPC幅スクリーンショットで確認した。
+- SCSSのフォーム共通化、ページ専用指定の整理、未使用・重複気味の指定削減、`body[data-type]` ラップの見直し、Archive / Single 周辺の関連指定の近接化を行った。
+- HTML側では、CSS/JS参照がない補助クラスを削除し、PC側の未使用SCSSセレクタ棚卸では現時点で削除対象と断定できるセレクタがないことを確認した。
+- PC表示確認の対象を全9HTMLページへ広げ、`tools/visual-check-pages.json` から一括でPC幅スクリーンショット確認できる状態にした。
+- `.skip-link` は目立たない表示を維持しつつ、遷移先をパンくずリストまたはアンカーリンク群の下へ変更した。
+- Archiveページの絞り込みselectは `.archive-select-field` へ命名を寄せ、WordPress移行時に読みやすい形へ整理した。
+- SP・モバイル対応、Contact Form 7前提のフォーム調整、追加のヘッダー現在ページ表示は今回の作業対象外として保留した。

@@ -30,7 +30,7 @@ const headerHost = document.querySelector("[data-site-header]");
 if (headerHost) {
   headerHost.className = "site-header";
   headerHost.innerHTML = `
-    <a class="skip-link" href="#main">本文へ移動</a>
+    <a class="skip-link" href="#main-content">本文へ移動</a>
     <div class="header-inner">
       ${brand}
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">

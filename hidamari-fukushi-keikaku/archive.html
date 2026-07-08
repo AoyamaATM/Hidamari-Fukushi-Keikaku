@@ -15,10 +15,12 @@
         <span>“お知らせ一覧”</span>
       </nav>
 
+      <div class="skip-target" id="main-content" tabindex="-1"></div>
+
       <section class="content-width archive-shell">
         <h1 class="section-heading center-heading">お知らせ一覧</h1>
         <form class="filter-bar" data-archive-filter>
-          <label class="select-field">
+          <label class="archive-select-field">
             <span>カテゴリ：</span>
             <select name="category">
               <option value="all">すべて（10）</option>
@@ -26,7 +28,7 @@
               <option value="blog">ブログ</option>
             </select>
           </label>
-          <label class="select-field">
+          <label class="archive-select-field">
             <span>月別：</span>
             <select name="month">
               <option value="all">全期間（10）</option>

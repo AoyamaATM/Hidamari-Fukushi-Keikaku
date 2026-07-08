@@ -141,6 +141,13 @@ img {
   }
 }
 
+.skip-target {
+  display: block;
+  height: 0;
+  outline: 0;
+  scroll-margin-top: 110px;
+}
+
 .header-inner {
   align-items: center;
   display: flex;
@@ -1303,7 +1310,7 @@ MVとパンくず
   }
 }
 
-.select-field select {
+.archive-select-field select {
   @include form-control;
 }
 
@@ -1637,7 +1644,8 @@ MVとパンくず
   margin-inline: auto;
   max-width: 1580px;
 
-  + .faq-group {
+  + .faq-group,
+  + .skip-target + .faq-group {
     margin-top: 168px;
   }
 
@@ -1661,7 +1669,7 @@ MVとパンくず
   margin: 48px 0 42px;
 }
 
-.select-field {
+.archive-select-field {
   align-items: center;
   display: grid;
   flex: 1 1 280px;
