@@ -52,3 +52,7 @@
 - `pnpm run build:css` を実行し、表示用CSSとSCSS配下の生成CSS・mapを同期した。
 - `pnpm run check:visual:build -PageId index`、`about`、`price`、`faq`、`contact` を個別実行し、PC幅スクリーンショットでTOPアンカー、Aboutの流れ、Price表、FAQアンカー、Contact上部とフォームに大きな崩れがないことを確認した。
 - `git diff --check` で空白エラーがないことを確認した。
+- HTML側の未使用補助クラス整理として、SCSS/JS参照がない `home-reasons`、`home-price`、`home-news`、`service-detail`、`about-visit-service`、`about-consult-service`、`faq-answer-body`、`flow-assets__item--cta`、`table-price--numbers`、Archiveページの余分な `tag` を削除した。
+- CSS/JSで使っている `about-service-block`、`flow-assets__item`、`table-price`、`table-price--content`、`tag-blog` などは残し、見た目と動作に影響しない範囲に絞った。
+- `pnpm run check:visual:build -PageId index`、`about`、`price`、`faq` を個別実行し、PC幅スクリーンショット生成が成功することを確認した。Archiveページは表示確認設定に含まれないため、`tag-blog` が残って同じCSSに当たることを差分で確認した。
+- `git diff --check` で空白エラーがないことを確認した。
