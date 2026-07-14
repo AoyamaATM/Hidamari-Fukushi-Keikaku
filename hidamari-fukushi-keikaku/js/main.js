@@ -1,6 +1,6 @@
 const body = document.body;
 const root = body.dataset.root || "./";
-const page = body.dataset.page || "home";
+const page = body.dataset.type || "home";
 
 const routes = {
   home: `${root}index.html`,
