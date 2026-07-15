@@ -128,7 +128,7 @@ git diff --check
 
 このフェーズでは、ページ固有の細かなレイアウトには手を入れず、全ページ共通部分を先に整えます。
 
-## ステップ1-1：既存メディアクエリを調査する
+## ステップ1-1：既存メディアクエリを調査する（完了）
 
 ### 調査対象
 
@@ -174,6 +174,14 @@ git diff --check
 - 1280px
 - 900px
 - 600px
+
+### 調査結果
+
+- `style.scss`、生成済みの `css/style.css`・`scss/style.css`・`scss/style.min.css`、およびHTML内に `@media` はなく、既存のブレークポイント・SP用クラス・タブレット用指定もない。したがって、1600px、1024px、768px、430px以外に統合を検討する指定はない。
+- `main.js` にはモバイルメニュー用の `nav-open` 切り替えがある一方、対応するSCSSはなく、`.nav-toggle` は全幅で `display: none`。ヘッダー対応では既存のJavaScriptを再利用し、指定4幅だけで表示・開閉のスタイルを追加する。
+- 既存の再利用可能な縮小対策は、全画像の `max-width: 100%`、`.page-shell` の `overflow: clip`、`--content` / `--comp-content` の可変コンテナ、`minmax(0, …)` を使った一部グリッド。これらを維持する。
+- 固定幅・最小幅・絶対配置の主な確認箇所は、`.page-hero` / `.subpage-hero` の `width: 100vw`、共通グリッド、`.grid-footer`、`.footer-nav`、`.flow-assets__cta`、各ページの2列グリッド、`.price-links` / `.price-link-card`、`.category-cards`、`.post-grid`。以降の共通・ページ別ステップで対象ごとに調整する。
+- 現時点では全幅に同じ宣言が適用されるため、1920px、1600px/1599px、1024px/1023px、768px/767px、430px/429pxおよび中間幅の境界で切り替わる既存指定はない。以降は各 `max-width` を1600px、1024px、768px、430pxの順に追加し、各境界の直前ではひとつ上の指定、境界以下では当該指定が適用されることを確認する。
 
 ### 完了条件
 
