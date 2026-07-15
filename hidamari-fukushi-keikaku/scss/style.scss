@@ -2797,3 +2797,273 @@ TOPページのレスポンシブ調整
     }
   }
 }
+
+/* =======================================================
+Aboutページのレスポンシブ調整
+======================================================= */
+@media (max-width: 1024px) {
+  body[data-type="aboutus"] {
+    .about-profile .profile-grid {
+      gap: clamp(36px, 5vw, 56px);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .facility-info {
+      font-size: 20px;
+    }
+
+    .about-day-grid {
+      gap: clamp(32px, 4vw, 48px);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      padding: 64px 0 96px;
+    }
+
+    .about-service-block .grid-split {
+      gap: clamp(32px, 4vw, 48px);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .flow-assets--about {
+      gap: 48px;
+      max-width: 960px;
+    }
+
+    .flow-assets__item {
+      display: grid;
+      gap: 20px;
+      justify-items: end;
+    }
+
+    .flow-assets__cta {
+      position: static;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  body[data-type="aboutus"] {
+    .about-profile {
+      padding: 48px 0 80px;
+
+      .profile-grid {
+        gap: 32px;
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 560px;
+      }
+
+      .section-photo {
+        aspect-ratio: 386 / 216;
+      }
+    }
+
+    .facility-info {
+      font-size: 18px;
+      gap: 12px;
+      line-height: 1.8;
+    }
+
+    .about-services {
+      padding-bottom: 96px;
+
+      .service-showcase {
+        gap: 40px;
+        margin-top: 40px;
+      }
+
+      .service-banner {
+        aspect-ratio: 4 / 1;
+
+        figcaption {
+          font-size: 22px;
+          letter-spacing: 0.2em;
+        }
+      }
+
+      .service-feature p,
+      .service-lead {
+        font-size: 16px;
+        line-height: 1.9;
+      }
+    }
+
+    .about-day-grid {
+      gap: 32px;
+      grid-template-columns: minmax(0, 1fr);
+      max-width: 560px;
+      padding: 48px 0 80px;
+    }
+
+    .stack-gallery {
+      gap: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .about-service-block {
+      padding-bottom: 80px;
+
+      .grid-split {
+        gap: 40px;
+        grid-template-columns: minmax(0, 1fr);
+        margin-top: 36px;
+        max-width: 560px;
+      }
+
+      h4 {
+        font-size: 22px;
+        margin-bottom: 16px;
+        padding: 10px 16px;
+      }
+
+      p,
+      li {
+        font-size: 16px;
+        line-height: 1.9;
+      }
+
+      .service-list-title {
+        margin-top: 20px;
+      }
+    }
+
+    .about-flow {
+      padding-bottom: 80px;
+    }
+
+    .flow-assets--about {
+      gap: 32px;
+      margin-top: 40px;
+      max-width: 560px;
+
+      > img,
+      .flow-assets__item img {
+        display: block;
+        margin-inline: auto;
+        max-width: 360px;
+      }
+
+      > img:nth-child(1) {
+        content: url("../img/flow11-sp.svg");
+      }
+
+      > img:nth-child(2) {
+        content: url("../img/flow12-sp.svg");
+      }
+
+      .flow-assets__item img {
+        content: url("../img/flow13-sp.svg");
+      }
+
+      > img:nth-child(4) {
+        content: url("../img/flow14-sp.svg");
+      }
+
+      > img:nth-child(5) {
+        content: url("../img/flow15-sp.svg");
+      }
+
+      > img:nth-child(6) {
+        content: url("../img/flow16-sp.svg");
+      }
+
+      > img:nth-child(7) {
+        content: url("../img/flow17-sp.svg");
+      }
+
+      > img:nth-child(8) {
+        content: url("../img/flow18-sp.svg");
+      }
+    }
+
+    .flow-assets__item {
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .flow-assets__cta {
+      min-height: 75px;
+      width: min(300px, 100%);
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  body[data-type="aboutus"] {
+    .subpage-hero img {
+      aspect-ratio: 43 / 30;
+      content: url("../img/mv-AboutUs_SP.png");
+      object-fit: cover;
+    }
+
+    .about-profile {
+      padding: 40px 0 64px;
+
+      .profile-grid {
+        gap: 28px;
+      }
+
+      .section-heading {
+        margin-bottom: 18px;
+      }
+    }
+
+    .facility-info {
+      font-size: 16px;
+      gap: 10px;
+    }
+
+    .about-services {
+      padding-bottom: 72px;
+
+      .service-showcase {
+        gap: 32px;
+        margin-top: 36px;
+      }
+
+      .service-banner figcaption {
+        font-size: 20px;
+      }
+    }
+
+    .about-day-grid {
+      gap: 24px;
+      max-width: 386px;
+      padding: 40px 0 64px;
+    }
+
+    .stack-gallery {
+      gap: 8px;
+    }
+
+    .about-service-block {
+      padding-bottom: 64px;
+
+      .grid-split {
+        gap: 32px;
+        margin-top: 28px;
+      }
+
+      h4 {
+        font-size: 20px;
+      }
+    }
+
+    .about-flow {
+      padding-bottom: 64px;
+    }
+
+    .flow-assets--about {
+      gap: 20px;
+      margin-top: 32px;
+      max-width: 360px;
+    }
+
+    .flow-assets__item {
+      gap: 16px;
+    }
+
+    .flow-assets__cta {
+      font-size: 16px;
+      letter-spacing: 0.16em;
+    }
+  }
+}
