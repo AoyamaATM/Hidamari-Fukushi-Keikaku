@@ -94,11 +94,40 @@ document.querySelectorAll(`[data-nav="${currentNav}"]`).forEach((link) => {
 // ナビゲーションのトグル処理。モバイルでナビゲーションを開閉するためのもの。
 const navToggle = document.querySelector(".nav-toggle");
 
+const closeNavigation = () => {
+  navToggle?.setAttribute("aria-expanded", "false");
+  body.classList.remove("nav-open");
+};
+
 navToggle?.addEventListener("click", () => {
   const expanded = navToggle.getAttribute("aria-expanded") === "true";
-  navToggle.setAttribute("aria-expanded", String(!expanded));
-  body.classList.toggle("nav-open", !expanded);
+
+  if (expanded) {
+    closeNavigation();
+    return;
+  }
+
+  navToggle.setAttribute("aria-expanded", "true");
+  body.classList.add("nav-open");
 });
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && navToggle?.getAttribute("aria-expanded") === "true") {
+    closeNavigation();
+    navToggle.focus();
+  }
+});
+
+const desktopNavigation = window.matchMedia("(min-width: 1025px)");
+
+const resetDesktopNavigation = () => {
+  if (desktopNavigation.matches) {
+    closeNavigation();
+  }
+};
+
+desktopNavigation.addEventListener("change", resetDesktopNavigation);
+window.addEventListener("resize", resetDesktopNavigation);
 
 // FAQのアコーディオン処理。FAQページで質問をクリックすると回答が表示されるようにするためのもの。
 document.querySelectorAll(".faq-question").forEach((button) => {
