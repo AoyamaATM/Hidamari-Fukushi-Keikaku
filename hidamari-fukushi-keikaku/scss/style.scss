@@ -3067,3 +3067,130 @@ Aboutページのレスポンシブ調整
     }
   }
 }
+
+/* =======================================================
+Facilitiesページのレスポンシブ調整
+======================================================= */
+@media (max-width: 1024px) {
+  body[data-type="facilities"] {
+    .profile-grid,
+    .grid-staff {
+      gap: clamp(32px, 5vw, 56px);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .profile-grid .section-photo,
+    .grid-staff .section-photo {
+      aspect-ratio: 16 / 10;
+      height: auto;
+    }
+
+    .data-list {
+      font-size: 20px;
+
+      div {
+        gap: 14px;
+        grid-template-columns: 6em minmax(0, 1fr);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  body[data-type="facilities"] {
+    .section {
+      padding-block: 64px;
+    }
+
+    .profile-grid,
+    .grid-staff {
+      display: grid;
+      gap: 32px;
+      grid-template-columns: minmax(0, 1fr);
+      max-width: 560px;
+    }
+
+    .profile-grid .section-photo,
+    .grid-staff .section-photo {
+      aspect-ratio: 386 / 216;
+    }
+
+    .data-list {
+      font-size: 18px;
+      gap: 12px;
+
+      div {
+        gap: 12px;
+      }
+    }
+
+    .philosophy {
+      max-width: 560px;
+
+      p {
+        font-size: 18px;
+        line-height: 1.9;
+      }
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  body[data-type="facilities"] {
+    .subpage-hero img {
+      aspect-ratio: 43 / 30;
+      content: url("../img/mv-Facilities_SP.png");
+      object-fit: cover;
+    }
+
+    .section {
+      padding: 40px 0 32px;
+    }
+
+    .breadcrumb {
+      min-height: 50px;
+    }
+
+    .profile-grid,
+    .grid-staff {
+      gap: 40px;
+      max-width: 386px;
+    }
+
+    .section-heading {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .intro-surface .section-heading {
+      margin-bottom: 48px;
+    }
+
+    .data-list {
+      font-size: 16px;
+      gap: 14px;
+      line-height: 1.8;
+
+      div {
+        gap: 10px;
+        grid-template-columns: 5.5em minmax(0, 1fr);
+      }
+    }
+
+    .philosophy {
+      max-width: 386px;
+
+      strong {
+        font-size: 22px;
+        line-height: 1.35;
+        margin: 22px auto;
+        max-width: 328px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.8;
+      }
+    }
+  }
+}
