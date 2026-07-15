@@ -15,4 +15,11 @@
 - `ROADMAP.md` のフェーズ0・ステップ0-2を確認し、レスポンシブ対応用ブランチの作成手順と完了条件を確認した。
 - ローカル・リモートともに既存の `feature/responsive` ブランチがないことを確認した。
 - `git switch -c feature/responsive` で、`main` とは別のレスポンシブ対応用ブランチを作成して切り替えた。
-- ステップ0-2のみ実施し、ステップ0-3以降には進んでいない。
+- この時点ではステップ0-2のみ実施し、ステップ0-3以降には進んでいない。
+- `ROADMAP.md` のフェーズ0・ステップ0-3を確認し、PC版基準スクリーンショット生成の対象9ページと完了条件を確認した。
+- `README.md`、`package.json`、`tools/visual-check-pages.json`、表示確認用スクリプト、対象HTML、SCSS/CSS/JavaScriptの状態を確認した。
+- `pnpm run build:css` を実行し、CSSビルドが成功することを確認した。
+- 初回の `pnpm run check:visual:build` では `hidamari-fukushi-keikaku/scss/style.css` の一時的な読み込みエラーが出たため、`pnpm run build:css` を再実行してから再試行した。
+- 再実行した `pnpm run check:visual:build` で、`visual-check/` にPC幅の全9ページ分スクリーンショットが生成されることを確認した。
+- `git diff --check` で空白エラーがないことを確認した。
+- 生成された `visual-check/` と `.chrome-check/` はローカル確認用のGit管理対象外で、サイト本体、SCSS、CSS、JavaScript、HTMLの差分は残っていないことを確認した。
