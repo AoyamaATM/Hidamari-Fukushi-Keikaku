@@ -23,3 +23,8 @@
 - 再実行した `pnpm run check:visual:build` で、`visual-check/` にPC幅の全9ページ分スクリーンショットが生成されることを確認した。
 - `git diff --check` で空白エラーがないことを確認した。
 - 生成された `visual-check/` と `.chrome-check/` はローカル確認用のGit管理対象外で、サイト本体、SCSS、CSS、JavaScript、HTMLの差分は残っていないことを確認した。
+- フェーズ0完了後の影響確認として、`feature/responsive` と `main` の差分が `HISTORY.md` と `ROADMAP.md` のみであることを確認した。
+- `hidamari-fukushi-keikaku/`、`tools/`、`package.json`、`README.md`、`.browserslistrc` には `main` との差分がないことを確認した。
+- `pnpm run build:css` を再実行し、ビルド後も作業ツリーに差分が出ないことを確認した。
+- 追加のPC/SP表示確認は、Chrome/EdgeヘッドレスのGPUプロセス異常により再実行できなかった。ステップ0-3で生成済みのPC幅9ページスクリーンショットは `visual-check/` に残っている。
+- 検証中に作成した一時プロファイルと空の検証ディレクトリを削除し、作業ツリーがクリーンであることを確認した。
