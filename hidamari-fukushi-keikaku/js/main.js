@@ -25,7 +25,7 @@ const navigationItems = Object.freeze({
   ],
   footer: [
     { key: "aboutus", label: "施設紹介" },
-    { key: "flow", label: "ご利用の流れ", href: `${routes.home}#flow` },
+    { key: "home", label: "ご利用の流れ", href: `${routes.home}#flow` },
     { key: "price", label: "料金表" },
     { key: "facilities", label: "全施設紹介" },
     { key: "archive", label: "お知らせ一覧" },
