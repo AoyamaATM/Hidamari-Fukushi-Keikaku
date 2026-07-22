@@ -1,3 +1,45 @@
+$breakpoint-wide: 1600px;
+$breakpoint-laptop: 1024px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 430px;
+$breakpoint-tablet-up: 769px;
+$breakpoint-home-hero: 930px;
+
+$subpage-hero-images: (
+  "aboutus": "mv-AboutUs_SP.png",
+  "facilities": "mv-Facilities_SP.png",
+  "price": "mv-PriceList_SP.png",
+  "faq": "mv-faq_SP.png",
+  "contact": "mv-Contact_SP.png"
+);
+
+@mixin viewport-max($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin viewport-between($min, $max) {
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@mixin fill-width-image {
+  height: auto;
+  width: 100%;
+}
+
 :root {
   --palette-orange-01: #ffcb8f;
   --palette-orange-02: #fff4e6;
@@ -87,13 +129,7 @@ img {
 }
 
 .visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+  @include visually-hidden;
 }
 
 /* 共通 リストレイアウト */
@@ -767,7 +803,7 @@ MVとパンくず
   padding: 0 0 150px;
 }
 
-%about__text-default {
+%about-text-default {
   color: var(--palette-black);
   font-size: 24px;
   line-height: 2;
@@ -775,7 +811,7 @@ MVとパンくず
 
 .about-services .service-feature {
   p {
-    @extend %about__text-default;
+    @extend %about-text-default;
     margin-top: 26px;
     max-width: 980px;
   }
@@ -791,7 +827,7 @@ MVとパンくず
   width: 100%;
 }
 
-.portrait-photo { // about_us 写真サイズが合わないため力業で合わせてるっぽい
+.portrait-photo { // Aboutページの人物写真の表示位置を調整
   max-height: 640px;
   object-position: center;
 }
@@ -934,8 +970,8 @@ MVとパンくず
   }
 }
 
-%tag_base { // .tag用 共通規格
-  border: 1px solid; 
+%tag-base { // .tag用 共通規格
+  border: 1px solid;
   border-radius: 999px;
   display: inline-flex;
   font-weight: 800;
@@ -945,13 +981,13 @@ MVとパンくず
 }
 .tag { // 「ニュース」「ブログ」とかのカテゴリータグ
   &-news {
-    @extend %tag_base;
+    @extend %tag-base;
     background: var(--palette-orange-01);
     border-color: var(--palette-orange-04);
   }
 
   &-blog {
-    @extend %tag_base;
+    @extend %tag-base;
     background: var(--palette-green-02);
     border-color: var(--palette-green-03);
   }
@@ -1113,7 +1149,7 @@ MVとパンくず
   お問い合わせ　セクション　TOP / Contact
 =================================================== */
 /* 共通様式 */
-%contact_default { // Contactページ - intro, note, faq-copy 用 共通様式
+%contact-copy-default { // Contactページ - intro, note, faq-copy 用 共通様式
   color: var(--palette-black);
   font-size: 24px;
   font-weight: 500;
@@ -1156,12 +1192,12 @@ MVとパンくず
   }
 
   &-intro { // Contact ページ - 最初の案内文
-    @extend %contact_default;
+    @extend %contact-copy-default;
     margin-block: 0;
   }
 
   &-note { // Contact ページ - プライバシーポリシーの案内
-    @extend %contact_default;
+    @extend %contact-copy-default;
     margin-top: 42px;
     a {
       color: var(--palette-orange-03);
@@ -1648,8 +1684,6 @@ MVとパンくず
 .price-links,
 .category-cards {
   display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
 }
 
 .price-links {
@@ -1661,15 +1695,14 @@ MVとパンくず
   width: 100%;
 }
 
-.price{
+.price {
   &-link-card {
     flex: 1 1 0;
     max-width: 600px;
     min-width: 0;
 
     img {
-      height: auto;
-      width: 100%;
+      @include fill-width-image;
     }
   }
 }
@@ -1699,8 +1732,7 @@ MVとパンくず
   width: 100%;
 
   img {
-    height: auto;
-    width: 100%;
+    @include fill-width-image;
   }
 }
 
@@ -1798,8 +1830,7 @@ MVとパンくず
     display: block;
 
     img {
-      height: auto;
-      width: 100%;
+      @include fill-width-image;
     }
   }
 
@@ -1829,7 +1860,7 @@ MVとパンくず
 }
 
 .service-lead {
-  @extend %about__text-default;
+  @extend %about-text-default;
   font-weight: 500;
   margin: 26px auto clamp(28px, 4vw, 48px);
   max-width: 980px;
@@ -1859,7 +1890,7 @@ MVとパンくず
 
   p,
   li {
-    @extend %about__text-default;
+    @extend %about-text-default;
   }
 
   .service-list-title {
@@ -1900,10 +1931,6 @@ MVとパンくず
   h2 {
     font-size: clamp(1.24rem, 2vw, 1.8rem);
     margin-top: 34px;
-  }
-
-  ul {
-    padding-left: 1.4em;
   }
 
   p {
@@ -1985,14 +2012,14 @@ MVとパンくず
 /* =======================================================
 共通コンテナのレスポンシブ調整
 ======================================================= */
-@media (max-width: 1600px) {
+@include viewport-max($breakpoint-wide) {
   :root {
     --content: min(1600px, calc(100% - 64px));
     --comp-content: min(1600px, calc(100% - 56px));
   }
 }
 
-@media (max-width: 1024px) {
+@include viewport-max($breakpoint-laptop) {
   :root {
     --content: calc(100% - 56px);
     --comp-content: calc(100% - 48px);
@@ -2005,7 +2032,7 @@ MVとパンくず
   }
 }
 
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   :root {
     --content: calc(100% - 48px);
     --comp-content: calc(100% - 40px);
@@ -2018,7 +2045,7 @@ MVとパンくず
   }
 }
 
-@media (max-width: 430px) {
+@include viewport-max($breakpoint-mobile) {
   :root {
     --content: calc(100% - 32px);
     --comp-content: calc(100% - 32px);
@@ -2034,7 +2061,7 @@ MVとパンくず
 /* =======================================================
 ヘッダーとナビゲーションのレスポンシブ調整
 ======================================================= */
-@media (max-width: 1024px) {
+@include viewport-max($breakpoint-laptop) {
   .site-header {
     height: 96px;
   }
@@ -2127,7 +2154,7 @@ MVとパンくず
   }
 }
 
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   .site-header {
     height: 100px;
   }
@@ -2143,7 +2170,7 @@ MVとパンくず
   }
 }
 
-@media (max-width: 430px) {
+@include viewport-max($breakpoint-mobile) {
   .site-header {
     background: var(--palette-green-02);
     height: 120px;
@@ -2190,7 +2217,7 @@ MVとパンくず
 /* =======================================================
 子ページヒーローのSP画像
 ======================================================= */
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   body[data-type="aboutus"] .subpage-hero img,
   body[data-type="facilities"] .subpage-hero img,
   body[data-type="price"] .subpage-hero img,
@@ -2200,31 +2227,17 @@ MVとパンくず
     object-fit: cover;
   }
 
-  body[data-type="aboutus"] .subpage-hero img {
-    content: url("../img/mv-AboutUs_SP.png");
-  }
-
-  body[data-type="facilities"] .subpage-hero img {
-    content: url("../img/mv-Facilities_SP.png");
-  }
-
-  body[data-type="price"] .subpage-hero img {
-    content: url("../img/mv-PriceList_SP.png");
-  }
-
-  body[data-type="faq"] .subpage-hero img {
-    content: url("../img/mv-faq_SP.png");
-  }
-
-  body[data-type="contact"] .subpage-hero img {
-    content: url("../img/mv-Contact_SP.png");
+  @each $page, $image in $subpage-hero-images {
+    body[data-type="#{$page}"] .subpage-hero img {
+      content: url("../img/#{$image}");
+    }
   }
 }
 
 /* =======================================================
 共通見出し・ボタン・パンくずのレスポンシブ調整
 ======================================================= */
-@media (max-width: 1024px) {
+@include viewport-max($breakpoint-laptop) {
   .section-heading {
     margin-bottom: 20px;
   }
@@ -2249,7 +2262,7 @@ MVとパンくず
   }
 }
 
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   .section-heading {
     margin-bottom: 18px;
   }
@@ -2293,7 +2306,7 @@ MVとパンくず
   }
 }
 
-@media (max-width: 430px) {
+@include viewport-max($breakpoint-mobile) {
   .section-heading {
     margin-bottom: 16px;
   }
@@ -2344,7 +2357,7 @@ MVとパンくず
 /* =======================================================
 フッターのレスポンシブ調整
 ======================================================= */
-@media (max-width: 1024px) {
+@include viewport-max($breakpoint-laptop) {
   .grid-footer {
     gap: 28px;
     grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
@@ -2362,7 +2375,7 @@ MVとパンくず
   }
 }
 
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   .footer {
     padding: 48px 0 20px;
   }
@@ -2384,8 +2397,6 @@ MVとパンくず
 
   .footer-nav {
     gap: 12px;
-    grid-template-columns: minmax(0, 1fr);
-    justify-items: center;
 
     a {
       align-items: center;
@@ -2395,7 +2406,6 @@ MVとパンくず
       line-height: 1.5;
       min-height: 44px;
       text-align: center;
-      writing-mode: horizontal-tb;
     }
   }
 
@@ -2406,7 +2416,7 @@ MVとパンくず
   }
 }
 
-@media (max-width: 430px) {
+@include viewport-max($breakpoint-mobile) {
   .footer {
     padding: 40px 0 18px;
   }
@@ -2423,7 +2433,6 @@ MVとパンくず
 
   .footer-nav {
     column-gap: 16px;
-    grid-template-columns: minmax(0, 1fr);
     row-gap: 8px;
 
     a {
@@ -2441,7 +2450,7 @@ MVとパンくず
 /* =======================================================
 TOPページのレスポンシブ調整
 ======================================================= */
-@media (max-width: 1024px) {
+@include viewport-max($breakpoint-laptop) {
   body[data-type="home"] {
     .page-hero {
       grid-template-columns: minmax(0, 50%) minmax(0, 50%);
@@ -2471,7 +2480,7 @@ TOPページのレスポンシブ調整
   }
 }
 
-@media (min-width: 769px) and (max-width: 930px) {
+@include viewport-between($breakpoint-tablet-up, $breakpoint-home-hero) {
   body[data-type="home"] {
     .page-hero {
       grid-template-columns: minmax(0, 40%) minmax(0, 60%);
@@ -2493,7 +2502,7 @@ TOPページのレスポンシブ調整
   }
 }
 
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   body[data-type="home"] {
     .page-hero {
       grid-template-columns: minmax(0, 1fr);
@@ -2739,7 +2748,7 @@ TOPページのレスポンシブ調整
   }
 }
 
-@media (max-width: 430px) {
+@include viewport-max($breakpoint-mobile) {
   body[data-type="home"] {
     .home-hero-copy {
       min-height: 356px;
@@ -2928,7 +2937,7 @@ TOPページのレスポンシブ調整
 /* =======================================================
 Aboutページのレスポンシブ調整
 ======================================================= */
-@media (max-width: 1024px) {
+@include viewport-max($breakpoint-laptop) {
   body[data-type="aboutus"] {
     .about-profile .profile-grid {
       gap: clamp(36px, 5vw, 56px);
@@ -2976,7 +2985,7 @@ Aboutページのレスポンシブ調整
   }
 }
 
-@media (max-width: 1600px) {
+@include viewport-max($breakpoint-wide) {
   body[data-type="aboutus"] {
     .flow-assets--about {
       gap: clamp(36px, 4vw, 60px);
@@ -2997,7 +3006,7 @@ Aboutページのレスポンシブ調整
   }
 }
 
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   body[data-type="aboutus"] {
     .about-profile {
       padding: 48px 0 80px;
@@ -3143,7 +3152,7 @@ Aboutページのレスポンシブ調整
   }
 }
 
-@media (max-width: 430px) {
+@include viewport-max($breakpoint-mobile) {
   body[data-type="aboutus"] {
     .subpage-hero img {
       aspect-ratio: 43 / 30;
@@ -3228,7 +3237,7 @@ Aboutページのレスポンシブ調整
 /* =======================================================
 Facilitiesページのレスポンシブ調整
 ======================================================= */
-@media (max-width: 1024px) {
+@include viewport-max($breakpoint-laptop) {
   body[data-type="facilities"] {
     .profile-grid,
     .grid-staff {
@@ -3261,7 +3270,7 @@ Facilitiesページのレスポンシブ調整
   }
 }
 
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   body[data-type="facilities"] {
     .section {
       padding-block: 64px;
@@ -3309,7 +3318,7 @@ Facilitiesページのレスポンシブ調整
   }
 }
 
-@media (max-width: 430px) {
+@include viewport-max($breakpoint-mobile) {
   body[data-type="facilities"] {
     .subpage-hero img {
       aspect-ratio: 43 / 30;
@@ -3376,7 +3385,7 @@ Facilitiesページのレスポンシブ調整
 /* =======================================================
 Priceページのレスポンシブ調整
 ======================================================= */
-@media (max-width: 1024px) {
+@include viewport-max($breakpoint-laptop) {
   body[data-type="price"] {
     .anchor-section {
       padding-block: 32px;
@@ -3426,7 +3435,7 @@ Priceページのレスポンシブ調整
   }
 }
 
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   body[data-type="price"] {
     .anchor-section {
       background: var(--palette-white);
@@ -3475,13 +3484,7 @@ Priceページのレスポンシブ調整
 
       colgroup,
       thead {
-        clip: rect(0 0 0 0);
-        clip-path: inset(50%);
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap;
-        width: 1px;
+        @include visually-hidden;
       }
 
       tbody {
@@ -3642,7 +3645,7 @@ Priceページのレスポンシブ調整
   }
 }
 
-@media (max-width: 430px) {
+@include viewport-max($breakpoint-mobile) {
   body[data-type="price"] {
     .subpage-hero img {
       aspect-ratio: 43 / 30;
@@ -3715,7 +3718,7 @@ Priceページのレスポンシブ調整
 /* =======================================================
 FAQページのレスポンシブ調整
 ======================================================= */
-@media (max-width: 1600px) {
+@include viewport-max($breakpoint-wide) {
   body[data-type="faq"] {
     .category-cards {
       gap: clamp(16px, 3vw, 48px);
@@ -3724,7 +3727,7 @@ FAQページのレスポンシブ調整
   }
 }
 
-@media (max-width: 1024px) {
+@include viewport-max($breakpoint-laptop) {
   body[data-type="faq"] {
     .anchor-section {
       padding: 32px 0 112px;
@@ -3793,7 +3796,7 @@ FAQページのレスポンシブ調整
   }
 }
 
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   body[data-type="faq"] {
     .anchor-section {
       padding: 28px 0 88px;
@@ -3864,7 +3867,7 @@ FAQページのレスポンシブ調整
   }
 }
 
-@media (max-width: 430px) {
+@include viewport-max($breakpoint-mobile) {
   body[data-type="faq"] {
     .subpage-hero img {
       aspect-ratio: 43 / 30;
@@ -3946,7 +3949,7 @@ FAQページのレスポンシブ調整
 /* =======================================================
 Contactページのレスポンシブ調整
 ======================================================= */
-@media (max-width: 1024px) {
+@include viewport-max($breakpoint-laptop) {
   body[data-type="contact"] {
     .contact-page-band {
       padding: 96px 0;
@@ -4056,7 +4059,7 @@ Contactページのレスポンシブ調整
   }
 }
 
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   body[data-type="contact"] {
     .contact-page-band {
       background: linear-gradient(180deg, var(--palette-green-01) 0, var(--palette-green-01) 70px, var(--palette-green-02) 200px, var(--palette-white) 340px, var(--palette-white) 100%);
@@ -4152,7 +4155,7 @@ Contactページのレスポンシブ調整
   }
 }
 
-@media (max-width: 430px) {
+@include viewport-max($breakpoint-mobile) {
   body[data-type="contact"] {
     .subpage-hero img {
       aspect-ratio: 43 / 30;
@@ -4287,7 +4290,7 @@ Contactページのレスポンシブ調整
 /* =======================================================
 Archiveページのレスポンシブ調整
 ======================================================= */
-@media (max-width: 1024px) {
+@include viewport-max($breakpoint-laptop) {
   body[data-type="archive"] {
     .archive-shell {
       padding-block: 88px;
@@ -4340,7 +4343,7 @@ Archiveページのレスポンシブ調整
   }
 }
 
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   body[data-type="archive"] {
     .archive-shell {
       max-width: 640px;
@@ -4397,7 +4400,7 @@ Archiveページのレスポンシブ調整
   }
 }
 
-@media (max-width: 430px) {
+@include viewport-max($breakpoint-mobile) {
   body[data-type="archive"] {
     .archive-shell {
       max-width: 386px;
@@ -4476,7 +4479,7 @@ Archiveページのレスポンシブ調整
 /* =======================================================
 Singleページのレスポンシブ調整
 ======================================================= */
-@media (max-width: 1024px) {
+@include viewport-max($breakpoint-laptop) {
   body[data-type="post"] {
     .post-grid {
       gap: 64px;
@@ -4531,7 +4534,7 @@ Singleページのレスポンシブ調整
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@include viewport-between($breakpoint-tablet-up, $breakpoint-laptop) {
   body[data-type="post"] {
     .sidebar-banners {
       gap: clamp(20px, 4vw, 48px);
@@ -4546,7 +4549,7 @@ Singleページのレスポンシブ調整
   }
 }
 
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   body[data-type="post"] {
     .post-grid {
       gap: 64px;
@@ -4590,7 +4593,7 @@ Singleページのレスポンシブ調整
   }
 }
 
-@media (max-width: 430px) {
+@include viewport-max($breakpoint-mobile) {
   body[data-type="post"] {
     .post-grid {
       gap: 48px;
@@ -4665,7 +4668,7 @@ Singleページのレスポンシブ調整
 /* =======================================================
 Privacyページのレスポンシブ調整
 ======================================================= */
-@media (max-width: 1024px) {
+@include viewport-max($breakpoint-laptop) {
   body[data-type="privacy"] {
     .policy {
       font-size: 20px;
@@ -4721,7 +4724,7 @@ Privacyページのレスポンシブ調整
   }
 }
 
-@media (max-width: 768px) {
+@include viewport-max($breakpoint-tablet) {
   body[data-type="privacy"] {
     .policy {
       font-size: 18px;
@@ -4764,7 +4767,7 @@ Privacyページのレスポンシブ調整
   }
 }
 
-@media (max-width: 430px) {
+@include viewport-max($breakpoint-mobile) {
   body[data-type="privacy"] {
     .policy {
       font-size: 16px;

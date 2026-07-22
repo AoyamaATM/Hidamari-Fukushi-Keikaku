@@ -2,6 +2,14 @@
 
 静的サイトの制作リポジトリです。
 
+## ソース構成
+
+- `hidamari-fukushi-keikaku/*.html`: 各ページの本文構造
+- `hidamari-fukushi-keikaku/js/main.js`: 共通ヘッダー／フッターとページ共通の操作
+- `hidamari-fukushi-keikaku/scss/style.scss`: 全ページのスタイル元ファイル
+- `hidamari-fukushi-keikaku/css/style.css`: HTMLが読み込む生成CSS
+- `tools/`: CSS生成・静的検査・表示確認用スクリプト
+
 ## CSSビルド
 
 CSSやレイアウトを変更する場合は、次の順で作業します。
@@ -49,6 +57,14 @@ pnpm run watch:css
 
 生成CSSだけを直接編集するのは避け、`scss/style.scss` を更新してから `pnpm run build:css` を実行してください。
 
+## 静的検査
+
+JavaScriptの構文と、全HTMLのローカル参照・ID・関連付け・画像代替テキストをまとめて確認します。
+
+```powershell
+pnpm run check:site
+```
+
 ## 表示確認
 
 CSSやレイアウトを変更した後は、`pnpm run build:css` を実行してから主要ページを確認します。標準ではPC幅を確認し、SP幅は指示がある場合のみ生成します。
@@ -62,6 +78,9 @@ CSSやレイアウトを変更した後は、`pnpm run build:css` を実行し�
 | `price` | Price | `hidamari-fukushi-keikaku/price.html` |
 | `faq` | FAQ | `hidamari-fukushi-keikaku/faq.html` |
 | `contact` | Contact | `hidamari-fukushi-keikaku/contact.html` |
+| `archive` | Archive | `hidamari-fukushi-keikaku/archive.html` |
+| `single` | Single | `hidamari-fukushi-keikaku/single.html` |
+| `privacy` | Privacy | `hidamari-fukushi-keikaku/privacy.html` |
 
 主要ページのPC幅スクリーンショットは次のコマンドでまとめて生成できます。
 

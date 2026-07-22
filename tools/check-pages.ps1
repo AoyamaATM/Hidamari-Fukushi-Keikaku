@@ -72,7 +72,8 @@ if ($Viewport -ne "all") {
 
 $chrome = Resolve-Chrome $ChromePath
 $outputRoot = Resolve-RepoPath $OutputDir
-$profileRoot = Resolve-RepoPath ".chrome-check"
+$runId = "{0}-{1}" -f (Get-Date -Format "yyyyMMdd-HHmmss"), $PID
+$profileRoot = Resolve-RepoPath (Join-Path ".chrome-check" $runId)
 New-Item -ItemType Directory -Force -Path $outputRoot | Out-Null
 New-Item -ItemType Directory -Force -Path $profileRoot | Out-Null
 

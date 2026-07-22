@@ -1412,8 +1412,6 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
 .price-links,
 .category-cards {
   display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
 }
 
 .price-links {
@@ -1634,9 +1632,6 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
 .policy h2 {
   font-size: clamp(1.24rem, 2vw, 1.8rem);
   margin-top: 34px;
-}
-.policy ul {
-  padding-left: 1.4em;
 }
 .policy p {
   line-height: 1.8;
@@ -2034,8 +2029,6 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
   }
   .footer-nav {
     gap: 12px;
-    grid-template-columns: minmax(0, 1fr);
-    justify-items: center;
   }
   .footer-nav a {
     align-items: center;
@@ -2045,7 +2038,6 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
     line-height: 1.5;
     min-height: 44px;
     text-align: center;
-    writing-mode: horizontal-tb;
   }
   .copyright {
     line-height: 1.7;
@@ -2068,7 +2060,6 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
   .footer-nav {
     -moz-column-gap: 16px;
          column-gap: 16px;
-    grid-template-columns: minmax(0, 1fr);
     row-gap: 8px;
   }
   .footer-nav a {
