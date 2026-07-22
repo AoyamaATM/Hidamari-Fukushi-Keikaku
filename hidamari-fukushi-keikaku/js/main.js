@@ -39,7 +39,7 @@ if (headerHost) {
       </button>
       <nav class="site-nav" id="site-nav" aria-label="グローバルナビゲーション">
         ${routeLink("aboutus", "施設紹介")}
-        ${routeLink("flow", "ご利用の流れ", `${routes.aboutus}#flow`)}
+        ${routeLink("flow", "ご利用の流れ", `${routes.aboutus}#flow__about`)}
         ${routeLink("price", "料金表")}
         ${routeLink("facilities", "全施設一覧")}
         ${routeLink("faq", "よくあるご質問")}
@@ -86,7 +86,10 @@ document.querySelectorAll("[data-year]").forEach((node) => {
 });
 
 // 現在のページに対応するナビゲーションリンクにaria-current="page"を設定する処理。
-const currentNav = page === "privacy" ? "contact" : page;
+const currentNav = {
+  post: "archive",
+  privacy: "contact",
+}[page] || page;
 document.querySelectorAll(`[data-nav="${currentNav}"]`).forEach((link) => {
   link.setAttribute("aria-current", "page");
 });
