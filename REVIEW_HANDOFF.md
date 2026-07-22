@@ -1,0 +1,110 @@
+# ひだまり福祉計画 レビュー用ハンドオフ
+
+## レビュー対象
+
+- 対象：ひだまり福祉計画 静的サイト
+- 対象ページ：全9ページ
+- 基準ブランチ：`feature/responsive`
+- 基準コミット：`a138436`
+- 資料作成日：2026-07-22
+- 想定レビュワー：コードとWebデザインの両方を確認できる方
+
+## 最初に確認するもの
+
+1. `SITEMAP.md` でページ構成と導線を確認する。
+2. `hidamari-fukushi-keikaku/index.html` からサイトを確認する。
+3. 実装は次の順で読むと全体を追いやすい。
+   - `hidamari-fukushi-keikaku/*.html`：各ページの本文構造
+   - `hidamari-fukushi-keikaku/js/main.js`：共通ヘッダー／フッターと操作
+   - `hidamari-fukushi-keikaku/scss/style.scss`：スタイルの編集元
+   - `hidamari-fukushi-keikaku/css/style.css`：ブラウザが読み込む生成CSS
+4. `screenshots/` で全9ページのPC・SP全体画像を比較する。
+
+## ローカルでの確認方法
+
+展開したフォルダー直下でHTTPサーバーを起動する。
+
+```powershell
+python -m http.server 8000
+```
+
+ブラウザで次を開く。
+
+```text
+http://localhost:8000/hidamari-fukushi-keikaku/index.html
+```
+
+依存関係を用意できる場合は、サイト全体の静的検査も実行できる。
+
+```powershell
+pnpm install
+pnpm run check:site
+```
+
+SCSSを変更した場合は、生成CSSを同期する。
+
+```powershell
+pnpm run build:css
+```
+
+## 実装の概要
+
+| 領域 | 実装 |
+| --- | --- |
+| ページ | フレームワークを使用しない静的HTML 9ページ |
+| 共通UI | `main.js` がヘッダーとフッターを各ページへ描画 |
+| 操作 | モバイルメニュー、FAQ、一覧絞り込み、フォームのデモ動作を共通JSで初期化 |
+| スタイル | 単一の `style.scss` をSassとAutoprefixerでCSSへ変換 |
+| レスポンシブ | 主な境界は1600px、1024px、768px、430px |
+| アセット | ロゴ、ヒーロー、サービス画像、導線画像を `img/` から参照 |
+| フォント | Google FontsのZen Kaku Gothic New、TOPのみOutfitも使用 |
+
+## レビューで見てほしい点
+
+### デザイン
+
+- PC／タブレット／SPで、情報の優先順位と余白が自然に保たれているか。
+- 1024pxでのグローバルナビゲーション切り替えと、768px以下の1列化が自然か。
+- 430px前後で、見出し、CTA、フォーム、料金表、FAQ、長文の可読性が十分か。
+- 共通ヘッダー／フッターと、各ページ固有のヒーローやセクションの統一感があるか。
+- PriceのSP用縦型料金表、Singleのサイドバー移動、Archiveの絞り込みが理解しやすいか。
+
+### コード
+
+- HTMLの見出し構造、ランドマーク、リンク、フォームのマークアップが妥当か。
+- 共通UIをJavaScriptで挿入する構成と、各初期化関数の責務が適切か。
+- SCSSのブレークポイント、共通mixin、ページ固有スタイルの分け方が保守しやすいか。
+- キーボード操作、フォーカス、`aria-current`、`aria-expanded`、画像代替テキストに不足がないか。
+- WordPressなどへ移植する場合に、テンプレート化・データ化しておくべき箇所が明確か。
+
+## 現在の前提・未接続部分
+
+- お問い合わせフォームは表示とブラウザ標準検証のデモで、送信先処理は未接続。
+- お知らせ一覧・詳細・ページネーションは静的なサンプルデータ。
+- 住所、電話番号、記事タイトルなどに仮情報が含まれる。
+- Google Fontsの表示にはインターネット接続が必要。
+- `css/style.css` と `scss/style.css`、`scss/style.min.css` は生成物。スタイル修正は `scss/style.scss` を起点にする。
+- SP料金表は情報を省略せず縦に読める専用レイアウトで、PCの表とは表示構造が異なる。
+
+## フィードバックの書き方
+
+次の情報があると、指摘をそのまま修正へつなげやすい。
+
+- ページ／ファイル名
+- 画面幅（例：1600px、1024px、390px）
+- 対象セクションまたは要素
+- 現状と期待する状態
+- 必須修正か、改善提案か
+- 参考画像やURL（ある場合）
+
+## 配布パッケージの内容
+
+| パス | 内容 |
+| --- | --- |
+| `START_HERE.md` | この案内 |
+| `SITEMAP.md` | ページ、導線、ページ内アンカーの一覧 |
+| `hidamari-fukushi-keikaku/` | 表示に必要なHTML、CSS、JavaScript、画像とSCSS原本 |
+| `screenshots/` | 全9ページのPC 1600px／SP 390px全体画像 |
+| `tools/` | CSS生成、静的検査、表示確認用スクリプト |
+| `package.json` ほか | ビルド設定と依存関係 |
+| `SOURCE_MANIFEST.sha256` | 同梱ファイルのパス、容量、SHA-256 |

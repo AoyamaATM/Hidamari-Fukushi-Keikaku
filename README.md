@@ -75,6 +75,7 @@ CSSやレイアウトを変更した後は、`pnpm run build:css` を実行し�
 |---|---|---|
 | `index` | TOP | `hidamari-fukushi-keikaku/index.html` |
 | `about` | About_Us | `hidamari-fukushi-keikaku/about_us.html` |
+| `facilities` | Facilities | `hidamari-fukushi-keikaku/facilities.html` |
 | `price` | Price | `hidamari-fukushi-keikaku/price.html` |
 | `faq` | FAQ | `hidamari-fukushi-keikaku/faq.html` |
 | `contact` | Contact | `hidamari-fukushi-keikaku/contact.html` |
