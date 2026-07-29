@@ -35,6 +35,19 @@ $subpage-hero-images: (
   width: 1px;
 }
 
+@mixin accessible-inline-link {
+  color: var(--palette-green-04);
+  text-decoration: underline;
+  text-decoration-color: var(--palette-green-03);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+
+  &:is(:hover, :focus-visible) {
+    background: var(--nav-hover-bg);
+    text-decoration-thickness: 2px;
+  }
+}
+
 @mixin fill-width-image {
   height: auto;
   width: 100%;
@@ -69,7 +82,7 @@ $subpage-hero-images: (
   --comp-header-width: min(1600px, 100%);
 
   /* Header navigation */
-  --nav-hover-bg: rgba(147, 211, 65, 0.08);
+  --nav-hover-bg: rgba(147, 211, 65, 0.22);
 }
 
 /* ベースリセット */
@@ -273,7 +286,7 @@ img {
   a {
     align-items: center;
     border-right: 2px solid var(--palette-green-03);
-    color: var(--palette-green-03);
+    color: var(--palette-green-04);
     display: inline-flex;
     font-size: clamp(1rem, 1.5vw, 1.5rem);
     font-weight: 700;
@@ -292,6 +305,11 @@ img {
     &[aria-current="page"] {
       background: var(--nav-hover-bg);
       color: var(--palette-green-04);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--palette-green-04);
+      outline-offset: -4px;
     }
   }
 }
@@ -313,6 +331,7 @@ img {
 セクション見出し
 ============================================ */
 .section-heading {
+  color: var(--palette-green-04);
   font-size: clamp(1.5rem, 2.3vw, 2.4rem);
   line-height: 1.35;
   margin: 0 0 22px;
@@ -324,7 +343,7 @@ img {
   }
 
   body[data-type="home"] & {
-    color: var(--palette-black);
+    color: var(--palette-green-04);
     font-size: 40px;
     font-weight: 700;
     letter-spacing: 0.03em;
@@ -333,7 +352,7 @@ img {
   }
 
   body[data-type="aboutus"] & {
-    color: var(--palette-black);
+    color: var(--palette-green-04);
     font-size: 40px;
     font-weight: 700;
     letter-spacing: 0.03em;
@@ -348,7 +367,7 @@ img {
 
   body[data-type="price"] & {
     margin-bottom: 48px;
-    color: var(--palette-black);
+    color: var(--palette-green-04);
     font-size: 40px;
     font-weight: 900;
     letter-spacing: 0.02em;
@@ -755,6 +774,15 @@ MVとパンくず
 
     &-feature {
       text-align: center;
+
+      &__title {
+        color: var(--palette-green-04);
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        line-height: 1.4;
+        margin: clamp(18px, 2vw, 26px) 0 0;
+      }
 
       p {
         color: var(--palette-black);
@@ -1200,7 +1228,7 @@ MVとパンくず
     @extend %contact-copy-default;
     margin-top: 42px;
     a {
-      color: var(--palette-orange-03);
+      @include accessible-inline-link;
     }
   }
 
@@ -1216,7 +1244,7 @@ MVとパンくず
     padding-bottom: 140px;
 
     a[href*="privacy"] {
-      color: var(--palette-orange-03);
+      @include accessible-inline-link;
     }
   }
 }
@@ -1315,7 +1343,7 @@ MVとパンくず
 .contact-form {
   body[data-type="contact"] & {
     a[href*="privacy"] {
-      color: var(--palette-orange-03);
+      @include accessible-inline-link;
     }
 
     h2 {
@@ -1438,7 +1466,7 @@ MVとパンくず
       background: var(--palette-orange-03);
       border: 2px solid var(--palette-orange-03);
       border-radius: 10px;
-      color: var(--palette-white);
+      color: var(--palette-black);
       font-size: 24px;
       height: 50px;
       letter-spacing: 0.4em;
@@ -1891,9 +1919,10 @@ MVとパンくず
     max-width: 1440px;
   }
 
-  h4 {
-    background: var(--palette-green-03);
-    color: var(--palette-white);
+  h3 {
+    background: var(--palette-green-02);
+    border-bottom: 3px solid var(--palette-green-03);
+    color: var(--palette-green-04);
     font-size: 32px;
     font-weight: 700;
     line-height: 1.45;
@@ -2004,13 +2033,26 @@ MVとパンくず
     justify-items: center;
 
     a {
-      color: var(--palette-black);
+      border-radius: 4px;
+      color: var(--palette-green-04);
       font-size: 16px;
       line-height: 1.7;
+      padding: 4px;
+      transition: background 180ms ease;
       writing-mode: vertical-rl;
 
       &:is(:hover, :focus-visible) {
+        background: var(--nav-hover-bg);
         color: var(--palette-green-04);
+        text-decoration: underline;
+        text-decoration-color: var(--palette-green-03);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.18em;
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--palette-green-04);
+        outline-offset: 2px;
       }
     }
   }
@@ -2797,10 +2839,10 @@ TOPページのレスポンシブ調整
 
       .asset-link {
         align-items: center;
-        background: var(--palette-green-03);
+        background: var(--palette-green-02);
         border: 0;
-        border-bottom: 2px solid rgba(51, 51, 51, 0.44);
-        border-left: 2px solid rgba(51, 51, 51, 0.44);
+        border-bottom: 2px solid var(--palette-green-03);
+        border-left: 2px solid var(--palette-green-03);
         border-radius: 10px;
         display: flex;
         height: 80px;
@@ -2809,7 +2851,7 @@ TOPページのレスポンシブ調整
         position: relative;
 
         &::after {
-          color: var(--palette-white);
+          color: var(--palette-green-04);
           content: "▷ " attr(aria-label);
           font-size: 24px;
           font-weight: 500;
@@ -2846,8 +2888,9 @@ TOPページのレスポンシブ調整
         margin-top: 36px;
       }
 
-      .service-banner figcaption {
+      .service-feature__title {
         font-size: 20px;
+        margin-top: 14px;
       }
     }
 
@@ -3088,7 +3131,7 @@ Aboutページのレスポンシブ調整
         max-width: 560px;
       }
 
-      h4 {
+      h3 {
         font-size: 22px;
         margin-bottom: 16px;
         padding: 10px 16px;

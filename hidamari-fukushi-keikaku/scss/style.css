@@ -24,7 +24,7 @@
   --comp-content: min(1600px, calc(100% - 64px));
   --comp-header-width: min(1600px, 100%);
   /* Header navigation */
-  --nav-hover-bg: rgba(147, 211, 65, 0.08);
+  --nav-hover-bg: rgba(147, 211, 65, 0.22);
 }
 
 /* ベースリセット */
@@ -206,7 +206,7 @@ img {
 .site-nav a {
   align-items: center;
   border-right: 2px solid var(--palette-green-03);
-  color: var(--palette-green-03);
+  color: var(--palette-green-04);
   display: inline-flex;
   font-size: clamp(1rem, 1.5vw, 1.5rem);
   font-weight: 700;
@@ -223,6 +223,10 @@ img {
 .site-nav a:is(:hover, :focus-visible), .site-nav a[aria-current=page] {
   background: var(--nav-hover-bg);
   color: var(--palette-green-04);
+}
+.site-nav a:focus-visible {
+  outline: 2px solid var(--palette-green-04);
+  outline-offset: -4px;
 }
 
 .page-shell {
@@ -241,6 +245,7 @@ img {
 セクション見出し
 ============================================ */
 .section-heading {
+  color: var(--palette-green-04);
   font-size: clamp(1.5rem, 2.3vw, 2.4rem);
   line-height: 1.35;
   margin: 0 0 22px;
@@ -251,7 +256,7 @@ img {
   margin-bottom: 80px;
 }
 body[data-type=home] .section-heading {
-  color: var(--palette-black);
+  color: var(--palette-green-04);
   font-size: 40px;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -259,7 +264,7 @@ body[data-type=home] .section-heading {
   margin-bottom: 80px;
 }
 body[data-type=aboutus] .section-heading {
-  color: var(--palette-black);
+  color: var(--palette-green-04);
   font-size: 40px;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -272,7 +277,7 @@ body[data-type=aboutus] .about-profile .section-heading {
 }
 body[data-type=price] .section-heading {
   margin-bottom: 48px;
-  color: var(--palette-black);
+  color: var(--palette-green-04);
   font-size: 40px;
   font-weight: 900;
   letter-spacing: 0.02em;
@@ -615,6 +620,15 @@ body[data-type=home] #reasons .grid-reason .reason-index {
 #services .service-feature,
 .about-services .service-feature {
   text-align: center;
+}
+#services .service-feature__title,
+.about-services .service-feature__title {
+  color: var(--palette-green-04);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  margin: clamp(18px, 2vw, 26px) 0 0;
 }
 #services .service-feature p,
 .about-services .service-feature p {
@@ -987,7 +1001,15 @@ body[data-type=faq] .faq-answer {
   margin-top: 42px;
 }
 .contact-note a {
-  color: var(--palette-orange-03);
+  color: var(--palette-green-04);
+  text-decoration: underline;
+  text-decoration-color: var(--palette-green-03);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+.contact-note a:is(:hover, :focus-visible) {
+  background: var(--nav-hover-bg);
+  text-decoration-thickness: 2px;
 }
 .contact-faq-copy {
   margin: 54px auto 0;
@@ -999,7 +1021,15 @@ body[data-type=home] .home-contact {
   padding-bottom: 140px;
 }
 body[data-type=home] .home-contact a[href*=privacy] {
-  color: var(--palette-orange-03);
+  color: var(--palette-green-04);
+  text-decoration: underline;
+  text-decoration-color: var(--palette-green-03);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+body[data-type=home] .home-contact a[href*=privacy]:is(:hover, :focus-visible) {
+  background: var(--nav-hover-bg);
+  text-decoration-thickness: 2px;
 }
 
 .phone-card {
@@ -1083,7 +1113,15 @@ body[data-type=home] .form-panel h2 {
 }
 
 body[data-type=contact] .contact-form a[href*=privacy] {
-  color: var(--palette-orange-03);
+  color: var(--palette-green-04);
+  text-decoration: underline;
+  text-decoration-color: var(--palette-green-03);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+body[data-type=contact] .contact-form a[href*=privacy]:is(:hover, :focus-visible) {
+  background: var(--nav-hover-bg);
+  text-decoration-thickness: 2px;
 }
 body[data-type=contact] .contact-form h2 {
   color: var(--palette-black);
@@ -1205,7 +1243,7 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
   background: var(--palette-orange-03);
   border: 2px solid var(--palette-orange-03);
   border-radius: 10px;
-  color: var(--palette-white);
+  color: var(--palette-black);
   font-size: 24px;
   height: 50px;
   letter-spacing: 0.4em;
@@ -1603,9 +1641,10 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
   margin: 54px auto 0;
   max-width: 1440px;
 }
-.about-service-block h4 {
-  background: var(--palette-green-03);
-  color: var(--palette-white);
+.about-service-block h3 {
+  background: var(--palette-green-02);
+  border-bottom: 3px solid var(--palette-green-03);
+  color: var(--palette-green-04);
   font-size: 32px;
   font-weight: 700;
   line-height: 1.45;
@@ -1694,13 +1733,25 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
   justify-items: center;
 }
 .footer-nav a {
-  color: var(--palette-black);
+  border-radius: 4px;
+  color: var(--palette-green-04);
   font-size: 16px;
   line-height: 1.7;
+  padding: 4px;
+  transition: background 180ms ease;
   writing-mode: vertical-rl;
 }
 .footer-nav a:is(:hover, :focus-visible) {
+  background: var(--nav-hover-bg);
   color: var(--palette-green-04);
+  text-decoration: underline;
+  text-decoration-color: var(--palette-green-03);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+.footer-nav a:focus-visible {
+  outline: 2px solid var(--palette-green-04);
+  outline-offset: 2px;
 }
 
 .copyright {
@@ -2351,10 +2402,10 @@ TOPページのレスポンシブ調整
   }
   body[data-type=home] .grid-route .asset-link {
     align-items: center;
-    background: var(--palette-green-03);
+    background: var(--palette-green-02);
     border: 0;
-    border-bottom: 2px solid rgba(51, 51, 51, 0.44);
-    border-left: 2px solid rgba(51, 51, 51, 0.44);
+    border-bottom: 2px solid var(--palette-green-03);
+    border-left: 2px solid var(--palette-green-03);
     border-radius: 10px;
     display: flex;
     height: 80px;
@@ -2363,7 +2414,7 @@ TOPページのレスポンシブ調整
     position: relative;
   }
   body[data-type=home] .grid-route .asset-link::after {
-    color: var(--palette-white);
+    color: var(--palette-green-04);
     content: "▷ " attr(aria-label);
     font-size: 24px;
     font-weight: 500;
@@ -2391,8 +2442,9 @@ TOPページのレスポンシブ調整
     gap: 40px;
     margin-top: 36px;
   }
-  body[data-type=home] #services .service-banner figcaption {
+  body[data-type=home] #services .service-feature__title {
     font-size: 20px;
+    margin-top: 14px;
   }
   body[data-type=home] #flow .flow-assets--home {
     gap: 20px;
@@ -2583,7 +2635,7 @@ Aboutページのレスポンシブ調整
     margin-top: 36px;
     max-width: 560px;
   }
-  body[data-type=aboutus] .about-service-block h4 {
+  body[data-type=aboutus] .about-service-block h3 {
     font-size: 22px;
     margin-bottom: 16px;
     padding: 10px 16px;
