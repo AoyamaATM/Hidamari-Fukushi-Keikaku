@@ -12,3 +12,11 @@
 - `git status --short --branch` で `feature/responsive...origin/feature/responsive`、作業ツリーに差分がないことを確認した。
 - `git pull --ff-only` でリモートは最新（Already up to date）であることを確認した。
 - 現時点ではサイト本体、SCSS、CSS、JavaScript、HTMLには変更を加えていない。
+- 追加レビュー対応の着手前確認として、`pnpm run check:site` を実行し、全9 HTMLと `js/main.js` の静的検査が合格した。
+- ローカルHTTPサーバー経由で全9ページをPC幅1440px・SP幅390pxで確認し、横スクロール、画像欠落、コンソールのエラー・警告がないことを確認した。確認後はローカルサーバーを停止した。
+- TOPでモバイルメニューとFAQを操作し、開閉と `aria-expanded` の切り替えが正常であることを確認した。
+- 追加レビューの制作メモ、黄緑のナビゲーション、写真上の白い `figcaption`、画像主体のフロー、TOPの長いページ全長、メタ情報未設定、タイトル・名称の表記ゆれが現状でも再現することを確認した。
+- `about_us.html`、`facilities.html`、`price.html`、`faq.html`、`contact.html` に `h1` がないことを追加で確認し、今後の意味構造修正へ含めた。
+- `ROADMAP.md` に追加レビュー項目1〜7をフェーズ5のステップ5-4〜5-10として依存順に追加し、ステップ5-11を再レビュー工程とした。
+- 追加レビュー項目8は、静的サイト完成・GitHub Pages公開後のフェーズ8へ配置し、管理画面の編集対象、フォーム、SEO、画像、パンくず、SCSS整理の設計工程をステップ8-3として追加した。
+- 今回の変更は `ROADMAP.md` と `HISTORY.md` のみで、サイト本体には変更を加えていない。次の実装工程はステップ5-4「レビュー項目1・公開用サンプル文章」である。
