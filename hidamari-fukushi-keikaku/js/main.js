@@ -47,7 +47,7 @@ const renderNavigationLinks = (items) => items.map(renderRouteLink).join("");
 
 const renderBrand = () => `
   <a class="brand" href="${routes.home}" aria-label="ひだまり福祉計画 TOP">
-    <img class="brand-logo" src="${root}img/Logo.png" alt="ひだまりケア旭川">
+    <img class="brand-logo" src="${root}img/Logo.png" alt="ひだまりケア旭川" width="600" height="180" decoding="async">
   </a>
 `;
 

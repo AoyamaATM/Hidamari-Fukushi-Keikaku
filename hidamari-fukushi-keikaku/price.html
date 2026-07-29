@@ -14,7 +14,10 @@
     <main class="page-shell" id="main">
       <section class="subpage-hero">
         <h1 class="visually-hidden">料金表</h1>
-        <img src="./img/mv-PriceList_PC.png" alt="">
+        <picture>
+          <source media="(max-width: 768px)" srcset="./img/mv-PriceList_SP.webp" width="860" height="600">
+          <img src="./img/mv-PriceList_PC.webp" alt="" width="1728" height="600" fetchpriority="high">
+        </picture>
       </section>
       <nav class="breadcrumb" aria-label="パンくず">
         <a href="./index.html">TOP</a>
@@ -26,10 +29,10 @@
         <div class="content-width">
           <div class="price-links">
             <a class="asset-link price-link-card" href="#day-service">
-              <img src="./img/AnchorLink_PriceList-DayService.png" alt="デイサービス料金表">
+              <img src="./img/AnchorLink_PriceList-DayService.webp" alt="デイサービス料金表" width="600" height="160" loading="lazy" decoding="async">
             </a>
             <a class="asset-link price-link-card" href="#visit-service">
-              <img src="./img/AnchorLink_PriceList-HomeCare.png" alt="訪問介護料金表">
+              <img src="./img/AnchorLink_PriceList-HomeCare.webp" alt="訪問介護料金表" width="600" height="160" loading="lazy" decoding="async">
             </a>
           </div>
         </div>

@@ -1,0 +1,672 @@
+[
+  {
+    "source": {
+      "name": "MainVisual_pc.png",
+      "format": "PNG",
+      "width": 864,
+      "height": 600,
+      "bytes": 662185
+    },
+    "outputs": [
+      {
+        "name": "MainVisual_pc.webp",
+        "format": "WEBP",
+        "width": 864,
+        "height": 600,
+        "bytes": 42546,
+        "quality": 84
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "mv-AboutUs_PC.png",
+      "format": "PNG",
+      "width": 1728,
+      "height": 600,
+      "bytes": 832408
+    },
+    "outputs": [
+      {
+        "name": "mv-AboutUs_PC.webp",
+        "format": "WEBP",
+        "width": 1728,
+        "height": 600,
+        "bytes": 74874,
+        "quality": 86
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "mv-AboutUs_SP.png",
+      "format": "PNG",
+      "width": 860,
+      "height": 600,
+      "bytes": 494257
+    },
+    "outputs": [
+      {
+        "name": "mv-AboutUs_SP.webp",
+        "format": "WEBP",
+        "width": 860,
+        "height": 600,
+        "bytes": 59514,
+        "quality": 86
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "mv-Contact_PC.png",
+      "format": "PNG",
+      "width": 1728,
+      "height": 600,
+      "bytes": 678037
+    },
+    "outputs": [
+      {
+        "name": "mv-Contact_PC.webp",
+        "format": "WEBP",
+        "width": 1728,
+        "height": 600,
+        "bytes": 53364,
+        "quality": 86
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "mv-Contact_SP.png",
+      "format": "PNG",
+      "width": 860,
+      "height": 600,
+      "bytes": 381003
+    },
+    "outputs": [
+      {
+        "name": "mv-Contact_SP.webp",
+        "format": "WEBP",
+        "width": 860,
+        "height": 600,
+        "bytes": 38094,
+        "quality": 86
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "mv-Facilities_PC.png",
+      "format": "PNG",
+      "width": 1728,
+      "height": 600,
+      "bytes": 927640
+    },
+    "outputs": [
+      {
+        "name": "mv-Facilities_PC.webp",
+        "format": "WEBP",
+        "width": 1728,
+        "height": 600,
+        "bytes": 106860,
+        "quality": 86
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "mv-Facilities_SP.png",
+      "format": "PNG",
+      "width": 860,
+      "height": 600,
+      "bytes": 544114
+    },
+    "outputs": [
+      {
+        "name": "mv-Facilities_SP.webp",
+        "format": "WEBP",
+        "width": 860,
+        "height": 600,
+        "bytes": 75184,
+        "quality": 86
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "mv-PriceList_PC.png",
+      "format": "PNG",
+      "width": 1728,
+      "height": 600,
+      "bytes": 707875
+    },
+    "outputs": [
+      {
+        "name": "mv-PriceList_PC.webp",
+        "format": "WEBP",
+        "width": 1728,
+        "height": 600,
+        "bytes": 56896,
+        "quality": 86
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "mv-PriceList_SP.png",
+      "format": "PNG",
+      "width": 860,
+      "height": 600,
+      "bytes": 408293
+    },
+    "outputs": [
+      {
+        "name": "mv-PriceList_SP.webp",
+        "format": "WEBP",
+        "width": 860,
+        "height": 600,
+        "bytes": 38576,
+        "quality": 86
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "mv-FAQ_PC.png",
+      "format": "PNG",
+      "width": 1728,
+      "height": 600,
+      "bytes": 509682
+    },
+    "outputs": [
+      {
+        "name": "mv-FAQ_PC.webp",
+        "format": "WEBP",
+        "width": 1728,
+        "height": 600,
+        "bytes": 36296,
+        "quality": 86
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "mv-faq_SP.png",
+      "format": "PNG",
+      "width": 860,
+      "height": 600,
+      "bytes": 324253
+    },
+    "outputs": [
+      {
+        "name": "mv-faq_SP.webp",
+        "format": "WEBP",
+        "width": 860,
+        "height": 600,
+        "bytes": 26070,
+        "quality": 86
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "reason_01.jpg",
+      "format": "JPEG",
+      "width": 640,
+      "height": 427,
+      "bytes": 190388
+    },
+    "outputs": [
+      {
+        "name": "reason_01.webp",
+        "format": "WEBP",
+        "width": 640,
+        "height": 427,
+        "bytes": 34776,
+        "quality": 84
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "reason_02.jpg",
+      "format": "JPEG",
+      "width": 640,
+      "height": 427,
+      "bytes": 181780
+    },
+    "outputs": [
+      {
+        "name": "reason_02.webp",
+        "format": "WEBP",
+        "width": 640,
+        "height": 427,
+        "bytes": 33286,
+        "quality": 84
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "reason_03.jpg",
+      "format": "JPEG",
+      "width": 640,
+      "height": 427,
+      "bytes": 147579
+    },
+    "outputs": [
+      {
+        "name": "reason_03.webp",
+        "format": "WEBP",
+        "width": 640,
+        "height": 427,
+        "bytes": 21958,
+        "quality": 84
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "service_01.jpg",
+      "format": "JPEG",
+      "width": 1920,
+      "height": 1280,
+      "bytes": 1155422
+    },
+    "outputs": [
+      {
+        "name": "service_01-640.webp",
+        "format": "WEBP",
+        "width": 640,
+        "height": 213,
+        "bytes": 12962,
+        "quality": 84
+      },
+      {
+        "name": "service_01-1280.webp",
+        "format": "WEBP",
+        "width": 1280,
+        "height": 427,
+        "bytes": 29870,
+        "quality": 84
+      },
+      {
+        "name": "service_01.webp",
+        "format": "WEBP",
+        "width": 1920,
+        "height": 640,
+        "bytes": 50400,
+        "quality": 84
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "service_02.jpg",
+      "format": "JPEG",
+      "width": 640,
+      "height": 427,
+      "bytes": 151843
+    },
+    "outputs": [
+      {
+        "name": "service_02.webp",
+        "format": "WEBP",
+        "width": 640,
+        "height": 213,
+        "bytes": 10042,
+        "quality": 84
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "service_03.jpg",
+      "format": "JPEG",
+      "width": 640,
+      "height": 427,
+      "bytes": 141905
+    },
+    "outputs": [
+      {
+        "name": "service_03.webp",
+        "format": "WEBP",
+        "width": 640,
+        "height": 213,
+        "bytes": 12278,
+        "quality": 84
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "dayservice_01.jpeg",
+      "format": "JPEG",
+      "width": 4200,
+      "height": 2800,
+      "bytes": 3460607
+    },
+    "outputs": [
+      {
+        "name": "dayservice_01-800.webp",
+        "format": "WEBP",
+        "width": 800,
+        "height": 533,
+        "bytes": 52224,
+        "quality": 84
+      },
+      {
+        "name": "dayservice_01.webp",
+        "format": "WEBP",
+        "width": 1600,
+        "height": 1067,
+        "bytes": 126962,
+        "quality": 84
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "dayservice_02.jpg",
+      "format": "JPEG",
+      "width": 427,
+      "height": 640,
+      "bytes": 350608
+    },
+    "outputs": [
+      {
+        "name": "dayservice_02.webp",
+        "format": "WEBP",
+        "width": 427,
+        "height": 640,
+        "bytes": 103790,
+        "quality": 84
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "dayservice_03.jpg",
+      "format": "JPEG",
+      "width": 640,
+      "height": 427,
+      "bytes": 160984
+    },
+    "outputs": [
+      {
+        "name": "dayservice_03.webp",
+        "format": "WEBP",
+        "width": 640,
+        "height": 427,
+        "bytes": 20268,
+        "quality": 84
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "stuffs.jpg",
+      "format": "JPEG",
+      "width": 640,
+      "height": 427,
+      "bytes": 122746
+    },
+    "outputs": [
+      {
+        "name": "stuffs.webp",
+        "format": "WEBP",
+        "width": 640,
+        "height": 427,
+        "bytes": 13792,
+        "quality": 84
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "Button001.png",
+      "format": "PNG",
+      "width": 300,
+      "height": 200,
+      "bytes": 78667
+    },
+    "outputs": [
+      {
+        "name": "Button001.webp",
+        "format": "WEBP",
+        "width": 300,
+        "height": 200,
+        "bytes": 13956,
+        "quality": 88
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "Button002.png",
+      "format": "PNG",
+      "width": 300,
+      "height": 200,
+      "bytes": 75097
+    },
+    "outputs": [
+      {
+        "name": "Button002.webp",
+        "format": "WEBP",
+        "width": 300,
+        "height": 200,
+        "bytes": 13410,
+        "quality": 88
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "Button003.png",
+      "format": "PNG",
+      "width": 300,
+      "height": 200,
+      "bytes": 66558
+    },
+    "outputs": [
+      {
+        "name": "Button003.webp",
+        "format": "WEBP",
+        "width": 300,
+        "height": 200,
+        "bytes": 9870,
+        "quality": 88
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "Button004.png",
+      "format": "PNG",
+      "width": 300,
+      "height": 200,
+      "bytes": 70070
+    },
+    "outputs": [
+      {
+        "name": "Button004.webp",
+        "format": "WEBP",
+        "width": 300,
+        "height": 200,
+        "bytes": 11006,
+        "quality": 88
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "Button005.png",
+      "format": "PNG",
+      "width": 300,
+      "height": 200,
+      "bytes": 63948
+    },
+    "outputs": [
+      {
+        "name": "Button005.webp",
+        "format": "WEBP",
+        "width": 300,
+        "height": 200,
+        "bytes": 9538,
+        "quality": 88
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "anchorLink__faq01-PC.png",
+      "format": "PNG",
+      "width": 350,
+      "height": 200,
+      "bytes": 64697
+    },
+    "outputs": [
+      {
+        "name": "anchorLink__faq01-PC.webp",
+        "format": "WEBP",
+        "width": 350,
+        "height": 200,
+        "bytes": 9912,
+        "quality": 88
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "anchorLink__faq02-PC.png",
+      "format": "PNG",
+      "width": 350,
+      "height": 200,
+      "bytes": 69323
+    },
+    "outputs": [
+      {
+        "name": "anchorLink__faq02-PC.webp",
+        "format": "WEBP",
+        "width": 350,
+        "height": 200,
+        "bytes": 13408,
+        "quality": 88
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "anchorLink__faq03-PC.png",
+      "format": "PNG",
+      "width": 350,
+      "height": 200,
+      "bytes": 59737
+    },
+    "outputs": [
+      {
+        "name": "anchorLink__faq03-PC.webp",
+        "format": "WEBP",
+        "width": 350,
+        "height": 200,
+        "bytes": 10654,
+        "quality": 88
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "anchorLink__faq04-PC.png",
+      "format": "PNG",
+      "width": 350,
+      "height": 200,
+      "bytes": 64591
+    },
+    "outputs": [
+      {
+        "name": "anchorLink__faq04-PC.webp",
+        "format": "WEBP",
+        "width": 350,
+        "height": 200,
+        "bytes": 9946,
+        "quality": 88
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "AnchorLink_PriceList-DayService.png",
+      "format": "PNG",
+      "width": 600,
+      "height": 160,
+      "bytes": 81807
+    },
+    "outputs": [
+      {
+        "name": "AnchorLink_PriceList-DayService.webp",
+        "format": "WEBP",
+        "width": 600,
+        "height": 160,
+        "bytes": 10376,
+        "quality": 88
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "AnchorLink_PriceList-HomeCare.png",
+      "format": "PNG",
+      "width": 600,
+      "height": 160,
+      "bytes": 91059
+    },
+    "outputs": [
+      {
+        "name": "AnchorLink_PriceList-HomeCare.webp",
+        "format": "WEBP",
+        "width": 600,
+        "height": 160,
+        "bytes": 11856,
+        "quality": 88
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "sidebar01.png",
+      "format": "PNG",
+      "width": 400,
+      "height": 225,
+      "bytes": 91584
+    },
+    "outputs": [
+      {
+        "name": "sidebar01.webp",
+        "format": "WEBP",
+        "width": 400,
+        "height": 225,
+        "bytes": 12662,
+        "quality": 88
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "sidebar02.png",
+      "format": "PNG",
+      "width": 400,
+      "height": 225,
+      "bytes": 108755
+    },
+    "outputs": [
+      {
+        "name": "sidebar02.webp",
+        "format": "WEBP",
+        "width": 400,
+        "height": 225,
+        "bytes": 18152,
+        "quality": 88
+      }
+    ]
+  }
+]

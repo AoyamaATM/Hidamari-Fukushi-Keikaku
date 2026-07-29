@@ -329,6 +329,9 @@ body[data-type=home] .page-hero {
   max-width: none;
   width: 100%;
 }
+.subpage-hero picture {
+  display: block;
+}
 .subpage-hero img {
   height: auto;
   width: 100%;
@@ -724,6 +727,9 @@ body[data-type=home] #reasons .grid-reason .reason-index {
   display: grid;
   gap: clamp(16px, 2vw, 26px);
   margin: 34px auto 0;
+}
+.flow-assets picture {
+  display: block;
 }
 .flow-assets img {
   height: auto;
@@ -2068,21 +2074,6 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
     aspect-ratio: 43/30;
     object-fit: cover;
   }
-  body[data-type=aboutus] .subpage-hero img {
-    content: url("../img/mv-AboutUs_SP.png");
-  }
-  body[data-type=facilities] .subpage-hero img {
-    content: url("../img/mv-Facilities_SP.png");
-  }
-  body[data-type=price] .subpage-hero img {
-    content: url("../img/mv-PriceList_SP.png");
-  }
-  body[data-type=faq] .subpage-hero img {
-    content: url("../img/mv-faq_SP.png");
-  }
-  body[data-type=contact] .subpage-hero img {
-    content: url("../img/mv-Contact_SP.png");
-  }
 }
 /* =======================================================
 共通見出し・ボタン・パンくずのレスポンシブ調整
@@ -2408,15 +2399,6 @@ TOPページのレスポンシブ調整
     gap: 28px;
     margin-top: 0;
     max-width: 560px;
-  }
-  body[data-type=home] #flow .flow-assets--home > img:nth-child(1) {
-    content: url("../img/flow01-sp.svg");
-  }
-  body[data-type=home] #flow .flow-assets--home > img:nth-child(2) {
-    content: url("../img/flow02-sp.svg");
-  }
-  body[data-type=home] #flow .flow-assets--home > img:nth-child(3) {
-    content: url("../img/flow03-sp.svg");
   }
   body[data-type=home] #price-guide .price-box {
     padding: 32px 16px;
@@ -2797,7 +2779,6 @@ Aboutページのレスポンシブ調整
 @media (max-width: 430px) {
   body[data-type=aboutus] .subpage-hero img {
     aspect-ratio: 43/30;
-    content: url("../img/mv-AboutUs_SP.png");
     object-fit: cover;
   }
   body[data-type=aboutus] .about-profile {
@@ -2952,7 +2933,6 @@ Facilitiesページのレスポンシブ調整
 @media (max-width: 430px) {
   body[data-type=facilities] .subpage-hero img {
     aspect-ratio: 43/30;
-    content: url("../img/mv-Facilities_SP.png");
     object-fit: cover;
   }
   body[data-type=facilities] .section {
@@ -3220,7 +3200,6 @@ Priceページのレスポンシブ調整
 @media (max-width: 430px) {
   body[data-type=price] .subpage-hero img {
     aspect-ratio: 43/30;
-    content: url("../img/mv-PriceList_SP.png");
     object-fit: cover;
   }
   body[data-type=price] .anchor-section {
@@ -3391,7 +3370,6 @@ FAQページのレスポンシブ調整
 @media (max-width: 430px) {
   body[data-type=faq] .subpage-hero img {
     aspect-ratio: 43/30;
-    content: url("../img/mv-faq_SP.png");
     object-fit: cover;
   }
   body[data-type=faq] .anchor-section {
@@ -3620,7 +3598,6 @@ Contactページのレスポンシブ調整
 @media (max-width: 430px) {
   body[data-type=contact] .subpage-hero img {
     aspect-ratio: 43/30;
-    content: url("../img/mv-Contact_SP.png");
     object-fit: cover;
   }
   body[data-type=contact] .contact-page-band {

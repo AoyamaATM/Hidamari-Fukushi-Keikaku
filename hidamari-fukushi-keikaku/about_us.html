@@ -14,7 +14,10 @@
     <main class="page-shell" id="main">
       <section class="subpage-hero">
         <h1 class="visually-hidden">施設紹介</h1>
-        <img src="./img/mv-AboutUs_PC.png" alt="">
+        <picture>
+          <source media="(max-width: 768px)" srcset="./img/mv-AboutUs_SP.webp" width="860" height="600">
+          <img src="./img/mv-AboutUs_PC.webp" alt="" width="1728" height="600" fetchpriority="high">
+        </picture>
       </section>
       <nav class="breadcrumb" aria-label="パンくず">
         <a href="./index.html">TOP</a>
@@ -26,7 +29,7 @@
 
       <section class="section intro-surface about-profile">
         <div class="content-width profile-grid">
-          <img class="section-photo" src="./img/reason_02.jpg" alt="利用者に寄り添う介護スタッフ">
+          <img class="section-photo" src="./img/reason_02.webp" alt="利用者に寄り添う介護スタッフ" width="640" height="427" loading="lazy" decoding="async">
           <div>
             <h2 class="section-heading">社会福祉法人 ひだまり福祉計画</h2>
             <div class="facility-info">
@@ -45,7 +48,7 @@
           <div class="service-showcase">
             <article class="service-feature">
               <figure class="service-banner">
-                <img src="./img/service_01.jpg" alt="デイサービスで体操をする利用者">
+                <img src="./img/service_01.webp" srcset="./img/service_01-640.webp 640w, ./img/service_01-1280.webp 1280w, ./img/service_01.webp 1920w" sizes="(max-width: 768px) calc(100vw - 48px), calc(100vw - 64px)" alt="デイサービスで体操をする利用者" width="1920" height="640" loading="lazy" decoding="async">
                 <figcaption>デイサービス</figcaption>
               </figure>
               <p>
@@ -57,18 +60,18 @@
 
           <div class="grid-split section about-day-grid">
             <div>
-              <img class="time-schedule" src="./img/TimeSchedule.png" alt="デイサービスのタイムスケジュール">
+              <img class="time-schedule" src="./img/TimeSchedule.png" alt="デイサービスのタイムスケジュール" width="824" height="1623" loading="lazy" decoding="async">
             </div>
             <div class="stack-gallery">
-              <img class="section-photo" src="./img/dayservice_01.jpeg" alt="通路で挨拶するスタッフ">
-              <img class="section-photo portrait-photo" src="./img/dayservice_02.jpg" alt="屋外で過ごす利用者">
-              <img class="section-photo" src="./img/dayservice_03.jpg" alt="窓辺で会話する利用者とスタッフ">
+              <img class="section-photo" src="./img/dayservice_01.webp" srcset="./img/dayservice_01-800.webp 800w, ./img/dayservice_01.webp 1600w" sizes="(max-width: 768px) calc(100vw - 48px), 50vw" alt="通路で挨拶するスタッフ" width="1600" height="1067" loading="lazy" decoding="async">
+              <img class="section-photo portrait-photo" src="./img/dayservice_02.webp" alt="屋外で過ごす利用者" width="427" height="640" loading="lazy" decoding="async">
+              <img class="section-photo" src="./img/dayservice_03.webp" alt="窓辺で会話する利用者とスタッフ" width="640" height="427" loading="lazy" decoding="async">
             </div>
           </div>
 
           <section class="section about-service-block">
             <figure class="service-banner">
-              <img src="./img/service_02.jpg" alt="訪問介護で相談する利用者とスタッフ">
+              <img src="./img/service_02.webp" alt="訪問介護で相談する利用者とスタッフ" width="640" height="213" loading="lazy" decoding="async">
               <figcaption>訪問介護</figcaption>
             </figure>
             <p class="center-copy service-lead">
@@ -109,7 +112,7 @@
 
           <section class="section about-service-block">
             <figure class="service-banner">
-              <img src="./img/service_03.jpg" alt="介護相談で話を聞くスタッフ">
+              <img src="./img/service_03.webp" alt="介護相談で話を聞くスタッフ" width="640" height="213" loading="lazy" decoding="async">
               <figcaption>介護相談</figcaption>
             </figure>
             <p class="center-copy service-lead">

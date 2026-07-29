@@ -5,14 +5,6 @@ $breakpoint-mobile: 430px;
 $breakpoint-tablet-up: 769px;
 $breakpoint-home-hero: 930px;
 
-$subpage-hero-images: (
-  "aboutus": "mv-AboutUs_SP.png",
-  "facilities": "mv-Facilities_SP.png",
-  "price": "mv-PriceList_SP.png",
-  "faq": "mv-faq_SP.png",
-  "contact": "mv-Contact_SP.png"
-);
-
 @mixin viewport-max($breakpoint) {
   @media (max-width: $breakpoint) {
     @content;
@@ -422,6 +414,10 @@ MVとパンくず
   margin-inline: auto;
   max-width: none;
   width: 100%;
+
+  picture {
+    display: block;
+  }
 
   img {
     height: auto;
@@ -884,6 +880,10 @@ MVとパンくず
   display: grid;
   gap: clamp(16px, 2vw, 26px);
   margin: 34px auto 0;
+
+  picture {
+    display: block;
+  }
 
   img {
     height: auto;
@@ -2422,11 +2422,6 @@ MVとパンくず
     object-fit: cover;
   }
 
-  @each $page, $image in $subpage-hero-images {
-    body[data-type="#{$page}"] .subpage-hero img {
-      content: url("../img/#{$image}");
-    }
-  }
 }
 
 /* =======================================================
@@ -2829,17 +2824,6 @@ TOPページのレスポンシブ調整
       margin-top: 0;
       max-width: 560px;
 
-      > img:nth-child(1) {
-        content: url("../img/flow01-sp.svg");
-      }
-
-      > img:nth-child(2) {
-        content: url("../img/flow02-sp.svg");
-      }
-
-      > img:nth-child(3) {
-        content: url("../img/flow03-sp.svg");
-      }
     }
 
     #price-guide .price-box {
@@ -3314,7 +3298,6 @@ Aboutページのレスポンシブ調整
   body[data-type="aboutus"] {
     .subpage-hero img {
       aspect-ratio: 43 / 30;
-      content: url("../img/mv-AboutUs_SP.png");
       object-fit: cover;
     }
 
@@ -3512,7 +3495,6 @@ Facilitiesページのレスポンシブ調整
   body[data-type="facilities"] {
     .subpage-hero img {
       aspect-ratio: 43 / 30;
-      content: url("../img/mv-Facilities_SP.png");
       object-fit: cover;
     }
 
@@ -3839,7 +3821,6 @@ Priceページのレスポンシブ調整
   body[data-type="price"] {
     .subpage-hero img {
       aspect-ratio: 43 / 30;
-      content: url("../img/mv-PriceList_SP.png");
       object-fit: cover;
     }
 
@@ -4061,7 +4042,6 @@ FAQページのレスポンシブ調整
   body[data-type="faq"] {
     .subpage-hero img {
       aspect-ratio: 43 / 30;
-      content: url("../img/mv-faq_SP.png");
       object-fit: cover;
     }
 
@@ -4349,7 +4329,6 @@ Contactページのレスポンシブ調整
   body[data-type="contact"] {
     .subpage-hero img {
       aspect-ratio: 43 / 30;
-      content: url("../img/mv-Contact_SP.png");
       object-fit: cover;
     }
 
