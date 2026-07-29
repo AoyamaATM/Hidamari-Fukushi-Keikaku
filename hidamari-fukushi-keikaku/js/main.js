@@ -219,7 +219,7 @@ const initContactForms = () => {
       const status = form.querySelector("[data-form-status]");
 
       if (status) {
-        status.textContent = "送信内容を確認しました。実運用時に送信先処理を接続してください。";
+        status.textContent = "入力内容を確認しました。こちらはサンプルのため、送信は行われていません。";
       }
 
       form.reset();

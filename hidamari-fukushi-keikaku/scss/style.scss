@@ -1337,6 +1337,20 @@ MVとパンくず
   }
 }
 
+.form-note {
+  color: var(--palette-black);
+  font-size: clamp(14px, 1.4vw, 18px);
+  font-weight: 700;
+  line-height: 1.7;
+  margin: 0 auto 18px;
+  max-width: 590px;
+  text-align: center;
+}
+
+.form-intro + .form-note {
+  margin-top: 16px;
+}
+
 .field-grid {
   display: grid;
   gap: 14px;
