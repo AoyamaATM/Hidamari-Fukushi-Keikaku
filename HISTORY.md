@@ -59,3 +59,14 @@
 - TOPページ全体の実参照画像量はPCで約3,189.8KiBから531.3KiBへ83.3%削減し、SPは約479.0KiBとなった。全9ページの画像量はPC／SPとも最大約491.3KiB／439.7KiB（TOP以外）に収まった。
 - `pnpm run build:css`、`pnpm run check:site`、画像属性・変換レポート検査、`git diff --check` が合格した。Chromeプラグインで全9ページをPC幅1440px・SP幅390pxで確認し、横スクロール、画像欠落、寸法属性不足、コンソールエラーがないことを確認した。
 - ヒーローのPC／SP切り替え、TOPサービス写真、SPで選択される `service_01-640.webp`、写真入りリンクの画質を目視確認した。`ROADMAP.md` のステップ5-8を完了へ更新し、ステップ5-9には進んでいない。
+
+### 14時進捗
+
+- ステップ5-9として、`ROADMAP.md` を基本資料にし、修正案Markdownは「meta description・OGP・favicon」と「ページタイトル」の該当2節だけを抽出して参照した。
+- 全9ページのタイトルを `ページ名 | ひだまりケア旭川` に統一した。TOPは `旭川市のデイサービス・訪問介護`、Singleは記事タイトルをページ名とし、法人名は本文とdescriptionで補足する方針とした。
+- 全9ページへ固有のmeta description、canonical URL、OGP一式、favicon参照を追加した。共通OGP画像は `img/MainVisual_pc.png`、faviconは既存の `img/Logo.png` を使用した。
+- GitHub Pagesの想定URLを `https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/hidamari-fukushi-keikaku/` とした。公開元が確定するステップ7-2でcanonical、`og:url`、`og:image` を再照合する注意点を `ROADMAP.md` に記録した。
+- 施設ページの呼称を `施設紹介` と `全施設一覧` に整理し、ヘッダーとフッターの表記を `全施設一覧` に統一した。`SITEMAP.md` の表記とブランドリンクのラベルも同期した。
+- `tools/check-site.ps1` にtitle、固有description、canonical、OGP、favicon、タイトルとの一致、サイト名統一の検査を追加し、`pnpm run check:site` と `git diff --check` が合格した。
+- Chromeプラグインで全9ページをPC幅1440px・SP幅390pxで確認し、タイトル・メタ情報・名称の反映、横スクロールなし、コンソールエラー0件を確認した。
+- 静的HTMLでのSEO情報管理はGitHub Pages公開版のレビュー完了までとし、WordPress移行後はSEOプラグインまたはテーマ設定とサイトアイコンへ移して二重出力しない方針を記録した。`ROADMAP.md` のステップ5-9を完了へ更新し、ステップ5-10には進んでいない。

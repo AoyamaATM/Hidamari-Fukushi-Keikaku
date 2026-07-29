@@ -1403,6 +1403,17 @@ git diff --check
 - GitHub Pagesの公開URLを共有した際にOGPとfaviconを確認できる準備が整っている。
 - WordPress移行時のSEO設定先がロードマップに記録されている。
 
+### 実施結果
+
+- 全9ページのタイトルを `ページ名 | ひだまりケア旭川` に統一した。TOPはページ内容が伝わる `旭川市のデイサービス・訪問介護`、Singleは記事タイトルをページ名として使用し、法人名は本文と各ページ固有のdescriptionで補足する方針とした。
+- 全9ページへ重複しないmeta description、canonical URL、`og:locale`、`og:type`、`og:title`、`og:description`、`og:url`、`og:site_name`、共通OGP画像情報を追加した。Singleのみ `og:type="article"`、その他は `website` とした。
+- GitHub Pagesの想定基準URLを `https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/hidamari-fukushi-keikaku/` とし、共通OGP画像には `img/MainVisual_pc.png`、faviconには既存の `img/Logo.png` を使用した。ステップ7-2で実際の公開URLや配置が確定した際に、canonical、`og:url`、`og:image` を再照合する。
+- 施設ページの呼称は `施設紹介` と `全施設一覧` に整理し、`全施設紹介` はヘッダー、フッター、ページタイトル、見出し、パンくず、`SITEMAP.md` から除去した。ブランドリンクのラベルも `ひだまりケア旭川 TOP` に統一した。
+- `tools/check-site.ps1` に、title、固有description、canonical、OGP一式、favicon、titleとOGPの一致、サイト名の統一を検査する処理を追加した。
+- 静的HTMLをSEO情報の管理元とする期間はGitHub Pages公開版のレビュー完了までとする。WordPress移行後はtitle・description・OGPをSEOプラグインまたはテーマ設定、faviconをサイトアイコンへ移し、テーマとプラグインから同じタグを二重出力しない。採用プラグインの決定はステップ8-3で行う。
+- `pnpm run check:site` と `git diff --check` が合格した。Chromeプラグインで全9ページをPC幅1440px・SP幅390pxで確認し、タイトル・メタ情報・名称の反映、横スクロールなし、コンソールエラー0件を確認した。
+- 次のステップ5-10には進んでいない。
+
 ---
 
 ## ステップ5-10：レビュー項目7・静的サイトを総合確認する
@@ -1626,6 +1637,7 @@ git switch -c feature/wordpress
 - フォームは確認画面、自動返信、送信完了表示、スパム対策、`autocomplete`、電話リンクを要件化する。
 - 静的版で最適化した画像を元に、WordPressの自動生成サイズと `add_image_size()` の要否を決める。
 - 静的版のtitle・description・OGPを、WordPress側のSEO設定へどう移すか決める。
+- 静的版の管理はGitHub Pages公開版のレビュー完了までとし、WordPress公開後はSEOプラグインまたはテーマ設定とサイトアイコンを唯一の管理元にする。SEOタグをテーマとプラグインから重複出力しない。
 - SCSSは静的版の修正を完了してから、共通・部品・ページ別への分割要否を判断する。
 
 ### 完了条件
@@ -1922,7 +1934,7 @@ theme-name/
 - [x] フェーズ5-6：レビュー項目3・ご利用の流れHTML化
 - [x] フェーズ5-7：レビュー項目4・ボタン、余白、カード配置
 - [x] フェーズ5-8：レビュー項目5・画像最適化
-- [ ] フェーズ5-9：レビュー項目6・タイトル、名称、メタ情報
+- [x] フェーズ5-9：レビュー項目6・タイトル、名称、メタ情報
 - [ ] フェーズ5-10：レビュー項目7・静的サイト総合確認
 - [ ] フェーズ5-11：再レビュー
 

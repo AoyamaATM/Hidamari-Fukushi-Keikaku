@@ -27,7 +27,7 @@ const navigationItems = Object.freeze({
     { key: "aboutus", label: "施設紹介" },
     { key: "home", label: "ご利用の流れ", href: `${routes.home}#flow` },
     { key: "price", label: "料金表" },
-    { key: "facilities", label: "全施設紹介" },
+    { key: "facilities", label: "全施設一覧" },
     { key: "archive", label: "お知らせ一覧" },
     { key: "faq", label: "よくあるご質問" },
     { key: "contact", label: "お問い合わせ" },
@@ -46,7 +46,7 @@ const renderRouteLink = ({ key, label, href = routes[key] }) =>
 const renderNavigationLinks = (items) => items.map(renderRouteLink).join("");
 
 const renderBrand = () => `
-  <a class="brand" href="${routes.home}" aria-label="ひだまり福祉計画 TOP">
+  <a class="brand" href="${routes.home}" aria-label="ひだまりケア旭川 TOP">
     <img class="brand-logo" src="${root}img/Logo.png" alt="ひだまりケア旭川" width="600" height="180" decoding="async">
   </a>
 `;

@@ -6,7 +6,7 @@
 TOP（index.html）
 ├─ 施設紹介（about_us.html）
 │  └─ ご利用開始までの流れ（#flow__about）
-├─ 全施設紹介（facilities.html）
+├─ 全施設一覧（facilities.html）
 ├─ 料金表（price.html）
 │  ├─ デイサービス料金（#day-service）
 │  └─ 訪問介護料金（#visit-service）
@@ -27,7 +27,7 @@ TOP（index.html）
 | ---: | --- | --- | --- | --- |
 | 1 | TOP | `index.html` | ヒーロー、選ばれる理由、サービス、ご利用の流れ、料金、お知らせ、FAQ、お問い合わせ | Contact、FAQ、Privacy、Single、ページ内各セクション |
 | 2 | 施設紹介 | `about_us.html` | 法人概要、提供サービス、ご利用開始までの流れ | Contact |
-| 3 | 全施設紹介 | `facilities.html` | 法人理念、施設情報、スタッフ紹介 | グローバル／フッターナビ |
+| 3 | 全施設一覧 | `facilities.html` | 法人理念、施設情報、スタッフ紹介 | グローバル／フッターナビ |
 | 4 | 料金表 | `price.html` | デイサービス料金、訪問介護料金 | 2つのページ内料金セクション |
 | 5 | よくあるご質問 | `faq.html` | 4カテゴリのFAQアコーディオン | 4つのページ内カテゴリ |
 | 6 | お問い合わせ | `contact.html` | 電話案内、FAQ導線、問い合わせフォーム | FAQ、Privacy |
@@ -68,7 +68,7 @@ TOP（index.html）
 
 ```text
 サービスを知る
-TOP → 施設紹介／全施設紹介 → ご利用の流れ → お問い合わせ
+TOP → 施設紹介／全施設一覧 → ご利用の流れ → お問い合わせ
 
 費用を確認する
 TOP → 料金の目安 → 料金表 → お問い合わせ
