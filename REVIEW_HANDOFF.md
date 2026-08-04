@@ -12,12 +12,12 @@
 ## 最初に確認するもの
 
 1. `SITEMAP.md` でページ構成と導線を確認する。
-2. `hidamari-fukushi-keikaku/index.html` からサイトを確認する。
+2. `docs/index.html` からサイトを確認する。
 3. 実装は次の順で読むと全体を追いやすい。
-   - `hidamari-fukushi-keikaku/*.html`：各ページの本文構造
-   - `hidamari-fukushi-keikaku/js/main.js`：共通ヘッダー／フッターと操作
-   - `hidamari-fukushi-keikaku/scss/style.scss`：スタイルの編集元
-   - `hidamari-fukushi-keikaku/css/style.css`：ブラウザが読み込む生成CSS
+   - `docs/*.html`：各ページの本文構造
+   - `docs/js/main.js`：共通ヘッダー／フッターと操作
+   - `docs/scss/style.scss`：スタイルの編集元
+   - `docs/css/style.css`：ブラウザが読み込む生成CSS
 4. `screenshots/` で全9ページのPC・SP全体画像を比較する。
 
 ## ローカルでの確認方法
@@ -31,7 +31,7 @@ python -m http.server 8000
 ブラウザで次を開く。
 
 ```text
-http://localhost:8000/hidamari-fukushi-keikaku/index.html
+http://localhost:8000/docs/index.html
 ```
 
 依存関係を用意できる場合は、サイト全体の静的検査も実行できる。
@@ -103,7 +103,7 @@ pnpm run build:css
 | --- | --- |
 | `START_HERE.md` | この案内 |
 | `SITEMAP.md` | ページ、導線、ページ内アンカーの一覧 |
-| `hidamari-fukushi-keikaku/` | 表示に必要なHTML、CSS、JavaScript、画像とSCSS原本 |
+| `docs/` | 表示に必要なHTML、CSS、JavaScript、画像とSCSS原本 |
 | `screenshots/` | 全9ページのPC 1600px／SP 390px全体画像 |
 | `tools/` | CSS生成、静的検査、表示確認用スクリプト |
 | `package.json` ほか | ビルド設定と依存関係 |

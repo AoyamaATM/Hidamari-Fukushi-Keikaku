@@ -21,3 +21,11 @@
 - ローカルとGitHub上に `static-v1.0` が存在しないことを確認してから、静的サイト完成版へ同タグを付け、GitHubへ反映した。
 - ローカルタグとリモートタグが同じコミットを指すことを確認し、WordPress化前の静的サイト完成版へ戻れる状態にした。
 - `ROADMAP.md` にステップ6-2の実施結果を記録し、フェーズ6を完了へ更新した。フェーズ7には進んでいない。
+
+### 15時進捗
+
+- ステップ7-1としてGitHub Pagesの公開構成を確認し、公開元を `main` ブランチの `/docs` に決定した。リポジトリ直下の履歴・レビュー資料・ツール類を公開対象から分離するため、サイト本体を `hidamari-fukushi-keikaku/` から `docs/` へ移した。
+- `docs/.nojekyll` を追加し、全9ページのcanonical、`og:url`、`og:image` を公開基準URL `https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/` に合わせた。CSS生成・サイト検査・画像最適化・表示確認ツールと関連ドキュメントも新しいパスへ更新した。
+- 移動前後の112ファイルをblob単位で比較し、欠落0件、意図した9 HTML以外の内容変更0件を確認した。公開ディレクトリ内113ファイルと54件のローカル参照は、大小文字不一致・欠落・公開範囲外参照・Git追跡漏れがいずれも0件だった。
+- `pnpm run build:css`、`pnpm run check:site`、`git diff --check` が成功した。ChromeのPC幅で全9ページのCSS・画像・共通部品・canonical、FAQ開閉、Archive絞り込み、ブラウザログ0件を確認し、390px幅の全9ページもスクリーンショット生成に成功した。
+- `ROADMAP.md` にステップ7-1の実施結果を記録した。ステップ7-2のGitHub Pages設定は未実施。

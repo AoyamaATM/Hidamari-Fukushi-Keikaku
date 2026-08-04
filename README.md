@@ -4,11 +4,17 @@
 
 ## ソース構成
 
-- `hidamari-fukushi-keikaku/*.html`: 各ページの本文構造
-- `hidamari-fukushi-keikaku/js/main.js`: 共通ヘッダー／フッターとページ共通の操作
-- `hidamari-fukushi-keikaku/scss/style.scss`: 全ページのスタイル元ファイル
-- `hidamari-fukushi-keikaku/css/style.css`: HTMLが読み込む生成CSS
+- `docs/*.html`: 各ページの本文構造
+- `docs/js/main.js`: 共通ヘッダー／フッターとページ共通の操作
+- `docs/scss/style.scss`: 全ページのスタイル元ファイル
+- `docs/css/style.css`: HTMLが読み込む生成CSS
 - `tools/`: CSS生成・静的検査・表示確認用スクリプト
+
+## GitHub Pages公開構成
+
+- 公開元：`main` ブランチの `/docs`
+- 公開基準URL：`https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/`
+- `docs/.nojekyll` により、Jekyllを介さず静的ファイルとして配信する
 
 ## CSSビルド
 
@@ -26,7 +32,7 @@ pnpm run check:visual:build
 ```
 
 ```powershell
-hidamari-fukushi-keikaku/scss/style.scss
+docs/scss/style.scss
 ```
 
 初回のみ依存関係をインストールします。
@@ -51,9 +57,9 @@ pnpm run watch:css
 
 生成される主なCSSは次の通りです。
 
-- `hidamari-fukushi-keikaku/css/style.css`: HTMLが読み込む表示用CSS
-- `hidamari-fukushi-keikaku/scss/style.css`: SCSS配下の確認用コンパイル結果
-- `hidamari-fukushi-keikaku/scss/style.min.css`: 圧縮CSS
+- `docs/css/style.css`: HTMLが読み込む表示用CSS
+- `docs/scss/style.css`: SCSS配下の確認用コンパイル結果
+- `docs/scss/style.min.css`: 圧縮CSS
 
 生成CSSだけを直接編集するのは避け、`scss/style.scss` を更新してから `pnpm run build:css` を実行してください。
 
@@ -73,15 +79,15 @@ CSSやレイアウトを変更した後は、`pnpm run build:css` を実行し�
 
 | ID | ページ | ファイル |
 |---|---|---|
-| `index` | TOP | `hidamari-fukushi-keikaku/index.html` |
-| `about` | About_Us | `hidamari-fukushi-keikaku/about_us.html` |
-| `facilities` | Facilities | `hidamari-fukushi-keikaku/facilities.html` |
-| `price` | Price | `hidamari-fukushi-keikaku/price.html` |
-| `faq` | FAQ | `hidamari-fukushi-keikaku/faq.html` |
-| `contact` | Contact | `hidamari-fukushi-keikaku/contact.html` |
-| `archive` | Archive | `hidamari-fukushi-keikaku/archive.html` |
-| `single` | Single | `hidamari-fukushi-keikaku/single.html` |
-| `privacy` | Privacy | `hidamari-fukushi-keikaku/privacy.html` |
+| `index` | TOP | `docs/index.html` |
+| `about` | About_Us | `docs/about_us.html` |
+| `facilities` | Facilities | `docs/facilities.html` |
+| `price` | Price | `docs/price.html` |
+| `faq` | FAQ | `docs/faq.html` |
+| `contact` | Contact | `docs/contact.html` |
+| `archive` | Archive | `docs/archive.html` |
+| `single` | Single | `docs/single.html` |
+| `privacy` | Privacy | `docs/privacy.html` |
 
 主要ページのPC幅スクリーンショットは次のコマンドでまとめて生成できます。
 

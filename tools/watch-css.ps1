@@ -5,7 +5,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent $PSScriptRoot
-$scssRoot = Join-Path $repoRoot "hidamari-fukushi-keikaku\scss"
+$scssRoot = Join-Path $repoRoot "docs\scss"
 $buildCss = Join-Path $PSScriptRoot "build-css.ps1"
 
 function Get-ScssStamp {
@@ -22,7 +22,7 @@ function Invoke-MainCssBuild {
 Invoke-MainCssBuild
 if ($Once) { exit 0 }
 
-Write-Host "Watching hidamari-fukushi-keikaku/scss for changes. Press Ctrl+C to stop."
+Write-Host "Watching docs/scss for changes. Press Ctrl+C to stop."
 $lastStamp = Get-ScssStamp
 
 while ($true) {

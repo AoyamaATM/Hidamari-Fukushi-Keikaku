@@ -6,7 +6,7 @@ param(
 $ErrorActionPreference = "Stop"
 $runSass = Join-Path $PSScriptRoot "run-sass.ps1"
 $runPostcss = Join-Path $PSScriptRoot "run-postcss.ps1"
-$sourceScss = "hidamari-fukushi-keikaku/scss/style.scss"
+$sourceScss = "docs/scss/style.scss"
 
 function Invoke-Step {
   param(
@@ -45,17 +45,17 @@ function Build-CssTarget {
 
 switch ($Target) {
   "all" {
-    Build-CssTarget "hidamari-fukushi-keikaku/css/style.css" "expanded" $false
-    Build-CssTarget "hidamari-fukushi-keikaku/scss/style.css" "expanded" $true
-    Build-CssTarget "hidamari-fukushi-keikaku/scss/style.min.css" "compressed" $true
+    Build-CssTarget "docs/css/style.css" "expanded" $false
+    Build-CssTarget "docs/scss/style.css" "expanded" $true
+    Build-CssTarget "docs/scss/style.min.css" "compressed" $true
   }
   "main" {
-    Build-CssTarget "hidamari-fukushi-keikaku/css/style.css" "expanded" $false
+    Build-CssTarget "docs/css/style.css" "expanded" $false
   }
   "scss" {
-    Build-CssTarget "hidamari-fukushi-keikaku/scss/style.css" "expanded" $true
+    Build-CssTarget "docs/scss/style.css" "expanded" $true
   }
   "min" {
-    Build-CssTarget "hidamari-fukushi-keikaku/scss/style.min.css" "compressed" $true
+    Build-CssTarget "docs/scss/style.min.css" "compressed" $true
   }
 }

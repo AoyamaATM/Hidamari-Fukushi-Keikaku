@@ -2,46 +2,46 @@
   {
     "id": "index",
     "label": "TOP",
-    "path": "hidamari-fukushi-keikaku/index.html"
+    "path": "docs/index.html"
   },
   {
     "id": "about",
     "label": "About_Us",
-    "path": "hidamari-fukushi-keikaku/about_us.html"
+    "path": "docs/about_us.html"
   },
   {
     "id": "facilities",
     "label": "Facilities",
-    "path": "hidamari-fukushi-keikaku/facilities.html"
+    "path": "docs/facilities.html"
   },
   {
     "id": "price",
     "label": "Price",
-    "path": "hidamari-fukushi-keikaku/price.html"
+    "path": "docs/price.html"
   },
   {
     "id": "faq",
     "label": "FAQ",
-    "path": "hidamari-fukushi-keikaku/faq.html"
+    "path": "docs/faq.html"
   },
   {
     "id": "contact",
     "label": "Contact",
-    "path": "hidamari-fukushi-keikaku/contact.html"
+    "path": "docs/contact.html"
   },
   {
     "id": "archive",
     "label": "Archive",
-    "path": "hidamari-fukushi-keikaku/archive.html"
+    "path": "docs/archive.html"
   },
   {
     "id": "single",
     "label": "Single",
-    "path": "hidamari-fukushi-keikaku/single.html"
+    "path": "docs/single.html"
   },
   {
     "id": "privacy",
     "label": "Privacy",
-    "path": "hidamari-fukushi-keikaku/privacy.html"
+    "path": "docs/privacy.html"
   }
 ]

@@ -1407,7 +1407,7 @@ git diff --check
 
 - 全9ページのタイトルを `ページ名 | ひだまりケア旭川` に統一した。TOPはページ内容が伝わる `旭川市のデイサービス・訪問介護`、Singleは記事タイトルをページ名として使用し、法人名は本文と各ページ固有のdescriptionで補足する方針とした。
 - 全9ページへ重複しないmeta description、canonical URL、`og:locale`、`og:type`、`og:title`、`og:description`、`og:url`、`og:site_name`、共通OGP画像情報を追加した。Singleのみ `og:type="article"`、その他は `website` とした。
-- GitHub Pagesの想定基準URLを `https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/hidamari-fukushi-keikaku/` とし、共通OGP画像には `img/MainVisual_pc.png`、faviconには既存の `img/Logo.png` を使用した。ステップ7-2で実際の公開URLや配置が確定した際に、canonical、`og:url`、`og:image` を再照合する。
+- GitHub Pagesの公開基準URLを `https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/` とし、共通OGP画像には `img/MainVisual_pc.png`、faviconには既存の `img/Logo.png` を使用した。ステップ7-1で公開元を `main` ブランチの `/docs` に確定し、canonical、`og:url`、`og:image` を公開構成へ合わせて再照合した。
 - 施設ページの呼称は `施設紹介` と `全施設一覧` に整理し、`全施設紹介` はヘッダー、フッター、ページタイトル、見出し、パンくず、`SITEMAP.md` から除去した。ブランドリンクのラベルも `ひだまりケア旭川 TOP` に統一した。
 - `tools/check-site.ps1` に、title、固有description、canonical、OGP一式、favicon、titleとOGPの一致、サイト名の統一を検査する処理を追加した。
 - 静的HTMLをSEO情報の管理元とする期間はGitHub Pages公開版のレビュー完了までとする。WordPress移行後はtitle・description・OGPをSEOプラグインまたはテーマ設定、faviconをサイトアイコンへ移し、テーマとプラグインから同じタグを二重出力しない。採用プラグインの決定はステップ8-3で行う。
@@ -1562,6 +1562,16 @@ git push origin static-v1.0
 - GitHub Pagesで読み込める静的構成になっている
 - Windows上だけで成立するパスがない
 - 必要ファイルがGitHubへpushされている
+
+### 実施結果
+
+- GitHub Pagesの公開元を `main` ブランチの `/docs` に決定し、サイト本体を従来の `hidamari-fukushi-keikaku/` から `docs/` へ移した。`docs/index.html` が公開元の先頭にあり、リポジトリ直下の履歴・レビュー資料・ツール類は公開対象から分離されている。
+- `docs/.nojekyll` を追加し、Jekyll変換を介さずHTML、CSS、JavaScript、画像を静的ファイルとして配信できる構成にした。
+- 全9ページのcanonical、`og:url`、`og:image` を公開基準URL `https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/` に合わせ、CSS生成、サイト検査、画像最適化、表示確認の各ツールと関連ドキュメントも `docs/` 参照へ更新した。
+- 公開ディレクトリ内113ファイルと、HTML・CSS・JavaScriptから参照する54件のローカルパスを大小文字を区別して照合し、欠落・大小文字不一致・公開範囲外参照・Git追跡漏れが0件であることを確認した。Windowsローカル専用パスも検出されなかった。
+- `pnpm run build:css`、`pnpm run check:site`、`git diff --check` が成功し、生成CSSと全9 HTML、`js/main.js` が新しい配置で正常であることを確認した。
+- ローカルHTTPサーバー経由のChrome PC幅で全9ページのCSS・画像・共通部品・canonicalを確認し、FAQ開閉とArchive絞り込みも正常、ブラウザログは0件だった。390px幅の全9ページもスクリーンショット生成に成功し、TOPの目視確認で想定外の崩れはなかった。
+- 必要ファイルをコミットしてGitHubへpushした。ステップ7-2のGitHub Pages設定には進んでいない。
 
 ---
 

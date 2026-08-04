@@ -1,5 +1,5 @@
 param(
-  [string] $SiteDirectory = "hidamari-fukushi-keikaku"
+  [string] $SiteDirectory = "docs"
 )
 
 $ErrorActionPreference = "Stop"

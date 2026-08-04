@@ -13,15 +13,15 @@
 
 | ページ | 確認用HTML | 主なレスポンシブ確認箇所 |
 | --- | --- | --- |
-| TOP | [index.html](hidamari-fukushi-keikaku/index.html) | ヒーロー、導線カード、共通ヘッダー・フッター |
-| About | [about_us.html](hidamari-fukushi-keikaku/about_us.html) | 紹介グリッド、サービス一覧、ご利用の流れ |
-| Facilities | [facilities.html](hidamari-fukushi-keikaku/facilities.html) | 施設カード、詳細表、画像配置 |
-| Price | [price.html](hidamari-fukushi-keikaku/price.html) | アンカー導線、料金表、表内スクロール |
-| FAQ | [faq.html](hidamari-fukushi-keikaku/faq.html) | カテゴリカード、長い質問、アコーディオン |
-| Contact | [contact.html](hidamari-fukushi-keikaku/contact.html) | 電話案内、FAQ導線、入力フォーム |
-| Archive | [archive.html](hidamari-fukushi-keikaku/archive.html) | 絞り込み欄、一覧、ページネーション |
-| Single | [single.html](hidamari-fukushi-keikaku/single.html) | 記事、サイドバー、最新投稿 |
-| Privacy | [privacy.html](hidamari-fukushi-keikaku/privacy.html) | 長文、入れ子リスト、連絡先 |
+| TOP | [index.html](docs/index.html) | ヒーロー、導線カード、共通ヘッダー・フッター |
+| About | [about_us.html](docs/about_us.html) | 紹介グリッド、サービス一覧、ご利用の流れ |
+| Facilities | [facilities.html](docs/facilities.html) | 施設カード、詳細表、画像配置 |
+| Price | [price.html](docs/price.html) | アンカー導線、料金表、表内スクロール |
+| FAQ | [faq.html](docs/faq.html) | カテゴリカード、長い質問、アコーディオン |
+| Contact | [contact.html](docs/contact.html) | 電話案内、FAQ導線、入力フォーム |
+| Archive | [archive.html](docs/archive.html) | 絞り込み欄、一覧、ページネーション |
+| Single | [single.html](docs/single.html) | 記事、サイドバー、最新投稿 |
+| Privacy | [privacy.html](docs/privacy.html) | 長文、入れ子リスト、連絡先 |
 
 ## 基本幅のスクリーンショット
 

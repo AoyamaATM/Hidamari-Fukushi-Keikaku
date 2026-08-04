@@ -7,7 +7,7 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-IMAGE_DIR = ROOT / "hidamari-fukushi-keikaku" / "img"
+IMAGE_DIR = ROOT / "docs" / "img"
 REPORT_PATH = ROOT / "tools" / "image-optimization-report.json"
 
 
