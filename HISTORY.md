@@ -45,3 +45,6 @@
 - GitHub上とローカルの `feature/responsive` ブランチを削除した。`main` と `origin/main`、`static-v1.0` タグは維持し、ほかの整理候補には着手していない。
 - 整理項目2として、施設紹介ページの「ご利用開始までの流れ」をHTML化する前に使っていた `docs/img/flow11-pc.svg`〜`flow18-pc.svg` と対応するSP版、計16ファイルを確認した。本番HTML・CSS・SCSS・JavaScript・生成ツールからの参照は0件だった。
 - 未参照のSVG16ファイル（合計2,313,427バイト）だけを削除した。`pnpm run check:site` と `git diff --check` が成功し、全9 HTMLと `js/main.js` に問題がないことを確認した。ほかの画像・整理候補には着手していない。
+- 整理項目3として、完了済みの `RESPONSIVE_REVIEW.md`、`REVIEW_HANDOFF.md`、`修正.md` を `project-docs/reviews/` へ移し、`修正.md` は用途が分かる `RESPONSIVE_REVIEW_FEEDBACK.md` に改名した。アーカイブの索引となるREADMEも追加した。
+- 各資料に作成時点・完了状態・現在の参照先を明記し、旧ブランチと旧コミットを現在情報と誤認しないよう整理した。Git管理外のスクリーンショットを指していた90件のリンクは、作成時の確認幅と結果の記録へ集約した。
+- ルートの `README.md` に公開URLとプロジェクト資料への導線を追加し、`ROADMAP.md` の現行資料パスを更新した。Markdownの相対リンク検査は0件、`pnpm run check:site` と `git diff --check` は成功した。サイト本体と次の整理候補には着手していない。

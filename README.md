@@ -13,8 +13,14 @@
 ## GitHub Pages公開構成
 
 - 公開元：`main` ブランチの `/docs`
-- 公開基準URL：`https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/`
+- 公開基準URL：[https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/](https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/)
 - `docs/.nojekyll` により、Jekyllを介さず静的ファイルとして配信する
+
+## プロジェクト資料
+
+- [ROADMAP.md](ROADMAP.md)：工程、実施結果、進行状況
+- [SITEMAP.md](SITEMAP.md)：ページ構成と導線
+- [レビュー資料アーカイブ](project-docs/reviews/README.md)：完了済みレビューの資料と指摘記録
 
 ## CSSビルド
 
@@ -29,10 +35,6 @@ CSSやレイアウトを変更する場合は、次の順で作業します。
 
 ```powershell
 pnpm run check:visual:build
-```
-
-```powershell
-docs/scss/style.scss
 ```
 
 初回のみ依存関係をインストールします。
