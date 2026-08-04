@@ -7,7 +7,8 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-IMAGE_DIR = ROOT / "docs" / "img"
+PUBLIC_IMAGE_DIR = ROOT / "docs" / "img"
+SOURCE_IMAGE_DIR = ROOT / "source-assets" / "images"
 REPORT_PATH = ROOT / "tools" / "image-optimization-report.json"
 
 
@@ -16,7 +17,11 @@ def output(name: str, *, width: int | None = None, quality: int = 84) -> dict[st
 
 
 CONVERSIONS: list[dict[str, object]] = [
-    {"source": "MainVisual_pc.png", "outputs": [output("MainVisual_pc.webp", quality=84)]},
+    {
+        "source": "MainVisual_pc.png",
+        "published_source": True,
+        "outputs": [output("MainVisual_pc.webp", quality=84)],
+    },
     *[
         {"source": f"mv-{page}_{size}.png", "outputs": [output(f"mv-{page}_{size}.webp", quality=86)]}
         for page in ("AboutUs", "Contact", "Facilities", "PriceList")
@@ -110,7 +115,10 @@ def main() -> None:
     report: list[dict[str, object]] = []
 
     for conversion in CONVERSIONS:
-        source_path = IMAGE_DIR / str(conversion["source"])
+        source_directory = (
+            PUBLIC_IMAGE_DIR if conversion.get("published_source") else SOURCE_IMAGE_DIR
+        )
+        source_path = source_directory / str(conversion["source"])
         source_bytes = source_path.stat().st_size
 
         with Image.open(source_path) as source_image:
@@ -126,7 +134,7 @@ def main() -> None:
 
             outputs: list[dict[str, object]] = []
             for output_spec in conversion["outputs"]:
-                destination = IMAGE_DIR / str(output_spec["name"])
+                destination = PUBLIC_IMAGE_DIR / str(output_spec["name"])
                 resized = resize_to_width(working_image, output_spec.get("width"))
                 save_webp(resized, destination, int(output_spec["quality"]))
                 outputs.append(

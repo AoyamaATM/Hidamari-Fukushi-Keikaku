@@ -50,3 +50,6 @@
 - ルートの `README.md` に公開URLとプロジェクト資料への導線を追加し、`ROADMAP.md` の現行資料パスを更新した。Markdownの相対リンク検査は0件、`pnpm run check:site` と `git diff --check` は成功した。サイト本体と次の整理候補には着手していない。
 - 整理項目4として、GitHubリポジトリのDescriptionを「旭川市の介護サービス事業所を想定した、レスポンシブ対応の静的Webサイト」、Websiteを `https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/` に設定した。
 - リポジトリのAbout欄にDescriptionとWebsiteが反映されたことを確認した。Topicsやほかのリポジトリ設定、サイト本体には変更を加えていない。
+- 整理項目5として、WebP生成用の画像原本34点をサイト参照と照合し、OGPで公開利用する `MainVisual_pc.png` を除く33点（12,857,317バイト）を `docs/img/` から非公開の `source-assets/images/` へ移した。
+- `tools/optimize-images.py` の入力先を新しい原本ディレクトリへ更新し、READMEに公開画像と原本の管理方針、再生成コマンドを追記した。移動前後の33点のblobハッシュはすべて一致し、WebP再生成後の公開画像差分は0件だった。
+- `pnpm run check:site` と `git diff --check` が成功し、全9 HTMLと `js/main.js`、画像参照に問題がないことを確認した。画像のファイル名と公開URL、サイトの表示内容は変更していない。

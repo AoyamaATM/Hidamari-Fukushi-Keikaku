@@ -8,6 +8,8 @@
 - `docs/js/main.js`: 共通ヘッダー／フッターとページ共通の操作
 - `docs/scss/style.scss`: 全ページのスタイル元ファイル
 - `docs/css/style.css`: HTMLが読み込む生成CSS
+- `docs/img/`: 公開時に配信する画像
+- `source-assets/images/`: WebP生成に使う非公開の画像原本
 - `tools/`: CSS生成・静的検査・表示確認用スクリプト
 
 ## GitHub Pages公開構成
@@ -71,6 +73,14 @@ JavaScriptの構文と、全HTMLのローカル参照・ID・関連付け・画�
 
 ```powershell
 pnpm run check:site
+```
+
+## 画像最適化
+
+変換元画像は `source-assets/images/`、生成したWebPは `docs/img/` で管理します。OGPにも使う `MainVisual_pc.png` は公開ファイルを変換元として兼用します。
+
+```powershell
+python tools/optimize-images.py
 ```
 
 ## 表示確認
