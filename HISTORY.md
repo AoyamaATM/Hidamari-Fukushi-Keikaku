@@ -48,3 +48,5 @@
 - 整理項目3として、完了済みの `RESPONSIVE_REVIEW.md`、`REVIEW_HANDOFF.md`、`修正.md` を `project-docs/reviews/` へ移し、`修正.md` は用途が分かる `RESPONSIVE_REVIEW_FEEDBACK.md` に改名した。アーカイブの索引となるREADMEも追加した。
 - 各資料に作成時点・完了状態・現在の参照先を明記し、旧ブランチと旧コミットを現在情報と誤認しないよう整理した。Git管理外のスクリーンショットを指していた90件のリンクは、作成時の確認幅と結果の記録へ集約した。
 - ルートの `README.md` に公開URLとプロジェクト資料への導線を追加し、`ROADMAP.md` の現行資料パスを更新した。Markdownの相対リンク検査は0件、`pnpm run check:site` と `git diff --check` は成功した。サイト本体と次の整理候補には着手していない。
+- 整理項目4として、GitHubリポジトリのDescriptionを「旭川市の介護サービス事業所を想定した、レスポンシブ対応の静的Webサイト」、Websiteを `https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/` に設定した。
+- リポジトリのAbout欄にDescriptionとWebsiteが反映されたことを確認した。Topicsやほかのリポジトリ設定、サイト本体には変更を加えていない。
