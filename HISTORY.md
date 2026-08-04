@@ -29,3 +29,7 @@
 - 移動前後の112ファイルをblob単位で比較し、欠落0件、意図した9 HTML以外の内容変更0件を確認した。公開ディレクトリ内113ファイルと54件のローカル参照は、大小文字不一致・欠落・公開範囲外参照・Git追跡漏れがいずれも0件だった。
 - `pnpm run build:css`、`pnpm run check:site`、`git diff --check` が成功した。ChromeのPC幅で全9ページのCSS・画像・共通部品・canonical、FAQ開閉、Archive絞り込み、ブラウザログ0件を確認し、390px幅の全9ページもスクリーンショット生成に成功した。
 - `ROADMAP.md` にステップ7-1の実施結果を記録した。ステップ7-2のGitHub Pages設定は未実施。
+- ステップ7-2開始時はリポジトリが非公開だったためGitHub Pagesを有効化できなかったが、ユーザー確認後にリポジトリを公開（Public）へ変更した。
+- GitHub Pagesの公開元を `Deploy from a branch`、`main` ブランチの `/docs` に設定して保存した。設定画面で公開URL `https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/`、公開元 `main` / `/docs`、HTTPS有効を確認した。
+- 公開URLのTOPページを開き、タイトル、`h1`、CSS、ヘッダー、フッター、画像の読み込みとブラウザログ0件を確認した。全9ページと各機能を対象とするステップ7-3のオンライン確認には進んでいない。
+- `ROADMAP.md` にステップ7-2の実施結果を記録し、進行状況をステップ7-1・7-2完了へ更新した。
