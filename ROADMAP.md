@@ -1085,7 +1085,7 @@ git diff
 
 ### 対象資料
 
-- `ひだまり福祉計画-レビュー結果.zip` 内のMarkdownレビュー
+- `project-docs/reviews/STATIC_SITE_REVIEW_FEEDBACK.md`（受領時は `ひだまり福祉計画-レビュー結果.zip` 内のMarkdownレビュー）
 - 対象は静的HTML全9ページと、今後のWordPress化に関する提案
 
 ### 整理結果

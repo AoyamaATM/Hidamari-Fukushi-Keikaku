@@ -58,3 +58,7 @@
 - 整理項目7として、Git管理外の `visual-check/` と `.chrome-check/` に残っていた表示確認生成物、合計706,360,995バイトを削除した。ZIP、依存関係、旧Chromeプロファイル、サイト本体には触れていない。
 - `tools/check-pages.ps1` で実行ごとのChrome一時プロファイルを終了時に再試行付きで削除するようにし、`pnpm run clean:visual` ではスクリーンショットと残存一時プロファイルの両方を削除できるようにした。READMEの説明も同期した。
 - TOPページ1件のPC幅スクリーンショット生成に成功し、実行後のChrome一時プロファイルが0件になることを確認した。その後 `pnpm run clean:visual` で2ディレクトリが削除されること、`pnpm run check:site` と `git diff --check` が成功することを確認した。
+- 整理項目8として、旧表示確認用の `.chrome-check-430-index/`、`.chrome-profile/`、`.chrome-profile-about-services/` を削除し、合計35,966,161バイトを整理した。現在の表示確認スクリプトが使う一時プロファイルとは分離済みで、サイト本体への影響はない。
+- 整理項目9として、Git管理外だったレビューZIP 2点、合計34,948,224バイトを整理した。2026-07-22の配布パッケージはコードをGit履歴、案内を `project-docs/reviews/REVIEW_HANDOFF.md` に保存済みであることを確認した。
+- 2026-07-29のレビュー原文はZIP内にのみ存在していたため、全文を `project-docs/reviews/STATIC_SITE_REVIEW_FEEDBACK.md` へ移管した。本文をZIP内データと照合し、Markdownの空白だけを正規化して索引READMEへ追加してから2つのZIPを削除した。
+- 整理項目10として、空だった `.agents/`、`visual-check-refactor/`、`visual-check-review/` を削除した。残るGit管理外ディレクトリは依存関係の `node_modules/` と `.pnpm-store/` のみ。
