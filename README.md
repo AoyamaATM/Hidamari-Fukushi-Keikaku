@@ -128,7 +128,7 @@ pnpm run check:visual:build -PageId price
 
 スクリーンショットは `visual-check/` に保存されます。`visual-check/` と `.chrome-check/` はローカル確認用の生成物で、Git管理には含めません。
 
-古いスクリーンショットを削除する場合は、次のコマンドを使います。
+古いスクリーンショットと表示確認用のChrome一時プロファイルを削除する場合は、次のコマンドを使います。
 
 ```powershell
 pnpm run clean:visual

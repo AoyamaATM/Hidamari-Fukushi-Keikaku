@@ -55,3 +55,6 @@
 - `pnpm run check:site` と `git diff --check` が成功し、全9 HTMLと `js/main.js`、画像参照に問題がないことを確認した。画像のファイル名と公開URL、サイトの表示内容は変更していない。
 - 整理項目6として、空欄だったGitHub Topicsに `html`、`scss`、`javascript`、`responsive-design`、`web-accessibility`、`github-pages`、`static-site` の7件を設定した。
 - リポジトリのAbout欄に7件すべてが反映されたことを確認した。既存のDescription・Website・公開設定・サイト本体には変更を加えていない。
+- 整理項目7として、Git管理外の `visual-check/` と `.chrome-check/` に残っていた表示確認生成物、合計706,360,995バイトを削除した。ZIP、依存関係、旧Chromeプロファイル、サイト本体には触れていない。
+- `tools/check-pages.ps1` で実行ごとのChrome一時プロファイルを終了時に再試行付きで削除するようにし、`pnpm run clean:visual` ではスクリーンショットと残存一時プロファイルの両方を削除できるようにした。READMEの説明も同期した。
+- TOPページ1件のPC幅スクリーンショット生成に成功し、実行後のChrome一時プロファイルが0件になることを確認した。その後 `pnpm run clean:visual` で2ディレクトリが削除されること、`pnpm run check:site` と `git diff --check` が成功することを確認した。

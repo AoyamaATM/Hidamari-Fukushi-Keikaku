@@ -1,5 +1,6 @@
 param(
-  [string] $OutputDir = "visual-check"
+  [string] $OutputDir = "visual-check",
+  [string] $ProfileDir = ".chrome-check"
 )
 
 $ErrorActionPreference = "Stop"
@@ -15,16 +16,20 @@ function Resolve-RepoPath {
   return [System.IO.Path]::GetFullPath((Join-Path $repoRoot $Path))
 }
 
-$target = Resolve-RepoPath $OutputDir
 $repoWithSeparator = $repoRoot.TrimEnd("\") + "\"
-if ($target -eq $repoRoot -or -not $target.StartsWith($repoWithSeparator, [System.StringComparison]::OrdinalIgnoreCase)) {
-  throw "Refusing to clean outside the repository: $target"
-}
+$targets = @($OutputDir, $ProfileDir)
 
-if (-not (Test-Path -LiteralPath $target)) {
-  Write-Host "Nothing to clean: $target"
-  exit 0
-}
+foreach ($path in $targets) {
+  $target = Resolve-RepoPath $path
+  if ($target -eq $repoRoot -or -not $target.StartsWith($repoWithSeparator, [System.StringComparison]::OrdinalIgnoreCase)) {
+    throw "Refusing to clean outside the repository: $target"
+  }
 
-Get-ChildItem -LiteralPath $target -Force | Remove-Item -Recurse -Force
-Write-Host "Cleaned $target"
+  if (-not (Test-Path -LiteralPath $target)) {
+    Write-Host "Nothing to clean: $target"
+    continue
+  }
+
+  Remove-Item -LiteralPath $target -Recurse -Force
+  Write-Host "Cleaned $target"
+}
