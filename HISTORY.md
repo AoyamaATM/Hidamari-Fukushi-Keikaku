@@ -46,3 +46,10 @@
 - Studioへテーマ0.3.0を反映し、メニュー未設定時と割当後を検証した。空の固定ページ8件、ヘッダー／フッターメニュー、投稿1件は使い捨て検証データとしてStudio内だけに保持し、正式コンテンツやLocalへの移行元にはしない。
 - TOP・施設紹介・お問い合わせ・プライバシーポリシー・お知らせ一覧・投稿詳細はHTTP 200、404は共通表示になった。アプリ内ブラウザーのPC幅1440px／SP幅390pxで、横はみ出しなし、メニュー開閉、Escapeとフォーカス復帰、リンク遷移、現在地、スキップリンク、コンソール警告・エラー0件を確認した。
 - 全15 PHPファイルのlint、`pnpm run build:css:wordpress`、`pnpm run check:site`、JavaScript構文確認、`git diff --check` が成功した。フェーズ9のテーマ土台は完了し、次は正式データ投入前にLocalのMySQL環境へ切り替えてからフェーズ10へ進む。
+- 次の作業開始前に `git status --short --branch` と `git pull --ff-only` を実行し、`feature/wordpress` がリモートと同期済みで作業ツリーがクリーンであることを確認した。
+- Local 10.1.1+6939に空の `hidamari-care-asahikawa` サイトを作成した。WordPress 7.0.2、PHP 8.2.29、nginx 1.26.1、MySQL 8.4.0のカスタム環境とし、StudioのSQLiteデータと使い捨て検証データは移行していない。
+- LocalのテーマディレクトリからGit管理中のテーマソースへジャンクションを作成し、テーマ0.3.0を有効化した。WP-CLIでWordPress、テーマ、MySQL 8.4.0への接続を確認した。
+- LocalサイトをPC幅1280px／SP幅390pxで確認し、横はみ出しなし、SPメニューの開閉、コンソール警告・エラー0件を確認した。PHP Fatal Errorとnginxエラーは0件だった。
+- Windows版LocalのPHP 8.2.29では既知のImagick拡張読み込み警告が残るため、Imagickを使用する画像処理の導入時に別途確認する。現時点のWordPress表示とテーマ動作には影響していない。
+- `ROADMAP.md` と `wordpress/README.md` を更新し、フェーズ10以降はLocalのMySQL環境を主検証環境、StudioのSQLiteサイトを移行元にしない方針として記録した。
+- Localと同じPHP 8.2.29で全15 PHPファイルのlint、JavaScript構文確認、`pnpm run build:css:wordpress`、`pnpm run check:site`、`git diff --check` が成功した。

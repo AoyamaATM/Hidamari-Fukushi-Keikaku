@@ -1855,6 +1855,24 @@ theme-name/
 
 ---
 
+# フェーズ10開始前：LocalのMySQL環境へ切り替える（完了）
+
+### 実施結果
+
+- Local 10.1.1+6939に空のWordPressサイト `hidamari-care-asahikawa` を新規作成した。カスタム環境はWordPress 7.0.2、PHP 8.2.29、nginx 1.26.1、MySQL 8.4.0とした。
+- StudioのSQLiteデータベースと使い捨て検証データは移行せず、フェーズ10以降の正式コンテンツをMySQL環境へ直接投入する構成にした。
+- LocalのテーマディレクトリからGit管理中の `wordpress/themes/hidamari-care-asahikawa/` へジャンクションを作成し、テーマ0.3.0を有効化した。テーマソースは引き続きリポジトリを唯一の編集元とする。
+- WP-CLIでWordPress 7.0.2、テーマ0.3.0の有効化、MySQL 8.4.0への接続を確認した。ローカルURLはHTTP表示でき、PC幅1280pxとSP幅390pxで横はみ出しなし、モバイルメニュー開閉、コンソール警告・エラー0件を確認した。
+- Windows版LocalのPHP 8.2.29で既知のImagick拡張読み込み警告が出るが、PHP Fatal Errorとnginxエラーは0件で、現時点のWordPress表示には影響していない。Imagickを使う画像処理を導入するときに別途確認する。
+
+### 完了条件
+
+- LocalでMySQLを使用する空のWordPressサイトが起動する
+- Git管理中のテーマがLocalで認識・有効化される
+- StudioのSQLiteデータを正式な移行元にせず、MySQL環境からフェーズ10を開始できる
+
+---
+
 # フェーズ10：WordPressページ移行
 
 ## ステップ10-1：TOPページを移行する
@@ -2095,6 +2113,7 @@ theme-name/
   - [x] ステップ9-1：テーマの基本ファイル
   - [x] ステップ9-2：CSS・JavaScript・画像の移行
   - [x] ステップ9-3：ヘッダーとフッターのPHP化
+- [x] フェーズ10開始前：LocalのMySQL環境へ切替
 - [ ] フェーズ10-1：TOP移行
 - [ ] フェーズ10-2：固定ページ移行
 - [ ] フェーズ10-3：投稿機能移行
