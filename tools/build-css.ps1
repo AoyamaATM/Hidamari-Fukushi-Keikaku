@@ -1,5 +1,5 @@
 param(
-  [ValidateSet("all", "main", "scss", "min")]
+  [ValidateSet("all", "main", "scss", "min", "wordpress")]
   [string] $Target = "all"
 )
 
@@ -7,6 +7,8 @@ $ErrorActionPreference = "Stop"
 $runSass = Join-Path $PSScriptRoot "run-sass.ps1"
 $runPostcss = Join-Path $PSScriptRoot "run-postcss.ps1"
 $sourceScss = "docs/scss/style.scss"
+$wordpressSourceScss = "wordpress/themes/hidamari-care-asahikawa/assets/scss/style.scss"
+$wordpressCss = "wordpress/themes/hidamari-care-asahikawa/assets/css/style.css"
 
 function Invoke-Step {
   param(
@@ -20,6 +22,7 @@ function Invoke-Step {
 
 function Build-CssTarget {
   param(
+    [string] $Source,
     [string] $Output,
     [string] $Style,
     [bool] $SourceMap
@@ -31,7 +34,7 @@ function Build-CssTarget {
   } else {
     $sassArgs += "--no-source-map"
   }
-  $sassArgs += @($sourceScss, $Output)
+  $sassArgs += @($Source, $Output)
   Invoke-Step $runSass $sassArgs
 
   $postcssArgs = @($Output, "--replace")
@@ -45,17 +48,20 @@ function Build-CssTarget {
 
 switch ($Target) {
   "all" {
-    Build-CssTarget "docs/css/style.css" "expanded" $false
-    Build-CssTarget "docs/scss/style.css" "expanded" $true
-    Build-CssTarget "docs/scss/style.min.css" "compressed" $true
+    Build-CssTarget $sourceScss "docs/css/style.css" "expanded" $false
+    Build-CssTarget $sourceScss "docs/scss/style.css" "expanded" $true
+    Build-CssTarget $sourceScss "docs/scss/style.min.css" "compressed" $true
   }
   "main" {
-    Build-CssTarget "docs/css/style.css" "expanded" $false
+    Build-CssTarget $sourceScss "docs/css/style.css" "expanded" $false
   }
   "scss" {
-    Build-CssTarget "docs/scss/style.css" "expanded" $true
+    Build-CssTarget $sourceScss "docs/scss/style.css" "expanded" $true
   }
   "min" {
-    Build-CssTarget "docs/scss/style.min.css" "compressed" $true
+    Build-CssTarget $sourceScss "docs/scss/style.min.css" "compressed" $true
+  }
+  "wordpress" {
+    Build-CssTarget $wordpressSourceScss $wordpressCss "expanded" $false
   }
 }

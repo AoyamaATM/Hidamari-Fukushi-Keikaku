@@ -1,12 +1,21 @@
 param(
   [int] $IntervalSeconds = 1,
-  [switch] $Once
+  [switch] $Once,
+  [ValidateSet("static", "wordpress")]
+  [string] $Scope = "static"
 )
 
 $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent $PSScriptRoot
-$scssRoot = Join-Path $repoRoot "docs\scss"
 $buildCss = Join-Path $PSScriptRoot "build-css.ps1"
+
+if ($Scope -eq "wordpress") {
+  $scssRoot = Join-Path $repoRoot "wordpress\themes\hidamari-care-asahikawa\assets\scss"
+  $buildTarget = "wordpress"
+} else {
+  $scssRoot = Join-Path $repoRoot "docs\scss"
+  $buildTarget = "main"
+}
 
 function Get-ScssStamp {
   Get-ChildItem -LiteralPath $scssRoot -Recurse -Filter "*.scss" |
@@ -15,14 +24,14 @@ function Get-ScssStamp {
 }
 
 function Invoke-MainCssBuild {
-  & $buildCss main
+  & $buildCss $buildTarget
   if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 
 Invoke-MainCssBuild
 if ($Once) { exit 0 }
 
-Write-Host "Watching docs/scss for changes. Press Ctrl+C to stop."
+Write-Host "Watching $scssRoot for changes. Press Ctrl+C to stop."
 $lastStamp = Get-ScssStamp
 
 while ($true) {

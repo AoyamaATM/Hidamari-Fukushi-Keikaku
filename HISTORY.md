@@ -31,3 +31,9 @@
 - Studio同梱PHPでテーマ内の全14 PHPファイルをlintし、構文エラー0件を確認した。トップはHTTP 200、存在しないURLは404で、重大なエラー表示と `debug.log` のPHPエラーはなかった。
 - `.wordpress-studio/` を `.gitignore` に追加し、テーマソースだけをGit管理する方針と検証環境を `wordpress/README.md` に記録した。テーマの表示土台完成後、正式データ・Forminator・SEO設定の投入前にLocalのMySQL環境へ切り替える。
 - `pnpm run check:site` と `git diff --check` が成功し、既存の静的9ページへ影響がないことを確認した。検証後はStudioサイトを停止し、状態確認時に表示されたローカル初期パスワードも非表示のランダム値へ更新した。
+- フェーズ9・ステップ9-2として、静的版のSCSSをテーマへ移し、WordPress専用のCSSビルド／監視コマンドを追加した。テーマ側のSCSSを唯一の編集元、CSSを生成物とし、移行元に残っていた行末空白を除いて生成CSSの表示ルールが静的版と一致することを確認した。
+- `functions.php` からGoogle Fonts、テーマCSS、JavaScriptをWordPressのURLで読み込むようにした。JavaScriptはモバイルナビゲーションとFAQだけに絞り、静的版専用のDOM生成、ルーティング、相対HTMLリンク、サンプルフォーム処理を除去した。
+- ロゴ、固定ボタン、アンカー、TOPの流れ図、投稿サイドバーの固定画像20点をテーマへ移した。担当者が差し替えるヒーロー、施設・スタッフ・サービス写真、OGP画像は、ページ移行時にメディアライブラリへ登録する境界を `wordpress/README.md` に記録した。
+- Studioでテーマ0.2.0が有効であること、TOP・CSS・JavaScript・固定画像20点がすべてHTTP 200であること、enqueueとJavaScriptの `defer`、重大なエラー表示がないこと、`debug.log` が生成されていないことを確認した。全14 PHPファイルのlintとJavaScript構文確認も成功した。
+- `pnpm run build:css`、`pnpm run build:css:wordpress`、`pnpm run check:site` が成功し、既存の静的9ページに影響がないことを確認した。ページ全体の表示一致は、ヘッダー／フッターとページHTMLを移すステップ9-3・フェーズ10で行う。
+- 次はステップ9-3として、JavaScript生成だった共通ヘッダー／フッターをPHPへ移し、WordPressメニュー、現在地表示、スキップリンクを接続する。

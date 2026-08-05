@@ -9,13 +9,15 @@
     "build:css:main": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/build-css.ps1 main",
     "build:css:scss": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/build-css.ps1 scss",
     "build:css:min": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/build-css.ps1 min",
+    "build:css:wordpress": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/build-css.ps1 wordpress",
     "check:site": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/check-site.ps1",
     "check:visual": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/check-pages.ps1 -Viewport pc",
     "check:visual:build": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/check-visual-build.ps1 -Viewport pc",
     "check:visual:pc": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/check-pages.ps1 -Viewport pc",
     "check:visual:sp": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/check-pages.ps1 -Viewport sp",
     "clean:visual": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/clean-visual.ps1",
-    "watch:css": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/watch-css.ps1"
+    "watch:css": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/watch-css.ps1",
+    "watch:css:wordpress": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/watch-css.ps1 -Scope wordpress"
   },
   "devDependencies": {
     "autoprefixer": "^10.5.2",

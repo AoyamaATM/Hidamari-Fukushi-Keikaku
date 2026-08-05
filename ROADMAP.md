@@ -1799,7 +1799,7 @@ theme-name/
 
 ---
 
-## ステップ9-2：CSS・JavaScript・画像をテーマへ移す
+## ステップ9-2：CSS・JavaScript・画像をテーマへ移す（完了）
 
 ### 実施内容
 
@@ -1809,10 +1809,20 @@ theme-name/
 - 相対リンクをWordPress用関数へ置き換える
 - SCSSの編集元と生成先を明確にする
 
+### 実施結果
+
+- 静的版のSCSSをテーマの `assets/scss/style.scss` へ移し、`pnpm run build:css:wordpress` で `assets/css/style.css` を生成する専用ビルドを追加した。移行元に残っていた行末空白だけを正規化し、表示ルールが静的版と一致することを確認した。
+- `functions.php` にアセットURL生成関数を追加し、Google Fonts、テーマCSS、JavaScriptをWordPressのURLで読み込むようにした。CSSとJavaScriptの版数には `filemtime()` を使用し、JavaScriptはフッターで `defer` 読み込みにした。
+- JavaScriptはモバイルナビゲーションとFAQアコーディオンだけを残し、静的HTML専用のヘッダー／フッター生成、ページルーティング、相対 `.html` リンク、サンプルフォーム処理を除去した。
+- ロゴ、固定ボタン、アンカー、TOPの流れ図、投稿サイドバーの固定画像20点をテーマの `assets/img/` へ移した。施設担当者が差し替えるヒーロー、施設・スタッフ・サービス写真、OGP画像は、ページ移行時にメディアライブラリへ登録する方針とした。
+- Studioでテーマ `0.2.0` が有効であることを確認した。TOP、CSS、JavaScript、固定画像20点はすべてHTTP 200で、CSS／JavaScriptのenqueueと `defer` 属性、重大なエラー表示がないこと、`debug.log` が生成されていないことを確認した。
+- `pnpm run build:css` と `pnpm run check:site` も成功し、既存の静的サイト向けビルドと9ページへ影響がないことを確認した。
+
 ### 完了条件
 
-- TOPページでCSS、JavaScript、画像が読み込まれる
-- 静的版と同じデザインが表示される
+- TOPページでCSSとJavaScriptが読み込まれ、テーマ固定画像20点をWordPress URLから取得できる
+- テーマの生成CSSが、行末空白を除いて移行元の静的版CSSと一致する
+- ページ全体の表示一致は、ヘッダー／フッターと各ページHTMLが揃うステップ9-3・フェーズ10で確認する
 
 ---
 
@@ -2073,7 +2083,7 @@ theme-name/
 - [x] フェーズ8-3：レビュー項目8・管理画面の編集設計
 - [ ] フェーズ9：テーマ土台
   - [x] ステップ9-1：テーマの基本ファイル
-  - [ ] ステップ9-2：CSS・JavaScript・画像の移行
+  - [x] ステップ9-2：CSS・JavaScript・画像の移行
   - [ ] ステップ9-3：ヘッダーとフッターのPHP化
 - [ ] フェーズ10-1：TOP移行
 - [ ] フェーズ10-2：固定ページ移行
