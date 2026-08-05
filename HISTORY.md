@@ -69,3 +69,9 @@
 - PC幅1280px／SP幅390pxで、専用ヒーロー切替、画像欠落なし、8ステップ、番号01〜08、問い合わせリンク、現在地、横はみ出しなし、コンソール警告・エラー0件を確認した。
 - SPメニューの同一ページ内リンクでメニューが残る問題を検出し、リンク選択時に閉じるよう修正した。JavaScriptのデスクトップ判定もSCSSと同じ1161pxへ揃え、1160pxから1161pxへの切替でメニュー状態が閉じることを確認した。
 - Localと同じPHP 8.2.29でテーマ・プラグイン・2本の投入スクリプトを含む全24 PHPファイルをlintし、`pnpm run build:css:wordpress`、`pnpm run check:site`、JavaScript構文確認、`git diff --check` が成功した。TOP・施設紹介・お問い合わせはHTTP 200、PHP Fatal Errorとnginxエラーは0件だった。
+- 本日は施設紹介ページの移行完了（コミット `29df10b`、`feature/wordpress` へpush済み）で作業を終了する。作業ツリーとリモートは同期済み。
+- 次回はフェーズ10・ステップ10-2の2ページ目として、静的版 `facilities.html` をスラッグ `facilities` の専用テンプレート `page-facilities.php` へ移行する。静的版の施設情報・スタッフ紹介とPC／SPヒーローを確認し、管理画面で差し替える画像・文章の範囲を既存方針に沿って決める。
+- Facilities移行では、必要な固定ページmetaを `hidamari-site-core` に追加し、Localへ画像・初期値を冪等投入する `tools/local-facilities-fixtures.php` を用意する。共通ヒーロー・パンくず・施設設定は今回作成した部品と設定値を再利用する。
+- Facilities実装後は、PC／SPの表示、横はみ出し、画像欠損、メニュー・現在地・リンク、コンソール、PHP／nginxログを確認し、PHP lint、WordPress版CSSビルド、静的サイト検査、JavaScript構文確認、`git diff --check` を行ってからコミット・pushする。
+- その後の固定ページ移行は Price、FAQ、Privacy、Contact の順。Priceでは料金データ、FAQでは残りのFAQデータ、ContactではForminatorの正式フォーム、全固定ページ完了後にはSEO SIMPLE PACKの設定を接続・確認する。
+- 固定ページ後の残作業は、ステップ10-3のお知らせ一覧・詳細の動的化と投稿データ確認、フェーズ11の全ページ・各指定幅・操作・リンク・エラーログの総合確認、フェーズ12のドキュメント・保守手順・未完了事項の最終整理。LocalのImagick CLI警告は画像処理機能を追加する際に再確認する。
