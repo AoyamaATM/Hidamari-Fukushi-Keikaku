@@ -6,6 +6,9 @@ desktop.ini
 node_modules/
 .pnpm-store/
 
+# Local WordPress runtime
+.wordpress-studio/
+
 # Logs
 *.log
 

@@ -1760,7 +1760,7 @@ git switch -c feature/wordpress
 
 # フェーズ9：WordPressテーマの土台作成
 
-## ステップ9-1：テーマの基本ファイルを作る
+## ステップ9-1：テーマの基本ファイルを作る（完了）
 
 ### 構成例
 
@@ -1780,6 +1780,16 @@ theme-name/
 │  ├─ js/
 │  └─ img/
 ```
+
+### 実施結果
+
+- クラシックテーマ `wordpress/themes/hidamari-care-asahikawa/` を作成し、テーマヘッダーを持つ `style.css`、`functions.php`、`header.php`、`footer.php`、必須の `index.php`、テンプレート階層用の `front-page.php`、`home.php`、`archive.php`、`single.php`、`page.php`、`404.php` を配置した。
+- 投稿一覧、固定ページ、投稿詳細、空表示の共通部品を `template-parts/content/` に分離し、`title-tag`、アイキャッチ、HTML5、ヘッダー／フッターメニュー位置をテーマ機能として登録した。
+- 公式のWordPress Studio CLI 1.17.0を導入し、Git管理外の `.wordpress-studio/hidamari-care-asahikawa/` にWordPress 7.0.2、PHP 8.3.32 native、SQLiteの検証サイトを作成した。
+- WordPress上でテーマ名 `ひだまりケア旭川`、バージョン0.1.0として認識されることを確認し、WP-CLIで有効化した。
+- Studio同梱PHPでテーマ内の全14 PHPファイルをlintし、構文エラー0件を確認した。トップはHTTP 200、存在しないURLは404となり、重大なエラー表示と `debug.log` のPHPエラーがないことを確認した。
+- Studio検証サイトは `.gitignore` で除外し、テーマソースだけをGit管理する運用を `wordpress/README.md` に記録した。
+- CSS・JavaScript・画像の移行はステップ9-2、静的版ヘッダー・フッターの移行はステップ9-3に残した。表示土台の完成後、正式データ・Forminator・SEO設定の投入前にLocalのMySQL環境へ切り替える。
 
 ### 完了条件
 
@@ -2062,6 +2072,9 @@ theme-name/
 - [x] フェーズ8-2：テンプレート対応表
 - [x] フェーズ8-3：レビュー項目8・管理画面の編集設計
 - [ ] フェーズ9：テーマ土台
+  - [x] ステップ9-1：テーマの基本ファイル
+  - [ ] ステップ9-2：CSS・JavaScript・画像の移行
+  - [ ] ステップ9-3：ヘッダーとフッターのPHP化
 - [ ] フェーズ10-1：TOP移行
 - [ ] フェーズ10-2：固定ページ移行
 - [ ] フェーズ10-3：投稿機能移行

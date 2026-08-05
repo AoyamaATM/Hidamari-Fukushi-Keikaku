@@ -25,3 +25,9 @@
 - お問い合わせはForminator、SEO・OGPはSEO SIMPLE PACKを採用した。パンくずとサイトアイコンはテーマ／WordPress標準機能を使い、SEO metaをテーマとプラグインから重複出力しない責務を定義した。
 - 静的版の投稿10件、FAQ13件、流れ8件、料金30行、固定ページ、画像、フォーム、SEOをWordPressへ移し、件数・表示・送信・meta重複を照合する手順を定義した。テーマやプラグインの実装にはまだ着手していない。
 - 静的HTMLを再集計し、投稿10件、FAQ13件（TOP掲載6件）、流れ8件、料金8表・30行が設計書と一致することを確認した。`pnpm run check:site` と `git diff --check` も成功した。
+- フェーズ9・ステップ9-1として、クラシックテーマ `wordpress/themes/hidamari-care-asahikawa/` の基本ファイルと共通コンテンツ部品を作成した。CSS・JavaScript・画像と静的版ヘッダー・フッターの移行は後続ステップに残した。
+- 公式WordPress Studio CLI 1.17.0を導入し、Git管理外の `.wordpress-studio/hidamari-care-asahikawa/` にWordPress 7.0.2、PHP 8.3.32 native、SQLiteの検証サイトを作成した。npm版CLIはNode 24環境で依存パッケージを解決できなかったため、内容を確認した公式Windowsスタンドアロン版へ切り替えた。
+- テーマが `ひだまりケア旭川` バージョン0.1.0として認識され、WP-CLIから有効化できることを確認した。
+- Studio同梱PHPでテーマ内の全14 PHPファイルをlintし、構文エラー0件を確認した。トップはHTTP 200、存在しないURLは404で、重大なエラー表示と `debug.log` のPHPエラーはなかった。
+- `.wordpress-studio/` を `.gitignore` に追加し、テーマソースだけをGit管理する方針と検証環境を `wordpress/README.md` に記録した。テーマの表示土台完成後、正式データ・Forminator・SEO設定の投入前にLocalのMySQL環境へ切り替える。
+- `pnpm run check:site` と `git diff --check` が成功し、既存の静的9ページへ影響がないことを確認した。検証後はStudioサイトを停止し、状態確認時に表示されたローカル初期パスワードも非表示のランダム値へ更新した。
