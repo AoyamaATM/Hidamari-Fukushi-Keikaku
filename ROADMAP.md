@@ -1651,7 +1651,14 @@ GitHub Pages公開が完了してから、このフェーズへ進みます。
 
 追加レビュー項目8として、静的HTMLをそのままPHPへ移す前に「施設側が何を管理画面から編集するか」を決める。編集設計を確定してからフェーズ9のテーマ土台を作り、フェーズ10で各ページを移行する。
 
-## ステップ8-1：WordPress化用ブランチを作る
+### ローカル開発環境の方針（2026-08-05）
+
+- 第一候補は、Windows対応の公式ローカル開発アプリ「WordPress Studio」とする。Dockerを追加せずに開始でき、WordPress・PHPのバージョン切り替え、テーマファイルの直接配置、デバッグログ、Xdebug、データベース閲覧、サイトの入出力を利用できる。
+- WordPress Studioの標準データベースはSQLiteのため、フォーム・SEO・ACFなどの採用プラグインを決めた後と公開前に、本番相当のMySQL環境で互換性を確認する。
+- MySQL固有の問題が見つかった場合は、Localまたは公開先のステージング環境を互換確認用に使用する。Localは現時点では必須環境にしない。
+- 公式情報は [WordPress Studio](https://developer.wordpress.com/studio/) と [WordPress Studio FAQ](https://developer.wordpress.com/docs/developer-tools/studio/frequently-asked-questions/) を基準にする。
+
+## ステップ8-1：WordPress化用ブランチを作る（完了）
 
 ### 実施例
 
@@ -1662,6 +1669,12 @@ git switch -c feature/wordpress
 ### 完了条件
 
 - 静的サイト完成版を維持したままWordPress化を開始できる
+
+### 実施結果
+
+- `main` が `origin/main` と同期済みで、作業ツリーに未コミット変更がないことを確認した。
+- `main` から `feature/wordpress` を作成し、WordPress化の作業ブランチへ切り替えた。
+- 静的サイト完成版の `main` と `static-v1.0` タグには変更を加えていない。
 
 ---
 
