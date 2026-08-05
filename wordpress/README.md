@@ -3,9 +3,11 @@
 ## 管理対象
 
 - テーマソース: `wordpress/themes/hidamari-care-asahikawa/`
+- サイト機能プラグイン: `wordpress/plugins/hidamari-site-core/`
 - Localサイト: `~/Local Sites/hidamari-care-asahikawa/`
 - Localの `wp-content/themes/hidamari-care-asahikawa/` は、Git管理中のテーマソースへ向けたジャンクションとする。
-- Localサイト本体とデータベースはGit管理しない。テーマソースを唯一の編集元とし、Local側で同名テーマを直接編集しない。
+- Localの `wp-content/plugins/hidamari-site-core/` も、Git管理中のプラグインソースへ向けたジャンクションとする。
+- Localサイト本体とデータベースはGit管理しない。テーマ／サイト機能プラグインのGit管理ソースを唯一の編集元とし、Local側のジャンクション先を直接編集しない。
 - 旧Studio検証サイト: `.wordpress-studio/hidamari-care-asahikawa/`（Git管理外・移行元には使用しない）
 
 ## 現在の検証環境
@@ -15,7 +17,8 @@
 - PHP: 8.2.29
 - Web server: nginx 1.26.1
 - Database: MySQL 8.4.0
-- Theme: `hidamari-care-asahikawa` 0.3.0
+- Theme: `hidamari-care-asahikawa` 0.4.0
+- Site plugin: `hidamari-site-core` 0.1.0
 - URL: `http://hidamari-care-asahikawa.local/`
 
 Localのサイト設定ファイルにはデータベース接続情報が含まれるため、設定ファイル全体や管理者情報を履歴・チャットへ貼り付けない。テーマ状態はLocalの「Open Site Shell」から `wp theme status hidamari-care-asahikawa` で確認する。
@@ -40,3 +43,12 @@ WordPressテーマでは `assets/scss/style.scss` をCSSの唯一の編集元、
 ヘッダーとフッターは `primary`、`footer` のWordPressメニュー位置を使用する。メニュー未設定時は移行予定URLの既定メニューを表示し、管理画面で割り当てた後はWordPressメニューを優先する。
 
 テーマの表示土台完成後、正式コンテンツを投入する前のLocal・MySQL環境への切り替えは完了している。StudioのSQLiteデータベース全体は開発データの管理元にしない。
+
+## TOPページ移行
+
+- `front-page.php` は固定フロントページを前提とし、静的版TOPのセクション構造をテーマで管理する。
+- ヒーローは固定フロントページのアイキャッチ、選ばれる理由・サービスの6画像は `hidamari_home_{key}_image_id` メタからメディアライブラリ画像を取得する。
+- お知らせは公開済み標準投稿の最新3件、FAQは `hidamari_faq` のうち `hidamari_show_on_front` が有効な最大6件を `menu_order` 順に表示する。
+- `hidamari-site-core` 0.1.0では、ステップ10-1に必要なFAQ投稿タイプ、FAQカテゴリー、TOP掲載設定を提供する。ご利用の流れと料金データは各固定ページの移行時に追加する。
+- `tools/local-top-fixtures.php` は `hidamari-care-asahikawa.local` でのみ実行できる。プラグイン有効化後にLocalのサイトシェルで `wp eval-file C:/Users/lihui/Documents/Codex_Akutsu/tools/local-top-fixtures.php` を実行すると、固定ページ8件、画像7件、投稿3件、FAQ6件を同じ移行キーで作成・更新する。
+- 現時点でTOP以外の固定ページ本文は空のままで、ステップ10-2で1ページずつ移行する。お問い合わせはForminatorのフォームIDが設定されるまでは電話案内と準備中メッセージを表示する。

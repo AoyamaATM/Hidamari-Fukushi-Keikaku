@@ -17,6 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 function hidamari_care_asahikawa_setup() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
+	add_image_size( 'hidamari-hero', 1728, 600, true );
+	add_image_size( 'hidamari-card', 640, 427, true );
 	add_theme_support(
 		'html5',
 		array(
@@ -49,6 +51,57 @@ add_action( 'after_setup_theme', 'hidamari_care_asahikawa_setup' );
  */
 function hidamari_care_asahikawa_asset_uri( $path ) {
 	return get_theme_file_uri( 'assets/' . ltrim( $path, '/' ) );
+}
+
+/**
+ * Return an option from the shared facility settings with a fallback.
+ *
+ * @param string $key     Setting key.
+ * @param string $default Fallback value.
+ * @return string
+ */
+function hidamari_care_asahikawa_setting( $key, $default = '' ) {
+	$settings = get_option( 'hidamari_settings', array() );
+
+	if ( ! is_array( $settings ) || ! isset( $settings[ $key ] ) || '' === $settings[ $key ] ) {
+		return $default;
+	}
+
+	return (string) $settings[ $key ];
+}
+
+/**
+ * Return a TOP content image attachment ID stored on the front page.
+ *
+ * @param string $key Image key.
+ * @return int
+ */
+function hidamari_care_asahikawa_home_image_id( $key ) {
+	$page_id = (int) get_option( 'page_on_front' );
+
+	if ( $page_id <= 0 ) {
+		$page_id = get_queried_object_id();
+	}
+
+	return (int) get_post_meta( $page_id, 'hidamari_home_' . sanitize_key( $key ) . '_image_id', true );
+}
+
+/**
+ * Render a responsive TOP content image from the media library.
+ *
+ * @param string               $key        Image key.
+ * @param string|array<string> $size       Registered image size or dimensions.
+ * @param array<string, mixed> $attributes Image attributes.
+ * @return string
+ */
+function hidamari_care_asahikawa_home_image( $key, $size = 'full', $attributes = array() ) {
+	$image_id = hidamari_care_asahikawa_home_image_id( $key );
+
+	if ( $image_id <= 0 ) {
+		return '';
+	}
+
+	return wp_get_attachment_image( $image_id, $size, false, $attributes );
 }
 
 /**

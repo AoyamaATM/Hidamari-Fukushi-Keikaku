@@ -198,7 +198,7 @@ img {
 .header-inner {
   align-items: center;
   display: flex;
-  gap: 28px;
+  gap: clamp(16px, 2vw, 28px);
   justify-content: space-between;
   margin: 0 auto;
   height: 100%;
@@ -305,7 +305,7 @@ img {
     justify-content: center;
     min-width: 0;
     height: 70px;
-    padding: 0 clamp(1rem, 2vw, 2rem);
+    padding: 0 clamp(1rem, 1.5vw, 2rem);
     text-decoration: none;
     white-space: nowrap;
 
@@ -2284,7 +2284,7 @@ MVとパンくず
 /* =======================================================
 ヘッダーとナビゲーションのレスポンシブ調整
 ======================================================= */
-@include viewport-max($breakpoint-laptop) {
+@include viewport-max(1160px) {
   .site-header {
     height: 96px;
   }

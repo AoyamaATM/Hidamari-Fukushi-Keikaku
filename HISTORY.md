@@ -53,3 +53,13 @@
 - Windows版LocalのPHP 8.2.29では既知のImagick拡張読み込み警告が残るため、Imagickを使用する画像処理の導入時に別途確認する。現時点のWordPress表示とテーマ動作には影響していない。
 - `ROADMAP.md` と `wordpress/README.md` を更新し、フェーズ10以降はLocalのMySQL環境を主検証環境、StudioのSQLiteサイトを移行元にしない方針として記録した。
 - Localと同じPHP 8.2.29で全15 PHPファイルのlint、JavaScript構文確認、`pnpm run build:css:wordpress`、`pnpm run check:site`、`git diff --check` が成功した。
+
+### 15時進捗
+- フェーズ10・ステップ10-1として、静的版TOPのヒーロー、ページ内リンク、選ばれる理由、サービス、流れ、料金目安、お知らせ、FAQ、お問い合わせを `front-page.php` へ移した。テーマを0.4.0へ更新した。
+- ヒーローと本文写真7点をメディアライブラリ管理にし、TOPのお知らせは公開済み標準投稿の最新3件、FAQはTOP掲載対象の最大6件を取得するようにした。FAQ項目、お知らせ項目、お問い合わせ情報をテンプレートパーツへ分離した。
+- 専用プラグイン `hidamari-site-core` 0.1.0を追加し、FAQ投稿タイプ、FAQカテゴリー、並び順、TOP掲載設定を管理画面へ実装した。Localのplugins配下からGit管理中のプラグインソースへジャンクションを作成して有効化した。
+- `tools/local-top-fixtures.php` を追加し、固定ページ8件、TOP画像7件、初期投稿3件、TOP用FAQ6件をLocalのMySQLへ投入した。3回実行しても件数が増えず、固定フロントページID4、アイキャッチ設定済み、MySQL 8.4.0、テーマ0.4.0であることを確認した。既定の `Hello world!` はゴミ箱へ移した。
+- PC幅1280pxで検出したヘッダーナビゲーションの横はみ出しをテーマSCSSで修正し、1161px以上は通常ナビ、1160px以下はモバイルメニューへ切り替えるようにした。生成CSSは `pnpm run build:css:wordpress` で同期した。
+- アプリ内ブラウザーのPC幅1280px／SP幅390pxで、横はみ出しなし、画像読込、投稿3件、FAQ6件、SPメニュー開閉、FAQ展開、コンソール警告・エラー0件を確認した。Forminator未設定時は電話案内と準備中メッセージを表示し、正式フォームはContact移行時に接続する。
+- Windows版Localの既知のImagick拡張読み込み警告は継続しているが、今回のTOP表示とメディア登録に影響はなく、PHP Fatal Errorとnginxエラーは0件だった。
+- Localと同じPHP 8.2.29でテーマ・プラグイン・移行スクリプトの全20 PHPファイルをlintし、`pnpm run build:css:wordpress`、`pnpm run check:site`、JavaScript構文確認、`git diff --check` が成功した。TOPとヒーロー画像のHTTP 200も確認した。
