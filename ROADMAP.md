@@ -1678,26 +1678,38 @@ git switch -c feature/wordpress
 
 ---
 
-## ステップ8-2：静的HTMLとWordPressテンプレートの対応表を作る
+## ステップ8-2：静的HTMLとWordPressテンプレートの対応表を作る（完了）
 
-| 静的ファイル | WordPress側の候補 |
+| 静的ファイル | WordPress側の確定テンプレート |
 |---|---|
 | `index.html` | `front-page.php` |
-| `about_us.html` | 固定ページテンプレート |
-| `facilities.html` | 固定ページテンプレート |
-| `price.html` | 固定ページテンプレート |
-| `faq.html` | 固定ページテンプレート |
-| `contact.html` | 固定ページテンプレート |
-| `archive.html` | `archive.php` または `home.php` |
+| `about_us.html` | `page-about-us.php` |
+| `facilities.html` | `page-facilities.php` |
+| `price.html` | `page-price.php` |
+| `faq.html` | `page-faq.php` |
+| `contact.html` | `page-contact.php` |
+| `privacy.html` | `page-privacy-policy.php` |
+| `archive.html`（投稿一覧） | `home.php` |
+| `archive.html`（カテゴリー・月別） | `archive.php` |
 | `single.html` | `single.php` |
-| `privacy.html` | 固定ページテンプレート |
 | JS生成ヘッダー | `header.php` |
 | JS生成フッター | `footer.php` |
+
+詳細な責務、スラッグ、共通テンプレートパーツ、`main.js` の移行区分は [`project-docs/wordpress/TEMPLATE_MAPPING.md`](project-docs/wordpress/TEMPLATE_MAPPING.md) に記録する。
 
 ### 完了条件
 
 - 各HTMLをどのテンプレートへ移すか決まっている
 - 共通部分とページ固有部分を分けられている
+
+### 実施結果
+
+- 現在の全9 HTMLと `docs/js/main.js` を確認し、既存DOMとSCSSを維持しやすいクラシックテーマで移行する方針にした。
+- 固定フロントページを `front-page.php`、通常投稿のお知らせ一覧を `home.php`、カテゴリー・月別一覧を `archive.php`、投稿詳細を `single.php` に割り当てた。
+- レイアウトが異なる6固定ページはスラッグ別の `page-{slug}.php` に割り当て、`page.php` をフォールバックとした。
+- ヘッダー、フッター、パンくず、サブページヒーロー、問い合わせ、FAQ項目、投稿要素、投稿サイドバーの共通化境界を整理した。
+- `main.js` のうちPHPへ移す処理、WordPress関数へ置き換える処理、操作用JavaScriptとして残す処理を分類した。
+- 管理画面から編集するデータとプラグインの採否は先取りせず、ステップ8-3へ引き継ぐ未決定事項として記録した。
 
 ---
 
@@ -2036,8 +2048,8 @@ theme-name/
 
 ## WordPress
 
-- [ ] フェーズ8-1：WordPress化用ブランチ
-- [ ] フェーズ8-2：テンプレート対応表
+- [x] フェーズ8-1：WordPress化用ブランチ
+- [x] フェーズ8-2：テンプレート対応表
 - [ ] フェーズ8-3：レビュー項目8・管理画面の編集設計
 - [ ] フェーズ9：テーマ土台
 - [ ] フェーズ10-1：TOP移行
