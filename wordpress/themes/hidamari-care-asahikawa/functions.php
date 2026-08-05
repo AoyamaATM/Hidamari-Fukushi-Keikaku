@@ -105,6 +105,36 @@ function hidamari_care_asahikawa_home_image( $key, $size = 'full', $attributes =
 }
 
 /**
+ * Return a content image attachment ID stored on a fixed page.
+ *
+ * @param int    $page_id Page ID.
+ * @param string $key     Image key.
+ * @return int
+ */
+function hidamari_care_asahikawa_page_image_id( $page_id, $key ) {
+	return (int) get_post_meta( $page_id, 'hidamari_page_' . sanitize_key( $key ) . '_image_id', true );
+}
+
+/**
+ * Render a responsive content image stored on a fixed page.
+ *
+ * @param int                  $page_id    Page ID.
+ * @param string               $key        Image key.
+ * @param string|array<string> $size       Registered image size or dimensions.
+ * @param array<string, mixed> $attributes Image attributes.
+ * @return string
+ */
+function hidamari_care_asahikawa_page_image( $page_id, $key, $size = 'full', $attributes = array() ) {
+	$image_id = hidamari_care_asahikawa_page_image_id( $page_id, $key );
+
+	if ( $image_id <= 0 ) {
+		return '';
+	}
+
+	return wp_get_attachment_image( $image_id, $size, false, $attributes );
+}
+
+/**
  * Return a page URL, including a predictable fallback before content migration.
  *
  * @param string $path Page path.

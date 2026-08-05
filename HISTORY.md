@@ -63,3 +63,9 @@
 - アプリ内ブラウザーのPC幅1280px／SP幅390pxで、横はみ出しなし、画像読込、投稿3件、FAQ6件、SPメニュー開閉、FAQ展開、コンソール警告・エラー0件を確認した。Forminator未設定時は電話案内と準備中メッセージを表示し、正式フォームはContact移行時に接続する。
 - Windows版Localの既知のImagick拡張読み込み警告は継続しているが、今回のTOP表示とメディア登録に影響はなく、PHP Fatal Errorとnginxエラーは0件だった。
 - Localと同じPHP 8.2.29でテーマ・プラグイン・移行スクリプトの全20 PHPファイルをlintし、`pnpm run build:css:wordpress`、`pnpm run check:site`、JavaScript構文確認、`git diff --check` が成功した。TOPとヒーロー画像のHTTP 200も確認した。
+- フェーズ10・ステップ10-2の1ページ目として、静的版 `about_us.html` を専用テンプレート `page-about-us.php` へ移し、テーマを0.5.0へ更新した。PC／SPヒーローとパンくずは後続固定ページでも使う共通部品にした。
+- `hidamari-site-core` を0.2.0へ更新し、利用フロー投稿タイプ、補足・リンクmeta、固定ページの導入文・SPヒーロー・施設紹介本文画像の選択欄、「設定 > ひだまり設定」を実装した。法人・施設・住所・施設電話をフッターと施設紹介で共通参照するようにした。
+- `tools/local-about-fixtures.php` で施設紹介の新規画像6点と利用フロー8件をLocalのMySQLへ投入した。TOP画像4点は複製せず再利用し、2回実行しても新規画像6点・フロー8件から増えないこと、プラグイン0.2.0が有効であることを確認した。
+- PC幅1280px／SP幅390pxで、専用ヒーロー切替、画像欠落なし、8ステップ、番号01〜08、問い合わせリンク、現在地、横はみ出しなし、コンソール警告・エラー0件を確認した。
+- SPメニューの同一ページ内リンクでメニューが残る問題を検出し、リンク選択時に閉じるよう修正した。JavaScriptのデスクトップ判定もSCSSと同じ1161pxへ揃え、1160pxから1161pxへの切替でメニュー状態が閉じることを確認した。
+- Localと同じPHP 8.2.29でテーマ・プラグイン・2本の投入スクリプトを含む全24 PHPファイルをlintし、`pnpm run build:css:wordpress`、`pnpm run check:site`、JavaScript構文確認、`git diff --check` が成功した。TOP・施設紹介・お問い合わせはHTTP 200、PHP Fatal Errorとnginxエラーは0件だった。

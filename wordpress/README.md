@@ -17,8 +17,8 @@
 - PHP: 8.2.29
 - Web server: nginx 1.26.1
 - Database: MySQL 8.4.0
-- Theme: `hidamari-care-asahikawa` 0.4.0
-- Site plugin: `hidamari-site-core` 0.1.0
+- Theme: `hidamari-care-asahikawa` 0.5.0
+- Site plugin: `hidamari-site-core` 0.2.0
 - URL: `http://hidamari-care-asahikawa.local/`
 
 Localのサイト設定ファイルにはデータベース接続情報が含まれるため、設定ファイル全体や管理者情報を履歴・チャットへ貼り付けない。テーマ状態はLocalの「Open Site Shell」から `wp theme status hidamari-care-asahikawa` で確認する。
@@ -49,6 +49,14 @@ WordPressテーマでは `assets/scss/style.scss` をCSSの唯一の編集元、
 - `front-page.php` は固定フロントページを前提とし、静的版TOPのセクション構造をテーマで管理する。
 - ヒーローは固定フロントページのアイキャッチ、選ばれる理由・サービスの6画像は `hidamari_home_{key}_image_id` メタからメディアライブラリ画像を取得する。
 - お知らせは公開済み標準投稿の最新3件、FAQは `hidamari_faq` のうち `hidamari_show_on_front` が有効な最大6件を `menu_order` 順に表示する。
-- `hidamari-site-core` 0.1.0では、ステップ10-1に必要なFAQ投稿タイプ、FAQカテゴリー、TOP掲載設定を提供する。ご利用の流れと料金データは各固定ページの移行時に追加する。
+- `hidamari-site-core` 0.2.0では、FAQに加えて施設紹介の利用フロー、固定ページ画像、共通施設情報を管理する。料金データは料金ページ移行時に追加する。
 - `tools/local-top-fixtures.php` は `hidamari-care-asahikawa.local` でのみ実行できる。プラグイン有効化後にLocalのサイトシェルで `wp eval-file C:/Users/lihui/Documents/Codex_Akutsu/tools/local-top-fixtures.php` を実行すると、固定ページ8件、画像7件、投稿3件、FAQ6件を同じ移行キーで作成・更新する。
-- 現時点でTOP以外の固定ページ本文は空のままで、ステップ10-2で1ページずつ移行する。お問い合わせはForminatorのフォームIDが設定されるまでは電話案内と準備中メッセージを表示する。
+- 施設紹介は移行済みで、それ以外の固定ページ本文は空のままステップ10-2で1ページずつ移行する。お問い合わせはForminatorのフォームIDが設定されるまでは電話案内と準備中メッセージを表示する。
+
+## 施設紹介ページ移行
+
+- `page-about-us.php` はスラッグ `about-us` の専用テンプレートで、静的版の法人情報、提供サービス、デイサービスの一日、訪問介護、介護相談、利用フローを表示する。
+- PCヒーローはアイキャッチ、SPヒーローは `hidamari_hero_mobile_id`、本文8画像は `hidamari_page_{key}_image_id` から取得する。固定ページ編集画面の「ページ導入情報・画像」からメディアライブラリ画像を選択できる。
+- 利用フローは `hidamari_flow` の公開済み8件を `menu_order` 順に表示する。タイトル、本文、補足、任意リンクの表示名・URL、順序を管理画面から変更できる。
+- 法人名、施設名、サービス表記、住所、施設電話、お問い合わせ電話、受付時間は「設定 > ひだまり設定」の `hidamari_settings` で管理する。施設紹介とフッターは施設電話、問い合わせ領域はお問い合わせ電話を参照する。
+- `tools/local-about-fixtures.php` はLocal専用の冪等スクリプトで、新規画像6点と利用フロー8件を作成・更新し、TOPで登録済みの画像4点を再利用する。実行は `wp eval-file C:/Users/lihui/Documents/Codex_Akutsu/tools/local-about-fixtures.php` とする。

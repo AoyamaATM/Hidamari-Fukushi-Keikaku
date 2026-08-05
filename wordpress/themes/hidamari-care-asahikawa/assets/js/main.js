@@ -5,12 +5,13 @@
 
   const initMobileNavigation = () => {
     const toggle = document.querySelector(".nav-toggle");
+    const navigation = document.querySelector(".site-nav");
 
     if (!toggle) {
       return;
     }
 
-    const desktopNavigation = window.matchMedia("(min-width: 1025px)");
+    const desktopNavigation = window.matchMedia("(min-width: 1161px)");
     const setNavigationState = (isOpen) => {
       toggle.setAttribute("aria-expanded", String(isOpen));
       body.classList.toggle("nav-open", isOpen);
@@ -20,6 +21,16 @@
       const isOpen = toggle.getAttribute("aria-expanded") === "true";
       setNavigationState(!isOpen);
     });
+
+    if (navigation) {
+      navigation.addEventListener("click", (event) => {
+        const target = event.target;
+
+        if (target instanceof Element && target.closest("a")) {
+          setNavigationState(false);
+        }
+      });
+    }
 
     document.addEventListener("keydown", (event) => {
       const isOpen = toggle.getAttribute("aria-expanded") === "true";
