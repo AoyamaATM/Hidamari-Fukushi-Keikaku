@@ -7,7 +7,8 @@
 
 get_header();
 ?>
-<main id="main-content" class="page-shell">
+<div class="skip-target" id="main-content" tabindex="-1"></div>
+<main class="page-shell">
 	<?php if ( have_posts() ) : ?>
 		<?php while ( have_posts() ) : ?>
 			<?php the_post(); ?>

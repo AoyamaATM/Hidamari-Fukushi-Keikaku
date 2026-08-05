@@ -7,7 +7,8 @@
 
 get_header();
 ?>
-<main id="main-content" class="page-shell">
+<div class="skip-target" id="main-content" tabindex="-1"></div>
+<main class="page-shell">
 	<header class="page-header">
 		<?php the_archive_title( '<h1>', '</h1>' ); ?>
 		<?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>

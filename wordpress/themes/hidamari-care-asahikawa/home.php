@@ -7,7 +7,8 @@
 
 get_header();
 ?>
-<main id="main-content" class="page-shell">
+<div class="skip-target" id="main-content" tabindex="-1"></div>
+<main class="page-shell">
 	<header class="page-header">
 		<h1><?php esc_html_e( 'お知らせ', 'hidamari-care-asahikawa' ); ?></h1>
 	</header>

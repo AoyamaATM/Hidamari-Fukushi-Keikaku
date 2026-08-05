@@ -7,7 +7,8 @@
 
 get_header();
 ?>
-<main id="main-content" class="page-shell">
+<div class="skip-target" id="main-content" tabindex="-1"></div>
+<main class="page-shell">
 	<section class="error-404 not-found">
 		<h1><?php esc_html_e( 'ページが見つかりませんでした', 'hidamari-care-asahikawa' ); ?></h1>
 		<p><?php esc_html_e( 'URLをご確認いただくか、トップページへお戻りください。', 'hidamari-care-asahikawa' ); ?></p>
