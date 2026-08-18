@@ -10,6 +10,12 @@
 - 関係のないリファクタリングや整形だけの変更は避ける。
 - 明示的な指示がない限り、ユーザーの変更を上書きしたり元に戻したりしない。
 
+## 静的版とWordPress版
+- 静的完成版は `main` ブランチの `docs/` と `static-v1.0` タグ、WordPress版は `feature/wordpress` ブランチの `wordpress/` を管理元とする。
+- 静的版とWordPress版のHTML、SCSS、JavaScript、画像を相互に上書きしない。共通修正が必要な場合も、各管理元へ意図を確認して個別に反映する。
+- WordPress版の現行状態、復元方法、未完了事項は `project-docs/wordpress/HANDOFF.md` を確認する。
+- Localサイト本体、データベース、管理者認証情報、プラグインの秘密値はGit管理しない。テーマ、サイト機能プラグイン、投入スクリプト、ドキュメントをGitで管理する。
+
 ## 作業履歴
 - 作業開始時は、ルート直下の `HISTORY.md` を確認し、前回までの作業状況を把握する。
 - `HISTORY.md` の日付が現在日付と異なる場合は、その日の初回作業開始時に既存の `HISTORY.md` をアーカイブする。
@@ -32,6 +38,9 @@
 - 前提や注意点、残るリスクがあれば明確に伝える。
 
 ## SCSS/CSS運用
+- 以下の静的版とWordPress版でSCSSの管理元とビルドコマンドを使い分ける。
+
+### 静的版
 - CSSを変更する場合は、原則として `docs/scss/style.scss` を編集する。
 - HTMLが読み込む表示用CSSは `docs/css/style.css` とする。
 - `docs/css/style.css`、`docs/scss/style.css`、`docs/scss/style.min.css` は生成物として扱う。
@@ -40,6 +49,12 @@
 - CSS作業中の監視には `pnpm run watch:css` を使用できる。
 - 緊急時を除き、生成CSSだけを直接編集しない。直接編集した場合も、最終的にはSCSSへ反映してビルド結果と同期する。
 
+### WordPress版
+- WordPressテーマのCSSを変更する場合は `wordpress/themes/hidamari-care-asahikawa/assets/scss/style.scss` を編集する。
+- 表示用の `wordpress/themes/hidamari-care-asahikawa/assets/css/style.css` は生成物として扱う。
+- SCSS変更後は `pnpm run build:css:wordpress` を実行する。監視時は `pnpm run watch:css:wordpress` を使用する。
+- 静的版へ同じ変更を反映する指示がない限り、`docs/scss/style.scss` と静的生成CSSは変更しない。
+
 ## 共同作業
 - 破壊的な操作や広範囲な変更を行う前には確認を取る。
 - 複数の進め方がある場合は、重要な判断理由を説明する。
@@ -47,6 +62,7 @@
 
 ## Git運用
 - このマシンで作業を始める前に、`git status` と `git pull --ff-only` で状態を確認する。
+- WordPress作業では原則として `feature/wordpress` を使用し、静的完成版の `main` や `static-v1.0` を変更・移動しない。ブランチのマージや本番リリースは明示的な指示がある場合だけ行う。
 - 作業後、ユーザーが別途止めない限り、変更内容を確認して適切なコミットを作成する。
 - GitHubへ反映できる状態なら、コミット後に `git push` まで行う。
 - コンフリクト、未確認のユーザー変更、認証エラーなどがある場合は、無理に進めず状況を報告して確認を取る。

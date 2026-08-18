@@ -9,6 +9,14 @@
 - 対象工程: `ROADMAP.md` フェーズ8・ステップ8-3
 - 表示テンプレート: `project-docs/wordpress/TEMPLATE_MAPPING.md`
 
+## 実装状況（2026-08-18）
+
+- WordPress版はStudioのSQLiteデータを移行元にせず、Local 10.1.1のWordPress 7.0.2／PHP 8.2.29／MySQL 8.4.0へ直接構築した。
+- テーマ `hidamari-care-asahikawa` 0.11.0、サイト機能プラグイン `hidamari-site-core` 0.5.0、Forminator 1.57.0、SEO SIMPLE PACK 3.7.0で実装済み。
+- 固定ページ8件、投稿10件、FAQ13件、利用フロー8件、料金30行、画像、フォーム、SEO、OGP、サイトアイコンを冪等なLocal専用スクリプトで投入済み。
+- Localで主要11 URL・指定9幅の計99通り、内部リンク・画像154 URL、フォーム確認画面まで総合確認済み。本番公開と実メール送信は未実施。
+- 現在の復元方法、保守手順、未完了事項は [WordPress最終引き継ぎ](HANDOFF.md) を参照する。
+
 ## 基本方針
 
 - 日常的に追加・並べ替えが必要な情報は、WordPress標準の投稿または専用投稿タイプで管理する。

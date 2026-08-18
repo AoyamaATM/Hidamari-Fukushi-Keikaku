@@ -43,3 +43,11 @@
 - 最新バックアップを `handoff/260818-latest/hidamari-care-asahikawa.local_wpvivid-038be0e22b504_2026-08-18-05-15_backup_all.zip` へコピーした。容量は46,766,062 bytes、SHA-256は `A3557F321A37F20BDCA97E2ADAD8CF26ED87738EFF6E2EF9F69B6F33AF339D28`。
 - 元ファイルと受け渡し用コピーのハッシュ一致、内包するDB・テーマ・プラグイン・アップロード・コンテンツ・WordPressコアの6パッケージを確認した。DBにはSEO SIMPLE PACK設定とサイトアイコン設定、プラグインにはSEO SIMPLE PACK・Forminator・サイト機能、テーマとアップロードにはテーマ本体・サイトアイコンが含まれる。WPvivid自身はプラグイン既定仕様により自己除外される。
 - 初回のCLI起動ではMainWPインターフェースが未初期化のため準備処理が失敗したが、タスク・既存バックアップへの影響はなく、公式インターフェースを初期化して再実行したタスクは完了ログまで確認済み。
+
+### 16時進捗
+- フェーズ12の最終整理として、ルート `README.md` を静的完成版とWordPress版の入口へ更新した。GitHub Pages公開URL、`main`／`static-v1.0`、`feature/wordpress`、テーマ名、静的版／WordPress版のCSSビルドと確認方法、本番公開前の残作業を明記した。
+- `project-docs/wordpress/HANDOFF.md` を追加し、検証済み環境、Git管理範囲、最新版WPvividバックアップ、別PCでの復元、Gitからの再構築順、日常保守、確認済み範囲、未完了事項を一か所にまとめた。WordPress版はLocal検証完了・本番未公開と明示した。
+- `AGENTS.md` に静的版／WordPress版の管理元とブランチ、SCSSと生成CSSの使い分け、Local・DB・認証情報の扱いを追記した。`CONTENT_MODEL.md` と `wordpress/README.md` から最終引き継ぎへ導線を追加した。
+- GitHub PagesのTOPがHTTP 200であること、ローカルとリモートの `static-v1.0` が同じコミット `30e8d663f0fbbea9eb537323db31fc16f5b70ef6` を指すことを再確認した。
+- 更新対象Markdown内の相対リンク15件は欠落0件、`pnpm run check:site` は静的HTML 9件と `js/main.js` で合格し、`git diff --check` も成功した。
+- `ROADMAP.md` のフェーズ12と進行状況チェックを完了へ更新した。ロードマップ記載の実装工程はすべて完了し、次の実作業は引き継ぎ資料に記載した本番環境、正式原稿、実メール、Turnstile、権限、別環境復元などの公開準備となる。

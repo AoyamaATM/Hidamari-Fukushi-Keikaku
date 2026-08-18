@@ -1,6 +1,20 @@
 # ひだまり福祉計画
 
-静的サイトの制作リポジトリです。
+GitHub Pagesで公開中の静的完成版と、Localで検証済みのWordPress版を管理するリポジトリです。
+
+## 現在の状態
+
+| 区分 | 管理元 | ブランチ／タグ | 公開・検証状態 |
+|---|---|---|---|
+| 静的完成版 | `docs/` | `main`／`static-v1.0` | GitHub Pagesで公開中 |
+| WordPress版 | `wordpress/`、`tools/local-*-fixtures.php` | `feature/wordpress` | Local・MySQLで実装と総合確認が完了。本番未公開 |
+
+- 静的完成版の公開URL: [https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/](https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/)
+- WordPressテーマ名: `hidamari-care-asahikawa`
+- WordPress版の復元、保守、未完了事項: [WordPress最終引き継ぎ](project-docs/wordpress/HANDOFF.md)
+- WordPress版の実装詳細: [WordPress開発README](wordpress/README.md)
+
+静的版とWordPress版は管理元を混ぜない。静的版の修正は `docs/`、WordPress版の修正は `wordpress/` を編集し、それぞれ対応するCSSビルドを実行する。
 
 ## ソース構成
 
@@ -10,6 +24,10 @@
 - `docs/css/style.css`: HTMLが読み込む生成CSS
 - `docs/img/`: 公開時に配信する画像
 - `source-assets/images/`: WebP生成に使う非公開の画像原本
+- `wordpress/themes/hidamari-care-asahikawa/`: WordPressテーマ
+- `wordpress/plugins/hidamari-site-core/`: WordPressのサイト固有機能
+- `wordpress/assets/`: WordPressへ投入するサイトアイコンなどの管理元
+- `project-docs/wordpress/`: WordPressの設計・対応表・最終引き継ぎ
 - `tools/`: CSS生成・静的検査・表示確認用スクリプト
 
 ## GitHub Pages公開構成
@@ -23,8 +41,10 @@
 - [ROADMAP.md](ROADMAP.md)：工程、実施結果、進行状況
 - [SITEMAP.md](SITEMAP.md)：ページ構成と導線
 - [レビュー資料アーカイブ](project-docs/reviews/README.md)：完了済みレビューの資料と指摘記録
+- [WordPress最終引き継ぎ](project-docs/wordpress/HANDOFF.md)：復元、保守、確認、未完了事項
+- [WordPress管理画面・データ移行設計](project-docs/wordpress/CONTENT_MODEL.md)：編集範囲とデータ構造
 
-## CSSビルド
+## 静的版CSSビルド
 
 CSSやレイアウトを変更する場合は、次の順で作業します。
 
@@ -133,3 +153,22 @@ pnpm run check:visual:build -PageId price
 ```powershell
 pnpm run clean:visual
 ```
+
+## WordPress版の開発・確認
+
+WordPressテーマのSCSS管理元は `wordpress/themes/hidamari-care-asahikawa/assets/scss/style.scss`、生成CSSは同テーマの `assets/css/style.css` です。
+
+```powershell
+pnpm run build:css:wordpress
+pnpm run watch:css:wordpress
+```
+
+Localサイト、必要プラグイン、投入スクリプト、WPvividバックアップからの復元方法は [WordPress最終引き継ぎ](project-docs/wordpress/HANDOFF.md) を参照してください。表示変更後はLocalを起動し、ChromeでPC／SP表示、操作、コンソール、PHP／nginxログを確認します。
+
+## 本番公開前に残っていること
+
+- WordPress本番環境、ドメイン、SSL、公開手順の確定とデプロイ
+- 施設側で承認された正式原稿・画像・連絡先への差し替え
+- 本番相当環境でのお問い合わせ最終送信、管理者通知、自動返信、メール到達性、Turnstileの確認
+- 本番ユーザーと権限、バックアップ、更新、監視、復旧方針の確定
+- 別PCまたはステージングへのWPvivid復元テスト

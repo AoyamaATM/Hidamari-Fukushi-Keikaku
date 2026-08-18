@@ -1,5 +1,7 @@
 # WordPress開発
 
+現在の復元方法、保守手順、受け渡しバックアップ、未完了事項は [`project-docs/wordpress/HANDOFF.md`](../project-docs/wordpress/HANDOFF.md) を参照する。
+
 ## 管理対象
 
 - テーマソース: `wordpress/themes/hidamari-care-asahikawa/`
