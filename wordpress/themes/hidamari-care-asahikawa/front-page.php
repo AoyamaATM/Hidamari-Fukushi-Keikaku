@@ -33,9 +33,10 @@ if ( post_type_exists( 'hidamari_faq' ) ) {
 					'value' => '1',
 				),
 			),
+			'meta_key'       => 'hidamari_front_order',
 			'orderby'        => array(
-				'menu_order' => 'ASC',
-				'date'       => 'ASC',
+				'meta_value_num' => 'ASC',
+				'date'           => 'ASC',
 			),
 			'no_found_rows'  => true,
 		)

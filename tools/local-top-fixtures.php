@@ -384,6 +384,7 @@ foreach ( $faq_items as $index => $faq_item ) {
 		)
 	);
 	update_post_meta( $faq_id, 'hidamari_show_on_front', true );
+	update_post_meta( $faq_id, 'hidamari_front_order', $index + 1 );
 	wp_set_object_terms( $faq_id, array( $faq_terms[ $faq_item['category'] ] ), 'hidamari_faq_cat', false );
 }
 

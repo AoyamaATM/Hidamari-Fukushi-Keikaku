@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ひだまりサイトコア
  * Description: ひだまりケア旭川の更新データと管理画面を提供します。
- * Version: 0.2.0
+ * Version: 0.5.0
  * Requires at least: 6.8
  * Requires PHP: 7.4
  * Author: ひだまりケア旭川 制作チーム
@@ -32,6 +32,46 @@ function hidamari_site_core_can_edit_meta() {
  */
 function hidamari_site_core_should_skip_save( $post_id ) {
 	return ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || (bool) wp_is_post_revision( $post_id );
+}
+
+/**
+ * Return the fixed price-table groups.
+ *
+ * @return array<string, string>
+ */
+function hidamari_site_core_price_groups() {
+	return array(
+		'day-basic'        => __( 'デイサービス・基本料金', 'hidamari-site-core' ),
+		'day-addition'     => __( 'デイサービス・主な加算料金', 'hidamari-site-core' ),
+		'day-outside'      => __( 'デイサービス・介護保険外料金', 'hidamari-site-core' ),
+		'visit-physical'   => __( '訪問介護・身体介護', 'hidamari-site-core' ),
+		'visit-housework'  => __( '訪問介護・生活援助', 'hidamari-site-core' ),
+		'visit-prevention' => __( '訪問介護・介護予防訪問サービス', 'hidamari-site-core' ),
+		'visit-addition'   => __( '訪問介護・主な加算料金', 'hidamari-site-core' ),
+		'visit-outside'    => __( '訪問介護・介護保険外料金', 'hidamari-site-core' ),
+	);
+}
+
+/**
+ * Sanitize a price-table group key.
+ *
+ * @param mixed $value Submitted value.
+ * @return string
+ */
+function hidamari_site_core_sanitize_price_group( $value ) {
+	$value = is_string( $value ) ? sanitize_key( $value ) : '';
+	return isset( hidamari_site_core_price_groups()[ $value ] ) ? $value : '';
+}
+
+/**
+ * Sanitize a price-row display type.
+ *
+ * @param mixed $value Submitted value.
+ * @return string
+ */
+function hidamari_site_core_sanitize_price_row_type( $value ) {
+	$value = is_string( $value ) ? sanitize_key( $value ) : '';
+	return in_array( $value, array( 'normal', 'description', 'note' ), true ) ? $value : 'normal';
 }
 
 /**
@@ -101,6 +141,28 @@ function hidamari_site_core_register_content_types() {
 		)
 	);
 
+	register_post_type(
+		'hidamari_price',
+		array(
+			'labels'              => array(
+				'name'          => __( '料金表', 'hidamari-site-core' ),
+				'singular_name' => __( '料金行', 'hidamari-site-core' ),
+				'add_new_item'  => __( '料金行を追加', 'hidamari-site-core' ),
+				'edit_item'     => __( '料金行を編集', 'hidamari-site-core' ),
+			),
+			'public'              => false,
+			'publicly_queryable'  => false,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'show_in_rest'        => true,
+			'menu_icon'           => 'dashicons-money-alt',
+			'supports'            => array( 'title', 'page-attributes', 'custom-fields' ),
+			'has_archive'         => false,
+			'exclude_from_search' => true,
+			'rewrite'             => false,
+		)
+	);
+
 	register_post_meta(
 		'hidamari_faq',
 		'hidamari_show_on_front',
@@ -114,6 +176,19 @@ function hidamari_site_core_register_content_types() {
 		)
 	);
 
+	register_post_meta(
+		'hidamari_faq',
+		'hidamari_front_order',
+		array(
+			'type'              => 'integer',
+			'single'            => true,
+			'default'           => 0,
+			'show_in_rest'      => true,
+			'sanitize_callback' => 'absint',
+			'auth_callback'     => 'hidamari_site_core_can_edit_meta',
+		)
+	);
+
 	$flow_meta = array(
 		'hidamari_flow_note'       => 'sanitize_textarea_field',
 		'hidamari_flow_link_label' => 'sanitize_text_field',
@@ -123,6 +198,30 @@ function hidamari_site_core_register_content_types() {
 	foreach ( $flow_meta as $meta_key => $sanitize_callback ) {
 		register_post_meta(
 			'hidamari_flow',
+			$meta_key,
+			array(
+				'type'              => 'string',
+				'single'            => true,
+				'default'           => '',
+				'show_in_rest'      => true,
+				'sanitize_callback' => $sanitize_callback,
+				'auth_callback'     => 'hidamari_site_core_can_edit_meta',
+			)
+		);
+	}
+
+	$price_meta = array(
+		'hidamari_price_group'    => 'hidamari_site_core_sanitize_price_group',
+		'hidamari_price_row_type' => 'hidamari_site_core_sanitize_price_row_type',
+		'hidamari_price_cell_1'   => 'sanitize_text_field',
+		'hidamari_price_cell_2'   => 'sanitize_text_field',
+		'hidamari_price_cell_3'   => 'sanitize_text_field',
+		'hidamari_price_cell_4'   => 'sanitize_text_field',
+	);
+
+	foreach ( $price_meta as $meta_key => $sanitize_callback ) {
+		register_post_meta(
+			'hidamari_price',
 			$meta_key,
 			array(
 				'type'              => 'string',
@@ -161,7 +260,7 @@ function hidamari_site_core_register_content_types() {
 		)
 	);
 
-	foreach ( hidamari_site_core_about_image_slots() as $image_key => $label ) {
+	foreach ( hidamari_site_core_all_page_image_slots() as $image_key => $label ) {
 		register_post_meta(
 			'page',
 			'hidamari_page_' . $image_key . '_image_id',
@@ -197,6 +296,76 @@ function hidamari_site_core_about_image_slots() {
 }
 
 /**
+ * Return image slots managed on the facilities page.
+ *
+ * @return array<string, string>
+ */
+function hidamari_site_core_facilities_image_slots() {
+	return array(
+		'facilities_organization' => __( '法人情報の写真', 'hidamari-site-core' ),
+		'facilities_facility'     => __( '施設情報の写真', 'hidamari-site-core' ),
+		'facilities_staff'        => __( 'スタッフ紹介の写真', 'hidamari-site-core' ),
+	);
+}
+
+/**
+ * Return image slots managed on the price page.
+ *
+ * @return array<string, string>
+ */
+function hidamari_site_core_price_image_slots() {
+	return array(
+		'price_day_anchor'   => __( 'デイサービス料金表へのリンク画像', 'hidamari-site-core' ),
+		'price_visit_anchor' => __( '訪問介護料金表へのリンク画像', 'hidamari-site-core' ),
+	);
+}
+
+/**
+ * Return image slots managed on the FAQ page.
+ *
+ * @return array<string, string>
+ */
+function hidamari_site_core_faq_image_slots() {
+	return array(
+		'faq_payment_anchor'      => __( '費用・お支払いカテゴリー画像', 'hidamari-site-core' ),
+		'faq_day_care_anchor'     => __( '訪問介護・生活援助カテゴリー画像', 'hidamari-site-core' ),
+		'faq_consultation_anchor' => __( 'ご相談・居宅介護支援カテゴリー画像', 'hidamari-site-core' ),
+		'faq_facility_anchor'     => __( '施設での生活カテゴリー画像', 'hidamari-site-core' ),
+	);
+}
+
+/**
+ * Return page-specific image slots for one fixed-page slug.
+ *
+ * @param string $page_slug Fixed-page slug.
+ * @return array<string, string>
+ */
+function hidamari_site_core_page_image_slots( $page_slug ) {
+	$slot_groups = array(
+		'about-us'   => hidamari_site_core_about_image_slots(),
+		'facilities' => hidamari_site_core_facilities_image_slots(),
+		'price'      => hidamari_site_core_price_image_slots(),
+		'faq'        => hidamari_site_core_faq_image_slots(),
+	);
+
+	return isset( $slot_groups[ $page_slug ] ) ? $slot_groups[ $page_slug ] : array();
+}
+
+/**
+ * Return every registered fixed-page image slot.
+ *
+ * @return array<string, string>
+ */
+function hidamari_site_core_all_page_image_slots() {
+	return array_merge(
+		hidamari_site_core_about_image_slots(),
+		hidamari_site_core_facilities_image_slots(),
+		hidamari_site_core_price_image_slots(),
+		hidamari_site_core_faq_image_slots()
+	);
+}
+
+/**
  * Add content meta boxes.
  *
  * @return void
@@ -221,12 +390,17 @@ add_action( 'add_meta_boxes_hidamari_faq', 'hidamari_site_core_add_faq_meta_box'
  */
 function hidamari_site_core_render_faq_meta_box( $post ) {
 	$show_on_front = (bool) get_post_meta( $post->ID, 'hidamari_show_on_front', true );
+	$front_order   = (int) get_post_meta( $post->ID, 'hidamari_front_order', true );
 	wp_nonce_field( 'hidamari_save_faq_front', 'hidamari_faq_front_nonce' );
 	?>
-	<label>
+	<p><label>
 		<input type="checkbox" name="hidamari_show_on_front" value="1" <?php checked( $show_on_front ); ?>>
 		<?php esc_html_e( 'TOPページに掲載する', 'hidamari-site-core' ); ?>
-	</label>
+	</label></p>
+	<p>
+		<label for="hidamari_front_order"><strong><?php esc_html_e( 'TOP表示順', 'hidamari-site-core' ); ?></strong></label><br>
+		<input id="hidamari_front_order" name="hidamari_front_order" type="number" min="0" step="1" value="<?php echo esc_attr( $front_order ); ?>" style="width:100%;">
+	</p>
 	<?php
 }
 
@@ -244,9 +418,106 @@ function hidamari_site_core_save_faq_meta( $post_id ) {
 		return;
 	}
 
-	update_post_meta( $post_id, 'hidamari_show_on_front', isset( $_POST['hidamari_show_on_front'] ) );
+	$show_on_front   = isset( $_POST['hidamari_show_on_front'] );
+	$raw_front_order = isset( $_POST['hidamari_front_order'] ) ? wp_unslash( $_POST['hidamari_front_order'] ) : 0;
+	$front_order     = $show_on_front ? absint( $raw_front_order ) : 0;
+
+	update_post_meta( $post_id, 'hidamari_show_on_front', $show_on_front );
+	update_post_meta( $post_id, 'hidamari_front_order', $front_order );
 }
 add_action( 'save_post_hidamari_faq', 'hidamari_site_core_save_faq_meta' );
+
+/**
+ * Add the fixed-structure price-row fields.
+ *
+ * @return void
+ */
+function hidamari_site_core_add_price_meta_box() {
+	add_meta_box(
+		'hidamari-price-details',
+		__( '料金行の内容', 'hidamari-site-core' ),
+		'hidamari_site_core_render_price_meta_box',
+		'hidamari_price',
+		'normal',
+		'default'
+	);
+}
+add_action( 'add_meta_boxes_hidamari_price', 'hidamari_site_core_add_price_meta_box' );
+
+/**
+ * Render the fixed-structure price-row fields.
+ *
+ * @param WP_Post $post Price-row post.
+ * @return void
+ */
+function hidamari_site_core_render_price_meta_box( $post ) {
+	$group_key = (string) get_post_meta( $post->ID, 'hidamari_price_group', true );
+	$row_type  = (string) get_post_meta( $post->ID, 'hidamari_price_row_type', true );
+	$row_type  = hidamari_site_core_sanitize_price_row_type( $row_type );
+	wp_nonce_field( 'hidamari_save_price_details', 'hidamari_price_details_nonce' );
+	?>
+	<p>
+		<label for="hidamari_price_group"><strong><?php esc_html_e( '料金表グループ', 'hidamari-site-core' ); ?></strong></label><br>
+		<select class="widefat" id="hidamari_price_group" name="hidamari_price_group" required>
+			<option value=""><?php esc_html_e( '選択してください', 'hidamari-site-core' ); ?></option>
+			<?php foreach ( hidamari_site_core_price_groups() as $value => $label ) : ?>
+				<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $group_key, $value ); ?>><?php echo esc_html( $label ); ?></option>
+			<?php endforeach; ?>
+		</select>
+	</p>
+	<p>
+		<label for="hidamari_price_row_type"><strong><?php esc_html_e( '行タイプ', 'hidamari-site-core' ); ?></strong></label><br>
+		<select class="widefat" id="hidamari_price_row_type" name="hidamari_price_row_type">
+			<option value="normal" <?php selected( $row_type, 'normal' ); ?>><?php esc_html_e( '通常行', 'hidamari-site-core' ); ?></option>
+			<option value="description" <?php selected( $row_type, 'description' ); ?>><?php esc_html_e( '説明行', 'hidamari-site-core' ); ?></option>
+			<option value="note" <?php selected( $row_type, 'note' ); ?>><?php esc_html_e( '注記行', 'hidamari-site-core' ); ?></option>
+		</select>
+	</p>
+	<?php for ( $cell_number = 1; $cell_number <= 4; $cell_number++ ) : ?>
+		<?php
+		$meta_key   = 'hidamari_price_cell_' . $cell_number;
+		$cell_value = (string) get_post_meta( $post->ID, $meta_key, true );
+		?>
+		<p>
+			<label for="<?php echo esc_attr( $meta_key ); ?>"><strong><?php echo esc_html( sprintf( __( 'セル%d', 'hidamari-site-core' ), $cell_number ) ); ?></strong></label><br>
+			<input class="widefat" id="<?php echo esc_attr( $meta_key ); ?>" name="<?php echo esc_attr( $meta_key ); ?>" type="text" value="<?php echo esc_attr( $cell_value ); ?>">
+		</p>
+	<?php endfor; ?>
+	<p><?php esc_html_e( '列見出しと列数はテーマで固定されています。表示順は右側の「順序」で調整してください。', 'hidamari-site-core' ); ?></p>
+	<?php
+}
+
+/**
+ * Save the fixed-structure price-row fields.
+ *
+ * @param int $post_id Price-row post ID.
+ * @return void
+ */
+function hidamari_site_core_save_price_meta( $post_id ) {
+	$raw_nonce = isset( $_POST['hidamari_price_details_nonce'] ) ? wp_unslash( $_POST['hidamari_price_details_nonce'] ) : '';
+	$nonce     = is_string( $raw_nonce ) ? sanitize_text_field( $raw_nonce ) : '';
+
+	if ( hidamari_site_core_should_skip_save( $post_id ) || ! wp_verify_nonce( $nonce, 'hidamari_save_price_details' ) || ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	$fields = array(
+		'hidamari_price_group'    => 'hidamari_site_core_sanitize_price_group',
+		'hidamari_price_row_type' => 'hidamari_site_core_sanitize_price_row_type',
+		'hidamari_price_cell_1'   => 'sanitize_text_field',
+		'hidamari_price_cell_2'   => 'sanitize_text_field',
+		'hidamari_price_cell_3'   => 'sanitize_text_field',
+		'hidamari_price_cell_4'   => 'sanitize_text_field',
+	);
+
+	foreach ( $fields as $meta_key => $sanitize_callback ) {
+		$raw_value = isset( $_POST[ $meta_key ] ) ? wp_unslash( $_POST[ $meta_key ] ) : '';
+		$raw_value = is_string( $raw_value ) ? $raw_value : '';
+		$value     = call_user_func( $sanitize_callback, $raw_value );
+		update_post_meta( $post_id, $meta_key, $value );
+	}
+}
+add_action( 'save_post_hidamari_price', 'hidamari_site_core_save_price_meta' );
 
 /**
  * Add the optional flow detail fields.
@@ -379,10 +650,8 @@ function hidamari_site_core_render_page_meta_box( $post ) {
 	<?php
 	hidamari_site_core_render_media_field( $post->ID, 'hidamari_hero_mobile_id', __( 'SPヒーロー画像', 'hidamari-site-core' ) );
 
-	if ( 'about-us' === $post->post_name ) {
-		foreach ( hidamari_site_core_about_image_slots() as $image_key => $label ) {
-			hidamari_site_core_render_media_field( $post->ID, 'hidamari_page_' . $image_key . '_image_id', $label );
-		}
+	foreach ( hidamari_site_core_page_image_slots( $post->post_name ) as $image_key => $label ) {
+		hidamari_site_core_render_media_field( $post->ID, 'hidamari_page_' . $image_key . '_image_id', $label );
 	}
 }
 
@@ -404,13 +673,22 @@ function hidamari_site_core_save_page_meta( $post_id ) {
 	$lead     = is_string( $raw_lead ) ? sanitize_textarea_field( $raw_lead ) : '';
 	update_post_meta( $post_id, 'hidamari_page_lead', $lead );
 
+	$page = get_post( $post_id );
+	if ( ! $page instanceof WP_Post ) {
+		return;
+	}
+
 	$image_meta_keys = array( 'hidamari_hero_mobile_id' );
-	foreach ( hidamari_site_core_about_image_slots() as $image_key => $label ) {
+	foreach ( hidamari_site_core_page_image_slots( $page->post_name ) as $image_key => $label ) {
 		$image_meta_keys[] = 'hidamari_page_' . $image_key . '_image_id';
 	}
 
 	foreach ( $image_meta_keys as $meta_key ) {
-		$attachment_id = isset( $_POST[ $meta_key ] ) ? absint( $_POST[ $meta_key ] ) : 0;
+		if ( ! isset( $_POST[ $meta_key ] ) ) {
+			continue;
+		}
+
+		$attachment_id = absint( wp_unslash( $_POST[ $meta_key ] ) );
 		update_post_meta( $post_id, $meta_key, $attachment_id );
 	}
 }

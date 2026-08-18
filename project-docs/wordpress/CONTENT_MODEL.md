@@ -68,6 +68,7 @@ WordPress公式も、コンテンツの可搬性を保つためカスタム投�
 - 標準タイトル: 質問
 - 標準本文: 回答
 - meta `hidamari_show_on_front`: TOP掲載の真偽値
+- meta `hidamari_front_order`: TOP掲載時の表示順。カテゴリー内の `menu_order` とは分けて管理する
 - `menu_order`: 同一カテゴリー内の表示順
 - 公開画面: 個別ページを持たず、管理画面だけを有効にする
 - 初期カテゴリー: 費用・お支払い、訪問介護・生活援助、ご相談・居宅介護支援、施設での生活
@@ -115,7 +116,7 @@ TOPの3段階の概要図は詳細8ステップとは構成が異なるため、
 - 固定ページmeta `hidamari_hero_mobile_id`: SPヒーローの添付ファイルID
 - PCヒーロー: WordPress標準のアイキャッチ画像
 - 画像の代替テキスト: 添付ファイルの代替テキストを管理元にする
-- 施設紹介の本文画像meta: `hidamari_page_{key}_image_id`。`profile`、`service_01`〜`service_03`、`schedule`、`dayservice_01`〜`dayservice_03`を使用する
+- 固定ページの本文・アンカー画像meta: `hidamari_page_{key}_image_id`。施設紹介は `profile`、`service_01`〜`service_03`、`schedule`、`dayservice_01`〜`dayservice_03`、全施設一覧は `facilities_organization`、`facilities_facility`、`facilities_staff`、料金表は `price_day_anchor`、`price_visit_anchor`、FAQは `faq_payment_anchor`、`faq_day_care_anchor`、`faq_consultation_anchor`、`faq_facility_anchor` を使用する
 - 共通施設情報: Settings APIで1つのオプション配列 `hidamari_settings` として保存し、各項目をsanitizeする。施設電話とお問い合わせ電話は別項目とする
 
 固定ページのタイトルとスラッグはテンプレート選択に関わるためサイト管理者が管理する。通常の施設担当者は変更しない。
