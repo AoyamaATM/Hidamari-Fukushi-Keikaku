@@ -159,6 +159,8 @@ Forminatorで次の3段階を構成する。
 - 電話番号は共通設定から `<a href="tel:...">` として出力する。
 - Studio内の確認は画面遷移・バリデーション・通知生成までとし、実メール到達は公開先と同等のステージング環境で確認する。
 
+一般仕様、現行設定、管理画面での変更、確認、障害切り分けは [Forminator仕様・運用マニュアル](FORMINATOR_GUIDE.md) を参照する。
+
 ## SEO・OGP・パンくず
 
 - テーマは `add_theme_support('title-tag')` を有効にし、静的HTMLのtitle、description、canonical、OGPタグを直接出力しない。

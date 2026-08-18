@@ -51,3 +51,7 @@
 - GitHub PagesのTOPがHTTP 200であること、ローカルとリモートの `static-v1.0` が同じコミット `30e8d663f0fbbea9eb537323db31fc16f5b70ef6` を指すことを再確認した。
 - 更新対象Markdown内の相対リンク15件は欠落0件、`pnpm run check:site` は静的HTML 9件と `js/main.js` で合格し、`git diff --check` も成功した。
 - `ROADMAP.md` のフェーズ12と進行状況チェックを完了へ更新した。ロードマップ記載の実装工程はすべて完了し、次の実作業は引き継ぎ資料に記載した本番環境、正式原稿、実メール、Turnstile、権限、別環境復元などの公開準備となる。
+- Forminator公式マニュアル、Developer API、WordPress.orgの説明を確認し、`project-docs/wordpress/FORMINATOR_GUIDE.md` を追加した。一般仕様と本サイト固有の設定を分け、必須5項目、入力・確認・完了、管理者通知、自動返信、honeypot、DB保存なし、テーマとの接続を記録した。
+- 安全な変更手順、送信確認チェック、メール不達やフォーム非表示の切り分け、SMTP・Turnstile・プライバシーの注意点を整理した。管理画面だけの変更は `tools/local-contact-fixtures.php` 再実行で上書きされ得ることも明記した。
+- ルートREADME、WordPress開発README、最終引き継ぎ、管理画面・データ移行設計からForminatorマニュアルへ導線を追加した。
+- 更新したMarkdown 5件の相対リンクは欠落0件、`pnpm run check:site` は静的HTML 9件と `js/main.js` で合格し、`git diff --check` も成功した。

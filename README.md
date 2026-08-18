@@ -43,6 +43,7 @@ GitHub Pagesで公開中の静的完成版と、Localで検証済みのWordPress
 - [レビュー資料アーカイブ](project-docs/reviews/README.md)：完了済みレビューの資料と指摘記録
 - [WordPress最終引き継ぎ](project-docs/wordpress/HANDOFF.md)：復元、保守、確認、未完了事項
 - [WordPress管理画面・データ移行設計](project-docs/wordpress/CONTENT_MODEL.md)：編集範囲とデータ構造
+- [Forminator仕様・運用マニュアル](project-docs/wordpress/FORMINATOR_GUIDE.md)：フォームの一般仕様、現行設定、変更、テスト、障害切り分け
 
 ## 静的版CSSビルド
 

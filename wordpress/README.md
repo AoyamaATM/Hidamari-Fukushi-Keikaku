@@ -1,6 +1,6 @@
 # WordPress開発
 
-現在の復元方法、保守手順、受け渡しバックアップ、未完了事項は [`project-docs/wordpress/HANDOFF.md`](../project-docs/wordpress/HANDOFF.md) を参照する。
+現在の復元方法、保守手順、受け渡しバックアップ、未完了事項は [`project-docs/wordpress/HANDOFF.md`](../project-docs/wordpress/HANDOFF.md) を参照する。Forminatorの一般仕様、現行フォーム設定、変更と送信確認は [`project-docs/wordpress/FORMINATOR_GUIDE.md`](../project-docs/wordpress/FORMINATOR_GUIDE.md) にまとめている。
 
 ## 管理対象
 
