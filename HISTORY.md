@@ -18,3 +18,6 @@
 - PC幅1280px／SP幅390pxで6固定ページを確認し、横はみ出しなし、SPメニュー開閉・Escape、FAQ展開、料金表8件、FAQ13件、TOP FAQ6件と順序、Forminator表示、コンソール警告・エラー0件を確認した。全27画像URLはHTTP 200、PHP Fatal Errorとnginxエラーは0件だった。
 - 全36 PHPファイルのlint、WordPress版CSSビルド、静的9ページ検査、JavaScript構文確認、`git diff --check` が成功した。Localの既知のImagick拡張読み込み警告は継続しているが、今回の表示と画像投入には影響していない。
 - 固定ページ移行は完了。次はステップ10-3のお知らせ一覧・詳細の動的化と投稿データ確認、その後にSEO SIMPLE PACK接続、フェーズ11の総合確認へ進む。
+- 月次レビュー用に公式WPvivid Backup & Migration 0.9.132をLocalサイトへ導入し、データベースと全ファイルを含む手動バックアップをローカル保存・統合ZIP・削除防止ロック付きで作成した。
+- 受け渡し用バックアップを `handoff/WPvivid-hidamari-care-asahikawa-20260818/hidamari-care-asahikawa.local_wpvivid-75fc19463b4ce_2026-08-18-01-35_backup_all.zip` へコピーした。容量は43.10 MiB、SHA-256は `3A0308FEC2ADE66BBB11647C8005EA2B7AA2920CFAFBD8C7A5E3261D06506384`。
+- 外側ZIPと内包するDB・テーマ・プラグイン・アップロード・コンテンツ・WordPressコアの6パッケージを全件読取し、DBパッケージにSQLが含まれること、および元ファイルと受け渡し用コピーのハッシュ一致を確認した。
