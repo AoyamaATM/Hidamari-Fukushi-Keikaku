@@ -25,7 +25,7 @@ get_header();
 				<?php esc_html_e( '専門スタッフが、ご本人様とご家族様の気持ちに寄り添って丁寧にお答えいたします。', 'hidamari-care-asahikawa' ); ?>
 			</p>
 			<p class="contact-note">
-				<?php esc_html_e( '※ 正確かつ迅速な対応を行うため、お問い合わせ内容を記録し法人内で共有・利用させていただくことがございます。個人情報の取り扱いについては「', 'hidamari-care-asahikawa' ); ?><a href="<?php echo esc_url( hidamari_care_asahikawa_page_url( 'privacy-policy' ) ); ?>"><?php esc_html_e( 'プライバシーポリシー', 'hidamari-care-asahikawa' ); ?></a><?php esc_html_e( '」をご覧ください。', 'hidamari-care-asahikawa' ); ?>
+				<?php esc_html_e( '※ こちらはデモサイトです。フォームには実在する個人情報を入力しないでください。個人情報の取り扱い方針は「', 'hidamari-care-asahikawa' ); ?><a href="<?php echo esc_url( hidamari_care_asahikawa_page_url( 'privacy-policy' ) ); ?>"><?php esc_html_e( 'プライバシーポリシー', 'hidamari-care-asahikawa' ); ?></a><?php esc_html_e( '」をご覧ください。', 'hidamari-care-asahikawa' ); ?>
 			</p>
 
 			<div class="phone-card">

@@ -48,10 +48,10 @@ Windows版Localでは `php_imagick.dll` の読み込み警告が出る。現行�
 
 最新版の統合バックアップはGit管理外で、作業PCの次の場所にある。
 
-`handoff/260818-latest/hidamari-care-asahikawa.local_wpvivid-038be0e22b504_2026-08-18-05-15_backup_all.zip`
+`handoff/260818-latest/hidamari-care-asahikawa.local_wpvivid-22dccf94bac50_2026-08-18-07-27_backup_all.zip`
 
-- 容量: 46,766,062 bytes
-- SHA-256: `A3557F321A37F20BDCA97E2ADAD8CF26ED87738EFF6E2EF9F69B6F33AF339D28`
+- 容量: 46,765,463 bytes
+- SHA-256: `FBFCE2A151E9C1DE40EDA057BBA1ABBCF7B07F05CC397734172CE465F03FB8C9`
 - 内容: DB、テーマ、プラグイン、アップロード、`wp-content`、WordPressコアの6パッケージ
 - 削除防止ロック: 有効
 
@@ -103,7 +103,7 @@ pnpm run build:css:wordpress
 
 WordPress版の表示確認はLocalを起動し、ChromeでPC／SPの代表幅、操作、コンソール、PHP／nginxログを確認する。PHP変更時はLocalと同じPHP 8.2系で `wordpress/` と `tools/local-*-fixtures.php` をlintする。
 
-フェーズ11では、主要11 URLを1920、1600、1599、1024、1023、768、767、430、429pxの計99通りで確認した。内部リンク・画像154 URLはすべてHTTP 200で、フォームは必須エラー、確認、戻る、入力保持まで確認している。最終送信は行っていない。
+フェーズ11では、主要11 URLを1920、1600、1599、1024、1023、768、767、430、429pxの計99通りで確認した。内部リンク・画像154 URLはすべてHTTP 200で、フォームは必須エラー、確認、戻る、入力保持まで確認している。その後、フォームはメール通知とDB保存を行わないポートフォリオ用デモへ変更し、ダミー入力で完了表示まで確認した。デモ送信の前後とも通知設定0件、保存済み送信0件である。
 
 ## 日常の保守
 
@@ -118,8 +118,8 @@ WordPress版の表示確認はLocalを起動し、ChromeでPC／SPの代表幅�
 
 - 本番サーバー、ドメイン、SSL、デプロイ／切り戻し手順の確定
 - サンプル記事、施設情報、人名、画像、電話番号、メールアドレスを施設側承認済みの正式データへ差し替え
-- 本番相当環境でForminatorの最終送信、管理者通知、自動返信、Reply-To、完了表示、メール到達性を確認
-- 本番用の送信先、必要に応じたSMTP、Cloudflare Turnstileのサイトキー／秘密鍵を設定
+- 公開環境でForminatorのデモ送信、通知0件、DB保存なし、完了表示を確認
+- 公開後の機械投稿や負荷に応じてCloudflare Turnstileまたはレート制限の要否を判断
 - 本番ユーザーを作成し、施設担当者へ編集者権限を付与して投稿・FAQ・利用フロー・料金・メディアの更新権限を確認
 - 別PCまたはステージングへ最新版WPvividバックアップを復元し、URL置換、ログイン、データ件数、表示、フォーム、SEOを再確認
 - 物理的なスマートフォン実機で最終表示と操作を確認
@@ -127,4 +127,4 @@ WordPress版の表示確認はLocalを起動し、ChromeでPC／SPの代表幅�
 
 ## 引き継ぎ時の判定
 
-レビュワーへは最新版WPvivid ZIPを渡せる。WordPress本番公開は、上記の未完了事項、とくに正式原稿、実メール、Turnstile、権限、別環境復元を完了してから判断する。
+レビュワーへは最新版WPvivid ZIPを渡せる。WordPress公開は、上記の未完了事項、とくに正式原稿、デモフォーム、権限、別環境復元を完了してから判断する。

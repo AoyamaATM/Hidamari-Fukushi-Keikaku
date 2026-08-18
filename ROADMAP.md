@@ -2086,6 +2086,7 @@ theme-name/
 - `project-docs/wordpress/HANDOFF.md` を追加し、検証済み環境、管理対象、最新版WPvividバックアップ、別PCでの復元、Gitからの再構築順、保守手順、確認結果、未完了事項を一か所にまとめた。
 - `AGENTS.md` に静的版／WordPress版の管理元、ブランチ、SCSSと生成CSS、Local・認証情報・DBの扱いを追記した。`CONTENT_MODEL.md` と `wordpress/README.md` から最終引き継ぎへ導線を追加した。
 - GitHub PagesがHTTP 200であること、ローカルとリモートの `static-v1.0` が同じコミットを指すことを再確認した。WordPress版はLocal検証完了・本番未公開と明示した。
+- フェーズ12後の運用方針として、Forminatorは実運用に近い入力・確認・完了操作を残し、メール通知とDB保存を無効にしたポートフォリオ用デモとした。2026-08-18にダミー入力で完了表示まで確認し、通知設定0件、保存済み送信0件を確認した。
 
 ---
 

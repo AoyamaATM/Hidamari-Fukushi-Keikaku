@@ -72,7 +72,7 @@ WordPressテーマでは `assets/scss/style.scss` をCSSの唯一の編集元、
 - `page-price.php` は固定構造の8表を表示し、`hidamari_price` の公開済み30行をグループ別・表示順に取得する。`tools/local-price-fixtures.php` はヒーロー／アンカー画像4点と料金30行を投入する。
 - `page-faq.php` は4カテゴリー・13件のFAQを表示する。`tools/local-faq-fixtures.php` は画像6点、カテゴリー4件、FAQ13件を投入し、TOP掲載6件の専用表示順も同期する。
 - `page-privacy-policy.php` はWordPress本文を表示する。`tools/local-privacy-fixtures.php` は6節の本文を投入し、WordPressのプライバシーポリシーページ設定も更新する。
-- `page-contact.php` は電話案内、FAQ導線、Forminatorフォームを表示する。`tools/local-contact-fixtures.php` はヒーロー2点と、入力・確認の2段階、必須5項目、管理者通知／自動返信、honeypot有効、送信内容のDB保存なしのフォームを投入する。実行前にForminatorを有効化する。
+- `page-contact.php` は電話案内、FAQ導線、Forminatorのデモフォームを表示する。`tools/local-contact-fixtures.php` はヒーロー2点と、入力・確認の2段階、必須5項目、メール通知なし、honeypot有効、送信内容のDB保存なし、デモ完了表示のフォームを投入する。実行前にForminatorを有効化する。
 - 各スクリプトは `hidamari-care-asahikawa.local` 専用で、`wp eval-file C:/Users/lihui/Documents/Codex_Akutsu/tools/{script-name}.php` として実行する。同じスクリプトを再実行しても移行キーにより件数とフォームIDは増えない。
 
 ## お知らせ一覧・詳細移行
@@ -89,4 +89,4 @@ WordPressテーマでは `assets/scss/style.scss` をCSSの唯一の編集元、
 - `tools/local-seo-fixtures.php` は `hidamari-care-asahikawa.local` 専用の冪等スクリプトである。TOP投入処理後に `wp eval-file C:/Users/lihui/Documents/Codex_Akutsu/tools/local-seo-fixtures.php` を実行すると、固定ページ8件・投稿10件・カテゴリー2件のSEO情報、共通OGP画像、サイトアイコン、アーカイブ設定を作成・更新する。
 - canonical URLは環境移行後のURLへ追従できるよう、プラグインの自動生成を使用する。サイトマップはWordPress標準の `/wp-sitemap.xml` を使用する。
 - 共通OGP画像にはメディアライブラリのTOPヒーロー画像を使用する。サイトアイコンの管理元は `wordpress/assets/site-icon.png`（512×512）で、スクリプトが移行キーを使って一度だけメディアライブラリへ登録する。
-- フェーズ11では主要11 URLを指定9幅の計99通りで確認し、SEOタグ、画像、内部リンク、操作、レスポンシブ表示、PHP／ブラウザーログに問題がないことを確認済み。フォームは確認画面と戻る操作まで確認し、最終送信は行っていない。
+- フェーズ11では主要11 URLを指定9幅の計99通りで確認し、SEOタグ、画像、内部リンク、操作、レスポンシブ表示、PHP／ブラウザーログに問題がないことを確認済み。その後、フォームを通知・DB保存なしのデモ設定へ変更し、ダミー入力で完了表示、通知設定0件、保存済み送信0件を確認した。

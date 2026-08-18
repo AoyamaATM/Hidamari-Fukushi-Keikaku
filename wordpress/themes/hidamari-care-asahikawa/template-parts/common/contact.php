@@ -26,12 +26,13 @@ $form_id        = (int) get_option( 'hidamari_forminator_form_id' );
 		<span class="phone-card__note"><?php echo esc_html( '受付時間　' . $business_hours ); ?></span>
 	</div>
 	<p class="policy-note">
-		<?php esc_html_e( '正確かつ迅速な対応を行うため、お問い合わせ内容を記録し当法人内で共有・利用させていただくことがございます。個人情報の取り扱いについては「', 'hidamari-care-asahikawa' ); ?><a href="<?php echo esc_url( hidamari_care_asahikawa_page_url( 'privacy-policy' ) ); ?>"><?php esc_html_e( 'プライバシーポリシー', 'hidamari-care-asahikawa' ); ?></a><?php esc_html_e( '」をご覧ください。', 'hidamari-care-asahikawa' ); ?>
+		<?php esc_html_e( 'こちらはデモサイトです。フォームには実在する個人情報を入力しないでください。個人情報の取り扱い方針は「', 'hidamari-care-asahikawa' ); ?><a href="<?php echo esc_url( hidamari_care_asahikawa_page_url( 'privacy-policy' ) ); ?>"><?php esc_html_e( 'プライバシーポリシー', 'hidamari-care-asahikawa' ); ?></a><?php esc_html_e( '」をご覧ください。', 'hidamari-care-asahikawa' ); ?>
 	</p>
 </div>
 
 <?php if ( $show_form ) : ?>
 	<?php if ( $form_id > 0 && shortcode_exists( 'forminator_form' ) ) : ?>
+		<p class="form-note"><?php esc_html_e( '※こちらはデモフォームです。入力内容はメール送信・保存されません。実在する個人情報は入力しないでください。', 'hidamari-care-asahikawa' ); ?></p>
 		<?php echo do_shortcode( '[forminator_form id="' . $form_id . '"]' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	<?php else : ?>
 		<div class="form-panel">

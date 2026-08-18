@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+global $wpdb;
+
 $local_host = (string) wp_parse_url( home_url( '/' ), PHP_URL_HOST );
 if ( 'hidamari-care-asahikawa.local' !== $local_host ) {
 	throw new RuntimeException( 'This migration script may only run on hidamari-care-asahikawa.local.' );
@@ -161,11 +163,9 @@ set_post_thumbnail( $contact_page_id, $hero_pc_id );
 update_post_meta( $contact_page_id, 'hidamari_hero_mobile_id', $hero_sp_id );
 
 $privacy_url       = hidamari_care_asahikawa_page_url( 'privacy-policy' );
-$phone_display     = hidamari_care_asahikawa_setting( 'phone_display', '0166-xx-xxxx' );
-$business_hours    = hidamari_care_asahikawa_setting( 'business_hours', '平日 9:00 ～ 17:00' );
 $required_message  = '必須項目です。';
 $form_name         = 'お問い合わせ';
-$confirmation_html = '<div class="contact-confirmation"><p>以下の内容で送信します。入力内容をご確認ください。</p><dl><dt>お名前</dt><dd>{name-1}</dd><dt>メールアドレス</dt><dd>{email-1}</dd><dt>お問い合わせ内容（件名）</dt><dd>{text-1}</dd><dt>本文</dt><dd>{textarea-1}</dd></dl></div>';
+$confirmation_html = '<div class="contact-confirmation"><p>以下はデモ確認画面です。入力内容をご確認ください。</p><dl><dt>お名前</dt><dd>{name-1}</dd><dt>メールアドレス</dt><dd>{email-1}</dd><dt>お問い合わせ内容（件名）</dt><dd>{text-1}</dd><dt>本文</dt><dd>{textarea-1}</dd></dl></div>';
 
 $wrappers = array(
 	hidamari_contact_form_wrapper(
@@ -264,7 +264,7 @@ $settings = array(
 	'submission-indicator'        => 'show',
 	'indicator-label'             => '送信中…',
 	'submission-behaviour'        => 'behaviour-thankyou',
-	'thankyou-message'            => '<p>お問い合わせありがとうございます。内容を確認のうえ、担当者よりご連絡いたします。</p><p>お急ぎの場合は ' . esc_html( $phone_display ) . '（受付時間 ' . esc_html( $business_hours ) . '）へお電話ください。</p>',
+	'thankyou-message'            => '<p>デモフォームの操作は以上です。</p><p>入力内容はメール送信・保存されていません。</p>',
 	'custom-invalid-form-message' => '入力内容をご確認ください。',
 	'honeypot'                    => true,
 	'akismet-protection'          => false,
@@ -288,29 +288,7 @@ $settings = array(
 	),
 );
 
-$notifications = array(
-	array(
-		'slug'             => 'hidamari-contact-admin',
-		'label'            => '管理者通知',
-		'email-recipients' => 'default',
-		'recipients'       => get_option( 'admin_email' ),
-		'email-subject'    => '【お問い合わせ】{text-1}',
-		'email-editor'     => "Webサイトからお問い合わせが届きました。<br><br>{all_fields}<br><br>送信元：{site_url}",
-		'replyto-email'    => '{email-1}',
-		'email-attachment' => 'false',
-		'type'             => 'default',
-	),
-	array(
-		'slug'             => 'hidamari-contact-user',
-		'label'            => 'お問い合わせ自動返信',
-		'email-recipients' => 'default',
-		'recipients'       => '{email-1}',
-		'email-subject'    => 'お問い合わせを受け付けました｜ひだまりケア旭川',
-		'email-editor'     => "{name-1} 様<br><br>お問い合わせありがとうございます。以下の内容で受け付けました。<br><br>{all_fields}<br><br>内容を確認のうえ、担当者よりご連絡いたします。",
-		'email-attachment' => 'false',
-		'type'             => 'default',
-	),
-);
+$notifications = array();
 
 $form_id = hidamari_contact_find_post( 'forminator_forms', 'contact-form' );
 if ( $form_id > 0 ) {
@@ -346,11 +324,16 @@ printf( "fields=%d\n", count( $wrappers ) );
 printf( "required_fields=%d\n", 5 );
 printf( "pages=%d\n", 2 );
 printf( "notifications=%d\n", count( $stored_notifications ) );
-printf( "admin_recipient_configured=%s\n", isset( $stored_notifications[0]['recipients'] ) && $stored_notifications[0]['recipients'] === get_option( 'admin_email' ) ? 'yes' : 'no' );
-printf( "admin_reply_to_input=%s\n", isset( $stored_notifications[0]['replyto-email'] ) && '{email-1}' === $stored_notifications[0]['replyto-email'] ? 'yes' : 'no' );
-printf( "user_autoreply_recipient=%s\n", isset( $stored_notifications[1]['recipients'] ) && '{email-1}' === $stored_notifications[1]['recipients'] ? 'yes' : 'no' );
+printf( "demo_notifications_disabled=%s\n", empty( $stored_notifications ) ? 'yes' : 'no' );
 printf( "honeypot=%s\n", ! empty( $stored_settings['honeypot'] ) ? 'yes' : 'no' );
 printf( "submission_storage=%s\n", empty( $stored_settings['store_submissions'] ) ? 'no' : 'yes' );
-printf( "completion_has_phone_window=%s\n", isset( $stored_settings['thankyou-message'] ) && false !== strpos( $stored_settings['thankyou-message'], '受付時間' ) ? 'yes' : 'no' );
+printf( "demo_completion_message=%s\n", isset( $stored_settings['thankyou-message'] ) && false !== strpos( $stored_settings['thankyou-message'], 'メール送信・保存されていません' ) ? 'yes' : 'no' );
+$stored_submission_count = (int) $wpdb->get_var(
+	$wpdb->prepare(
+		"SELECT COUNT(*) FROM {$wpdb->prefix}frmt_form_entry WHERE form_id = %d",
+		$form_id
+	)
+);
+printf( "stored_submission_count=%d\n", $stored_submission_count );
 printf( "forminator_version=%s\n", FORMINATOR_VERSION );
 printf( "theme_version=%s\n", $theme->get( 'Version' ) );

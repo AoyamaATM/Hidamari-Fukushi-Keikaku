@@ -55,3 +55,11 @@
 - 安全な変更手順、送信確認チェック、メール不達やフォーム非表示の切り分け、SMTP・Turnstile・プライバシーの注意点を整理した。管理画面だけの変更は `tools/local-contact-fixtures.php` 再実行で上書きされ得ることも明記した。
 - ルートREADME、WordPress開発README、最終引き継ぎ、管理画面・データ移行設計からForminatorマニュアルへ導線を追加した。
 - 更新したMarkdown 5件の相対リンクは欠落0件、`pnpm run check:site` は静的HTML 9件と `js/main.js` で合格し、`git diff --check` も成功した。
+
+### 17時進捗
+- ポートフォリオ用のForminatorフォームを、実運用に近い入力・必須チェック・確認・戻る・送信・完了操作は残し、管理者通知／自動返信とDB保存を無効にするデモ設定へ変更した。フォームID 106、必須5項目、honeypot有効は維持した。
+- お問い合わせページとTOPに「メール送信・保存されない」「実在する個人情報を入力しない」旨を表示し、実運用向けだった記録・共有・メール回答の案内もデモ方針と矛盾しない文言へ変更した。確認画面と完了画面にもデモであることを明記した。
+- `tools/local-contact-fixtures.php` を再実行してもフォームIDと件数が増えないことを確認した。ブラウザーでダミー入力から確認・最終送信・完了表示まで確認し、送信前後とも通知設定0件、フォームID 106の保存済み送信0件、コンソール警告・エラー0件だった。
+- `tools/local-wpvivid-backup.php` を追加し、Forminator設定反映後のDBと全ファイルを公式WPvivid 0.9.132でローカル保存・統合ZIP・削除防止ロック付きバックアップにした。タスクIDは `wpvivid-22dccf94bac50`。
+- 最新バックアップを `handoff/260818-latest/hidamari-care-asahikawa.local_wpvivid-22dccf94bac50_2026-08-18-07-27_backup_all.zip` へコピーした。容量は46,765,463 bytes、SHA-256は `FBFCE2A151E9C1DE40EDA057BBA1ABBCF7B07F05CC397734172CE465F03FB8C9`。元ファイルとのハッシュ一致と、DB・テーマ・プラグイン・アップロード・コンテンツ・WordPressコアの6パッケージを確認した。
+- 変更したPHP 5ファイルのPHP 8.2 lint、`pnpm run check:site`、`git diff --check` が成功した。既知のImagick拡張読み込み警告は継続しているが、フォーム処理とWPvividバックアップには影響していない。
