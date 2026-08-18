@@ -166,6 +166,41 @@ function hidamari_care_asahikawa_posts_url() {
 }
 
 /**
+ * Return the primary category display data for a post.
+ *
+ * @param int $post_id Post ID.
+ * @return array{name: string, slug: string, class: string}
+ */
+function hidamari_care_asahikawa_post_category( $post_id ) {
+	$categories = get_the_category( $post_id );
+	$category   = ! empty( $categories ) ? $categories[0] : null;
+	$slug       = $category instanceof WP_Term ? $category->slug : 'news';
+
+	return array(
+		'name'  => $category instanceof WP_Term ? $category->name : __( 'お知らせ', 'hidamari-care-asahikawa' ),
+		'slug'  => $slug,
+		'class' => 'blog' === $slug ? 'tag-blog' : 'tag-news',
+	);
+}
+
+/**
+ * Keep public post archives at the agreed 10 posts per page.
+ *
+ * @param WP_Query $query Main query.
+ * @return void
+ */
+function hidamari_care_asahikawa_configure_post_archives( $query ) {
+	if ( is_admin() || ! $query->is_main_query() ) {
+		return;
+	}
+
+	if ( $query->is_home() || $query->is_category() || $query->is_date() ) {
+		$query->set( 'posts_per_page', 10 );
+	}
+}
+add_action( 'pre_get_posts', 'hidamari_care_asahikawa_configure_post_archives' );
+
+/**
  * Return the static-site page key for the current WordPress request.
  *
  * @return string

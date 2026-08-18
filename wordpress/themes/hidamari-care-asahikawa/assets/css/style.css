@@ -1682,6 +1682,11 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
   margin: 0 0 18px;
 }
 
+.archive-empty {
+  margin: 32px 0;
+  text-align: center;
+}
+
 .pagination {
   display: flex;
   flex-wrap: wrap;
@@ -1689,11 +1694,20 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
   justify-content: center;
   margin-top: 24px;
 }
-.pagination a {
+.pagination a,
+.pagination span {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
   min-height: 40px;
   min-width: 40px;
   padding: 4px 10px;
   text-align: center;
+}
+.pagination .current {
+  background: var(--palette-orange-01);
+  border-radius: var(--radius);
+  font-weight: 900;
 }
 
 .post-grid {

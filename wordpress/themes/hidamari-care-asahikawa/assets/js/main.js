@@ -66,6 +66,17 @@
     });
   };
 
+  const initArchiveNavigation = () => {
+    document.querySelectorAll("[data-archive-navigation]").forEach((select) => {
+      select.addEventListener("change", () => {
+        if (select instanceof HTMLSelectElement && select.value) {
+          window.location.assign(select.value);
+        }
+      });
+    });
+  };
+
   initMobileNavigation();
   initFaqAccordions();
+  initArchiveNavigation();
 })();

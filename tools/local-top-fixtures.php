@@ -309,14 +309,17 @@ $news_posts        = array(
 );
 
 foreach ( $news_posts as $news_post ) {
+	$existing_news_id      = hidamari_local_find_post( 'post', $news_post[0] );
+	$existing_news_content = $existing_news_id > 0 ? (string) get_post_field( 'post_content', $existing_news_id ) : '';
+	$existing_news_slug    = $existing_news_id > 0 ? (string) get_post_field( 'post_name', $existing_news_id ) : '';
 	$post_id = hidamari_local_upsert_post(
 		'post',
 		$news_post[0],
 		array(
 			'post_status'  => 'publish',
 			'post_title'   => $news_post[1],
-			'post_name'    => sanitize_title( $news_post[1] ),
-			'post_content' => '',
+			'post_name'    => '' !== $existing_news_slug ? $existing_news_slug : sanitize_title( $news_post[1] ),
+			'post_content' => $existing_news_content,
 			'post_date'    => $news_post[2],
 		)
 	);

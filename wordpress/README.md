@@ -17,14 +17,14 @@
 - PHP: 8.2.29
 - Web server: nginx 1.26.1
 - Database: MySQL 8.4.0
-- Theme: `hidamari-care-asahikawa` 0.10.0
+- Theme: `hidamari-care-asahikawa` 0.11.0
 - Site plugin: `hidamari-site-core` 0.5.0
 - Form plugin: Forminator 1.57.0
 - URL: `http://hidamari-care-asahikawa.local/`
 
 Localのサイト設定ファイルにはデータベース接続情報が含まれるため、設定ファイル全体や管理者情報を履歴・チャットへ貼り付けない。テーマ状態はLocalの「Open Site Shell」から `wp theme status hidamari-care-asahikawa` で確認する。
 
-Localには空のWordPressサイトを新規作成し、StudioのSQLiteデータベースやステップ9-3の使い捨て検証データは取り込んでいない。フェーズ10のTOP、施設紹介、全施設一覧、料金表、FAQ、プライバシーポリシー、お問い合わせとForminatorフォームは、冪等なLocal専用スクリプトからMySQLへ投入済み。SEO SIMPLE PACKの設定は後続作業でこのLocalサイトへ直接投入する。
+Localには空のWordPressサイトを新規作成し、StudioのSQLiteデータベースやステップ9-3の使い捨て検証データは取り込んでいない。フェーズ10のTOP、施設紹介、全施設一覧、料金表、FAQ、プライバシーポリシー、お問い合わせ、Forminatorフォーム、お知らせ10件は、冪等なLocal専用スクリプトからMySQLへ投入済み。SEO SIMPLE PACKの設定は後続作業でこのLocalサイトへ直接投入する。
 
 Windows版Localでは、PHP 8.2.29のImagick拡張読み込み警告がPHPログとWP-CLIに出る場合がある。この環境ではWordPress表示、MySQL接続、テーマ動作に影響がなく、PHP Fatal Errorとnginxエラーが0件であることを確認済み。Imagickを前提とする画像処理を追加するときは別途動作確認する。
 
@@ -70,3 +70,11 @@ WordPressテーマでは `assets/scss/style.scss` をCSSの唯一の編集元、
 - `page-privacy-policy.php` はWordPress本文を表示する。`tools/local-privacy-fixtures.php` は6節の本文を投入し、WordPressのプライバシーポリシーページ設定も更新する。
 - `page-contact.php` は電話案内、FAQ導線、Forminatorフォームを表示する。`tools/local-contact-fixtures.php` はヒーロー2点と、入力・確認の2段階、必須5項目、管理者通知／自動返信、honeypot有効、送信内容のDB保存なしのフォームを投入する。実行前にForminatorを有効化する。
 - 各スクリプトは `hidamari-care-asahikawa.local` 専用で、`wp eval-file C:/Users/lihui/Documents/Codex_Akutsu/tools/{script-name}.php` として実行する。同じスクリプトを再実行しても移行キーにより件数とフォームIDは増えない。
+
+## お知らせ一覧・詳細移行
+
+- `home.php` と `archive.php` は `template-parts/content/news-archive.php` を共有し、標準投稿を1ページ10件で表示する。
+- `/news/` を投稿一覧、`/category/{slug}/` をカテゴリー別、`/{year}/{month}/` を月別アーカイブとして使用する。絞り込みセレクトは各標準URLへ遷移し、件数と対象投稿をWordPressから取得する。
+- `single.php` は投稿タイトル、公開日、カテゴリー、本文、最新3件、投稿用サイドバーを動的に表示する。
+- `tools/local-posts-fixtures.php` はLocal専用の冪等スクリプトで、ニュース7件／ブログ3件の計10投稿を投入し、投稿ページと1ページ当たりの表示件数も同期する。実行は `wp eval-file C:/Users/lihui/Documents/Codex_Akutsu/tools/local-posts-fixtures.php` とする。
+- TOP用の先頭3投稿と移行キーを共有するため、`tools/local-top-fixtures.php` を再実行しても投稿本文と英字スラッグを維持する。
