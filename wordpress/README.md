@@ -20,11 +20,13 @@
 - Theme: `hidamari-care-asahikawa` 0.11.0
 - Site plugin: `hidamari-site-core` 0.5.0
 - Form plugin: Forminator 1.57.0
+- SEO plugin: SEO SIMPLE PACK 3.7.0
+- Site language: 日本語（`ja`）
 - URL: `http://hidamari-care-asahikawa.local/`
 
 Localのサイト設定ファイルにはデータベース接続情報が含まれるため、設定ファイル全体や管理者情報を履歴・チャットへ貼り付けない。テーマ状態はLocalの「Open Site Shell」から `wp theme status hidamari-care-asahikawa` で確認する。
 
-Localには空のWordPressサイトを新規作成し、StudioのSQLiteデータベースやステップ9-3の使い捨て検証データは取り込んでいない。フェーズ10のTOP、施設紹介、全施設一覧、料金表、FAQ、プライバシーポリシー、お問い合わせ、Forminatorフォーム、お知らせ10件は、冪等なLocal専用スクリプトからMySQLへ投入済み。SEO SIMPLE PACKの設定は後続作業でこのLocalサイトへ直接投入する。
+Localには空のWordPressサイトを新規作成し、StudioのSQLiteデータベースやステップ9-3の使い捨て検証データは取り込んでいない。フェーズ10のTOP、施設紹介、全施設一覧、料金表、FAQ、プライバシーポリシー、お問い合わせ、Forminatorフォーム、お知らせ10件は、冪等なLocal専用スクリプトからMySQLへ投入済み。SEO SIMPLE PACKの設定、共通OGP画像、サイトアイコンもLocal専用スクリプトから投入済み。
 
 Windows版Localでは、PHP 8.2.29のImagick拡張読み込み警告がPHPログとWP-CLIに出る場合がある。この環境ではWordPress表示、MySQL接続、テーマ動作に影響がなく、PHP Fatal Errorとnginxエラーが0件であることを確認済み。Imagickを前提とする画像処理を追加するときは別途動作確認する。
 
@@ -78,3 +80,11 @@ WordPressテーマでは `assets/scss/style.scss` をCSSの唯一の編集元、
 - `single.php` は投稿タイトル、公開日、カテゴリー、本文、最新3件、投稿用サイドバーを動的に表示する。
 - `tools/local-posts-fixtures.php` はLocal専用の冪等スクリプトで、ニュース7件／ブログ3件の計10投稿を投入し、投稿ページと1ページ当たりの表示件数も同期する。実行は `wp eval-file C:/Users/lihui/Documents/Codex_Akutsu/tools/local-posts-fixtures.php` とする。
 - TOP用の先頭3投稿と移行キーを共有するため、`tools/local-top-fixtures.php` を再実行しても投稿本文と英字スラッグを維持する。
+
+## SEO・OGP・サイトアイコン
+
+- 公式SEO SIMPLE PACK 3.7.0をインストールして有効化し、WordPress日本語言語パックを `wp language core install ja --activate` で導入する。
+- `tools/local-seo-fixtures.php` は `hidamari-care-asahikawa.local` 専用の冪等スクリプトである。TOP投入処理後に `wp eval-file C:/Users/lihui/Documents/Codex_Akutsu/tools/local-seo-fixtures.php` を実行すると、固定ページ8件・投稿10件・カテゴリー2件のSEO情報、共通OGP画像、サイトアイコン、アーカイブ設定を作成・更新する。
+- canonical URLは環境移行後のURLへ追従できるよう、プラグインの自動生成を使用する。サイトマップはWordPress標準の `/wp-sitemap.xml` を使用する。
+- 共通OGP画像にはメディアライブラリのTOPヒーロー画像を使用する。サイトアイコンの管理元は `wordpress/assets/site-icon.png`（512×512）で、スクリプトが移行キーを使って一度だけメディアライブラリへ登録する。
+- フェーズ11では主要11 URLを指定9幅の計99通りで確認し、SEOタグ、画像、内部リンク、操作、レスポンシブ表示、PHP／ブラウザーログに問題がないことを確認済み。フォームは確認画面と戻る操作まで確認し、最終送信は行っていない。

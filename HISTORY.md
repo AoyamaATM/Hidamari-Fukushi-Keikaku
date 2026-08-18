@@ -29,3 +29,11 @@
 - 一覧・カテゴリー・月別・全10投稿の計15 URLはHTTP 200で、HTMLへのPHP Warning／Fatal Error混入なし、横スクロールなし、コンソール警告・エラーなしを確認した。初回確認で見つかった投稿詳細の変数初期化漏れは修正済みで、修正後に再確認した。
 - 全39 PHPファイルのlint、WordPress版CSSビルド、静的9ページ検査、JavaScript構文確認、`git diff --check` が成功した。テーマ0.11.0が有効、公開投稿10件、ニュース7件／ブログ3件、一時投稿0件であることも最終確認した。
 - 次はSEO SIMPLE PACKの設定接続を確認してから、フェーズ11の全ページ・全指定幅総合確認へ進む。既知のImagick拡張読み込み警告は継続しているが、今回のWordPress表示には影響していない。
+
+### 14時進捗
+- 公式SEO SIMPLE PACK 3.7.0とWordPress日本語言語パックをLocalへ導入した。`tools/local-seo-fixtures.php` と512×512の `wordpress/assets/site-icon.png` を追加し、固定ページ8件・投稿10件・カテゴリー2件のSEO情報、共通OGP画像、サイトアイコン、アーカイブ設定を冪等に投入した。
+- 主要11 URLでtitle、description、canonical、OGPが各1組、`lang="ja"`、サイトアイコン3種、WordPress標準サイトマップが正しく出力されることを確認した。canonicalは他環境のURLへ追従できるよう自動生成としている。
+- フェーズ11の総合確認として、11 URLを1920px、1600px、1599px、1024px、1023px、768px、767px、430px、429pxの計99通りで検査し、共通部品、画像、CSS／JavaScript、SEOタグ、横スクロール、重複ID、PHPエラーに問題がないことを確認した。
+- ChromeでPCのTOP、SPの料金表と投稿詳細を目視確認した。SPメニューの開閉とEscape、FAQのEnter操作、スキップリンク、カテゴリー／月別絞り込み、Forminatorの必須エラー・確認画面・戻る操作・入力保持も確認し、フォームの最終送信は行っていない。
+- 22ページから抽出した内部リンク・画像154 URLはすべてHTTP 200で、主要ページのページ内リンクも問題なし。既知のImagick拡張読み込み警告を除き、PHP Warning／Fatal Error、nginxエラー、ブラウザーコンソールの警告・エラーは0件だった。
+- フェーズ11を完了とした。次はフェーズ12の最終整理として、引き継ぎ情報、静的版とWordPress版の区別、未完了事項を最終確認する。
