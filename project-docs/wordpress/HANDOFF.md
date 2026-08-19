@@ -24,6 +24,7 @@
 - Local投入スクリプト: `tools/local-*-fixtures.php`
 - 管理画面・データ設計: [CONTENT_MODEL.md](CONTENT_MODEL.md)
 - Forminator仕様・運用: [FORMINATOR_GUIDE.md](FORMINATOR_GUIDE.md)
+- 公開前確認: [PRELAUNCH_REVIEW.md](PRELAUNCH_REVIEW.md)
 - 静的HTMLとの対応: [TEMPLATE_MAPPING.md](TEMPLATE_MAPPING.md)
 - 実装詳細: [wordpress/README.md](../../wordpress/README.md)
 
