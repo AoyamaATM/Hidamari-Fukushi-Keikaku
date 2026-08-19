@@ -19,7 +19,7 @@
 - PHP: 8.2.29
 - Web server: nginx 1.26.1
 - Database: MySQL 8.4.0
-- Theme: `hidamari-care-asahikawa` 0.11.0
+- Theme: `hidamari-care-asahikawa` 0.11.1
 - Site plugin: `hidamari-site-core` 0.5.0
 - Form plugin: Forminator 1.57.0
 - SEO plugin: SEO SIMPLE PACK 3.7.0
@@ -46,6 +46,8 @@ WordPressテーマでは `assets/scss/style.scss` をCSSの唯一の編集元、
 ロゴ、固定ボタン、アンカー画像、TOPの流れ図、投稿サイドバー画像はテーマの `assets/img/` で管理する。ヒーロー、施設・スタッフ・サービス写真、OGP画像は管理画面から差し替えられるよう、ページ移行時にメディアライブラリへ登録する。
 
 ヘッダーとフッターは `primary`、`footer` のWordPressメニュー位置を使用する。メニュー未設定時は移行予定URLの既定メニューを表示し、管理画面で割り当てた後はWordPressメニューを優先する。
+
+`header.php` はヘッダー直下にポートフォリオ用の架空サイトであることを示す共通デモ案内を出力する。固定ページ、投稿、アーカイブ、404を含むWordPress版の全ページで同じ案内を表示する。
 
 テーマの表示土台完成後、正式コンテンツを投入する前のLocal・MySQL環境への切り替えは完了している。StudioのSQLiteデータベース全体は開発データの管理元にしない。
 

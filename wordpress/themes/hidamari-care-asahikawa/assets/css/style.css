@@ -109,6 +109,21 @@ img {
   z-index: 10;
 }
 
+.demo-site-notice {
+  background: var(--palette-green-04);
+  color: var(--palette-white);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  padding: 7px 16px;
+  text-align: center;
+}
+.demo-site-notice p {
+  margin: 0 auto;
+  max-width: var(--comp-header-width);
+}
+
 .skip-link {
   background: var(--palette-orange-02);
   color: transparent;
@@ -2104,6 +2119,10 @@ body[data-type=home] .form-actions .button, body[data-type=contact] .form-action
   .site-nav {
     max-height: calc(100vh - 120px);
     padding-inline: 16px;
+  }
+  .demo-site-notice {
+    font-size: 12px;
+    padding: 6px 12px;
   }
 }
 /* =======================================================

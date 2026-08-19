@@ -2,19 +2,21 @@
 
 ## 現在地
 
-2026-08-18時点で、WordPress版はLocal・MySQL環境で実装とフェーズ11の総合確認まで完了している。本番サーバーへの公開は未実施であり、現状は「レビューとステージング移行ができる開発完了版」とする。
+2026-08-19時点で、WordPress版はLocal・MySQL環境で実装とフェーズ11の総合確認まで完了している。本番サーバーへの公開は未実施であり、現状は「レビューとステージング移行ができる開発完了版」とする。
 
 | 項目 | 現在値 |
 |---|---|
 | 作業ブランチ | `feature/wordpress` |
 | 静的完成版 | `main`／`static-v1.0` |
 | 静的公開URL | [https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/](https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/) |
-| WordPressテーマ | `hidamari-care-asahikawa` 0.11.0 |
+| WordPressテーマ | `hidamari-care-asahikawa` 0.11.1 |
 | サイト機能プラグイン | `hidamari-site-core` 0.5.0 |
 | Local URL | `http://hidamari-care-asahikawa.local/` |
 | WordPress本番URL | 未確定・未公開 |
 
 静的版は公開比較用の完成版として維持し、WordPress版の変更を逆流させない。WordPress公開後にコンテンツやSEOを更新する場合は、WordPress管理画面を唯一の管理元とする。
+
+WordPress版は、ヘッダー直下にポートフォリオ用の架空サイトであることを示す共通デモ案内を表示する。固定ページ、投稿、アーカイブ、404を含む全ページ共通のテーマ実装である。
 
 ## 管理対象
 
@@ -49,10 +51,10 @@ Windows版Localでは `php_imagick.dll` の読み込み警告が出る。現行�
 
 最新版の統合バックアップはGit管理外で、作業PCの次の場所にある。
 
-`handoff/260819-latest/hidamari-care-asahikawa.local_wpvivid-a043ce9e9495b_2026-08-19-01-56_backup_all.zip`
+`handoff/260819-latest/hidamari-care-asahikawa.local_wpvivid-2dbb3943b7106_2026-08-19-02-25_backup_all.zip`
 
-- 容量: 46,578,500 bytes
-- SHA-256: `ADA8C8B7830D3B81ECB2D18DE3A840D293D527A235D190B3B1E8ED3830C538E1`
+- 容量: 46,579,610 bytes
+- SHA-256: `A014619051665745661E760A4DBA691B43CB3A7D5EEC285D07B326D878D09F4C`
 - 内容: DB、テーマ、プラグイン、アップロード、`wp-content`、WordPressコアの6パッケージ
 - 削除防止ロック: 有効
 

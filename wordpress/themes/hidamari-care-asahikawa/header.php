@@ -37,3 +37,6 @@
 		</nav>
 	</div>
 </header>
+<aside class="demo-site-notice" aria-label="デモサイトのご案内">
+	<p><?php esc_html_e( 'このサイトはポートフォリオ用の架空サイトです。掲載情報は実在の施設・サービスとは関係ありません。', 'hidamari-care-asahikawa' ); ?></p>
+</aside>

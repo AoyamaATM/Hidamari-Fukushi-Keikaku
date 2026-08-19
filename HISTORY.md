@@ -30,3 +30,7 @@
 - PHP構文、WordPress本文との一致、6見出しを確認した。Localの `/privacy-policy/` はHTTP 200で、新しいデモ説明・メール通知・DB保存・Google Fontsの記載が各1件、旧法務部・旧電話番号・旧住所は0件だった。
 - `project-docs/wordpress/PRELAUNCH_REVIEW.md` のプライバシーポリシー完了条件を完了にし、`wordpress/README.md` の投入内容説明を同期した。
 - プライバシーポリシー更新後のWPvivid統合バックアップを作成し、成功・削除防止ロック有効を確認した。最新版は `handoff/260819-latest/hidamari-care-asahikawa.local_wpvivid-a043ce9e9495b_2026-08-19-01-56_backup_all.zip`、46,578,500 bytes、SHA-256は `ADA8C8B7830D3B81ECB2D18DE3A840D293D527A235D190B3B1E8ED3830C538E1`。元ファイルとのハッシュ一致と6パッケージ構成を確認した。
+- テーマのヘッダー直下に、ポートフォリオ用の架空サイトであり掲載情報が実在の施設・サービスと無関係であることを示す共通デモ案内を追加した。テーマを0.11.1へ更新し、WordPress版SCSSから表示用CSSを再生成した。静的完成版は変更していない。
+- Localのサイトマップ掲載URL20件と404ページで、共通デモ案内が各1件表示されることを確認した。PC 1600px・SP 390pxをローカルChromeで確認し、案内の折り返し、可読性、横スクロールなしを確認した。Chromeプラグインは既知の読み込みエラーだったため、Playwright経由のローカルChromeを代替利用した。
+- 変更した `header.php` はLocalと同じPHP 8.2.29で構文エラーなし、`pnpm run build:css:wordpress` と `git diff --check` も成功した。外部Google Fontsは検証環境のネットワーク制限で読み込めなかったが、ローカル資産と案内表示への影響はない。
+- 共通デモ案内追加後のWPvivid統合バックアップを作成し、成功・削除防止ロック有効を確認した。最新版は `handoff/260819-latest/hidamari-care-asahikawa.local_wpvivid-2dbb3943b7106_2026-08-19-02-25_backup_all.zip`、46,579,610 bytes、SHA-256は `A014619051665745661E760A4DBA691B43CB3A7D5EEC285D07B326D878D09F4C`。元ファイルとのハッシュ一致、6パッケージ構成、テーマ内の共通デモ案内とバージョン0.11.1を確認した。
