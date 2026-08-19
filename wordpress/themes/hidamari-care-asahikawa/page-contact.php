@@ -6,7 +6,7 @@
  */
 
 $page_id        = get_queried_object_id();
-$phone_display  = hidamari_care_asahikawa_setting( 'phone_display', '0166-xx-xxxx' );
+$phone_display  = hidamari_care_asahikawa_setting( 'phone_display', '掲載なし（デモ）' );
 $phone_link     = hidamari_care_asahikawa_setting( 'phone_link', '' );
 $business_hours = hidamari_care_asahikawa_setting( 'business_hours', '平日 9:00 ～ 17:00' );
 
@@ -30,19 +30,21 @@ get_header();
 
 			<div class="phone-card">
 				<h2 class="phone-card__label"><?php esc_html_e( 'お電話でのお問い合わせ', 'hidamari-care-asahikawa' ); ?></h2>
-				<p class="phone-card__text">
-					<?php esc_html_e( 'お急ぎの方、直接お話したい方は', 'hidamari-care-asahikawa' ); ?><br>
-					<?php esc_html_e( 'こちらからご連絡ください。', 'hidamari-care-asahikawa' ); ?>
-				</p>
-				<span class="phone-card__note"><?php esc_html_e( '総合窓口', 'hidamari-care-asahikawa' ); ?></span>
-				<strong class="phone-card__number">
-					<?php if ( '' !== $phone_link ) : ?>
+				<?php if ( '' !== $phone_link ) : ?>
+					<p class="phone-card__text">
+						<?php esc_html_e( 'お急ぎの方、直接お話したい方は', 'hidamari-care-asahikawa' ); ?><br>
+						<?php esc_html_e( 'こちらからご連絡ください。', 'hidamari-care-asahikawa' ); ?>
+					</p>
+					<span class="phone-card__note"><?php esc_html_e( '総合窓口', 'hidamari-care-asahikawa' ); ?></span>
+					<strong class="phone-card__number">
 						<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone_link ) ); ?>"><?php echo esc_html( $phone_display ); ?></a>
-					<?php else : ?>
-						<?php echo esc_html( $phone_display ); ?>
-					<?php endif; ?>
-				</strong>
-				<span class="phone-card__note"><?php echo esc_html( '受付時間　' . $business_hours ); ?></span>
+					</strong>
+					<span class="phone-card__note"><?php echo esc_html( '受付時間　' . $business_hours ); ?></span>
+				<?php else : ?>
+					<p class="phone-card__text"><?php esc_html_e( 'このデモサイトでは、電話でのお問い合わせを受け付けていません。', 'hidamari-care-asahikawa' ); ?></p>
+					<strong class="phone-card__number"><?php echo esc_html( $phone_display ); ?></strong>
+					<span class="phone-card__note"><?php esc_html_e( 'お問い合わせフォームもメール送信・保存されません', 'hidamari-care-asahikawa' ); ?></span>
+				<?php endif; ?>
 			</div>
 
 			<p class="contact-faq-copy">

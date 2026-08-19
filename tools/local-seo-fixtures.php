@@ -116,36 +116,36 @@ function hidamari_seo_local_import_site_icon( $file ) {
 
 $page_metadata = array(
 	'home'           => array(
-		'title'       => '旭川市のデイサービス・訪問介護 | ひだまりケア旭川',
-		'description' => '旭川市周辺でデイサービス・訪問介護・居宅介護支援を提供する「ひだまりケア旭川」。見学・介護相談を受け付けています。',
+		'title'       => '架空の介護施設サイト | ひだまりケア旭川',
+		'description' => 'ポートフォリオ用に制作した架空の介護施設サイトです。旭川市周辺を想定したデイサービス・訪問介護・居宅介護支援のサンプル情報を掲載しています。',
 	),
 	'news'           => array(
 		'title'       => 'お知らせ一覧 | ひだまりケア旭川',
-		'description' => 'ひだまりケア旭川からの営業日、施設見学、介護相談、季節の取り組みなどに関するお知らせを掲載しています。',
+		'description' => 'ポートフォリオ用の架空サイトに掲載している、営業日、施設見学、季節の取り組みなどのサンプル記事一覧です。',
 	),
 	'about-us'       => array(
 		'title'       => '施設紹介 | ひだまりケア旭川',
-		'description' => '社会福祉法人ひだまり福祉計画が運営する「ひだまりケア旭川」の概要、提供サービス、デイサービスの一日、ご利用開始までの流れをご紹介します。',
+		'description' => 'ポートフォリオ用に制作した架空施設「ひだまりケア旭川」の概要、サービス例、デイサービスの一日、ご利用開始までの流れをご紹介します。',
 	),
 	'facilities'     => array(
 		'title'       => '全施設一覧 | ひだまりケア旭川',
-		'description' => '社会福祉法人ひだまり福祉計画の理念と施設情報、ひだまりケア旭川の所在地・提供サービス・スタッフ情報をご案内します。',
+		'description' => 'ポートフォリオ用の架空法人・施設として、理念、架空の所在地、サービス例、サンプルのスタッフ情報をご案内します。',
 	),
 	'price'          => array(
 		'title'       => '料金表 | ひだまりケア旭川',
-		'description' => 'ひだまりケア旭川のデイサービスと訪問介護の料金目安をご案内します。介護度や自己負担割合ごとの費用をご確認いただけます。',
+		'description' => 'ポートフォリオ用の架空サイトとして、デイサービスと訪問介護のサンプル料金を掲載しています。実際のサービス料金ではありません。',
 	),
 	'faq'            => array(
 		'title'       => 'よくあるご質問 | ひだまりケア旭川',
-		'description' => 'ひだまりケア旭川の利用料金、訪問介護、介護保険の申請、見学・相談、施設での生活に関するよくあるご質問にお答えします。',
+		'description' => 'ポートフォリオ用の架空サイトとして、利用料金、訪問介護、介護保険、見学、施設生活に関するサンプルFAQを掲載しています。',
 	),
 	'contact'        => array(
 		'title'       => 'お問い合わせ | ひだまりケア旭川',
-		'description' => 'ひだまりケア旭川への見学予約・介護相談はこちら。お電話またはお問い合わせフォームからご連絡いただけます。',
+		'description' => 'ポートフォリオ用のデモお問い合わせページです。電話受付、フォームのメール送信、入力内容の保存は行いません。',
 	),
 	'privacy-policy' => array(
 		'title'       => 'プライバシーポリシー | ひだまりケア旭川',
-		'description' => '社会福祉法人ひだまり福祉計画における個人情報の取得、利用目的、第三者提供、安全管理、開示請求などの方針をご案内します。',
+		'description' => 'ポートフォリオ用デモサイトにおけるフォーム、アクセスログ、Google Fonts、Cookie、個人情報の取り扱いを説明します。',
 	),
 );
 
@@ -173,7 +173,7 @@ $settings = array_merge(
 		'cat_title'          => '%_term_name_%の記事一覧 %_sep_% %_site_title_%',
 		'cat_desc'           => '%_term_description_%',
 		'date_title'         => '%_date_%のお知らせ %_sep_% %_site_title_%',
-		'date_desc'          => '%_date_%のひだまりケア旭川のお知らせ一覧です。営業日、施設見学、介護相談、季節の取り組みなどを掲載しています。',
+		'date_desc'          => 'ポートフォリオ用の架空サイトに掲載している、%_date_%のサンプル記事一覧です。',
 		'404_title'          => 'ページが見つかりません %_sep_% %_site_title_%',
 		'search_title'       => '「%_search_phrase_%」の検索結果 %_sep_% %_site_title_%',
 		'author_disable'     => true,
@@ -218,9 +218,10 @@ $posts = get_posts(
 	)
 );
 foreach ( $posts as $post ) {
-	$description = 'top-news-2026-06-15' === get_post_meta( $post->ID, '_hidamari_migration_key', true )
+	$description_body = 'top-news-2026-06-15' === get_post_meta( $post->ID, '_hidamari_migration_key', true )
 		? 'ひだまりケア旭川の2026年7月の営業予定をご案内します。デイサービス・訪問介護ともに通常どおり営業予定です。'
 		: (string) $post->post_excerpt;
+	$description = '' !== $description_body ? 'ポートフォリオ用のサンプル記事です。' . $description_body : '';
 
 	if ( '' !== $description ) {
 		update_post_meta( $post->ID, SSP_MetaBox::POST_META_KEYS['description'], $description );

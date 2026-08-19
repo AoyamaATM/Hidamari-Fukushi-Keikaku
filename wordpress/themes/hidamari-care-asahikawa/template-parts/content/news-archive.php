@@ -65,6 +65,7 @@ $last_post     = min( $current_page * $per_page, $found_posts );
 		<h1 class="section-heading center-heading">
 			<?php echo esc_html( '' !== $archive_label ? $archive_label . 'の記事一覧' : __( 'お知らせ一覧', 'hidamari-care-asahikawa' ) ); ?>
 		</h1>
+		<p class="sample-content-note"><?php esc_html_e( '掲載しているお知らせ・ブログは、ポートフォリオ用に作成したサンプル記事です。', 'hidamari-care-asahikawa' ); ?></p>
 		<div class="filter-bar" aria-label="お知らせの絞り込み">
 			<label class="archive-select-field">
 				<span><?php esc_html_e( 'カテゴリ：', 'hidamari-care-asahikawa' ); ?></span>

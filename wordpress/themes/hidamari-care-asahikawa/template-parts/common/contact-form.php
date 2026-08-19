@@ -22,7 +22,7 @@ $form_id = (int) get_option( 'hidamari_forminator_form_id' );
 			<?php echo do_shortcode( '[forminator_form id="' . $form_id . '"]' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</div>
 	<?php else : ?>
-		<p class="form-note"><?php esc_html_e( 'お問い合わせフォームは現在準備中です。お急ぎの場合はお電話でご相談ください。', 'hidamari-care-asahikawa' ); ?></p>
+		<p class="form-note"><?php esc_html_e( 'お問い合わせフォームは現在準備中です。このデモサイトでは電話受付も行っていません。', 'hidamari-care-asahikawa' ); ?></p>
 		<div class="form-actions">
 			<a class="button button--cta" href="<?php echo esc_url( hidamari_care_asahikawa_page_url( 'contact' ) ); ?>"><?php esc_html_e( 'お問い合わせページへ', 'hidamari-care-asahikawa' ); ?></a>
 		</div>

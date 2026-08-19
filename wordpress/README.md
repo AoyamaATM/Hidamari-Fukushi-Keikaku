@@ -19,7 +19,7 @@
 - PHP: 8.2.29
 - Web server: nginx 1.26.1
 - Database: MySQL 8.4.0
-- Theme: `hidamari-care-asahikawa` 0.11.1
+- Theme: `hidamari-care-asahikawa` 0.11.2
 - Site plugin: `hidamari-site-core` 0.5.0
 - Form plugin: Forminator 1.57.0
 - SEO plugin: SEO SIMPLE PACK 3.7.0
@@ -48,6 +48,8 @@ WordPressテーマでは `assets/scss/style.scss` をCSSの唯一の編集元、
 ヘッダーとフッターは `primary`、`footer` のWordPressメニュー位置を使用する。メニュー未設定時は移行予定URLの既定メニューを表示し、管理画面で割り当てた後はWordPressメニューを優先する。
 
 `header.php` はヘッダー直下にポートフォリオ用の架空サイトであることを示す共通デモ案内を出力する。固定ページ、投稿、アーカイブ、404を含むWordPress版の全ページで同じ案内を表示する。
+
+現行デモでは電話番号を掲載せず、電話リンクが未設定の場合は「掲載なし（デモ）」と表示する。住所と送迎範囲には架空設定であることを明記し、お知らせ一覧・詳細にはサンプル記事の案内を表示する。実在環境へ移行するときは「設定 > ひだまり設定」で承認済みの住所・電話番号・発信用番号へ差し替え、正式記事とサービス提供範囲を投入する。
 
 テーマの表示土台完成後、正式コンテンツを投入する前のLocal・MySQL環境への切り替えは完了している。StudioのSQLiteデータベース全体は開発データの管理元にしない。
 

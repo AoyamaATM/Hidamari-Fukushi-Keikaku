@@ -206,14 +206,25 @@ $settings = wp_parse_args(
 		'organization_name'      => '社会福祉法人 ひだまり福祉計画',
 		'facility_name'          => 'ひだまりケア旭川',
 		'services_label'         => '通所介護・訪問介護・居宅介護支援事業所',
-		'address'                => '北海道旭川市 旭町2条7丁目 12-77',
-		'facility_phone_display' => '0166-xx-yyyy',
+		'address'                => '北海道旭川市（架空設定）',
+		'facility_phone_display' => '掲載なし（デモ）',
 		'facility_phone_link'    => '',
-		'phone_display'          => '0166-xx-xxxx',
+		'phone_display'          => '掲載なし（デモ）',
 		'phone_link'             => '',
 		'business_hours'         => '平日 9:00 ～ 17:00',
 	)
 );
+if ( '北海道旭川市 旭町2条7丁目 12-77' === $settings['address'] ) {
+	$settings['address'] = '北海道旭川市（架空設定）';
+}
+if ( '0166-xx-yyyy' === $settings['facility_phone_display'] ) {
+	$settings['facility_phone_display'] = '掲載なし（デモ）';
+	$settings['facility_phone_link']    = '';
+}
+if ( '0166-xx-xxxx' === $settings['phone_display'] ) {
+	$settings['phone_display'] = '掲載なし（デモ）';
+	$settings['phone_link']    = '';
+}
 update_option( 'hidamari_settings', $settings );
 
 $image_root = dirname( __DIR__ ) . '/docs/img/';
@@ -295,7 +306,7 @@ $flow_items   = array(
 	array(
 		'key'        => 'about-flow-03',
 		'title'      => '見学予約',
-		'content'    => '<p>お電話・お問い合わせフォームから承っております。<br>パンフレットなどの資料請求・見学のご案内をいたします。</p>',
+		'content'    => '<p>架空サイト上の見学予約手順です。<br>デモフォームの入力・確認画面を操作できますが、内容は送信・保存されません。</p>',
 		'link_label' => 'お問い合わせフォーム',
 		'link_url'   => $contact_url,
 	),

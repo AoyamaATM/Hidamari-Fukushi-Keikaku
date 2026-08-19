@@ -12,6 +12,7 @@ $category = hidamari_care_asahikawa_post_category( get_the_ID() );
 		<time datetime="<?php echo esc_attr( get_the_date( 'Y-m-d' ) ); ?>"><?php echo esc_html( get_the_date( 'Y/m/d' ) ); ?></time>
 		<span class="<?php echo esc_attr( $category['class'] ); ?>"><?php echo esc_html( $category['name'] ); ?></span>
 	</div>
+	<p class="sample-content-note"><?php esc_html_e( 'この記事は、ポートフォリオ用に作成したサンプルです。', 'hidamari-care-asahikawa' ); ?></p>
 	<div class="post-body">
 		<?php the_content(); ?>
 	</div>

@@ -9,8 +9,8 @@ $page_id           = get_queried_object_id();
 $organization_name = hidamari_care_asahikawa_setting( 'organization_name', '社会福祉法人 ひだまり福祉計画' );
 $facility_name     = hidamari_care_asahikawa_setting( 'facility_name', 'ひだまりケア旭川' );
 $services_label    = hidamari_care_asahikawa_setting( 'services_label', '通所介護・訪問介護・居宅介護支援事業所' );
-$address           = hidamari_care_asahikawa_setting( 'address', '北海道旭川市 旭町2条7丁目 12-77' );
-$phone_display     = hidamari_care_asahikawa_setting( 'facility_phone_display', '0166-xx-yyyy' );
+$address           = hidamari_care_asahikawa_setting( 'address', '北海道旭川市（架空設定）' );
+$phone_display     = hidamari_care_asahikawa_setting( 'facility_phone_display', '掲載なし（デモ）' );
 $phone_link        = preg_replace( '/[^0-9+]/', '', hidamari_care_asahikawa_setting( 'facility_phone_link', '' ) );
 
 get_header();

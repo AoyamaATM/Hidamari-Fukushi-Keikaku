@@ -9,8 +9,8 @@ $page_id           = get_queried_object_id();
 $organization_name = hidamari_care_asahikawa_setting( 'organization_name', '社会福祉法人 ひだまり福祉計画' );
 $facility_name     = hidamari_care_asahikawa_setting( 'facility_name', 'ひだまりケア旭川' );
 $services_label    = hidamari_care_asahikawa_setting( 'services_label', '通所介護・訪問介護・居宅介護支援事業所' );
-$address           = hidamari_care_asahikawa_setting( 'address', '北海道旭川市 旭町2条7丁目 12-77' );
-$phone_display     = hidamari_care_asahikawa_setting( 'facility_phone_display', '0166-xx-yyyy' );
+$address           = hidamari_care_asahikawa_setting( 'address', '北海道旭川市（架空設定）' );
+$phone_display     = hidamari_care_asahikawa_setting( 'facility_phone_display', '掲載なし（デモ）' );
 $phone_link        = hidamari_care_asahikawa_setting( 'facility_phone_link', '' );
 $flow_query        = post_type_exists( 'hidamari_flow' )
 	? new WP_Query(
@@ -48,7 +48,7 @@ get_header();
 						<?php if ( '' !== $phone_link ) : ?>
 							<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone_link ) ); ?>"><?php echo esc_html( 'Tel　' . $phone_display ); ?></a>
 						<?php else : ?>
-							<?php echo esc_html( 'Tel　' . $phone_display ); ?>
+							<?php echo esc_html( '電話番号　' . $phone_display ); ?>
 						<?php endif; ?>
 					</p>
 				</div>

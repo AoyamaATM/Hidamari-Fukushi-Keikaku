@@ -8,7 +8,7 @@
 $front_page_id = (int) get_option( 'page_on_front' );
 $hero_id       = $front_page_id > 0 ? get_post_thumbnail_id( $front_page_id ) : 0;
 $lead          = $front_page_id > 0 ? (string) get_post_meta( $front_page_id, 'hidamari_page_lead', true ) : '';
-$lead          = '' !== $lead ? $lead : '旭川市周辺で、通所（デイ）と訪問介護を提供しています。' . "\n" . '見学・ご相談はお気軽にどうぞ。';
+$lead          = '' !== $lead ? $lead : '旭川市周辺を想定し、通所（デイ）と訪問介護を紹介する架空サイトです。' . "\n" . '掲載内容はポートフォリオ用のサンプルです。';
 
 $news_query = new WP_Query(
 	array(
@@ -106,7 +106,7 @@ get_header();
 				<div class="reason-copy">
 					<p class="reason-index">01</p>
 					<h3>初めてご利用のかたでも<br>安心の相談体制</h3>
-					<p>初めてのかたでも、ご利用者様の状況をお聞きしながら必要な支援体制を一緒に考えていきます。<br>ご相談は 電話・フォーム から承っております。</p>
+					<p>初めてのかたでも、ご利用者様の状況をお聞きしながら必要な支援体制を一緒に考えていきます。<br>デモサイトでは、フォーム画面の操作をご確認いただけます。</p>
 				</div>
 			</article>
 

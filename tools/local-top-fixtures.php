@@ -251,12 +251,12 @@ update_option( 'page_on_front', $page_ids['home'] );
 update_option( 'page_for_posts', $page_ids['news'] );
 update_option( 'wp_page_for_privacy_policy', $page_ids['privacy-policy'] );
 update_option( 'blogname', 'ひだまりケア旭川' );
-update_option( 'blogdescription', '旭川市のデイサービス・訪問介護・介護相談' );
+update_option( 'blogdescription', 'ポートフォリオ用の架空介護施設サイト' );
 
 update_post_meta(
 	$page_ids['home'],
 	'hidamari_page_lead',
-	"旭川市周辺で、通所（デイ）と訪問介護を提供しています。\n見学・ご相談はお気軽にどうぞ。"
+	"旭川市周辺を想定し、通所（デイ）と訪問介護を紹介する架空サイトです。\n掲載内容はポートフォリオ用のサンプルです。"
 );
 
 $settings = get_option( 'hidamari_settings', array() );
@@ -266,11 +266,15 @@ $settings = wp_parse_args(
 	array(
 		'organization_name' => '社会福祉法人 ひだまり福祉計画',
 		'facility_name'     => 'ひだまりケア旭川',
-		'phone_display'     => '0166-xx-xxxx',
+		'phone_display'     => '掲載なし（デモ）',
 		'phone_link'        => '',
 		'business_hours'    => '平日 9:00 ～ 17:00',
 	)
 );
+if ( '0166-xx-xxxx' === $settings['phone_display'] ) {
+	$settings['phone_display'] = '掲載なし（デモ）';
+	$settings['phone_link']    = '';
+}
 update_option( 'hidamari_settings', $settings );
 
 $image_root = dirname( __DIR__ ) . '/docs/img/';
@@ -351,7 +355,7 @@ $faq_items = array(
 	array(
 		'key'      => 'top-faq-life-3',
 		'question' => '送迎はありますか？',
-		'answer'   => '対応エリア内でしたら、ご自宅まで送迎いたします！<br><br>《対応エリア》<br>○旭川市<br>　・神居古潭、江丹別、東旭川、上雨紛、西神楽地区を除く<br>○東神楽町<br>　・ひじり野地区のみ<br>○鷹栖町<br>　・市街地、北野地区のみ',
+		'answer'   => '架空設定上の対応エリアでは、ご自宅までの送迎を想定しています。<br><br>《対応エリア（架空設定）》<br>○旭川市<br>　・神居古潭、江丹別、東旭川、上雨紛、西神楽地区を除く<br>○東神楽町<br>　・ひじり野地区のみ<br>○鷹栖町<br>　・市街地、北野地区のみ',
 		'category' => 'daily-life',
 	),
 	array(
