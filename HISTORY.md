@@ -23,3 +23,10 @@
 - TOP投入処理のPHP構文に問題がなく、再投入後も固定ページ8件、画像7件、投稿3件、TOP掲載FAQ6件を維持した。`/sample-page/` はHTTP 404、固定ページXMLサイトマップ内の `sample-page` 掲載は0件となった。
 - `project-docs/wordpress/PRELAUNCH_REVIEW.md` の `Sample Page` 完了条件を完了にし、`wordpress/README.md` に初期データの清掃処理を追記した。
 - Sample Page除外後のWPvivid統合バックアップを作成し、成功・削除防止ロック有効を確認した。最新版は `handoff/260819-latest/hidamari-care-asahikawa.local_wpvivid-b06f5aec435c2_2026-08-19-01-32_backup_all.zip`、46,765,566 bytes、SHA-256は `92BD4D97260564BA499FCE37C721308C82FAF5107D44CDB82E187BA9EC655DC9`。元ファイルとのハッシュ一致と6パッケージ構成を確認した。
+
+### 12時進捗
+- 画像権利の確認は、ユーザー指示によりエラー対応を行わず一旦保留した。公開前確認の該当チェックは未完了のまま維持している。
+- `tools/local-privacy-fixtures.php` の実在事業者向け本文を、ポートフォリオ用デモの実態に合わせて全面更新した。架空サイト、実在する個人情報の入力禁止、フォームのメール通知・DB保存なし、アクセスログ、Google Fonts、Cookie、公開問い合わせ窓口なしを記載し、架空の法務部・住所・電話番号を削除した。
+- PHP構文、WordPress本文との一致、6見出しを確認した。Localの `/privacy-policy/` はHTTP 200で、新しいデモ説明・メール通知・DB保存・Google Fontsの記載が各1件、旧法務部・旧電話番号・旧住所は0件だった。
+- `project-docs/wordpress/PRELAUNCH_REVIEW.md` のプライバシーポリシー完了条件を完了にし、`wordpress/README.md` の投入内容説明を同期した。
+- プライバシーポリシー更新後のWPvivid統合バックアップを作成し、成功・削除防止ロック有効を確認した。最新版は `handoff/260819-latest/hidamari-care-asahikawa.local_wpvivid-a043ce9e9495b_2026-08-19-01-56_backup_all.zip`、46,578,500 bytes、SHA-256は `ADA8C8B7830D3B81ECB2D18DE3A840D293D527A235D190B3B1E8ED3830C538E1`。元ファイルとのハッシュ一致と6パッケージ構成を確認した。

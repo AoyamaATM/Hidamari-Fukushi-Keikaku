@@ -71,7 +71,7 @@ WordPressテーマでは `assets/scss/style.scss` をCSSの唯一の編集元、
 - `page-facilities.php` は法人・施設・スタッフ情報を表示し、本文画像3枠を管理画面から差し替えられる。`tools/local-facilities-fixtures.php` は新規画像3点を投入し、TOP画像1点を再利用する。
 - `page-price.php` は固定構造の8表を表示し、`hidamari_price` の公開済み30行をグループ別・表示順に取得する。`tools/local-price-fixtures.php` はヒーロー／アンカー画像4点と料金30行を投入する。
 - `page-faq.php` は4カテゴリー・13件のFAQを表示する。`tools/local-faq-fixtures.php` は画像6点、カテゴリー4件、FAQ13件を投入し、TOP掲載6件の専用表示順も同期する。
-- `page-privacy-policy.php` はWordPress本文を表示する。`tools/local-privacy-fixtures.php` は6節の本文を投入し、WordPressのプライバシーポリシーページ設定も更新する。
+- `page-privacy-policy.php` はWordPress本文を表示する。`tools/local-privacy-fixtures.php` はポートフォリオ用デモ、フォームのメール通知・DB保存なし、アクセスログ、Google Fonts、Cookie、公開問い合わせ窓口なしを説明する6節の本文を投入し、WordPressのプライバシーポリシーページ設定も更新する。
 - `page-contact.php` は電話案内、FAQ導線、Forminatorのデモフォームを表示する。`tools/local-contact-fixtures.php` はヒーロー2点と、入力・確認の2段階、必須5項目、メール通知なし、honeypot有効、送信内容のDB保存なし、デモ完了表示のフォームを投入する。実行前にForminatorを有効化する。
 - 各スクリプトは `hidamari-care-asahikawa.local` 専用で、`wp eval-file C:/Users/lihui/Documents/Codex_Akutsu/tools/{script-name}.php` として実行する。同じスクリプトを再実行しても移行キーにより件数とフォームIDは増えない。
 
