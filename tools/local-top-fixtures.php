@@ -331,6 +331,11 @@ if ( $hello_world instanceof WP_Post && 'Hello world!' === $hello_world->post_ti
 	wp_trash_post( $hello_world->ID );
 }
 
+$sample_page = get_page_by_path( 'sample-page', OBJECT, 'page' );
+if ( $sample_page instanceof WP_Post && 'Sample Page' === $sample_page->post_title ) {
+	wp_trash_post( $sample_page->ID );
+}
+
 $faq_terms = array(
 	'consultation' => hidamari_local_ensure_term( 'hidamari_faq_cat', 'ご相談・居宅介護支援', 'consultation' ),
 	'daily-life'   => hidamari_local_ensure_term( 'hidamari_faq_cat', '施設での生活', 'daily-life' ),

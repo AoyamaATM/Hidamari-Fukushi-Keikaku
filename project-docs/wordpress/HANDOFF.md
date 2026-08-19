@@ -49,10 +49,10 @@ Windows版Localでは `php_imagick.dll` の読み込み警告が出る。現行�
 
 最新版の統合バックアップはGit管理外で、作業PCの次の場所にある。
 
-`handoff/260819-latest/hidamari-care-asahikawa.local_wpvivid-d9a1d79d7bcc4_2026-08-19-01-20_backup_all.zip`
+`handoff/260819-latest/hidamari-care-asahikawa.local_wpvivid-b06f5aec435c2_2026-08-19-01-32_backup_all.zip`
 
-- 容量: 46,765,664 bytes
-- SHA-256: `413A8E9B2BC38857B187DE30E5CF09EDFD89021E6C783CB82656DC73B4700A14`
+- 容量: 46,765,566 bytes
+- SHA-256: `92BD4D97260564BA499FCE37C721308C82FAF5107D44CDB82E187BA9EC655DC9`
 - 内容: DB、テーマ、プラグイン、アップロード、`wp-content`、WordPressコアの6パッケージ
 - 削除防止ロック: 有効
 

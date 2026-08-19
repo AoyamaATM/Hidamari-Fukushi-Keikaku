@@ -19,3 +19,7 @@
 - Localの `/faq/` と `/` がHTTP 200で、架空名称・架空設定注記が各1件、旧病院名・旧電話番号が0件であることを配信HTMLから確認した。Chromeプラグインは現在のブラウザ制御構成を読み込めなかったため、今回はHTTP確認を代替とした。
 - 変更後のWPvivid統合バックアップを作成して削除防止ロックを有効化した。`handoff/260819-latest/hidamari-care-asahikawa.local_wpvivid-d9a1d79d7bcc4_2026-08-19-01-20_backup_all.zip` は46,765,664 bytes、SHA-256は `413A8E9B2BC38857B187DE30E5CF09EDFD89021E6C783CB82656DC73B4700A14`。元ファイルとのハッシュ一致と、DB・テーマ・プラグイン・アップロード・コンテンツ・WordPressコアの6パッケージを確認した。
 - `project-docs/wordpress/PRELAUNCH_REVIEW.md` の該当完了条件を完了にし、`project-docs/wordpress/HANDOFF.md` の最新版バックアップ情報を更新した。静的完成版は管理元が別のため変更していない。
+- WordPress初期データの `Sample Page`（ID 2）をLocalのゴミ箱へ移した。`tools/local-top-fixtures.php` に、初期スラッグ `sample-page` と初期タイトル `Sample Page` が両方一致する場合だけゴミ箱へ移す処理を追加し、独自ページを誤って対象にしない条件とした。
+- TOP投入処理のPHP構文に問題がなく、再投入後も固定ページ8件、画像7件、投稿3件、TOP掲載FAQ6件を維持した。`/sample-page/` はHTTP 404、固定ページXMLサイトマップ内の `sample-page` 掲載は0件となった。
+- `project-docs/wordpress/PRELAUNCH_REVIEW.md` の `Sample Page` 完了条件を完了にし、`wordpress/README.md` に初期データの清掃処理を追記した。
+- Sample Page除外後のWPvivid統合バックアップを作成し、成功・削除防止ロック有効を確認した。最新版は `handoff/260819-latest/hidamari-care-asahikawa.local_wpvivid-b06f5aec435c2_2026-08-19-01-32_backup_all.zip`、46,765,566 bytes、SHA-256は `92BD4D97260564BA499FCE37C721308C82FAF5107D44CDB82E187BA9EC655DC9`。元ファイルとのハッシュ一致と6パッケージ構成を確認した。

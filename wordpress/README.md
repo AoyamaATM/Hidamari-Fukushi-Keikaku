@@ -55,7 +55,7 @@ WordPressテーマでは `assets/scss/style.scss` をCSSの唯一の編集元、
 - ヒーローは固定フロントページのアイキャッチ、選ばれる理由・サービスの6画像は `hidamari_home_{key}_image_id` メタからメディアライブラリ画像を取得する。
 - お知らせは公開済み標準投稿の最新3件、FAQは `hidamari_faq` のうち `hidamari_show_on_front` が有効な最大6件を `hidamari_front_order` 順に表示する。カテゴリー内の並び順は `menu_order` で個別に管理する。
 - `hidamari-site-core` 0.5.0では、FAQ、利用フロー、料金行、固定ページ画像、共通施設情報を管理する。
-- `tools/local-top-fixtures.php` は `hidamari-care-asahikawa.local` でのみ実行できる。プラグイン有効化後にLocalのサイトシェルで `wp eval-file C:/Users/lihui/Documents/Codex_Akutsu/tools/local-top-fixtures.php` を実行すると、固定ページ8件、画像7件、投稿3件、FAQ6件を同じ移行キーで作成・更新する。
+- `tools/local-top-fixtures.php` は `hidamari-care-asahikawa.local` でのみ実行できる。プラグイン有効化後にLocalのサイトシェルで `wp eval-file C:/Users/lihui/Documents/Codex_Akutsu/tools/local-top-fixtures.php` を実行すると、固定ページ8件、画像7件、投稿3件、FAQ6件を同じ移行キーで作成・更新し、WordPress初期データの `Hello world!` と `Sample Page` をゴミ箱へ移す。
 - ステップ10-2の6固定ページは移行済み。お問い合わせフォームは `hidamari_forminator_form_id` に保存したForminatorフォームをTOPとお問い合わせページで共有し、未設定時だけ電話案内と準備中メッセージを表示する。
 
 ## 施設紹介ページ移行
