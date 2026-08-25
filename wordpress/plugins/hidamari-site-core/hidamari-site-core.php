@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ひだまりサイトコア
  * Description: ひだまりケア旭川の更新データと管理画面を提供します。
- * Version: 0.5.0
+ * Version: 0.6.0
  * Requires at least: 6.8
  * Requires PHP: 7.4
  * Author: ひだまりケア旭川 制作チーム
@@ -18,11 +18,212 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Check whether the current user may edit site content meta.
  *
+ * @param bool   $allowed   Whether access is currently allowed.
+ * @param string $meta_key  Meta key being checked.
+ * @param int    $object_id Object ID being checked.
  * @return bool
  */
-function hidamari_site_core_can_edit_meta() {
-	return current_user_can( 'edit_posts' );
+function hidamari_site_core_can_edit_meta( $allowed = false, $meta_key = '', $object_id = 0 ) {
+	unset( $allowed, $meta_key );
+
+	return $object_id > 0 ? current_user_can( 'edit_post', $object_id ) : current_user_can( 'edit_posts' );
 }
+
+/**
+ * Return the fixed pages that facility editors may update.
+ *
+ * Titles, slugs, publication state and page structure remain administrator-managed.
+ *
+ * @return string[]
+ */
+function hidamari_site_core_editable_page_slugs() {
+	return array( 'home', 'about-us', 'facilities', 'price', 'faq', 'contact', 'privacy-policy' );
+}
+
+/**
+ * Check whether a user is a non-administrator who maintains facility content.
+ *
+ * @param int $user_id User ID. Defaults to the current user.
+ * @return bool
+ */
+function hidamari_site_core_is_facility_editor( $user_id = 0 ) {
+	$user = $user_id > 0 ? get_userdata( $user_id ) : wp_get_current_user();
+
+	return $user instanceof WP_User && $user->exists() && ! empty( $user->allcaps['edit_pages'] ) && empty( $user->allcaps['manage_options'] );
+}
+
+/**
+ * Check whether a fixed page is in the facility-editor update scope.
+ *
+ * @param int|WP_Post $post Page ID or object.
+ * @return bool
+ */
+function hidamari_site_core_is_editable_page( $post ) {
+	$post = get_post( $post );
+
+	return $post instanceof WP_Post && 'page' === $post->post_type && in_array( $post->post_name, hidamari_site_core_editable_page_slugs(), true );
+}
+
+/**
+ * Limit facility editors to the designated fixed pages and prevent page deletion.
+ *
+ * @param string[] $caps    Primitive capabilities required by WordPress.
+ * @param string   $cap     Requested meta capability.
+ * @param int      $user_id User ID.
+ * @param mixed[]  $args    Capability arguments. The first item is the post ID.
+ * @return string[]
+ */
+function hidamari_site_core_restrict_page_capabilities( $caps, $cap, $user_id, $args ) {
+	if ( ! in_array( $cap, array( 'edit_post', 'edit_page', 'delete_post', 'delete_page' ), true ) || empty( $args[0] ) ) {
+		return $caps;
+	}
+
+	if ( ! hidamari_site_core_is_facility_editor( $user_id ) ) {
+		return $caps;
+	}
+
+	$post = get_post( (int) $args[0] );
+	if ( ! $post instanceof WP_Post || 'page' !== $post->post_type ) {
+		return $caps;
+	}
+
+	if ( in_array( $cap, array( 'delete_post', 'delete_page' ), true ) || ! hidamari_site_core_is_editable_page( $post ) ) {
+		return array( 'do_not_allow' );
+	}
+
+	return array_values( array_diff( $caps, array( 'manage_options', 'manage_privacy_options' ) ) );
+}
+add_filter( 'map_meta_cap', 'hidamari_site_core_restrict_page_capabilities', 10, 4 );
+
+/**
+ * Prevent facility editors from creating additional fixed pages.
+ *
+ * @param bool  $maybe_empty Whether WordPress should reject the post as empty.
+ * @param array $postarr     Submitted post data.
+ * @return bool
+ */
+function hidamari_site_core_prevent_page_creation( $maybe_empty, $postarr ) {
+	if ( hidamari_site_core_is_facility_editor() && 'page' === ( $postarr['post_type'] ?? '' ) && empty( $postarr['ID'] ) ) {
+		return true;
+	}
+
+	return $maybe_empty;
+}
+add_filter( 'wp_insert_post_empty_content', 'hidamari_site_core_prevent_page_creation', 10, 2 );
+
+/**
+ * Preserve administrator-managed fixed-page fields during facility-editor updates.
+ *
+ * @param array $data    Sanitized post data.
+ * @param array $postarr Raw submitted post data.
+ * @return array
+ */
+function hidamari_site_core_protect_page_structure( $data, $postarr ) {
+	if ( ! hidamari_site_core_is_facility_editor() || 'page' !== ( $data['post_type'] ?? '' ) || empty( $postarr['ID'] ) ) {
+		return $data;
+	}
+
+	$original = get_post( (int) $postarr['ID'], ARRAY_A );
+	if ( ! is_array( $original ) ) {
+		return $data;
+	}
+
+	$protected_fields = array( 'post_title', 'post_name', 'post_status', 'post_parent', 'menu_order', 'post_author', 'post_password', 'comment_status', 'ping_status' );
+	if ( ! hidamari_site_core_is_editable_page( (int) $postarr['ID'] ) ) {
+		$protected_fields[] = 'post_content';
+		$protected_fields[] = 'post_excerpt';
+	}
+
+	foreach ( $protected_fields as $field ) {
+		if ( array_key_exists( $field, $original ) ) {
+			$data[ $field ] = $original[ $field ];
+		}
+	}
+
+	return $data;
+}
+add_filter( 'wp_insert_post_data', 'hidamari_site_core_protect_page_structure', 10, 2 );
+
+/**
+ * Keep page templates administrator-managed for facility editors.
+ *
+ * @param null|bool $check      Short-circuit value.
+ * @param int       $object_id  Post ID.
+ * @param string    $meta_key   Meta key.
+ * @param mixed     $meta_value Submitted value.
+ * @return null|bool
+ */
+function hidamari_site_core_protect_page_template( $check, $object_id, $meta_key, $meta_value ) {
+	unset( $meta_value );
+
+	if ( hidamari_site_core_is_facility_editor() && '_wp_page_template' === $meta_key && 'page' === get_post_type( $object_id ) ) {
+		return true;
+	}
+
+	return $check;
+}
+add_filter( 'update_post_metadata', 'hidamari_site_core_protect_page_template', 10, 4 );
+
+/**
+ * Remove fixed-page creation, bulk editing and destructive row actions for facility editors.
+ *
+ * @return void
+ */
+function hidamari_site_core_restrict_page_admin_menu() {
+	if ( hidamari_site_core_is_facility_editor() ) {
+		remove_submenu_page( 'edit.php?post_type=page', 'post-new.php?post_type=page' );
+	}
+}
+add_action( 'admin_menu', 'hidamari_site_core_restrict_page_admin_menu', 999 );
+
+/**
+ * Filter fixed-page row actions for facility editors.
+ *
+ * @param array   $actions Row actions.
+ * @param WP_Post $post    Page post.
+ * @return array
+ */
+function hidamari_site_core_filter_page_row_actions( $actions, $post ) {
+	if ( ! hidamari_site_core_is_facility_editor() ) {
+		return $actions;
+	}
+
+	unset( $actions['inline hide-if-no-js'], $actions['trash'], $actions['delete'] );
+	if ( ! hidamari_site_core_is_editable_page( $post ) ) {
+		unset( $actions['edit'] );
+	}
+
+	return $actions;
+}
+add_filter( 'page_row_actions', 'hidamari_site_core_filter_page_row_actions', 10, 2 );
+
+/**
+ * Remove fixed-page bulk actions for facility editors.
+ *
+ * @param array $actions Bulk actions.
+ * @return array
+ */
+function hidamari_site_core_filter_page_bulk_actions( $actions ) {
+	if ( hidamari_site_core_is_facility_editor() ) {
+		unset( $actions['edit'], $actions['trash'] );
+	}
+
+	return $actions;
+}
+add_filter( 'bulk_actions-edit-page', 'hidamari_site_core_filter_page_bulk_actions' );
+
+/**
+ * Hide administrator-managed page controls from facility editors.
+ *
+ * @return void
+ */
+function hidamari_site_core_limit_page_editor_supports() {
+	if ( is_admin() && hidamari_site_core_is_facility_editor() ) {
+		remove_post_type_support( 'page', 'title' );
+		remove_post_type_support( 'page', 'page-attributes' );
+	}
+}
+add_action( 'init', 'hidamari_site_core_limit_page_editor_supports', 100 );
 
 /**
  * Check whether a post meta save should be skipped.

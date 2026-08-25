@@ -1,6 +1,6 @@
 # WordPress開発
 
-現在の復元方法、保守手順、受け渡しバックアップ、未完了事項は [`project-docs/wordpress/HANDOFF.md`](../project-docs/wordpress/HANDOFF.md) を参照する。Forminatorの一般仕様、現行フォーム設定、変更と送信確認は [`project-docs/wordpress/FORMINATOR_GUIDE.md`](../project-docs/wordpress/FORMINATOR_GUIDE.md) にまとめている。
+現在の復元方法、保守手順、受け渡しバックアップ、未完了事項は [`project-docs/wordpress/HANDOFF.md`](../project-docs/wordpress/HANDOFF.md) を参照する。本番公開、HTTPS、切り戻し、バックアップ保持、監視は [`project-docs/wordpress/PRODUCTION_RUNBOOK.md`](../project-docs/wordpress/PRODUCTION_RUNBOOK.md)、Forminatorの一般仕様、現行フォーム設定、変更と送信確認は [`project-docs/wordpress/FORMINATOR_GUIDE.md`](../project-docs/wordpress/FORMINATOR_GUIDE.md) にまとめている。
 
 ## 管理対象
 
@@ -20,7 +20,7 @@
 - Web server: nginx 1.26.1
 - Database: MySQL 8.4.0
 - Theme: `hidamari-care-asahikawa` 0.11.2
-- Site plugin: `hidamari-site-core` 0.5.0
+- Site plugin: `hidamari-site-core` 0.6.0
 - Form plugin: Forminator 1.57.0
 - SEO plugin: SEO SIMPLE PACK 3.7.0
 - Site language: 日本語（`ja`）
@@ -58,7 +58,7 @@ WordPressテーマでは `assets/scss/style.scss` をCSSの唯一の編集元、
 - `front-page.php` は固定フロントページを前提とし、静的版TOPのセクション構造をテーマで管理する。
 - ヒーローは固定フロントページのアイキャッチ、選ばれる理由・サービスの6画像は `hidamari_home_{key}_image_id` メタからメディアライブラリ画像を取得する。
 - お知らせは公開済み標準投稿の最新3件、FAQは `hidamari_faq` のうち `hidamari_show_on_front` が有効な最大6件を `hidamari_front_order` 順に表示する。カテゴリー内の並び順は `menu_order` で個別に管理する。
-- `hidamari-site-core` 0.5.0では、FAQ、利用フロー、料金行、固定ページ画像、共通施設情報を管理する。
+- `hidamari-site-core` 0.6.0では、FAQ、利用フロー、料金行、固定ページ画像、共通施設情報を管理し、施設担当者向け編集者の固定ページ編集範囲と構造保護を実施する。
 - `tools/local-top-fixtures.php` は `hidamari-care-asahikawa.local` でのみ実行できる。プラグイン有効化後にLocalのサイトシェルで `wp eval-file C:/Users/lihui/Documents/Codex_Akutsu/tools/local-top-fixtures.php` を実行すると、固定ページ8件、画像7件、投稿3件、FAQ6件を同じ移行キーで作成・更新し、WordPress初期データの `Hello world!` と `Sample Page` をゴミ箱へ移す。
 - ステップ10-2の6固定ページは移行済み。お問い合わせフォームは `hidamari_forminator_form_id` に保存したForminatorフォームをTOPとお問い合わせページで共有し、未設定時だけ電話案内と準備中メッセージを表示する。
 

@@ -183,14 +183,14 @@ $wrappers = array(
 	hidamari_contact_form_wrapper(
 		'wrapper-email',
 		array(
-			'element_id'       => 'email-1',
-			'type'             => 'email',
-			'field_label'      => 'メールアドレス',
-			'required'         => true,
-			'required_message' => $required_message,
-			'browser_autofill' => 'enabled',
-			'validation'       => true,
-			'validation_text'  => '有効なメールアドレスを入力してください。',
+			'element_id'         => 'email-1',
+			'type'               => 'email',
+			'field_label'        => 'メールアドレス',
+			'required'           => true,
+			'required_message'   => $required_message,
+			'browser_autofill'   => 'enabled',
+			'validation'         => true,
+			'validation_message' => '有効なメールアドレスを入力してください。',
 		)
 	),
 	hidamari_contact_form_wrapper(

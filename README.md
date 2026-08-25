@@ -7,11 +7,12 @@ GitHub Pagesで公開中の静的完成版と、Localで検証済みのWordPress
 | 区分 | 管理元 | ブランチ／タグ | 公開・検証状態 |
 |---|---|---|---|
 | 静的完成版 | `docs/` | `main`／`static-v1.0` | GitHub Pagesで公開中 |
-| WordPress版 | `wordpress/`、`tools/local-*-fixtures.php` | `feature/wordpress` | Local・MySQLで実装と総合確認が完了。本番未公開 |
+| WordPress版 | `wordpress/`、`tools/local-*-fixtures.php` | `feature/wordpress` | Local・MySQLで実装、権限、分離復元まで確認済み。本番未公開 |
 
 - 静的完成版の公開URL: [https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/](https://aoyamaatm.github.io/Hidamari-Fukushi-Keikaku/)
 - WordPressテーマ名: `hidamari-care-asahikawa`
 - WordPress版の復元、保守、未完了事項: [WordPress最終引き継ぎ](project-docs/wordpress/HANDOFF.md)
+- WordPress版の本番公開、HTTPS、切り戻し、運用: [本番公開・切り戻し・運用手順](project-docs/wordpress/PRODUCTION_RUNBOOK.md)
 - WordPress版の実装詳細: [WordPress開発README](wordpress/README.md)
 
 静的版とWordPress版は管理元を混ぜない。静的版の修正は `docs/`、WordPress版の修正は `wordpress/` を編集し、それぞれ対応するCSSビルドを実行する。
@@ -168,8 +169,8 @@ Localサイト、必要プラグイン、投入スクリプト、WPvividバッ�
 
 ## 本番公開前に残っていること
 
-- WordPress本番環境、ドメイン、SSL、公開手順の確定とデプロイ
-- 施設側で承認された正式原稿・画像・連絡先への差し替え
+- WordPress本番／ステージング環境、ドメイン、DNS、SSL、公開日時、承認者の確定とデプロイ
+- 架空デモとしての最終公開承認、または実運用へ切り替える場合の承認済み原稿・画像・連絡先の確定
 - 公開環境でのForminatorデモ送信、通知0件、DB保存なし、完了表示の確認
-- 本番ユーザーと権限、バックアップ、更新、監視、復旧方針の確定
-- 別PCまたはステージングへのWPvivid復元テスト
+- 本番ユーザー作成、物理スマートフォン確認、定期バックアップ、外部保管、更新、監視、障害連絡、RPO／RTOの確定
+- Local分離復元と自動検証は完了済み。実ホスティングのステージングで同じ復元・URL置換・ログイン・全表示を最終確認
